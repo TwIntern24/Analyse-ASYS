@@ -27,6 +27,8 @@ CAnalyseData::CAnalyseData(QWidget *parent) :
     setRadioButtonsIDsInGB4DM();
     setRadioButtonsIDsInGB4ZT();
     setRadioButtonsIDsInGB4RepairARM();
+    setRadioButtonsIDsInGB4RepairDM();
+    setRadioButtonsIDsInGB4RepairZT();
 
     ui->gbTiltDataChk->setVisible(false);
     ui->leRobotSN1st->setFocus();   
@@ -556,10 +558,21 @@ void CAnalyseData::on_pbRobotSNHide_clicked()
       m_filePath = settings.value("IniFilePath").toString();    //m_filePath = settings.value("LastTargetFilePath").toString();
       //m_imgPath = m_filePath+"\\"+m_fileName+".jpg";// add to insert image into excel
       QString strExcelFilePath = settings.value("ExcelFilePath").toString();  //*****************
-      m_filePathExcel = strExcelFilePath + "\\" + m_fileName +".xls";      //m_filePathExcel = m_filePath+"\\"+m_fileName+".xls";
+      m_filePathExcel =  strExcelFilePath + "\\" + m_fileName +".xls";      //m_filePathExcel = m_filePath+"\\"+m_fileName+".xls";
       m_filePath += "\\"+m_fileName+".ini"; // mark
 //      qDebug() << m_filePath;
 //      qDebug() << m_filePathExcel;
+
+      QString strExcelRepairTemp = settings.value("TemplateVersionRepair").toString();  //Repair_matrix_MK5  //************
+//    Template for the Repair Sheet:
+      m_filePathExcelRepairTmp = QDir::toNativeSeparators(QApplication::applicationDirPath()) + "\\" + strExcelRepairTemp + ".xlsx";
+      QString m_robotNumber;
+      QStringList parts = m_fileName.split("_");
+      if(parts.size() > 1) {
+        m_robotNumber = parts[1];
+      }
+      qDebug() << "RobotTypeSN" << m_robotNumber;
+      m_filePathExcelRepair = "D:\\Data\\twintern\\Jana\\Work\\Emily\\Files\\"+ strExcelRepairTemp + "_"+ m_robotNumber +"_w.xlsx"; // strExcelFilePath + "\\" + strExcelRepairTemp + "_" + m_robotNumber +"_w.xlsx";
 
       // for image path //ImageFilePath
       m_imgDefaultPath = settings.value("ImageFilePath").toString();
@@ -3606,7 +3619,6 @@ void CAnalyseData::on_pbExportExcel_clicked()
 //      //m_filePathExcelTmp = "D:\\ASYS\\Projects\\Analyse_ASYS\\AnalyseTmp-Ray.xls";
 //      m_filePathExcelTmp = "D:\\ASYS\\Projects\\Analyse_ASYS\\ANALYSETILT_0728.xls";
 //    #endif
-    //m_filePathExcel
     progressSave(3);
     closeExcel();
     //closeExcel1();    
@@ -3710,6 +3722,7 @@ void CAnalyseData::closeExcel( void)
         m_objExcel = nullptr;
     }// if()
     vecProtocolItems.clear();
+    vecRepairItems.clear();
 
 //    if(m_objLabelExcel != nullptr)
 //    {
@@ -5168,7 +5181,44 @@ void CAnalyseData::setRadioButtonsIDsInGB4RepairZT( void){
     m_pgbRepairZT_AdapterCable->addButton(ui->rbAdapterCable_NA, 2);
 }
 
-void CAnalyseData::buildRepairTabel( void)
+void CAnalyseData::writeAmount( QAxObject* workbook, sREPAIRITEM item )
+{
+    QAxObject *worksheet = workbook->querySubObject("WorkSheets(int)", 1);
+    int row = 0, column = 0;
+    CAnalyseData::getRowColumn(item.Cell, &row, &column);
+    QAxObject* cell = worksheet->querySubObject("Cells(int,int)", row, column);
+    // if checkbox "repair" is checked -> write "1"
+    if(item.Value.toInt() == 1){
+        QString value = "'1";
+        qDebug() << value;
+        cell->setProperty("Value", value);
+    }
+}
+
+void CAnalyseData::writeInformation( QAxObject* workbook, sREPAIRITEM item )
+{
+    QAxObject *worksheet = workbook->querySubObject("WorkSheets(int)", 1);
+    int row = 0, column = 0;
+    CAnalyseData::getRowColumn(item.Cell, &row, &column);
+    QAxObject* cell = worksheet->querySubObject("Cells(int,int)", row, column);
+    // write information
+    QString value = item.Value.toString();
+    cell->setProperty("Value", value);
+}
+
+void CAnalyseData::extendInformation( QAxObject* workbook, sREPAIRITEM item )
+{
+    QAxObject *worksheet = workbook->querySubObject("WorkSheets(int)", 1);
+    int row = 0, column = 0;
+    CAnalyseData::getRowColumn(item.Cell, &row, &column);
+    QAxObject* cell = worksheet->querySubObject("Cells(int,int)", row, column);
+    // write information
+
+    QString value = cell->property("Value").toString() + " " + item.Value.toString();
+    cell->setProperty("Value", value);
+}
+
+void CAnalyseData::buildRepairTable( void)
 {
 
     // Value                                                                                // Cell     // Function
@@ -5178,14 +5228,15 @@ void CAnalyseData::buildRepairTabel( void)
     vecRepairItems.append({"'"+ui->leARMSN->text(),                                         "D7",       writeInformation});
     vecRepairItems.append({ui->leArmFirstDelivery->text()+ "; "+ui->leArmLastRepair->text(),"B7",       extendInformation});
     vecRepairItems.append({"'"+ui->leDMSN->text(),                                          "D8",       writeInformation});
-    vecRepairItems.append({ui->leDMFirstDelivery->text()+"; "=ui->leDMLastRepair->text(),   "B8",       extendInformation});
+    vecRepairItems.append({ui->leDMFirstDelivery->text()+"; "+ui->leDMLastRepair->text(),   "B8",       extendInformation});
     vecRepairItems.append({"'"+ui->leZTSN2->text(),                                         "D9",       writeInformation});
     vecRepairItems.append({ui->leZTFirstDelivery->text()+"; "+ui->leZTLastRepair->text(),   "B9",       extendInformation});
     vecRepairItems.append({ui->leRepairNo->text()+ "; " +ui->leLastRepairDate->text(),      "F5",       extendInformation});
+    vecRepairItems.append({ui->leFirstDeliveryDate->text(),                                 "F6",       extendInformation});
 
     // ------ Arm parts ------------------------------------------------------------------------------------
-    vecRepairItems.append({m_pgbRepairARM_ArmBelts->checkedId,                              "E13",      writeAmount});
-    vecRepairItems.append({m_pgbRepairARM_UpperArmHousingUpgrade->checkedId,                "E35",      writeAmount});
+    vecRepairItems.append({m_pgbRepairARM_ArmBelts->checkedId(),                            "E13",      writeAmount});
+    vecRepairItems.append({m_pgbRepairARM_UpperArmHousingUpgrade->checkedId(),              "E35",      writeAmount});
     vecRepairItems.append({m_pgbRepairARM_UpperArmHousing->checkedId(),                     "E36",      writeAmount});
     vecRepairItems.append({m_pgbRepairARM_UpperArmLid->checkedId(),                         "E37",      writeAmount});
     vecRepairItems.append({m_pgbRepairARM_LowerArmHousingUpgrade->checkedId(),              "E38",      writeAmount});
@@ -5198,7 +5249,7 @@ void CAnalyseData::buildRepairTabel( void)
     vecRepairItems.append({m_pgbRepairARM_TorxScrew->checkedId(),                           "E45",      writeAmount});
     vecRepairItems.append({m_pgbRepairARM_Bearings->checkedId(),                            "E46",      writeAmount});
 
-//    // ------ DM parts ------------------------------------------------------------------------------------
+////    // ------ DM parts ------------------------------------------------------------------------------------
     vecRepairItems.append({m_pgbRepairDM_DMLikaMotor->checkedId(),                          "E15",      writeAmount});
     vecRepairItems.append({m_pgbRepairDM_CableHood->checkedId(),                            "E49",      writeAmount});
     vecRepairItems.append({m_pgbRepairDM_DMHousing->checkedId(),                            "E50",      writeAmount});
@@ -5206,7 +5257,7 @@ void CAnalyseData::buildRepairTabel( void)
     vecRepairItems.append({m_pgbRepairDM_SlipRing->checkedId(),                             "E52",      writeAmount});
     vecRepairItems.append({m_pgbRepairDM_HollowShaft->checkedId(),                          "E53",      writeAmount});
 
-//    // ------ Z-module parts ------------------------------------------------------------------------------
+////    // ------ Z-module parts ------------------------------------------------------------------------------
     vecRepairItems.append({m_pgbRepairZT_ZStroke35->checkedId(),                            "E17",      writeAmount});
     vecRepairItems.append({m_pgbRepairZT_ZStroke50->checkedId(),                            "E18",      writeAmount});
     vecRepairItems.append({m_pgbRepairZT_ZMHousingScara->checkedId(),                       "E56",      writeAmount});
@@ -5223,42 +5274,67 @@ void CAnalyseData::buildRepairTabel( void)
 }
 
 
-void CAnalyseData::writeAmount( QAxObject* workbook, sREPAIRITEM item )
+
+void CAnalyseData::on_pushButton_clicked()
 {
-    QAxObject *worksheet = workbook->querySubObject("WorkSheets(int)", 1);
-    int row = 0, column = 0;
-    CAnalyseData::getRowColumn(item.Cell, &row, &column);
-    QAxObject* cell = worksheet->querySubObject("Cells(int,int)", row, column);
-    // if checkbox "repair" is checked -> write "1"
-    if(item.Value.toInt() == 1){
-        QString value = "'1";
-        qDebug() << value;
-        cell->setProperty("Value", value);
+
+//    QString m_robotNumber = ui->lbRobotType->text() + ui->leRobotTypeSN->text();
+//    m_filePathExcelRepair = "D:\\Data\\twintern\\Jana\\Work\\Emily\\Files\\RepairSheet_w.xlsx";  //
+//    m_filePathExcelRepair.append(m_robotType + ui->leRobotTypeSN->text() +"_w.xlsx"); // strExcelFilePath + "\\" + strExcelRepairTemp + "_" + m_robotNumber +"_w.xlsx";
+
+    m_filePathExcelRepairTmp = "D:\\Data\\twintern\\Jana\\Work\\Emily\\Files\\Repair_matrix _MK5.xlsx";
+    progressSave(3);
+    closeExcel();
+//    //closeExcel1();
+//    on_pbSaveIni_clicked();
+    progressSave(6);
+//    createLabelFile();
+    progressSave(10);
+    buildRepairTable();
+    if(QFile::exists(m_filePathExcelRepair))
+    {
+        QFile::remove(m_filePathExcelRepair);
     }
-}
 
+    m_objExcel = new QAxObject("Excel.Application");
+    if( m_objExcel==nullptr)
+    {
+        progressSave(0);
+        QMessageBox::critical(NULL, "Error", "Excel is not installed", QMessageBox::Yes, QMessageBox::Yes);
+        return;
+    }
 
-void CAnalyseData::writeInformation( QAxObject* workbook, sREPAIRITEM item )
-{
-    QAxObject *worksheet = workbook->querySubObject("WorkSheets(int)", 1);
-    int row = 0, column = 0;
-    CAnalyseData::getRowColumn(item.Cell, &row, &column);
-    QAxObject* cell = worksheet->querySubObject("Cells(int,int)", row, column);
-    // write information
-    QString value = item.Value.toString();
-    qDebug() << value;
-    cell->setProperty("Value", value);
-}
+    m_objExcel->setProperty("Visible",false);
+    QAxObject* workbooks = m_objExcel->querySubObject("WorkBooks");// get the workbook.
+    if( workbooks==nullptr)
+    {
+        progressSave(0);
+        QMessageBox::critical(NULL, "Error", "Office is not installed", QMessageBox::Yes, QMessageBox::Yes);
+        return;
+    }
+    workbooks->setProperty("Visible",false);    //new code*********************
+    workbooks->dynamicCall("Open (const QString&)", m_filePathExcelRepairTmp);   // Open the file；
+    m_objWorkbook = m_objExcel->querySubObject("ActiveWorkBook"); // Get the active workbook.
+    progressSave(20);
+    int item_count = 1;// for progress
+    foreach(sREPAIRITEM item, vecRepairItems)
+    {
+        if(item.p_func)
+        {
+            (this->*(item.p_func))(m_objWorkbook, item);
+        }
+        progressSave(20 + (item_count++)*80/vecRepairItems.size());
+    }
+    // add to disable checking compatibility
+    m_objWorkbook->setProperty("DisplayAlerts", false);
+    m_objWorkbook->setProperty("CheckCompatibility", false);
+    m_objWorkbook->setProperty("DoNotPromptForConvert", true);
 
-void CAnalyseData::extendInformation( QAxObject* workbook, sREPAIRITEM item )
-{
-    QAxObject *worksheet = workbook->querySubObject("WorkSheets(int)", 1);
-    int row = 0, column = 0;
-    CAnalyseData::getRowColumn(item.Cell, &row, &column);
-    QAxObject* cell = worksheet->querySubObject("Cells(int,int)", row, column);
-    // write information
+    m_objWorkbook->dynamicCall("SaveAs(const QString&)",
+                                     QDir::toNativeSeparators(m_filePathExcelRepair));
 
-    QString value = cell->property("Value").toString() + " " + item.Value.toString();
-    qDebug() << value;
-    cell->setProperty("Value", value);
+    progressSave(98);
+
+    closeExcel();
+    progressSave(100);
 }

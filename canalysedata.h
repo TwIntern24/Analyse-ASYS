@@ -101,6 +101,8 @@ private slots:
 
     void on_leZDownFA_textChanged(const QString &arg1);
 
+    void on_pushButton_clicked();
+
 private:
     enum eSHEET
     {
@@ -215,7 +217,9 @@ private:
 //    QString m_filePathTemp = "";
     QString m_settingFilePath = "";
     QString m_filePathExcel = "";
+    QString m_filePathExcelRepair = "";
     QString m_filePathExcelTmp = "";
+    QString m_filePathExcelRepairTmp = "";
     QString m_comments4Arm = "";
     QString m_comments4DM = "";
     QString m_comments4ZT = "";    
@@ -404,7 +408,7 @@ private:
     QString m_filePathXlsTemp = "D:\\Data\\Jana\\Work\\Emily\\Tials\\CreateFiles\\_files\\Repair_temp.xls";
 
     QVector<sREPAIRITEM> vecRepairItems;
-    void buildRepairTabel( void );
+    void buildRepairTable( void );
 
     void setRadioButtonsIDsInGB4RepairARM( void);
     void setRadioButtonsIDsInGB4RepairDM( void);
