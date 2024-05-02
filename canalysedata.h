@@ -388,7 +388,7 @@ private:
 
     void createLabelFile();
 
-    //************** NEW ****************************
+    //************** REPAIR SHEET ****************************
 
     struct sREPAIRITEM
     {
@@ -398,16 +398,55 @@ private:
 
     };
 
+
+
     QString m_filePathXls = "D:\\Data\\Jana\\Work\\Emily\\Tials\\CreateFiles\\_files\\Repair.xlsx";
     QString m_filePathXlsTemp = "D:\\Data\\Jana\\Work\\Emily\\Tials\\CreateFiles\\_files\\Repair_temp.xls";
 
     QVector<sREPAIRITEM> vecRepairItems;
-    void buildRepairTable( void );
+    void buildRepairTabel( void );
+
+    void setRadioButtonsIDsInGB4RepairARM( void);
+    void setRadioButtonsIDsInGB4RepairDM( void);
+    void setRadioButtonsIDsInGB4RepairZT( void);
 
     void writeAmount( QAxObject* workbook, sREPAIRITEM item );
-    void writeInforamtion( QAxObject* workbook, sREPAIRITEM item );
-    void extendInforamtion( QAxObject* workbook, sREPAIRITEM item );
+    void writeInformation( QAxObject* workbook, sREPAIRITEM item );
+    void extendInformation( QAxObject* workbook, sREPAIRITEM item );
 
+    // ARM
+    QButtonGroup *m_pgbRepairARM_ArmBelts;
+    QButtonGroup *m_pgbRepairARM_UpperArmHousingUpgrade;
+    QButtonGroup *m_pgbRepairARM_UpperArmHousing;
+    QButtonGroup *m_pgbRepairARM_UpperArmLid;
+    QButtonGroup *m_pgbRepairARM_LowerArmHousingUpgrade;
+    QButtonGroup *m_pgbRepairARM_LowerArmHousing;
+    QButtonGroup *m_pgbRepairARM_LowerArmLid;
+    QButtonGroup *m_pgbRepairARM_ArmDriveInterface;
+    QButtonGroup *m_pgbRepairARM_ArmGripperInterfaceScara;
+    QButtonGroup *m_pgbRepairARM_ArmGripperInterfaceNT;
+    QButtonGroup *m_pgbRepairARM_BeltReel;
+    QButtonGroup *m_pgbRepairARM_TorxScrew;
+    QButtonGroup *m_pgbRepairARM_Bearings;
+
+    // DM
+    QButtonGroup *m_pgbRepairDM_DMLikaMotor;
+    QButtonGroup *m_pgbRepairDM_CableHood;
+    QButtonGroup *m_pgbRepairDM_DMHousing;
+    QButtonGroup *m_pgbRepairDM_DMLid;
+    QButtonGroup *m_pgbRepairDM_SlipRing;
+    QButtonGroup *m_pgbRepairDM_HollowShaft;
+
+    // ZT
+    QButtonGroup *m_pgbRepairZT_ZStroke35;
+    QButtonGroup *m_pgbRepairZT_ZStroke50;
+    QButtonGroup *m_pgbRepairZT_ZMHousingScara;
+    QButtonGroup *m_pgbRepairZT_ZMHousingNT;
+    QButtonGroup *m_pgbRepairZT_GuidingShaftsScara;
+    QButtonGroup *m_pgbRepairZT_GuidingShaftsNT;
+    QButtonGroup *m_pgbRepairZT_SmallGuidingShafts;
+    QButtonGroup *m_pgbRepairZT_ClampingFlange;
+    QButtonGroup *m_pgbRepairZT_AdapterCable;
 };
 
 #endif // CANALYSEDATA_H

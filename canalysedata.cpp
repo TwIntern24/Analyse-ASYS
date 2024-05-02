@@ -26,11 +26,16 @@ CAnalyseData::CAnalyseData(QWidget *parent) :
     setRadioButtonsIDsInGB4ARM();
     setRadioButtonsIDsInGB4DM();
     setRadioButtonsIDsInGB4ZT();
+    setRadioButtonsIDsInGB4RepairARM();
 
     ui->gbTiltDataChk->setVisible(false);
     ui->leRobotSN1st->setFocus();   
     ui->stackedWidget->setCurrentIndex(0);
     ui->stackedWidget_Image->setCurrentIndex(0);
+
+
+
+
 }
 
 CAnalyseData::~CAnalyseData()
@@ -4987,45 +4992,230 @@ void CAnalyseData::createLabelFile()
 
 // ************** Create Repair Sheet ---------------------------------------------------------------------------- //
 
-void CAnalyseData::buildRepairTable( void)
+
+void CAnalyseData::setRadioButtonsIDsInGB4RepairARM( void){
+    // set ArmBelts
+    m_pgbRepairARM_ArmBelts = new QButtonGroup( this);
+    m_pgbRepairARM_ArmBelts->addButton(ui->rbArmBeltsAvrPrice_OK, 0);
+    m_pgbRepairARM_ArmBelts->addButton(ui->rbArmBeltsAvrPrice_Repair, 1);
+    m_pgbRepairARM_ArmBelts->addButton(ui->rbArmBeltsAvrPrice_NA, 2);
+
+    // set UpperArmHousingUpgrade
+    m_pgbRepairARM_UpperArmHousingUpgrade = new QButtonGroup( this);
+    m_pgbRepairARM_UpperArmHousingUpgrade->addButton(ui->rbUpperArmHousingUpgrade_OK, 0);
+    m_pgbRepairARM_UpperArmHousingUpgrade->addButton(ui->rbUpperArmHousingUpgrade_Repair, 1);
+    m_pgbRepairARM_UpperArmHousingUpgrade->addButton(ui->rbUpperArmHousingUpgrade_NA, 2);
+
+    // set UpperArmHousing
+    m_pgbRepairARM_UpperArmHousing = new QButtonGroup( this);
+    m_pgbRepairARM_UpperArmHousing->addButton(ui->rbUpperArmHousing_OK, 0);
+    m_pgbRepairARM_UpperArmHousing->addButton(ui->rbUpperArmHousing_Repair, 1);
+    m_pgbRepairARM_UpperArmHousing->addButton(ui->rbUpperArmHousing_NA, 2);
+
+    // set UpperArmLid
+    m_pgbRepairARM_UpperArmLid = new QButtonGroup( this);
+    m_pgbRepairARM_UpperArmLid->addButton(ui->rbUpperArmLid_OK, 0);
+    m_pgbRepairARM_UpperArmLid->addButton(ui->rbUpperArmLid_Repair, 1);
+    m_pgbRepairARM_UpperArmLid->addButton(ui->rbUpperArmLid_NA, 2);
+
+    // set LowerArmHousingUpgrade
+    m_pgbRepairARM_LowerArmHousingUpgrade = new QButtonGroup( this);
+    m_pgbRepairARM_LowerArmHousingUpgrade->addButton(ui->rbLowerArmHousingUpgrade_OK, 0);
+    m_pgbRepairARM_LowerArmHousingUpgrade->addButton(ui->rbLowerArmHousingUpgrade_Repair, 1);
+    m_pgbRepairARM_LowerArmHousingUpgrade->addButton(ui->rbLowerArmHousingUpgrade_NA, 2);
+
+    // set LowerArmHousing
+    m_pgbRepairARM_LowerArmHousing = new QButtonGroup( this);
+    m_pgbRepairARM_LowerArmHousing->addButton(ui->rbLowerArmHousing_OK, 0);
+    m_pgbRepairARM_LowerArmHousing->addButton(ui->rbLowerArmHousing_Repair, 1);
+    m_pgbRepairARM_LowerArmHousing->addButton(ui->rbLowerArmHousing_NA, 2);
+
+    // set LowerArmLid
+    m_pgbRepairARM_LowerArmLid = new QButtonGroup( this);
+    m_pgbRepairARM_LowerArmLid->addButton(ui->rbLowerArmLid_OK, 0);
+    m_pgbRepairARM_LowerArmLid->addButton(ui->rbLowerArmLid_Repair, 1);
+    m_pgbRepairARM_LowerArmLid->addButton(ui->rbLowerArmLid_NA, 2);
+
+    // set ArmDriveInterface
+    m_pgbRepairARM_ArmDriveInterface = new QButtonGroup( this);
+    m_pgbRepairARM_ArmDriveInterface->addButton(ui->rbArmDriveInterface_OK, 0);
+    m_pgbRepairARM_ArmDriveInterface->addButton(ui->rbArmDriveInterface_Repair, 1);
+    m_pgbRepairARM_ArmDriveInterface->addButton(ui->rbArmDriveInterface_NA, 2);
+
+    // set ArmGripperInterfaceScara
+    m_pgbRepairARM_ArmGripperInterfaceScara = new QButtonGroup( this);
+    m_pgbRepairARM_ArmGripperInterfaceScara->addButton(ui->rbArmGripperInterfaceScara_OK, 0);
+    m_pgbRepairARM_ArmGripperInterfaceScara->addButton(ui->rbArmGripperInterfaceScara_Repair, 1);
+    m_pgbRepairARM_ArmGripperInterfaceScara->addButton(ui->rbArmGripperInterfaceScara_NA, 2);
+
+    // set ArmGripperInterfaceNT
+    m_pgbRepairARM_ArmGripperInterfaceNT = new QButtonGroup( this);
+    m_pgbRepairARM_ArmGripperInterfaceNT->addButton(ui->rbArmGripperInterfaceScara_OK, 0);
+    m_pgbRepairARM_ArmGripperInterfaceNT->addButton(ui->rbArmGripperInterfaceScara_Repair, 1);
+    m_pgbRepairARM_ArmGripperInterfaceNT->addButton(ui->rbArmGripperInterfaceScara_NA, 2);
+
+    // set BeltReel
+    m_pgbRepairARM_BeltReel = new QButtonGroup( this);
+    m_pgbRepairARM_BeltReel->addButton(ui->rbBeltReel_OK, 0);
+    m_pgbRepairARM_BeltReel->addButton(ui->rbBeltReel_Repair, 1);
+    m_pgbRepairARM_BeltReel->addButton(ui->rbBeltReel_NA, 2);
+
+    // set TorxScrew
+    m_pgbRepairARM_TorxScrew = new QButtonGroup( this);
+    m_pgbRepairARM_TorxScrew->addButton(ui->rbTorxScrew_OK, 0);
+    m_pgbRepairARM_TorxScrew->addButton(ui->rbTorxScrew_Repair, 1);
+    m_pgbRepairARM_TorxScrew->addButton(ui->rbTorxScrew_NA, 2);
+
+    // set Bearings
+    m_pgbRepairARM_Bearings = new QButtonGroup( this);
+    m_pgbRepairARM_Bearings->addButton(ui->rbBearings_OK, 0);
+    m_pgbRepairARM_Bearings->addButton(ui->rbBearings_Repair, 1);
+    m_pgbRepairARM_Bearings->addButton(ui->rbBearings_NA, 2);
+
+}
+
+void CAnalyseData::setRadioButtonsIDsInGB4RepairDM( void){
+    // set DMLikaMotor
+    m_pgbRepairDM_DMLikaMotor = new QButtonGroup( this);
+    m_pgbRepairDM_DMLikaMotor->addButton(ui->rbDMLikaMotor_OK, 0);
+    m_pgbRepairDM_DMLikaMotor->addButton(ui->rbDMLikaMotor_Repair, 1);
+    m_pgbRepairDM_DMLikaMotor->addButton(ui->rbDMLikaMotor_NA, 2);
+
+    // set CableHood
+    m_pgbRepairDM_CableHood = new QButtonGroup( this);
+    m_pgbRepairDM_CableHood->addButton(ui->rbCableHood_OK, 0);
+    m_pgbRepairDM_CableHood->addButton(ui->rbCableHood_Repair, 1);
+    m_pgbRepairDM_CableHood->addButton(ui->rbCableHood_NA, 2);
+
+    // set DMHousing
+    m_pgbRepairDM_DMHousing = new QButtonGroup( this);
+    m_pgbRepairDM_DMHousing->addButton(ui->rbDMHousing_OK, 0);
+    m_pgbRepairDM_DMHousing->addButton(ui->rbDMHousing_Repair, 1);
+    m_pgbRepairDM_DMHousing->addButton(ui->rbDMHousing_NA, 2);
+
+    // set DMLid
+    m_pgbRepairDM_DMLid = new QButtonGroup( this);
+    m_pgbRepairDM_DMLid->addButton(ui->rbDMLid_OK, 0);
+    m_pgbRepairDM_DMLid->addButton(ui->rbDMLid_Repair, 1);
+    m_pgbRepairDM_DMLid->addButton(ui->rbDMLid_NA, 2);
+
+    // set SlipRing
+    m_pgbRepairDM_SlipRing = new QButtonGroup( this);
+    m_pgbRepairDM_SlipRing->addButton(ui->rbSlipRing_OK, 0);
+    m_pgbRepairDM_SlipRing->addButton(ui->rbSlipRing_Repair, 1);
+    m_pgbRepairDM_SlipRing->addButton(ui->rbSlipRing_NA, 2);
+
+    // set HollowShaft
+    m_pgbRepairDM_HollowShaft = new QButtonGroup( this);
+    m_pgbRepairDM_HollowShaft->addButton(ui->rbHollowShaft_OK, 0);
+    m_pgbRepairDM_HollowShaft->addButton(ui->rbHollowShaft_Repair, 1);
+    m_pgbRepairDM_HollowShaft->addButton(ui->rbHollowShaft_NA, 2);
+}
+
+void CAnalyseData::setRadioButtonsIDsInGB4RepairZT( void){
+    // set ZStroke35
+    m_pgbRepairZT_ZStroke35 = new QButtonGroup( this);
+    m_pgbRepairZT_ZStroke35->addButton(ui->rbZStroke35_OK, 0);
+    m_pgbRepairZT_ZStroke35->addButton(ui->rbZStroke35_Repair, 1);
+    m_pgbRepairZT_ZStroke35->addButton(ui->rbZStroke35_NA, 2);
+
+    // set ZStroke50
+    m_pgbRepairZT_ZStroke50 = new QButtonGroup( this);
+    m_pgbRepairZT_ZStroke50->addButton(ui->rbZStroke50_OK, 0);
+    m_pgbRepairZT_ZStroke50->addButton(ui->rbZStroke50_Repair, 1);
+    m_pgbRepairZT_ZStroke50->addButton(ui->rbZStroke50_NA, 2);
+
+    // set ZMHousingScara
+    m_pgbRepairZT_ZMHousingScara = new QButtonGroup( this);
+    m_pgbRepairZT_ZMHousingScara->addButton(ui->rbZMHousingScara_OK, 0);
+    m_pgbRepairZT_ZMHousingScara->addButton(ui->rbZMHousingScara_Repair, 1);
+    m_pgbRepairZT_ZMHousingScara->addButton(ui->rbZMHousingScara_NA, 2);
+
+    // set ZMHousingNT
+    m_pgbRepairZT_ZMHousingNT = new QButtonGroup( this);
+    m_pgbRepairZT_ZMHousingNT->addButton(ui->rbZMHousingNT_OK, 0);
+    m_pgbRepairZT_ZMHousingNT->addButton(ui->rbZMHousingNT_Repair, 1);
+    m_pgbRepairZT_ZMHousingNT->addButton(ui->rbZMHousingNT_NA, 2);
+
+    // set GuidingShaftsScara
+    m_pgbRepairZT_GuidingShaftsScara = new QButtonGroup( this);
+    m_pgbRepairZT_GuidingShaftsScara->addButton(ui->rbGuidingShaftsScara_OK, 0);
+    m_pgbRepairZT_GuidingShaftsScara->addButton(ui->rbGuidingShaftsScara_Repair, 1);
+    m_pgbRepairZT_GuidingShaftsScara->addButton(ui->rbGuidingShaftsScara_NA, 2);
+
+    // set GuidingShaftsNT
+    m_pgbRepairZT_GuidingShaftsNT = new QButtonGroup( this);
+    m_pgbRepairZT_GuidingShaftsNT->addButton(ui->rbGuidingShaftsNT_OK, 0);
+    m_pgbRepairZT_GuidingShaftsNT->addButton(ui->rbGuidingShaftsNT_Repair, 1);
+    m_pgbRepairZT_GuidingShaftsNT->addButton(ui->rbGuidingShaftsNT_NA, 2);
+
+    // set SmallGuidingShafts
+    m_pgbRepairZT_SmallGuidingShafts = new QButtonGroup( this);
+    m_pgbRepairZT_SmallGuidingShafts->addButton(ui->rbSmallGuidingShafts_OK, 0);
+    m_pgbRepairZT_SmallGuidingShafts->addButton(ui->rbSmallGuidingShafts_Repair, 1);
+    m_pgbRepairZT_SmallGuidingShafts->addButton(ui->rbSmallGuidingShafts_NA, 2);
+
+    // set ClampingFlange
+    m_pgbRepairZT_ClampingFlange = new QButtonGroup( this);
+    m_pgbRepairZT_ClampingFlange->addButton(ui->rbClampingFlange_OK, 0);
+    m_pgbRepairZT_ClampingFlange->addButton(ui->rbClampingFlange_Repair, 1);
+    m_pgbRepairZT_ClampingFlange->addButton(ui->rbClampingFlange_NA, 2);
+
+    // set AdapterCable
+    m_pgbRepairZT_AdapterCable = new QButtonGroup( this);
+    m_pgbRepairZT_AdapterCable->addButton(ui->rbAdapterCable_OK, 0);
+    m_pgbRepairZT_AdapterCable->addButton(ui->rbAdapterCable_Repair, 1);
+    m_pgbRepairZT_AdapterCable->addButton(ui->rbAdapterCable_NA, 2);
+}
+
+void CAnalyseData::buildRepairTabel( void)
 {
 
-    // Value                                                                // Cell     // Function
+    // Value                                                                                // Cell     // Function
     // ----- General Information --------------------------------------------------------------------------
-//    vecRepairItems.append({ui->leUnit12NC->text(),                      "C4",       writeInforamtion});
-//    vecRepairItems.append({ui->leFirstDeliv->text(),                    "B7",       extendInforamtion});
-//    vecRepairItems.append({ui->leArmNum->text(),                        "D7",       writeInforamtion});
-//    vecRepairItems.append({ui->leDMNum->text(),                         "D8",       writeInforamtion});
-//    vecRepairItems.append({ui->leZStrokeNum->text(),                    "D9",       writeInforamtion});
+    vecRepairItems.append({"'"+ui->leNew12NC->text(),                                       "C4",       writeInformation});
+    vecRepairItems.append({"'"+ui->leRobotSN->text(),                                       "C5",       writeInformation});
+    vecRepairItems.append({"'"+ui->leARMSN->text(),                                         "D7",       writeInformation});
+    vecRepairItems.append({ui->leArmFirstDelivery->text()+ "; "+ui->leArmLastRepair->text(),"B7",       extendInformation});
+    vecRepairItems.append({"'"+ui->leDMSN->text(),                                          "D8",       writeInformation});
+    vecRepairItems.append({ui->leDMFirstDelivery->text()+"; "=ui->leDMLastRepair->text(),   "B8",       extendInformation});
+    vecRepairItems.append({"'"+ui->leZTSN2->text(),                                         "D9",       writeInformation});
+    vecRepairItems.append({ui->leZTFirstDelivery->text()+"; "+ui->leZTLastRepair->text(),   "B9",       extendInformation});
+    vecRepairItems.append({ui->leRepairNo->text()+ "; " +ui->leLastRepairDate->text(),      "F5",       extendInformation});
 
     // ------ Arm parts ------------------------------------------------------------------------------------
-//    vecRepairItems.append({ui->spinBoxArmBeltsAvrPrice->value(),            "E13",      writeAmount});
-//    vecRepairItems.append({ui->spinBoxUpperArmHousing->value(),             "E36",      writeAmount});
-//    vecRepairItems.append({ui->spinBoxUpperArmLid->value(),                 "E37",      writeAmount});
-//    vecRepairItems.append({ui->spinBoxLowerArmHousing->value(),             "E39",      writeAmount});
-//    vecRepairItems.append({ui->spinBoxLowerArmLid->value(),                 "E40",      writeAmount});
-//    vecRepairItems.append({ui->spinBoxArmDriveInterface->value(),           "E41",      writeAmount});
-//    vecRepairItems.append({ui->spinBoxArmGripperInterfaceScara->value(),    "E42",      writeAmount});
-//    vecRepairItems.append({ui->spinBoxArmGripperInterfaceNT->value(),       "E43",      writeAmount});
-//    vecRepairItems.append({ui->spinBoxBeltReel->value(),                    "E44",      writeAmount});
-//    vecRepairItems.append({ui->spinBoxTorxScrew->value(),                   "E45",      writeAmount});
-//    vecRepairItems.append({ui->spinBoxBearings->value(),                    "E46",      writeAmount});
+    vecRepairItems.append({m_pgbRepairARM_ArmBelts->checkedId,                              "E13",      writeAmount});
+    vecRepairItems.append({m_pgbRepairARM_UpperArmHousingUpgrade->checkedId,                "E35",      writeAmount});
+    vecRepairItems.append({m_pgbRepairARM_UpperArmHousing->checkedId(),                     "E36",      writeAmount});
+    vecRepairItems.append({m_pgbRepairARM_UpperArmLid->checkedId(),                         "E37",      writeAmount});
+    vecRepairItems.append({m_pgbRepairARM_LowerArmHousingUpgrade->checkedId(),              "E38",      writeAmount});
+    vecRepairItems.append({m_pgbRepairARM_LowerArmHousing->checkedId(),                     "E39",      writeAmount});
+    vecRepairItems.append({m_pgbRepairARM_LowerArmLid->checkedId(),                         "E40",      writeAmount});
+    vecRepairItems.append({m_pgbRepairARM_ArmDriveInterface->checkedId(),                   "E41",      writeAmount});
+    vecRepairItems.append({m_pgbRepairARM_ArmGripperInterfaceScara->checkedId(),            "E42",      writeAmount});
+    vecRepairItems.append({m_pgbRepairARM_ArmGripperInterfaceNT->checkedId(),               "E43",      writeAmount});
+    vecRepairItems.append({m_pgbRepairARM_BeltReel->checkedId(),                            "E44",      writeAmount});
+    vecRepairItems.append({m_pgbRepairARM_TorxScrew->checkedId(),                           "E45",      writeAmount});
+    vecRepairItems.append({m_pgbRepairARM_Bearings->checkedId(),                            "E46",      writeAmount});
 
 //    // ------ DM parts ------------------------------------------------------------------------------------
-//    vecRepairItems.append({ui->spinBoxCableHold->value(),                   "E49",      writeAmount});
-//    vecRepairItems.append({ui->spinBoxDMHousing->value(),                   "E50",      writeAmount});
-//    vecRepairItems.append({ui->spinBoxDMLid->value(),                       "E51",      writeAmount});
-//    vecRepairItems.append({ui->spinBoxSlipRing->value(),                    "E52",      writeAmount});
-//    vecRepairItems.append({ui->spinBoxHollowShaft->value(),                 "E53",      writeAmount});
+    vecRepairItems.append({m_pgbRepairDM_DMLikaMotor->checkedId(),                          "E15",      writeAmount});
+    vecRepairItems.append({m_pgbRepairDM_CableHood->checkedId(),                            "E49",      writeAmount});
+    vecRepairItems.append({m_pgbRepairDM_DMHousing->checkedId(),                            "E50",      writeAmount});
+    vecRepairItems.append({m_pgbRepairDM_DMLid->checkedId(),                                "E51",      writeAmount});
+    vecRepairItems.append({m_pgbRepairDM_SlipRing->checkedId(),                             "E52",      writeAmount});
+    vecRepairItems.append({m_pgbRepairDM_HollowShaft->checkedId(),                          "E53",      writeAmount});
 
 //    // ------ Z-module parts ------------------------------------------------------------------------------
-//    vecRepairItems.append({ui->spinBoxZMHousingScara->value(),              "E56",      writeAmount});
-//    vecRepairItems.append({ui->spinBoxZMHousingNT->value(),                 "E57",      writeAmount});
-//    vecRepairItems.append({ui->spinBoxGuidingShaftsScara->value(),          "E58",      writeAmount});
-//    vecRepairItems.append({ui->spinBoxGuidingShaftsNT->value(),             "E59",      writeAmount});
-//    vecRepairItems.append({ui->spinBoxSmallGuidingShafts->value(),          "E60",      writeAmount});
-//    vecRepairItems.append({ui->spinBoxClampingFlange->value(),              "E61",      writeAmount});
-//    vecRepairItems.append({ui->spinBoxAdapterCable->value(),                "E62",      writeAmount});
+    vecRepairItems.append({m_pgbRepairZT_ZStroke35->checkedId(),                            "E17",      writeAmount});
+    vecRepairItems.append({m_pgbRepairZT_ZStroke50->checkedId(),                            "E18",      writeAmount});
+    vecRepairItems.append({m_pgbRepairZT_ZMHousingScara->checkedId(),                       "E56",      writeAmount});
+    vecRepairItems.append({m_pgbRepairZT_ZMHousingNT->checkedId(),                          "E57",      writeAmount});
+    vecRepairItems.append({m_pgbRepairZT_GuidingShaftsScara->checkedId(),                   "E58",      writeAmount});
+    vecRepairItems.append({m_pgbRepairZT_GuidingShaftsNT->checkedId(),                      "E59",      writeAmount});
+    vecRepairItems.append({m_pgbRepairZT_SmallGuidingShafts->checkedId(),                   "E60",      writeAmount});
+    vecRepairItems.append({m_pgbRepairZT_ClampingFlange->checkedId(),                       "E61",      writeAmount});
+    vecRepairItems.append({m_pgbRepairZT_AdapterCable->checkedId(),                         "E62",      writeAmount});
 
     // ------ Upgrade part --------------------------------------------------------------------------------
 
@@ -5039,23 +5229,36 @@ void CAnalyseData::writeAmount( QAxObject* workbook, sREPAIRITEM item )
     int row = 0, column = 0;
     CAnalyseData::getRowColumn(item.Cell, &row, &column);
     QAxObject* cell = worksheet->querySubObject("Cells(int,int)", row, column);
-    // write amount only when it is not zero
-    if(item.Value.toInt() != 0){
-        QString value = "'"+item.Value.toString();
+    // if checkbox "repair" is checked -> write "1"
+    if(item.Value.toInt() == 1){
+        QString value = "'1";
         qDebug() << value;
         cell->setProperty("Value", value);
     }
 }
 
 
-void CAnalyseData::writeInforamtion( QAxObject* workbook, sREPAIRITEM item )
+void CAnalyseData::writeInformation( QAxObject* workbook, sREPAIRITEM item )
 {
     QAxObject *worksheet = workbook->querySubObject("WorkSheets(int)", 1);
     int row = 0, column = 0;
     CAnalyseData::getRowColumn(item.Cell, &row, &column);
     QAxObject* cell = worksheet->querySubObject("Cells(int,int)", row, column);
     // write information
-    QString value = "'"+item.Value.toString();
+    QString value = item.Value.toString();
+    qDebug() << value;
+    cell->setProperty("Value", value);
+}
+
+void CAnalyseData::extendInformation( QAxObject* workbook, sREPAIRITEM item )
+{
+    QAxObject *worksheet = workbook->querySubObject("WorkSheets(int)", 1);
+    int row = 0, column = 0;
+    CAnalyseData::getRowColumn(item.Cell, &row, &column);
+    QAxObject* cell = worksheet->querySubObject("Cells(int,int)", row, column);
+    // write information
+
+    QString value = cell->property("Value").toString() + " " + item.Value.toString();
     qDebug() << value;
     cell->setProperty("Value", value);
 }

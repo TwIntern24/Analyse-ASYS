@@ -1,0 +1,110 @@
+===============================================================================
+Project： Analyse_ASYS
+
+Description  : This programe is designed for the Analyse Testbench.
+
+Environment  : IDE : 
+               OS : Win10 PRO
+               Office : Microsoft 365 (Microsoft 2010 later)
+               
+Compilers    : Qt 5.8
+===============================================================================
+Verison  : 1.0.0.0
+Date     : 2023/04/18
+Programer: Stanley
+Content  : 1. 1st version for the Analyse test bench.
+           2. All blank fields need to key in by the user.
+           
+           
+Verison  : 2.0.0.0
+Date     : 2023/06/14
+Programer: Stanley
+Content  : 1. 2st version for the Analyse test bench.
+           2. Modify the ini file to be the same as the QApp and add some groups for new data.
+           3. Modify the image file path transform mehtod.
+              >>> m_imgPath = QDir::toNativeSeparators(m_imgPath);
+           4. Modify the ini default value
+              >>>[Robot_Info]\2\va\~8\val = ANALYSE
+              >>>[Robot_Info]\15\val~16\val = 1
+              >>>[Checks_Info]\1\val~6\val,16\val,17\val,19\val~21\val = true
+           5. Modify the Max. value of Rz range
+              >>> need to include the value of -208mm           
+           6. Modify the unit of values of Rx and Ry for the sheet of Data
+              >>> need to get mrad from ini and convert to mm
+           
+Verison  : 2.0.1.0
+Date     : 2023/07/06
+Programer: Stanley
+Content  : 1. Add a BID field while no image file
+           2. SaveAs the template Excel file under Office 2010 to be available.
+
+Verison  : 2.0.1.2
+Date     : 2023/07/12
+Programer: Stanley/Emily
+Content  : 1. Add printing function.
+
+Verison  : 2.0.1.3
+Date     : 2023/07/13
+Programer: Stanley/Emily
+Content  : 1. Add N/A radio buttons
+
+Version  : 2.0.1.4
+Date     : 2023/07/28
+Programer: Stanley/Emily
+Content  : 1. Add First Delivery & Last Repair Time of ARM, DM, ZT input field on GUI.
+
+Version  : 2.0.1.5
+Template : ANALYSETILT_v1.0
+Date     : 2023/08/14
+Programer: Stanley/Emily
+Content  : 1. Add function to insert images for remark.
+	 : 2. Robot Serial Number format specified.
+	 : 3. Backup setting config files added.
+	 : 4. Add warning message for incomplete ARM data.
+	 : 5. Enable users to assign different file path for ini file and excel file.
+	 : 6. Enable users to assign excel template versions.
+
+Version  : 2.0.1.6
+Template : ANALYSETILT_v1.0
+Date     : 2023/08/16
+Programer: Stanley/Emily
+Content  : 1. fix the robot type issue( original: NT/SC/NXT >>>AAR-NT/AAR/AAR-NXT)
+
+Version  : 2.0.1.7
+Template : ANALYSETILT_v1.1
+Date     : 2023/08/21
+Programer: Stanley/Emily
+Content  : 1. Determine robot type (SC/NT) and write in "F1" of "data" worksheet.
+	   2. Change the color of NOK radio buttons when selected.
+           3. Template version changed to v1.1: - Change the color of the NOK text in excel protocol.
+						- Change the position of comments of "ZT" worksheet.
+Version  : 2.0.1.8
+Template : ANALYSETILT_v1.2
+Date     : 2023/09/14
+Programer: Stanley/Emily
+Content  : 1. Change the ui layout to fit into lower resolution monitors (scroll areas added).
+	   2. Apply layout to window to enable the maximize-window button.
+	   3. Add function to adjust default application window size according to user screen size.
+
+Version  : 2.0.2.0
+Template : ANALYSETILT_v1.3
+Date     : 2023/09/25
+Programer: Stanley/Emily
+Content  : 1.  Modified label-printing function to ensure correct-formatting between computers.
+	   2.  Added datamatrix to labels.
+	   3.  Adjust excel template to fit label-printer.
+
+Version  : 2.0.3.0
+Template : ANALYSETILT_v1.3
+Date     : 2023/10/18
+Programer: Stanley/Emily
+Content  : 1.  Creates seperate excel file for label, saved in different folder(to speed up printing process).
+	   2.  Records values as "N/A" when no tested.
+	   3.  Analyse_ASYS app is now available also for robot type SCARA_MK3 and NXT_MK6.
+
+Version  : 2.0.3.1
+Template : ANALYSETILT_v1.4
+Date     : 2023/10/26
+Programer: Stanley/Emily
+Content  : 1.  Text of field for upper/lower arm tension changed. (OAG->UA Tension, UAG->LA Tension)
+           2. Procol version changeD to v1.4 (ANALYSETILT_v1.4)

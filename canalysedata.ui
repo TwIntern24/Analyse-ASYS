@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1181</width>
-    <height>790</height>
+    <width>1178</width>
+    <height>814</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -381,7 +381,7 @@ QGroupBox::title {
               <enum>QTabWidget::Triangular</enum>
              </property>
              <property name="currentIndex">
-              <number>0</number>
+              <number>2</number>
              </property>
              <property name="iconSize">
               <size>
@@ -1908,7 +1908,7 @@ QPushButton{font: 10.5pt &quot;MS Shell Dlg 2&quot;;}</string>
                       <rect>
                        <x>0</x>
                        <y>0</y>
-                       <width>668</width>
+                       <width>665</width>
                        <height>560</height>
                       </rect>
                      </property>
@@ -5037,244 +5037,71 @@ QGroupBox::title {
               <attribute name="title">
                <string>Repair-Arm</string>
               </attribute>
-              <layout class="QFormLayout" name="formLayout_6">
-               <item row="0" column="0">
-                <layout class="QHBoxLayout" name="horizontalLayout_121">
-                 <item>
-                  <layout class="QVBoxLayout" name="verticalLayout_51">
+              <widget class="QScrollArea" name="scrollArea">
+               <property name="geometry">
+                <rect>
+                 <x>11</x>
+                 <y>11</y>
+                 <width>721</width>
+                 <height>651</height>
+                </rect>
+               </property>
+               <property name="widgetResizable">
+                <bool>true</bool>
+               </property>
+               <widget class="QWidget" name="scrollAreaWidgetContents_5">
+                <property name="geometry">
+                 <rect>
+                  <x>0</x>
+                  <y>0</y>
+                  <width>698</width>
+                  <height>787</height>
+                 </rect>
+                </property>
+                <layout class="QGridLayout" name="gridLayout_6">
+                 <item row="2" column="0">
+                  <layout class="QVBoxLayout" name="verticalLayout_43">
                    <item>
-                    <widget class="QLabel" name="label_124">
-                     <property name="minimumSize">
-                      <size>
-                       <width>163</width>
-                       <height>19</height>
-                      </size>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <pointsize>11</pointsize>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>Arm belts - average price : </string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_128">
-                     <property name="minimumSize">
-                      <size>
-                       <width>163</width>
-                       <height>19</height>
-                      </size>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <pointsize>11</pointsize>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>Upper arm housing :</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_130">
-                     <property name="minimumSize">
-                      <size>
-                       <width>163</width>
-                       <height>19</height>
-                      </size>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <pointsize>11</pointsize>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>Upper arm lid :</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_132">
-                     <property name="minimumSize">
-                      <size>
-                       <width>163</width>
-                       <height>19</height>
-                      </size>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <pointsize>11</pointsize>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>Lower arm housing :</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_153">
-                     <property name="minimumSize">
-                      <size>
-                       <width>163</width>
-                       <height>19</height>
-                      </size>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <pointsize>11</pointsize>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>Lower arm lid :</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_154">
-                     <property name="minimumSize">
-                      <size>
-                       <width>163</width>
-                       <height>19</height>
-                      </size>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <pointsize>11</pointsize>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>Arm - drive interface (BR-Shoulder) :</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_155">
-                     <property name="minimumSize">
-                      <size>
-                       <width>163</width>
-                       <height>19</height>
-                      </size>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <pointsize>11</pointsize>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>Arm - gripper interface assy. Scara : </string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_170">
-                     <property name="minimumSize">
-                      <size>
-                       <width>163</width>
-                       <height>19</height>
-                      </size>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <pointsize>11</pointsize>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>Arm - gripper interface assy. NT :</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_171">
-                     <property name="minimumSize">
-                      <size>
-                       <width>163</width>
-                       <height>19</height>
-                      </size>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <pointsize>11</pointsize>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>Belt-reel upgrade :</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_172">
-                     <property name="minimumSize">
-                      <size>
-                       <width>163</width>
-                       <height>19</height>
-                      </size>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <pointsize>11</pointsize>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>Torx-screw upgrade :</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_173">
-                     <property name="minimumSize">
-                      <size>
-                       <width>163</width>
-                       <height>19</height>
-                      </size>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <pointsize>11</pointsize>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>Bearings :</string>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
-                 </item>
-                 <item>
-                  <layout class="QVBoxLayout" name="verticalLayout_52">
-                   <item>
-                    <layout class="QHBoxLayout" name="horizontalLayout_THMotorOK_34">
-                     <property name="leftMargin">
-                      <number>10</number>
-                     </property>
-                     <property name="topMargin">
-                      <number>8</number>
-                     </property>
+                    <layout class="QHBoxLayout" name="horizontalLayout_96">
+                     <item>
+                      <widget class="QLabel" name="label_124">
+                       <property name="minimumSize">
+                        <size>
+                         <width>163</width>
+                         <height>19</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <pointsize>11</pointsize>
+                        </font>
+                       </property>
+                       <property name="text">
+                        <string>Arm belts - average price : </string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <spacer name="horizontalSpacer_79">
+                       <property name="orientation">
+                        <enum>Qt::Horizontal</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>40</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
                      <item>
                       <widget class="QGroupBox" name="groupBox_84">
                        <property name="title">
                         <string/>
                        </property>
-                       <layout class="QHBoxLayout" name="horizontalLayout_122">
-                        <property name="spacing">
-                         <number>15</number>
-                        </property>
-                        <property name="leftMargin">
-                         <number>1</number>
-                        </property>
-                        <property name="topMargin">
-                         <number>1</number>
-                        </property>
-                        <property name="rightMargin">
-                         <number>1</number>
-                        </property>
-                        <property name="bottomMargin">
-                         <number>1</number>
-                        </property>
+                       <layout class="QHBoxLayout" name="horizontalLayout_30">
                         <item>
-                         <widget class="QRadioButton" name="rbArmBeltsAvrPrice_OK_2">
+                         <widget class="QRadioButton" name="rbArmBeltsAvrPrice_OK">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                             <horstretch>0</horstretch>
@@ -5298,7 +5125,7 @@ QGroupBox::title {
                          </widget>
                         </item>
                         <item>
-                         <widget class="QRadioButton" name="rbArmBeltsAvrPrice_NOK_2">
+                         <widget class="QRadioButton" name="rbArmBeltsAvrPrice_Repair">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                             <horstretch>0</horstretch>
@@ -5322,12 +5149,12 @@ QGroupBox::title {
 </string>
                           </property>
                           <property name="text">
-                           <string>NOK</string>
+                           <string>Repair</string>
                           </property>
                          </widget>
                         </item>
                         <item>
-                         <widget class="QRadioButton" name="rbArmBeltsAvrPrice_Upgrade_2">
+                         <widget class="QRadioButton" name="rbArmBeltsAvrPrice_NA">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                             <horstretch>0</horstretch>
@@ -5346,7 +5173,10 @@ QGroupBox::title {
                            </font>
                           </property>
                           <property name="text">
-                           <string>Upgrade</string>
+                           <string>N/A</string>
+                          </property>
+                          <property name="checked">
+                           <bool>true</bool>
                           </property>
                          </widget>
                         </item>
@@ -5356,36 +5186,59 @@ QGroupBox::title {
                     </layout>
                    </item>
                    <item>
-                    <layout class="QHBoxLayout" name="horizontalLayout_THMotorOK_35">
-                     <property name="leftMargin">
-                      <number>10</number>
+                    <widget class="Line" name="line_29">
+                     <property name="frameShadow">
+                      <enum>QFrame::Plain</enum>
                      </property>
-                     <property name="topMargin">
-                      <number>8</number>
+                     <property name="lineWidth">
+                      <number>3</number>
                      </property>
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_125">
+                     <item>
+                      <widget class="QLabel" name="label_127">
+                       <property name="minimumSize">
+                        <size>
+                         <width>163</width>
+                         <height>19</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <pointsize>11</pointsize>
+                        </font>
+                       </property>
+                       <property name="text">
+                        <string>Upper arm housing upgrade: </string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <spacer name="horizontalSpacer_91">
+                       <property name="orientation">
+                        <enum>Qt::Horizontal</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>40</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
                      <item>
                       <widget class="QGroupBox" name="groupBox_85">
                        <property name="title">
                         <string/>
                        </property>
-                       <layout class="QHBoxLayout" name="horizontalLayout_123">
-                        <property name="spacing">
-                         <number>15</number>
-                        </property>
-                        <property name="leftMargin">
-                         <number>1</number>
-                        </property>
-                        <property name="topMargin">
-                         <number>1</number>
-                        </property>
-                        <property name="rightMargin">
-                         <number>1</number>
-                        </property>
-                        <property name="bottomMargin">
-                         <number>1</number>
-                        </property>
+                       <layout class="QHBoxLayout" name="horizontalLayout_126">
                         <item>
-                         <widget class="QRadioButton" name="rbUpperArmHousing_OK_2">
+                         <widget class="QRadioButton" name="rbUpperArmHousingUpgrade_OK">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                             <horstretch>0</horstretch>
@@ -5409,7 +5262,7 @@ QGroupBox::title {
                          </widget>
                         </item>
                         <item>
-                         <widget class="QRadioButton" name="rbUpperArmHousing_NOK_2">
+                         <widget class="QRadioButton" name="rbUpperArmHousingUpgrade_Repair">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                             <horstretch>0</horstretch>
@@ -5433,12 +5286,12 @@ QGroupBox::title {
 </string>
                           </property>
                           <property name="text">
-                           <string>NOK</string>
+                           <string>Repair</string>
                           </property>
                          </widget>
                         </item>
                         <item>
-                         <widget class="QRadioButton" name="rbUpperArmHousing_Upgrade_2">
+                         <widget class="QRadioButton" name="rbUpperArmHousingUpgrade_NA">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                             <horstretch>0</horstretch>
@@ -5457,7 +5310,10 @@ QGroupBox::title {
                            </font>
                           </property>
                           <property name="text">
-                           <string>Upgrade</string>
+                           <string>N/A</string>
+                          </property>
+                          <property name="checked">
+                           <bool>true</bool>
                           </property>
                          </widget>
                         </item>
@@ -5467,36 +5323,340 @@ QGroupBox::title {
                     </layout>
                    </item>
                    <item>
-                    <layout class="QHBoxLayout" name="horizontalLayout_THMotorOK_36">
-                     <property name="leftMargin">
-                      <number>10</number>
+                    <widget class="Line" name="line_28">
+                     <property name="frameShadow">
+                      <enum>QFrame::Plain</enum>
                      </property>
-                     <property name="topMargin">
-                      <number>8</number>
+                     <property name="lineWidth">
+                      <number>3</number>
                      </property>
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_97">
                      <item>
-                      <widget class="QGroupBox" name="groupBox_86">
+                      <widget class="QLabel" name="label_128">
+                       <property name="minimumSize">
+                        <size>
+                         <width>163</width>
+                         <height>19</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <pointsize>11</pointsize>
+                        </font>
+                       </property>
+                       <property name="text">
+                        <string>Upper arm housing :</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="Line" name="line">
+                       <property name="orientation">
+                        <enum>Qt::Horizontal</enum>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <spacer name="horizontalSpacer_80">
+                       <property name="orientation">
+                        <enum>Qt::Horizontal</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>40</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
+                     <item>
+                      <widget class="QGroupBox" name="groupBox_19">
+                       <property name="title">
+                        <string/>
+                       </property>
+                       <layout class="QHBoxLayout" name="horizontalLayout_31">
+                        <item>
+                         <widget class="QRadioButton" name="rbUpperArmHousing_OK">
+                          <property name="sizePolicy">
+                           <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                           </sizepolicy>
+                          </property>
+                          <property name="minimumSize">
+                           <size>
+                            <width>60</width>
+                            <height>19</height>
+                           </size>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <pointsize>11</pointsize>
+                           </font>
+                          </property>
+                          <property name="text">
+                           <string>OK</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QRadioButton" name="rbUpperArmHousing_Repair">
+                          <property name="sizePolicy">
+                           <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                           </sizepolicy>
+                          </property>
+                          <property name="minimumSize">
+                           <size>
+                            <width>60</width>
+                            <height>19</height>
+                           </size>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <pointsize>11</pointsize>
+                           </font>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">QRadioButton::checked{color: red; font: 10pt &quot;MS Shell Dlg 2&quot;;}
+
+</string>
+                          </property>
+                          <property name="text">
+                           <string>Repair</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QRadioButton" name="rbUpperArmHousing_NA">
+                          <property name="sizePolicy">
+                           <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                           </sizepolicy>
+                          </property>
+                          <property name="minimumSize">
+                           <size>
+                            <width>60</width>
+                            <height>19</height>
+                           </size>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <pointsize>11</pointsize>
+                           </font>
+                          </property>
+                          <property name="text">
+                           <string>N/A</string>
+                          </property>
+                          <property name="checked">
+                           <bool>true</bool>
+                          </property>
+                         </widget>
+                        </item>
+                       </layout>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item>
+                    <widget class="Line" name="line_27">
+                     <property name="styleSheet">
+                      <string notr="true">background-color: rgb(0, 0, 0);</string>
+                     </property>
+                     <property name="frameShadow">
+                      <enum>QFrame::Plain</enum>
+                     </property>
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_98">
+                     <item>
+                      <widget class="QLabel" name="label_130">
+                       <property name="minimumSize">
+                        <size>
+                         <width>163</width>
+                         <height>19</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <pointsize>11</pointsize>
+                        </font>
+                       </property>
+                       <property name="text">
+                        <string>Upper arm lid :</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <spacer name="horizontalSpacer_81">
+                       <property name="orientation">
+                        <enum>Qt::Horizontal</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>40</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
+                     <item>
+                      <widget class="QGroupBox" name="groupBox_18">
+                       <property name="title">
+                        <string/>
+                       </property>
+                       <layout class="QHBoxLayout" name="horizontalLayout_86">
+                        <item>
+                         <widget class="QRadioButton" name="rbUpperArmLid_OK">
+                          <property name="sizePolicy">
+                           <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                           </sizepolicy>
+                          </property>
+                          <property name="minimumSize">
+                           <size>
+                            <width>60</width>
+                            <height>19</height>
+                           </size>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <pointsize>11</pointsize>
+                           </font>
+                          </property>
+                          <property name="text">
+                           <string>OK</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QRadioButton" name="rbUpperArmLid_Repair">
+                          <property name="sizePolicy">
+                           <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                           </sizepolicy>
+                          </property>
+                          <property name="minimumSize">
+                           <size>
+                            <width>60</width>
+                            <height>19</height>
+                           </size>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <pointsize>11</pointsize>
+                           </font>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">QRadioButton::checked{color: red; font: 10pt &quot;MS Shell Dlg 2&quot;;}
+
+</string>
+                          </property>
+                          <property name="text">
+                           <string>Repair</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QRadioButton" name="rbUpperArmLid_NA">
+                          <property name="sizePolicy">
+                           <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                           </sizepolicy>
+                          </property>
+                          <property name="minimumSize">
+                           <size>
+                            <width>60</width>
+                            <height>19</height>
+                           </size>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <pointsize>11</pointsize>
+                           </font>
+                          </property>
+                          <property name="text">
+                           <string>N/A</string>
+                          </property>
+                          <property name="checked">
+                           <bool>true</bool>
+                          </property>
+                         </widget>
+                        </item>
+                       </layout>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item>
+                    <widget class="Line" name="line_30">
+                     <property name="frameShadow">
+                      <enum>QFrame::Plain</enum>
+                     </property>
+                     <property name="lineWidth">
+                      <number>3</number>
+                     </property>
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_121">
+                     <item>
+                      <widget class="QLabel" name="label_133">
+                       <property name="minimumSize">
+                        <size>
+                         <width>163</width>
+                         <height>19</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <pointsize>11</pointsize>
+                        </font>
+                       </property>
+                       <property name="text">
+                        <string>Lower arm housing upgrade:</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <spacer name="horizontalSpacer_90">
+                       <property name="orientation">
+                        <enum>Qt::Horizontal</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>40</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
+                     <item>
+                      <widget class="QGroupBox" name="groupBox_53">
                        <property name="title">
                         <string/>
                        </property>
                        <layout class="QHBoxLayout" name="horizontalLayout_124">
-                        <property name="spacing">
-                         <number>15</number>
-                        </property>
-                        <property name="leftMargin">
-                         <number>1</number>
-                        </property>
-                        <property name="topMargin">
-                         <number>1</number>
-                        </property>
-                        <property name="rightMargin">
-                         <number>1</number>
-                        </property>
-                        <property name="bottomMargin">
-                         <number>1</number>
-                        </property>
                         <item>
-                         <widget class="QRadioButton" name="rbUpperArmLid_OK_2">
+                         <widget class="QRadioButton" name="rbLowerArmHousingUpgrade_OK">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                             <horstretch>0</horstretch>
@@ -5520,7 +5680,7 @@ QGroupBox::title {
                          </widget>
                         </item>
                         <item>
-                         <widget class="QRadioButton" name="rbUpperArmLid_NOK_2">
+                         <widget class="QRadioButton" name="rbLowerArmHousingUpgrade_Repair">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                             <horstretch>0</horstretch>
@@ -5544,12 +5704,12 @@ QGroupBox::title {
 </string>
                           </property>
                           <property name="text">
-                           <string>NOK</string>
+                           <string>Repair</string>
                           </property>
                          </widget>
                         </item>
                         <item>
-                         <widget class="QRadioButton" name="rbUpperArmLid_Upgrade_2">
+                         <widget class="QRadioButton" name="rbLowerArmHousingUpgrade_NA">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                             <horstretch>0</horstretch>
@@ -5568,7 +5728,10 @@ QGroupBox::title {
                            </font>
                           </property>
                           <property name="text">
-                           <string>Upgrade</string>
+                           <string>N/A</string>
+                          </property>
+                          <property name="checked">
+                           <bool>true</bool>
                           </property>
                          </widget>
                         </item>
@@ -5578,36 +5741,59 @@ QGroupBox::title {
                     </layout>
                    </item>
                    <item>
-                    <layout class="QHBoxLayout" name="horizontalLayout_THMotorOK_37">
-                     <property name="leftMargin">
-                      <number>10</number>
+                    <widget class="Line" name="line_31">
+                     <property name="frameShadow">
+                      <enum>QFrame::Plain</enum>
                      </property>
-                     <property name="topMargin">
-                      <number>8</number>
+                     <property name="lineWidth">
+                      <number>3</number>
                      </property>
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_99">
                      <item>
-                      <widget class="QGroupBox" name="groupBox_87">
+                      <widget class="QLabel" name="label_132">
+                       <property name="minimumSize">
+                        <size>
+                         <width>163</width>
+                         <height>19</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <pointsize>11</pointsize>
+                        </font>
+                       </property>
+                       <property name="text">
+                        <string>Lower arm housing :</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <spacer name="horizontalSpacer_82">
+                       <property name="orientation">
+                        <enum>Qt::Horizontal</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>40</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
+                     <item>
+                      <widget class="QGroupBox" name="groupBox_20">
                        <property name="title">
                         <string/>
                        </property>
-                       <layout class="QHBoxLayout" name="horizontalLayout_125">
-                        <property name="spacing">
-                         <number>15</number>
-                        </property>
-                        <property name="leftMargin">
-                         <number>1</number>
-                        </property>
-                        <property name="topMargin">
-                         <number>1</number>
-                        </property>
-                        <property name="rightMargin">
-                         <number>1</number>
-                        </property>
-                        <property name="bottomMargin">
-                         <number>1</number>
-                        </property>
+                       <layout class="QHBoxLayout" name="horizontalLayout_87">
                         <item>
-                         <widget class="QRadioButton" name="rbLowerArmHousing_OK_2">
+                         <widget class="QRadioButton" name="rbLowerArmHousing_OK">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                             <horstretch>0</horstretch>
@@ -5631,7 +5817,7 @@ QGroupBox::title {
                          </widget>
                         </item>
                         <item>
-                         <widget class="QRadioButton" name="rbLowerArmHousing_NOK_2">
+                         <widget class="QRadioButton" name="rbLowerArmHousing_Repair">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                             <horstretch>0</horstretch>
@@ -5655,12 +5841,12 @@ QGroupBox::title {
 </string>
                           </property>
                           <property name="text">
-                           <string>NOK</string>
+                           <string>Repair</string>
                           </property>
                          </widget>
                         </item>
                         <item>
-                         <widget class="QRadioButton" name="rbLowerArmHousing_Upgrade_2">
+                         <widget class="QRadioButton" name="rbLowerArmHousing_NA">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                             <horstretch>0</horstretch>
@@ -5679,7 +5865,10 @@ QGroupBox::title {
                            </font>
                           </property>
                           <property name="text">
-                           <string>Upgrade</string>
+                           <string>N/A</string>
+                          </property>
+                          <property name="checked">
+                           <bool>true</bool>
                           </property>
                          </widget>
                         </item>
@@ -5689,36 +5878,59 @@ QGroupBox::title {
                     </layout>
                    </item>
                    <item>
-                    <layout class="QHBoxLayout" name="horizontalLayout_THMotorOK_38">
-                     <property name="leftMargin">
-                      <number>10</number>
+                    <widget class="Line" name="line_32">
+                     <property name="frameShadow">
+                      <enum>QFrame::Plain</enum>
                      </property>
-                     <property name="topMargin">
-                      <number>8</number>
+                     <property name="lineWidth">
+                      <number>3</number>
                      </property>
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_100">
                      <item>
-                      <widget class="QGroupBox" name="groupBox_88">
+                      <widget class="QLabel" name="label_153">
+                       <property name="minimumSize">
+                        <size>
+                         <width>163</width>
+                         <height>19</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <pointsize>11</pointsize>
+                        </font>
+                       </property>
+                       <property name="text">
+                        <string>Lower arm lid :</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <spacer name="horizontalSpacer_83">
+                       <property name="orientation">
+                        <enum>Qt::Horizontal</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>40</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
+                     <item>
+                      <widget class="QGroupBox" name="groupBox_21">
                        <property name="title">
                         <string/>
                        </property>
-                       <layout class="QHBoxLayout" name="horizontalLayout_126">
-                        <property name="spacing">
-                         <number>15</number>
-                        </property>
-                        <property name="leftMargin">
-                         <number>1</number>
-                        </property>
-                        <property name="topMargin">
-                         <number>1</number>
-                        </property>
-                        <property name="rightMargin">
-                         <number>1</number>
-                        </property>
-                        <property name="bottomMargin">
-                         <number>1</number>
-                        </property>
+                       <layout class="QHBoxLayout" name="horizontalLayout_88">
                         <item>
-                         <widget class="QRadioButton" name="rbLowerArmLid_OK_2">
+                         <widget class="QRadioButton" name="rbLowerArmLid_OK">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                             <horstretch>0</horstretch>
@@ -5742,7 +5954,7 @@ QGroupBox::title {
                          </widget>
                         </item>
                         <item>
-                         <widget class="QRadioButton" name="rbLowerArmLid_NOK_2">
+                         <widget class="QRadioButton" name="rbLowerArmLid_Repair">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                             <horstretch>0</horstretch>
@@ -5766,12 +5978,12 @@ QGroupBox::title {
 </string>
                           </property>
                           <property name="text">
-                           <string>NOK</string>
+                           <string>Repair</string>
                           </property>
                          </widget>
                         </item>
                         <item>
-                         <widget class="QRadioButton" name="rbLowerArmLid_Upgrade_2">
+                         <widget class="QRadioButton" name="rbLowerArmLid_NA">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                             <horstretch>0</horstretch>
@@ -5790,7 +6002,10 @@ QGroupBox::title {
                            </font>
                           </property>
                           <property name="text">
-                           <string>Upgrade</string>
+                           <string>N/A</string>
+                          </property>
+                          <property name="checked">
+                           <bool>true</bool>
                           </property>
                          </widget>
                         </item>
@@ -5800,36 +6015,59 @@ QGroupBox::title {
                     </layout>
                    </item>
                    <item>
-                    <layout class="QHBoxLayout" name="horizontalLayout_THMotorOK_39">
-                     <property name="leftMargin">
-                      <number>10</number>
+                    <widget class="Line" name="line_49">
+                     <property name="frameShadow">
+                      <enum>QFrame::Plain</enum>
                      </property>
-                     <property name="topMargin">
-                      <number>8</number>
+                     <property name="lineWidth">
+                      <number>3</number>
                      </property>
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_102">
                      <item>
-                      <widget class="QGroupBox" name="groupBox_89">
+                      <widget class="QLabel" name="label_154">
+                       <property name="minimumSize">
+                        <size>
+                         <width>163</width>
+                         <height>19</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <pointsize>11</pointsize>
+                        </font>
+                       </property>
+                       <property name="text">
+                        <string>Arm - drive interface (BR-Shoulder) :</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <spacer name="horizontalSpacer_85">
+                       <property name="orientation">
+                        <enum>Qt::Horizontal</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>40</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
+                     <item>
+                      <widget class="QGroupBox" name="groupBox_23">
                        <property name="title">
                         <string/>
                        </property>
-                       <layout class="QHBoxLayout" name="horizontalLayout_127">
-                        <property name="spacing">
-                         <number>15</number>
-                        </property>
-                        <property name="leftMargin">
-                         <number>1</number>
-                        </property>
-                        <property name="topMargin">
-                         <number>1</number>
-                        </property>
-                        <property name="rightMargin">
-                         <number>1</number>
-                        </property>
-                        <property name="bottomMargin">
-                         <number>1</number>
-                        </property>
+                       <layout class="QHBoxLayout" name="horizontalLayout_89">
                         <item>
-                         <widget class="QRadioButton" name="rbArmDriveInterface_OK_2">
+                         <widget class="QRadioButton" name="rbArmDriveInterface_OK">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                             <horstretch>0</horstretch>
@@ -5853,7 +6091,7 @@ QGroupBox::title {
                          </widget>
                         </item>
                         <item>
-                         <widget class="QRadioButton" name="rbArmDriveInterface_NOK_2">
+                         <widget class="QRadioButton" name="rbArmDriveInterface_Repair">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                             <horstretch>0</horstretch>
@@ -5877,12 +6115,12 @@ QGroupBox::title {
 </string>
                           </property>
                           <property name="text">
-                           <string>NOK</string>
+                           <string>Repair</string>
                           </property>
                          </widget>
                         </item>
                         <item>
-                         <widget class="QRadioButton" name="rbArmDriveInterface_Upgrade_2">
+                         <widget class="QRadioButton" name="rbArmDriveInterface_NA">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                             <horstretch>0</horstretch>
@@ -5901,7 +6139,10 @@ QGroupBox::title {
                            </font>
                           </property>
                           <property name="text">
-                           <string>Upgrade</string>
+                           <string>N/A</string>
+                          </property>
+                          <property name="checked">
+                           <bool>true</bool>
                           </property>
                          </widget>
                         </item>
@@ -5911,36 +6152,59 @@ QGroupBox::title {
                     </layout>
                    </item>
                    <item>
-                    <layout class="QHBoxLayout" name="horizontalLayout_THMotorOK_40">
-                     <property name="leftMargin">
-                      <number>10</number>
+                    <widget class="Line" name="line_50">
+                     <property name="frameShadow">
+                      <enum>QFrame::Plain</enum>
                      </property>
-                     <property name="topMargin">
-                      <number>8</number>
+                     <property name="lineWidth">
+                      <number>3</number>
                      </property>
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_103">
                      <item>
-                      <widget class="QGroupBox" name="groupBox_90">
+                      <widget class="QLabel" name="label_155">
+                       <property name="minimumSize">
+                        <size>
+                         <width>163</width>
+                         <height>19</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <pointsize>11</pointsize>
+                        </font>
+                       </property>
+                       <property name="text">
+                        <string>Arm - gripper interface assy. Scara : </string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <spacer name="horizontalSpacer_86">
+                       <property name="orientation">
+                        <enum>Qt::Horizontal</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>40</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
+                     <item>
+                      <widget class="QGroupBox" name="groupBox_26">
                        <property name="title">
                         <string/>
                        </property>
-                       <layout class="QHBoxLayout" name="horizontalLayout_128">
-                        <property name="spacing">
-                         <number>15</number>
-                        </property>
-                        <property name="leftMargin">
-                         <number>1</number>
-                        </property>
-                        <property name="topMargin">
-                         <number>1</number>
-                        </property>
-                        <property name="rightMargin">
-                         <number>1</number>
-                        </property>
-                        <property name="bottomMargin">
-                         <number>1</number>
-                        </property>
+                       <layout class="QHBoxLayout" name="horizontalLayout_90">
                         <item>
-                         <widget class="QRadioButton" name="rbArmGripperInterfaceScara_OK_2">
+                         <widget class="QRadioButton" name="rbArmGripperInterfaceScara_OK">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                             <horstretch>0</horstretch>
@@ -5964,7 +6228,7 @@ QGroupBox::title {
                          </widget>
                         </item>
                         <item>
-                         <widget class="QRadioButton" name="rbArmGripperInterfaceScara_NOK_2">
+                         <widget class="QRadioButton" name="rbArmGripperInterfaceScara_Repair">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                             <horstretch>0</horstretch>
@@ -5988,12 +6252,12 @@ QGroupBox::title {
 </string>
                           </property>
                           <property name="text">
-                           <string>NOK</string>
+                           <string>Repair</string>
                           </property>
                          </widget>
                         </item>
                         <item>
-                         <widget class="QRadioButton" name="rbArmGripperInterfaceScara_Upgrade_2">
+                         <widget class="QRadioButton" name="rbArmGripperInterfaceScara_NA">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                             <horstretch>0</horstretch>
@@ -6012,7 +6276,10 @@ QGroupBox::title {
                            </font>
                           </property>
                           <property name="text">
-                           <string>Upgrade</string>
+                           <string>N/A</string>
+                          </property>
+                          <property name="checked">
+                           <bool>true</bool>
                           </property>
                          </widget>
                         </item>
@@ -6022,36 +6289,59 @@ QGroupBox::title {
                     </layout>
                    </item>
                    <item>
-                    <layout class="QHBoxLayout" name="horizontalLayout_THMotorOK_41">
-                     <property name="leftMargin">
-                      <number>10</number>
+                    <widget class="Line" name="line_53">
+                     <property name="frameShadow">
+                      <enum>QFrame::Plain</enum>
                      </property>
-                     <property name="topMargin">
-                      <number>8</number>
+                     <property name="lineWidth">
+                      <number>3</number>
                      </property>
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_113">
                      <item>
-                      <widget class="QGroupBox" name="groupBox_91">
+                      <widget class="QLabel" name="label_170">
+                       <property name="minimumSize">
+                        <size>
+                         <width>163</width>
+                         <height>19</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <pointsize>11</pointsize>
+                        </font>
+                       </property>
+                       <property name="text">
+                        <string>Arm - gripper interface assy. NT :</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <spacer name="horizontalSpacer_87">
+                       <property name="orientation">
+                        <enum>Qt::Horizontal</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>40</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
+                     <item>
+                      <widget class="QGroupBox" name="groupBox_34">
                        <property name="title">
                         <string/>
                        </property>
-                       <layout class="QHBoxLayout" name="horizontalLayout_129">
-                        <property name="spacing">
-                         <number>15</number>
-                        </property>
-                        <property name="leftMargin">
-                         <number>1</number>
-                        </property>
-                        <property name="topMargin">
-                         <number>1</number>
-                        </property>
-                        <property name="rightMargin">
-                         <number>1</number>
-                        </property>
-                        <property name="bottomMargin">
-                         <number>1</number>
-                        </property>
+                       <layout class="QHBoxLayout" name="horizontalLayout_91">
                         <item>
-                         <widget class="QRadioButton" name="rbArmGripperInterfaceNT_OK_2">
+                         <widget class="QRadioButton" name="rbArmGripperInterfaceNT_OK">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                             <horstretch>0</horstretch>
@@ -6075,7 +6365,7 @@ QGroupBox::title {
                          </widget>
                         </item>
                         <item>
-                         <widget class="QRadioButton" name="rbArmGripperInterfaceNT_NOK_2">
+                         <widget class="QRadioButton" name="rbArmGripperInterfaceNT_Repair">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                             <horstretch>0</horstretch>
@@ -6099,12 +6389,12 @@ QGroupBox::title {
 </string>
                           </property>
                           <property name="text">
-                           <string>NOK</string>
+                           <string>Repair</string>
                           </property>
                          </widget>
                         </item>
                         <item>
-                         <widget class="QRadioButton" name="rbArmGripperInterfaceNT_Upgrade_2">
+                         <widget class="QRadioButton" name="rbArmGripperInterfaceNT_NA">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                             <horstretch>0</horstretch>
@@ -6123,7 +6413,10 @@ QGroupBox::title {
                            </font>
                           </property>
                           <property name="text">
-                           <string>Upgrade</string>
+                           <string>N/A</string>
+                          </property>
+                          <property name="checked">
+                           <bool>true</bool>
                           </property>
                          </widget>
                         </item>
@@ -6133,36 +6426,59 @@ QGroupBox::title {
                     </layout>
                    </item>
                    <item>
-                    <layout class="QHBoxLayout" name="horizontalLayout_THMotorOK_42">
-                     <property name="leftMargin">
-                      <number>10</number>
+                    <widget class="Line" name="line_54">
+                     <property name="frameShadow">
+                      <enum>QFrame::Plain</enum>
                      </property>
-                     <property name="topMargin">
-                      <number>8</number>
+                     <property name="lineWidth">
+                      <number>3</number>
                      </property>
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_122">
                      <item>
-                      <widget class="QGroupBox" name="groupBox_92">
+                      <widget class="QLabel" name="label_171">
+                       <property name="minimumSize">
+                        <size>
+                         <width>163</width>
+                         <height>19</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <pointsize>11</pointsize>
+                        </font>
+                       </property>
+                       <property name="text">
+                        <string>Belt-reel upgrade :</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <spacer name="horizontalSpacer_89">
+                       <property name="orientation">
+                        <enum>Qt::Horizontal</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>40</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
+                     <item>
+                      <widget class="QGroupBox" name="groupBox_45">
                        <property name="title">
                         <string/>
                        </property>
-                       <layout class="QHBoxLayout" name="horizontalLayout_130">
-                        <property name="spacing">
-                         <number>15</number>
-                        </property>
-                        <property name="leftMargin">
-                         <number>1</number>
-                        </property>
-                        <property name="topMargin">
-                         <number>1</number>
-                        </property>
-                        <property name="rightMargin">
-                         <number>1</number>
-                        </property>
-                        <property name="bottomMargin">
-                         <number>1</number>
-                        </property>
+                       <layout class="QHBoxLayout" name="horizontalLayout_92">
                         <item>
-                         <widget class="QRadioButton" name="rbBeltReel_OK_2">
+                         <widget class="QRadioButton" name="rbBeltReel_OK">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                             <horstretch>0</horstretch>
@@ -6186,7 +6502,7 @@ QGroupBox::title {
                          </widget>
                         </item>
                         <item>
-                         <widget class="QRadioButton" name="rbBeltReel_NOK_2">
+                         <widget class="QRadioButton" name="rbBeltReel_Repair">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                             <horstretch>0</horstretch>
@@ -6210,12 +6526,12 @@ QGroupBox::title {
 </string>
                           </property>
                           <property name="text">
-                           <string>NOK</string>
+                           <string>Repair</string>
                           </property>
                          </widget>
                         </item>
                         <item>
-                         <widget class="QRadioButton" name="rbBeltReel_Upgrade_2">
+                         <widget class="QRadioButton" name="rbBeltReel_NA">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                             <horstretch>0</horstretch>
@@ -6234,7 +6550,10 @@ QGroupBox::title {
                            </font>
                           </property>
                           <property name="text">
-                           <string>Upgrade</string>
+                           <string>N/A</string>
+                          </property>
+                          <property name="checked">
+                           <bool>true</bool>
                           </property>
                          </widget>
                         </item>
@@ -6244,36 +6563,59 @@ QGroupBox::title {
                     </layout>
                    </item>
                    <item>
-                    <layout class="QHBoxLayout" name="horizontalLayout_THMotorOK_43">
-                     <property name="leftMargin">
-                      <number>10</number>
+                    <widget class="Line" name="line_57">
+                     <property name="frameShadow">
+                      <enum>QFrame::Plain</enum>
                      </property>
-                     <property name="topMargin">
-                      <number>8</number>
+                     <property name="lineWidth">
+                      <number>3</number>
                      </property>
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_123">
                      <item>
-                      <widget class="QGroupBox" name="groupBox_93">
+                      <widget class="QLabel" name="label_172">
+                       <property name="minimumSize">
+                        <size>
+                         <width>163</width>
+                         <height>19</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <pointsize>11</pointsize>
+                        </font>
+                       </property>
+                       <property name="text">
+                        <string>Torx-screw upgrade :</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <spacer name="horizontalSpacer_88">
+                       <property name="orientation">
+                        <enum>Qt::Horizontal</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>40</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
+                     <item>
+                      <widget class="QGroupBox" name="groupBox_51">
                        <property name="title">
                         <string/>
                        </property>
-                       <layout class="QHBoxLayout" name="horizontalLayout_131">
-                        <property name="spacing">
-                         <number>15</number>
-                        </property>
-                        <property name="leftMargin">
-                         <number>1</number>
-                        </property>
-                        <property name="topMargin">
-                         <number>1</number>
-                        </property>
-                        <property name="rightMargin">
-                         <number>1</number>
-                        </property>
-                        <property name="bottomMargin">
-                         <number>1</number>
-                        </property>
+                       <layout class="QHBoxLayout" name="horizontalLayout_93">
                         <item>
-                         <widget class="QRadioButton" name="rbTorxScrew_OK_2">
+                         <widget class="QRadioButton" name="rbTorxScrew_OK">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                             <horstretch>0</horstretch>
@@ -6297,7 +6639,7 @@ QGroupBox::title {
                          </widget>
                         </item>
                         <item>
-                         <widget class="QRadioButton" name="rbTorxScrew_NOK_2">
+                         <widget class="QRadioButton" name="rbTorxScrew_Repair">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                             <horstretch>0</horstretch>
@@ -6321,12 +6663,12 @@ QGroupBox::title {
 </string>
                           </property>
                           <property name="text">
-                           <string>NOK</string>
+                           <string>Repair</string>
                           </property>
                          </widget>
                         </item>
                         <item>
-                         <widget class="QRadioButton" name="rbTorxScrew_Upgrade_2">
+                         <widget class="QRadioButton" name="rbTorxScrew_NA">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                             <horstretch>0</horstretch>
@@ -6345,7 +6687,10 @@ QGroupBox::title {
                            </font>
                           </property>
                           <property name="text">
-                           <string>Upgrade</string>
+                           <string>N/A</string>
+                          </property>
+                          <property name="checked">
+                           <bool>true</bool>
                           </property>
                          </widget>
                         </item>
@@ -6355,36 +6700,59 @@ QGroupBox::title {
                     </layout>
                    </item>
                    <item>
-                    <layout class="QHBoxLayout" name="horizontalLayout_THMotorOK_44">
-                     <property name="leftMargin">
-                      <number>10</number>
+                    <widget class="Line" name="line_58">
+                     <property name="frameShadow">
+                      <enum>QFrame::Plain</enum>
                      </property>
-                     <property name="topMargin">
-                      <number>8</number>
+                     <property name="lineWidth">
+                      <number>3</number>
                      </property>
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_101">
                      <item>
-                      <widget class="QGroupBox" name="groupBox_94">
+                      <widget class="QLabel" name="label_173">
+                       <property name="minimumSize">
+                        <size>
+                         <width>163</width>
+                         <height>19</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <pointsize>11</pointsize>
+                        </font>
+                       </property>
+                       <property name="text">
+                        <string>Bearings :</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <spacer name="horizontalSpacer_84">
+                       <property name="orientation">
+                        <enum>Qt::Horizontal</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>40</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
+                     <item>
+                      <widget class="QGroupBox" name="groupBox_52">
                        <property name="title">
                         <string/>
                        </property>
-                       <layout class="QHBoxLayout" name="horizontalLayout_132">
-                        <property name="spacing">
-                         <number>15</number>
-                        </property>
-                        <property name="leftMargin">
-                         <number>1</number>
-                        </property>
-                        <property name="topMargin">
-                         <number>1</number>
-                        </property>
-                        <property name="rightMargin">
-                         <number>1</number>
-                        </property>
-                        <property name="bottomMargin">
-                         <number>1</number>
-                        </property>
+                       <layout class="QHBoxLayout" name="horizontalLayout_95">
                         <item>
-                         <widget class="QRadioButton" name="rbBearings_OK_2">
+                         <widget class="QRadioButton" name="rbBearings_OK">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                             <horstretch>0</horstretch>
@@ -6408,7 +6776,7 @@ QGroupBox::title {
                          </widget>
                         </item>
                         <item>
-                         <widget class="QRadioButton" name="rbBearings_NOK_2">
+                         <widget class="QRadioButton" name="rbBearings_Repair">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                             <horstretch>0</horstretch>
@@ -6432,12 +6800,12 @@ QGroupBox::title {
 </string>
                           </property>
                           <property name="text">
-                           <string>NOK</string>
+                           <string>Repair</string>
                           </property>
                          </widget>
                         </item>
                         <item>
-                         <widget class="QRadioButton" name="rbBearings_Upgrade_2">
+                         <widget class="QRadioButton" name="rbBearings_NA">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                             <horstretch>0</horstretch>
@@ -6456,7 +6824,10 @@ QGroupBox::title {
                            </font>
                           </property>
                           <property name="text">
-                           <string>Upgrade</string>
+                           <string>N/A</string>
+                          </property>
+                          <property name="checked">
+                           <bool>true</bool>
                           </property>
                          </widget>
                         </item>
@@ -6468,8 +6839,16 @@ QGroupBox::title {
                   </layout>
                  </item>
                 </layout>
-               </item>
-              </layout>
+               </widget>
+              </widget>
+              <zorder>groupBox_84</zorder>
+              <zorder>groupBox_19</zorder>
+              <zorder>rbUpperArmLid_OK</zorder>
+              <zorder>horizontalLayoutWidget</zorder>
+              <zorder>horizontalLayoutWidget_2</zorder>
+              <zorder>horizontalLayoutWidget_4</zorder>
+              <zorder>horizontalLayoutWidget_5</zorder>
+              <zorder>scrollArea</zorder>
              </widget>
              <widget class="QWidget" name="tab_DM">
               <attribute name="title">
@@ -7190,7 +7569,7 @@ QCheckBox{font: 10.5pt &quot;MS Shell Dlg 2&quot;;}</string>
                       <rect>
                        <x>0</x>
                        <y>0</y>
-                       <width>670</width>
+                       <width>667</width>
                        <height>680</height>
                       </rect>
                      </property>
@@ -10216,154 +10595,71 @@ QGroupBox::title {
               <attribute name="title">
                <string>Repair-DM</string>
               </attribute>
-              <layout class="QFormLayout" name="formLayout_4">
-               <item row="0" column="0">
-                <layout class="QHBoxLayout" name="horizontalLayout_114">
-                 <item>
-                  <layout class="QVBoxLayout" name="verticalLayout_48">
+              <widget class="QScrollArea" name="scrollArea_2">
+               <property name="geometry">
+                <rect>
+                 <x>11</x>
+                 <y>11</y>
+                 <width>581</width>
+                 <height>371</height>
+                </rect>
+               </property>
+               <property name="widgetResizable">
+                <bool>true</bool>
+               </property>
+               <widget class="QWidget" name="scrollAreaWidgetContents_6">
+                <property name="geometry">
+                 <rect>
+                  <x>0</x>
+                  <y>0</y>
+                  <width>579</width>
+                  <height>369</height>
+                 </rect>
+                </property>
+                <layout class="QGridLayout" name="gridLayout_7">
+                 <item row="0" column="0">
+                  <layout class="QVBoxLayout" name="verticalLayout_11">
                    <item>
-                    <widget class="QLabel" name="label_143">
-                     <property name="minimumSize">
-                      <size>
-                       <width>163</width>
-                       <height>19</height>
-                      </size>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <pointsize>11</pointsize>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>DM - Lika Motor upgrade (incl. Sealing) :</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_145">
-                     <property name="minimumSize">
-                      <size>
-                       <width>163</width>
-                       <height>19</height>
-                      </size>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <pointsize>11</pointsize>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>Cable hood :</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_147">
-                     <property name="minimumSize">
-                      <size>
-                       <width>163</width>
-                       <height>19</height>
-                      </size>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <pointsize>11</pointsize>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>DM housing :</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_149">
-                     <property name="minimumSize">
-                      <size>
-                       <width>163</width>
-                       <height>19</height>
-                      </size>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <pointsize>11</pointsize>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>DM lid :</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_168">
-                     <property name="minimumSize">
-                      <size>
-                       <width>163</width>
-                       <height>19</height>
-                      </size>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <pointsize>11</pointsize>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>Slip-ring :</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_169">
-                     <property name="minimumSize">
-                      <size>
-                       <width>163</width>
-                       <height>19</height>
-                      </size>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <pointsize>11</pointsize>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>Hollow shaft :</string>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
-                 </item>
-                 <item>
-                  <layout class="QVBoxLayout" name="verticalLayout_49">
-                   <item>
-                    <layout class="QHBoxLayout" name="horizontalLayout_THMotorOK_28">
-                     <property name="leftMargin">
-                      <number>10</number>
-                     </property>
-                     <property name="topMargin">
-                      <number>8</number>
-                     </property>
+                    <layout class="QHBoxLayout" name="horizontalLayout_127">
                      <item>
-                      <widget class="QGroupBox" name="groupBox_78">
+                      <widget class="QLabel" name="label_143">
+                       <property name="minimumSize">
+                        <size>
+                         <width>163</width>
+                         <height>19</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <pointsize>11</pointsize>
+                        </font>
+                       </property>
+                       <property name="text">
+                        <string>DM - Lika Motor upgrade (incl. Sealing) :</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <spacer name="horizontalSpacer_92">
+                       <property name="orientation">
+                        <enum>Qt::Horizontal</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>40</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
+                     <item>
+                      <widget class="QGroupBox" name="groupBox_54">
                        <property name="title">
                         <string/>
                        </property>
-                       <layout class="QHBoxLayout" name="horizontalLayout_115">
-                        <property name="spacing">
-                         <number>15</number>
-                        </property>
-                        <property name="leftMargin">
-                         <number>1</number>
-                        </property>
-                        <property name="topMargin">
-                         <number>1</number>
-                        </property>
-                        <property name="rightMargin">
-                         <number>1</number>
-                        </property>
-                        <property name="bottomMargin">
-                         <number>1</number>
-                        </property>
+                       <layout class="QHBoxLayout" name="horizontalLayout_128">
                         <item>
-                         <widget class="QRadioButton" name="rbDMLikaMotor_OK_2">
+                         <widget class="QRadioButton" name="rbDMLikaMotor_OK">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                             <horstretch>0</horstretch>
@@ -10387,7 +10683,7 @@ QGroupBox::title {
                          </widget>
                         </item>
                         <item>
-                         <widget class="QRadioButton" name="rbDMLikaMotor_NOK_2">
+                         <widget class="QRadioButton" name="rbDMLikaMotor_Repair">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                             <horstretch>0</horstretch>
@@ -10411,12 +10707,12 @@ QGroupBox::title {
 </string>
                           </property>
                           <property name="text">
-                           <string>NOK</string>
+                           <string>Repair</string>
                           </property>
                          </widget>
                         </item>
                         <item>
-                         <widget class="QRadioButton" name="rbDMLikaMotor_Upgrade_2">
+                         <widget class="QRadioButton" name="rbDMLikaMotor_NA">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                             <horstretch>0</horstretch>
@@ -10435,7 +10731,10 @@ QGroupBox::title {
                            </font>
                           </property>
                           <property name="text">
-                           <string>Upgrade</string>
+                           <string>N/A</string>
+                          </property>
+                          <property name="checked">
+                           <bool>true</bool>
                           </property>
                          </widget>
                         </item>
@@ -10445,36 +10744,59 @@ QGroupBox::title {
                     </layout>
                    </item>
                    <item>
-                    <layout class="QHBoxLayout" name="horizontalLayout_THMotorOK_29">
-                     <property name="leftMargin">
-                      <number>10</number>
+                    <widget class="Line" name="line_60">
+                     <property name="styleSheet">
+                      <string notr="true">background-color: rgb(0, 0, 0);</string>
                      </property>
-                     <property name="topMargin">
-                      <number>8</number>
+                     <property name="frameShadow">
+                      <enum>QFrame::Plain</enum>
                      </property>
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_129">
                      <item>
-                      <widget class="QGroupBox" name="groupBox_79">
+                      <widget class="QLabel" name="label_145">
+                       <property name="minimumSize">
+                        <size>
+                         <width>163</width>
+                         <height>19</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <pointsize>11</pointsize>
+                        </font>
+                       </property>
+                       <property name="text">
+                        <string>Cable hood :</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <spacer name="horizontalSpacer_93">
+                       <property name="orientation">
+                        <enum>Qt::Horizontal</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>40</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
+                     <item>
+                      <widget class="QGroupBox" name="groupBox_57">
                        <property name="title">
                         <string/>
                        </property>
-                       <layout class="QHBoxLayout" name="horizontalLayout_116">
-                        <property name="spacing">
-                         <number>15</number>
-                        </property>
-                        <property name="leftMargin">
-                         <number>1</number>
-                        </property>
-                        <property name="topMargin">
-                         <number>1</number>
-                        </property>
-                        <property name="rightMargin">
-                         <number>1</number>
-                        </property>
-                        <property name="bottomMargin">
-                         <number>1</number>
-                        </property>
+                       <layout class="QHBoxLayout" name="horizontalLayout_130">
                         <item>
-                         <widget class="QRadioButton" name="rbCableHold_OK_2">
+                         <widget class="QRadioButton" name="rbCableHood_OK">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                             <horstretch>0</horstretch>
@@ -10498,7 +10820,7 @@ QGroupBox::title {
                          </widget>
                         </item>
                         <item>
-                         <widget class="QRadioButton" name="rbCableHold_NOK_2">
+                         <widget class="QRadioButton" name="rbCableHood_Repair">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                             <horstretch>0</horstretch>
@@ -10522,12 +10844,12 @@ QGroupBox::title {
 </string>
                           </property>
                           <property name="text">
-                           <string>NOK</string>
+                           <string>Repair</string>
                           </property>
                          </widget>
                         </item>
                         <item>
-                         <widget class="QRadioButton" name="rbCableHold_Upgrade_2">
+                         <widget class="QRadioButton" name="rbCableHood_NA">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                             <horstretch>0</horstretch>
@@ -10546,7 +10868,10 @@ QGroupBox::title {
                            </font>
                           </property>
                           <property name="text">
-                           <string>Upgrade</string>
+                           <string>N/A</string>
+                          </property>
+                          <property name="checked">
+                           <bool>true</bool>
                           </property>
                          </widget>
                         </item>
@@ -10556,36 +10881,59 @@ QGroupBox::title {
                     </layout>
                    </item>
                    <item>
-                    <layout class="QHBoxLayout" name="horizontalLayout_THMotorOK_30">
-                     <property name="leftMargin">
-                      <number>10</number>
+                    <widget class="Line" name="line_61">
+                     <property name="styleSheet">
+                      <string notr="true">background-color: rgb(0, 0, 0);</string>
                      </property>
-                     <property name="topMargin">
-                      <number>8</number>
+                     <property name="frameShadow">
+                      <enum>QFrame::Plain</enum>
                      </property>
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_133">
                      <item>
-                      <widget class="QGroupBox" name="groupBox_80">
+                      <widget class="QLabel" name="label_147">
+                       <property name="minimumSize">
+                        <size>
+                         <width>163</width>
+                         <height>19</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <pointsize>11</pointsize>
+                        </font>
+                       </property>
+                       <property name="text">
+                        <string>DM housing :</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <spacer name="horizontalSpacer_95">
+                       <property name="orientation">
+                        <enum>Qt::Horizontal</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>40</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
+                     <item>
+                      <widget class="QGroupBox" name="groupBox_60">
                        <property name="title">
                         <string/>
                        </property>
-                       <layout class="QHBoxLayout" name="horizontalLayout_117">
-                        <property name="spacing">
-                         <number>15</number>
-                        </property>
-                        <property name="leftMargin">
-                         <number>1</number>
-                        </property>
-                        <property name="topMargin">
-                         <number>1</number>
-                        </property>
-                        <property name="rightMargin">
-                         <number>1</number>
-                        </property>
-                        <property name="bottomMargin">
-                         <number>1</number>
-                        </property>
+                       <layout class="QHBoxLayout" name="horizontalLayout_134">
                         <item>
-                         <widget class="QRadioButton" name="rbDMHousing_OK_2">
+                         <widget class="QRadioButton" name="rbDMHousing_OK">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                             <horstretch>0</horstretch>
@@ -10609,7 +10957,7 @@ QGroupBox::title {
                          </widget>
                         </item>
                         <item>
-                         <widget class="QRadioButton" name="rbDMHousing_NOK_2">
+                         <widget class="QRadioButton" name="rbDMHousing_Repair">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                             <horstretch>0</horstretch>
@@ -10633,12 +10981,12 @@ QGroupBox::title {
 </string>
                           </property>
                           <property name="text">
-                           <string>NOK</string>
+                           <string>Repair</string>
                           </property>
                          </widget>
                         </item>
                         <item>
-                         <widget class="QRadioButton" name="rbDMHousing_Upgrade_2">
+                         <widget class="QRadioButton" name="rbDMHousing_NA">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                             <horstretch>0</horstretch>
@@ -10657,7 +11005,10 @@ QGroupBox::title {
                            </font>
                           </property>
                           <property name="text">
-                           <string>Upgrade</string>
+                           <string>N/A</string>
+                          </property>
+                          <property name="checked">
+                           <bool>true</bool>
                           </property>
                          </widget>
                         </item>
@@ -10667,36 +11018,59 @@ QGroupBox::title {
                     </layout>
                    </item>
                    <item>
-                    <layout class="QHBoxLayout" name="horizontalLayout_THMotorOK_31">
-                     <property name="leftMargin">
-                      <number>10</number>
+                    <widget class="Line" name="line_63">
+                     <property name="styleSheet">
+                      <string notr="true">background-color: rgb(0, 0, 0);</string>
                      </property>
-                     <property name="topMargin">
-                      <number>8</number>
+                     <property name="frameShadow">
+                      <enum>QFrame::Plain</enum>
                      </property>
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_135">
                      <item>
-                      <widget class="QGroupBox" name="groupBox_81">
+                      <widget class="QLabel" name="label_149">
+                       <property name="minimumSize">
+                        <size>
+                         <width>163</width>
+                         <height>19</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <pointsize>11</pointsize>
+                        </font>
+                       </property>
+                       <property name="text">
+                        <string>DM lid :</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <spacer name="horizontalSpacer_96">
+                       <property name="orientation">
+                        <enum>Qt::Horizontal</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>40</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
+                     <item>
+                      <widget class="QGroupBox" name="groupBox_61">
                        <property name="title">
                         <string/>
                        </property>
-                       <layout class="QHBoxLayout" name="horizontalLayout_118">
-                        <property name="spacing">
-                         <number>15</number>
-                        </property>
-                        <property name="leftMargin">
-                         <number>1</number>
-                        </property>
-                        <property name="topMargin">
-                         <number>1</number>
-                        </property>
-                        <property name="rightMargin">
-                         <number>1</number>
-                        </property>
-                        <property name="bottomMargin">
-                         <number>1</number>
-                        </property>
+                       <layout class="QHBoxLayout" name="horizontalLayout_136">
                         <item>
-                         <widget class="QRadioButton" name="rbDMLid_OK_2">
+                         <widget class="QRadioButton" name="rbDMLid_OK">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                             <horstretch>0</horstretch>
@@ -10720,7 +11094,7 @@ QGroupBox::title {
                          </widget>
                         </item>
                         <item>
-                         <widget class="QRadioButton" name="rbDMLid_NOK_2">
+                         <widget class="QRadioButton" name="rbDMLid_Repair">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                             <horstretch>0</horstretch>
@@ -10744,12 +11118,12 @@ QGroupBox::title {
 </string>
                           </property>
                           <property name="text">
-                           <string>NOK</string>
+                           <string>Repair</string>
                           </property>
                          </widget>
                         </item>
                         <item>
-                         <widget class="QRadioButton" name="rbDMLid_Upgrade_2">
+                         <widget class="QRadioButton" name="rbDMLid_NA">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                             <horstretch>0</horstretch>
@@ -10768,7 +11142,10 @@ QGroupBox::title {
                            </font>
                           </property>
                           <property name="text">
-                           <string>Upgrade</string>
+                           <string>N/A</string>
+                          </property>
+                          <property name="checked">
+                           <bool>true</bool>
                           </property>
                          </widget>
                         </item>
@@ -10778,36 +11155,59 @@ QGroupBox::title {
                     </layout>
                    </item>
                    <item>
-                    <layout class="QHBoxLayout" name="horizontalLayout_THMotorOK_32">
-                     <property name="leftMargin">
-                      <number>10</number>
+                    <widget class="Line" name="line_64">
+                     <property name="styleSheet">
+                      <string notr="true">background-color: rgb(0, 0, 0);</string>
                      </property>
-                     <property name="topMargin">
-                      <number>8</number>
+                     <property name="frameShadow">
+                      <enum>QFrame::Plain</enum>
                      </property>
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_137">
                      <item>
-                      <widget class="QGroupBox" name="groupBox_82">
+                      <widget class="QLabel" name="label_168">
+                       <property name="minimumSize">
+                        <size>
+                         <width>163</width>
+                         <height>19</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <pointsize>11</pointsize>
+                        </font>
+                       </property>
+                       <property name="text">
+                        <string>Slip-ring :</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <spacer name="horizontalSpacer_97">
+                       <property name="orientation">
+                        <enum>Qt::Horizontal</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>40</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
+                     <item>
+                      <widget class="QGroupBox" name="groupBox_62">
                        <property name="title">
                         <string/>
                        </property>
-                       <layout class="QHBoxLayout" name="horizontalLayout_119">
-                        <property name="spacing">
-                         <number>15</number>
-                        </property>
-                        <property name="leftMargin">
-                         <number>1</number>
-                        </property>
-                        <property name="topMargin">
-                         <number>1</number>
-                        </property>
-                        <property name="rightMargin">
-                         <number>1</number>
-                        </property>
-                        <property name="bottomMargin">
-                         <number>1</number>
-                        </property>
+                       <layout class="QHBoxLayout" name="horizontalLayout_138">
                         <item>
-                         <widget class="QRadioButton" name="rbSlipRing_OK_2">
+                         <widget class="QRadioButton" name="rbSlipRing_OK">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                             <horstretch>0</horstretch>
@@ -10831,7 +11231,7 @@ QGroupBox::title {
                          </widget>
                         </item>
                         <item>
-                         <widget class="QRadioButton" name="rbSlipRing_NOK_2">
+                         <widget class="QRadioButton" name="rbSlipRing_Repair">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                             <horstretch>0</horstretch>
@@ -10855,12 +11255,12 @@ QGroupBox::title {
 </string>
                           </property>
                           <property name="text">
-                           <string>NOK</string>
+                           <string>Repair</string>
                           </property>
                          </widget>
                         </item>
                         <item>
-                         <widget class="QRadioButton" name="rbSlipRing_Upgrade_2">
+                         <widget class="QRadioButton" name="rbSlipRing_NA">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                             <horstretch>0</horstretch>
@@ -10879,7 +11279,10 @@ QGroupBox::title {
                            </font>
                           </property>
                           <property name="text">
-                           <string>Upgrade</string>
+                           <string>N/A</string>
+                          </property>
+                          <property name="checked">
+                           <bool>true</bool>
                           </property>
                          </widget>
                         </item>
@@ -10889,36 +11292,59 @@ QGroupBox::title {
                     </layout>
                    </item>
                    <item>
-                    <layout class="QHBoxLayout" name="horizontalLayout_THMotorOK_33">
-                     <property name="leftMargin">
-                      <number>10</number>
+                    <widget class="Line" name="line_65">
+                     <property name="styleSheet">
+                      <string notr="true">background-color: rgb(0, 0, 0);</string>
                      </property>
-                     <property name="topMargin">
-                      <number>8</number>
+                     <property name="frameShadow">
+                      <enum>QFrame::Plain</enum>
                      </property>
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_131">
                      <item>
-                      <widget class="QGroupBox" name="groupBox_83">
+                      <widget class="QLabel" name="label_169">
+                       <property name="minimumSize">
+                        <size>
+                         <width>163</width>
+                         <height>19</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <pointsize>11</pointsize>
+                        </font>
+                       </property>
+                       <property name="text">
+                        <string>Hollow shaft :</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <spacer name="horizontalSpacer_94">
+                       <property name="orientation">
+                        <enum>Qt::Horizontal</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>40</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
+                     <item>
+                      <widget class="QGroupBox" name="groupBox_59">
                        <property name="title">
                         <string/>
                        </property>
-                       <layout class="QHBoxLayout" name="horizontalLayout_120">
-                        <property name="spacing">
-                         <number>15</number>
-                        </property>
-                        <property name="leftMargin">
-                         <number>1</number>
-                        </property>
-                        <property name="topMargin">
-                         <number>1</number>
-                        </property>
-                        <property name="rightMargin">
-                         <number>1</number>
-                        </property>
-                        <property name="bottomMargin">
-                         <number>1</number>
-                        </property>
+                       <layout class="QHBoxLayout" name="horizontalLayout_132">
                         <item>
-                         <widget class="QRadioButton" name="rbHollowShaft_OK_2">
+                         <widget class="QRadioButton" name="rbHollowShaft_OK">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                             <horstretch>0</horstretch>
@@ -10942,7 +11368,7 @@ QGroupBox::title {
                          </widget>
                         </item>
                         <item>
-                         <widget class="QRadioButton" name="rbHollowShaft_NOK_2">
+                         <widget class="QRadioButton" name="rbHollowShaft_Repair">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                             <horstretch>0</horstretch>
@@ -10966,12 +11392,12 @@ QGroupBox::title {
 </string>
                           </property>
                           <property name="text">
-                           <string>NOK</string>
+                           <string>Repair</string>
                           </property>
                          </widget>
                         </item>
                         <item>
-                         <widget class="QRadioButton" name="rbHollowShaft_Upgrade_2">
+                         <widget class="QRadioButton" name="rbHollowShaft_NA">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                             <horstretch>0</horstretch>
@@ -10990,7 +11416,10 @@ QGroupBox::title {
                            </font>
                           </property>
                           <property name="text">
-                           <string>Upgrade</string>
+                           <string>N/A</string>
+                          </property>
+                          <property name="checked">
+                           <bool>true</bool>
                           </property>
                          </widget>
                         </item>
@@ -11002,10 +11431,8 @@ QGroupBox::title {
                   </layout>
                  </item>
                 </layout>
-               </item>
-              </layout>
-              <zorder>layoutWidget_3</zorder>
-              <zorder>layoutWidget_2</zorder>
+               </widget>
+              </widget>
              </widget>
              <widget class="QWidget" name="tab_ZT">
               <attribute name="title">
@@ -11721,7 +12148,7 @@ QCheckBox{font: 10.5pt &quot;MS Shell Dlg 2&quot;;}</string>
                       <rect>
                        <x>0</x>
                        <y>0</y>
-                       <width>671</width>
+                       <width>668</width>
                        <height>550</height>
                       </rect>
                      </property>
@@ -14041,185 +14468,63 @@ QGroupBox::title {
               <attribute name="title">
                <string>Repair-ZT</string>
               </attribute>
-              <layout class="QFormLayout" name="formLayout_8">
-               <item row="0" column="0">
-                <layout class="QHBoxLayout" name="horizontalLayout_94">
-                 <item>
-                  <layout class="QVBoxLayout" name="verticalLayout_46">
+              <widget class="QScrollArea" name="scrollArea_3">
+               <property name="geometry">
+                <rect>
+                 <x>10</x>
+                 <y>10</y>
+                 <width>661</width>
+                 <height>531</height>
+                </rect>
+               </property>
+               <property name="widgetResizable">
+                <bool>true</bool>
+               </property>
+               <widget class="QWidget" name="scrollAreaWidgetContents_7">
+                <property name="geometry">
+                 <rect>
+                  <x>0</x>
+                  <y>0</y>
+                  <width>659</width>
+                  <height>529</height>
+                 </rect>
+                </property>
+                <layout class="QGridLayout" name="gridLayout_8">
+                 <item row="0" column="0">
+                  <layout class="QVBoxLayout" name="verticalLayout_44">
                    <item>
-                    <widget class="QLabel" name="label_141">
-                     <property name="minimumSize">
-                      <size>
-                       <width>163</width>
-                       <height>19</height>
-                      </size>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <pointsize>11</pointsize>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>Z-stroke 35 - average price :</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_158">
-                     <property name="minimumSize">
-                      <size>
-                       <width>163</width>
-                       <height>19</height>
-                      </size>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <pointsize>11</pointsize>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>Z-stroke 50 - average price : </string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_159">
-                     <property name="minimumSize">
-                      <size>
-                       <width>163</width>
-                       <height>19</height>
-                      </size>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <pointsize>11</pointsize>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>ZM housing Scara :</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_160">
-                     <property name="minimumSize">
-                      <size>
-                       <width>163</width>
-                       <height>19</height>
-                      </size>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <pointsize>11</pointsize>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>ZM housing NT :</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_161">
-                     <property name="minimumSize">
-                      <size>
-                       <width>163</width>
-                       <height>19</height>
-                      </size>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <pointsize>11</pointsize>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>Guiding shafts Scara :</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_162">
-                     <property name="minimumSize">
-                      <size>
-                       <width>163</width>
-                       <height>19</height>
-                      </size>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <pointsize>11</pointsize>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>Guiding shafts NT :</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_165">
-                     <property name="minimumSize">
-                      <size>
-                       <width>163</width>
-                       <height>19</height>
-                      </size>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <pointsize>11</pointsize>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>Small guiding shafts :</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_166">
-                     <property name="minimumSize">
-                      <size>
-                       <width>163</width>
-                       <height>19</height>
-                      </size>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <pointsize>11</pointsize>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>Clamping flange :</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_167">
-                     <property name="minimumSize">
-                      <size>
-                       <width>163</width>
-                       <height>19</height>
-                      </size>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <pointsize>11</pointsize>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>Adapter cable :</string>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
-                 </item>
-                 <item>
-                  <layout class="QVBoxLayout" name="verticalLayout_47">
-                   <item>
-                    <layout class="QHBoxLayout" name="horizontalLayout_THMotorOK_19">
-                     <property name="leftMargin">
-                      <number>10</number>
-                     </property>
-                     <property name="topMargin">
-                      <number>8</number>
-                     </property>
+                    <layout class="QHBoxLayout" name="horizontalLayout_114">
+                     <item>
+                      <widget class="QLabel" name="label_141">
+                       <property name="minimumSize">
+                        <size>
+                         <width>163</width>
+                         <height>19</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <pointsize>11</pointsize>
+                        </font>
+                       </property>
+                       <property name="text">
+                        <string>Z-stroke 35 - average price :</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <spacer name="horizontalSpacer_98">
+                       <property name="orientation">
+                        <enum>Qt::Horizontal</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>40</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
                      <item>
                       <widget class="QGroupBox" name="groupBox_69">
                        <property name="title">
@@ -14266,7 +14571,7 @@ QGroupBox::title {
                          </widget>
                         </item>
                         <item>
-                         <widget class="QRadioButton" name="rbZStroke35_NOK">
+                         <widget class="QRadioButton" name="rbZStroke35_Repair">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                             <horstretch>0</horstretch>
@@ -14290,12 +14595,12 @@ QGroupBox::title {
 </string>
                           </property>
                           <property name="text">
-                           <string>NOK</string>
+                           <string>Repair</string>
                           </property>
                          </widget>
                         </item>
                         <item>
-                         <widget class="QRadioButton" name="rbZStroke35_Upgrade">
+                         <widget class="QRadioButton" name="rbZStroke35_NA">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                             <horstretch>0</horstretch>
@@ -14314,7 +14619,10 @@ QGroupBox::title {
                            </font>
                           </property>
                           <property name="text">
-                           <string>Upgrade</string>
+                           <string>N/A</string>
+                          </property>
+                          <property name="checked">
+                           <bool>true</bool>
                           </property>
                          </widget>
                         </item>
@@ -14324,13 +14632,51 @@ QGroupBox::title {
                     </layout>
                    </item>
                    <item>
-                    <layout class="QHBoxLayout" name="horizontalLayout_THMotorOK_20">
-                     <property name="leftMargin">
-                      <number>10</number>
+                    <widget class="Line" name="line_66">
+                     <property name="styleSheet">
+                      <string notr="true">background-color: rgb(0, 0, 0);</string>
                      </property>
-                     <property name="topMargin">
-                      <number>8</number>
+                     <property name="frameShadow">
+                      <enum>QFrame::Plain</enum>
                      </property>
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_116">
+                     <item>
+                      <widget class="QLabel" name="label_158">
+                       <property name="minimumSize">
+                        <size>
+                         <width>163</width>
+                         <height>19</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <pointsize>11</pointsize>
+                        </font>
+                       </property>
+                       <property name="text">
+                        <string>Z-stroke 50 - average price : </string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <spacer name="horizontalSpacer_100">
+                       <property name="orientation">
+                        <enum>Qt::Horizontal</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>40</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
                      <item>
                       <widget class="QGroupBox" name="groupBox_70">
                        <property name="title">
@@ -14377,7 +14723,7 @@ QGroupBox::title {
                          </widget>
                         </item>
                         <item>
-                         <widget class="QRadioButton" name="rbZStroke50_NOK">
+                         <widget class="QRadioButton" name="rbZStroke50_Repair">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                             <horstretch>0</horstretch>
@@ -14401,12 +14747,12 @@ QGroupBox::title {
 </string>
                           </property>
                           <property name="text">
-                           <string>NOK</string>
+                           <string>Repair</string>
                           </property>
                          </widget>
                         </item>
                         <item>
-                         <widget class="QRadioButton" name="rbZStroke50_Upgrade">
+                         <widget class="QRadioButton" name="rbZStroke50_NA">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                             <horstretch>0</horstretch>
@@ -14425,7 +14771,10 @@ QGroupBox::title {
                            </font>
                           </property>
                           <property name="text">
-                           <string>Upgrade</string>
+                           <string>N/A</string>
+                          </property>
+                          <property name="checked">
+                           <bool>true</bool>
                           </property>
                          </widget>
                         </item>
@@ -14435,13 +14784,51 @@ QGroupBox::title {
                     </layout>
                    </item>
                    <item>
-                    <layout class="QHBoxLayout" name="horizontalLayout_THMotorOK_21">
-                     <property name="leftMargin">
-                      <number>10</number>
+                    <widget class="Line" name="line_67">
+                     <property name="styleSheet">
+                      <string notr="true">background-color: rgb(0, 0, 0);</string>
                      </property>
-                     <property name="topMargin">
-                      <number>8</number>
+                     <property name="frameShadow">
+                      <enum>QFrame::Plain</enum>
                      </property>
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_117">
+                     <item>
+                      <widget class="QLabel" name="label_159">
+                       <property name="minimumSize">
+                        <size>
+                         <width>163</width>
+                         <height>19</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <pointsize>11</pointsize>
+                        </font>
+                       </property>
+                       <property name="text">
+                        <string>ZM housing Scara :</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <spacer name="horizontalSpacer_101">
+                       <property name="orientation">
+                        <enum>Qt::Horizontal</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>40</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
                      <item>
                       <widget class="QGroupBox" name="groupBox_71">
                        <property name="title">
@@ -14488,7 +14875,7 @@ QGroupBox::title {
                          </widget>
                         </item>
                         <item>
-                         <widget class="QRadioButton" name="rbZMHousingScara_NOK">
+                         <widget class="QRadioButton" name="rbZMHousingScara_Repair">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                             <horstretch>0</horstretch>
@@ -14512,12 +14899,12 @@ QGroupBox::title {
 </string>
                           </property>
                           <property name="text">
-                           <string>NOK</string>
+                           <string>Repair</string>
                           </property>
                          </widget>
                         </item>
                         <item>
-                         <widget class="QRadioButton" name="rbZMHousingScara_Upgrade">
+                         <widget class="QRadioButton" name="rbZMHousingScara_NA">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                             <horstretch>0</horstretch>
@@ -14536,7 +14923,10 @@ QGroupBox::title {
                            </font>
                           </property>
                           <property name="text">
-                           <string>Upgrade</string>
+                           <string>N/A</string>
+                          </property>
+                          <property name="checked">
+                           <bool>true</bool>
                           </property>
                          </widget>
                         </item>
@@ -14546,13 +14936,51 @@ QGroupBox::title {
                     </layout>
                    </item>
                    <item>
-                    <layout class="QHBoxLayout" name="horizontalLayout_THMotorOK_22">
-                     <property name="leftMargin">
-                      <number>10</number>
+                    <widget class="Line" name="line_68">
+                     <property name="styleSheet">
+                      <string notr="true">background-color: rgb(0, 0, 0);</string>
                      </property>
-                     <property name="topMargin">
-                      <number>8</number>
+                     <property name="frameShadow">
+                      <enum>QFrame::Plain</enum>
                      </property>
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_118">
+                     <item>
+                      <widget class="QLabel" name="label_160">
+                       <property name="minimumSize">
+                        <size>
+                         <width>163</width>
+                         <height>19</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <pointsize>11</pointsize>
+                        </font>
+                       </property>
+                       <property name="text">
+                        <string>ZM housing NT :</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <spacer name="horizontalSpacer_102">
+                       <property name="orientation">
+                        <enum>Qt::Horizontal</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>40</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
                      <item>
                       <widget class="QGroupBox" name="groupBox_72">
                        <property name="title">
@@ -14599,7 +15027,7 @@ QGroupBox::title {
                          </widget>
                         </item>
                         <item>
-                         <widget class="QRadioButton" name="rbZMHousingNT_NOK">
+                         <widget class="QRadioButton" name="rbZMHousingNT_Repair">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                             <horstretch>0</horstretch>
@@ -14623,12 +15051,12 @@ QGroupBox::title {
 </string>
                           </property>
                           <property name="text">
-                           <string>NOK</string>
+                           <string>Repair</string>
                           </property>
                          </widget>
                         </item>
                         <item>
-                         <widget class="QRadioButton" name="rbZMHousingNT_Upgrade">
+                         <widget class="QRadioButton" name="rbZMHousingNT_NA">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                             <horstretch>0</horstretch>
@@ -14647,7 +15075,10 @@ QGroupBox::title {
                            </font>
                           </property>
                           <property name="text">
-                           <string>Upgrade</string>
+                           <string>N/A</string>
+                          </property>
+                          <property name="checked">
+                           <bool>true</bool>
                           </property>
                          </widget>
                         </item>
@@ -14657,13 +15088,51 @@ QGroupBox::title {
                     </layout>
                    </item>
                    <item>
-                    <layout class="QHBoxLayout" name="horizontalLayout_THMotorOK_23">
-                     <property name="leftMargin">
-                      <number>10</number>
+                    <widget class="Line" name="line_69">
+                     <property name="styleSheet">
+                      <string notr="true">background-color: rgb(0, 0, 0);</string>
                      </property>
-                     <property name="topMargin">
-                      <number>8</number>
+                     <property name="frameShadow">
+                      <enum>QFrame::Plain</enum>
                      </property>
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_119">
+                     <item>
+                      <widget class="QLabel" name="label_161">
+                       <property name="minimumSize">
+                        <size>
+                         <width>163</width>
+                         <height>19</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <pointsize>11</pointsize>
+                        </font>
+                       </property>
+                       <property name="text">
+                        <string>Guiding shafts Scara :</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <spacer name="horizontalSpacer_103">
+                       <property name="orientation">
+                        <enum>Qt::Horizontal</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>40</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
                      <item>
                       <widget class="QGroupBox" name="groupBox_73">
                        <property name="title">
@@ -14710,7 +15179,7 @@ QGroupBox::title {
                          </widget>
                         </item>
                         <item>
-                         <widget class="QRadioButton" name="rbGuidingShaftsScara_NOK">
+                         <widget class="QRadioButton" name="rbGuidingShaftsScara_Repair">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                             <horstretch>0</horstretch>
@@ -14734,12 +15203,12 @@ QGroupBox::title {
 </string>
                           </property>
                           <property name="text">
-                           <string>NOK</string>
+                           <string>Repair</string>
                           </property>
                          </widget>
                         </item>
                         <item>
-                         <widget class="QRadioButton" name="rbGuidingShaftsScara_Upgrade">
+                         <widget class="QRadioButton" name="rbGuidingShaftsScara_NA">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                             <horstretch>0</horstretch>
@@ -14758,7 +15227,10 @@ QGroupBox::title {
                            </font>
                           </property>
                           <property name="text">
-                           <string>Upgrade</string>
+                           <string>N/A</string>
+                          </property>
+                          <property name="checked">
+                           <bool>true</bool>
                           </property>
                          </widget>
                         </item>
@@ -14768,13 +15240,51 @@ QGroupBox::title {
                     </layout>
                    </item>
                    <item>
-                    <layout class="QHBoxLayout" name="horizontalLayout_THMotorOK_24">
-                     <property name="leftMargin">
-                      <number>10</number>
+                    <widget class="Line" name="line_70">
+                     <property name="styleSheet">
+                      <string notr="true">background-color: rgb(0, 0, 0);</string>
                      </property>
-                     <property name="topMargin">
-                      <number>8</number>
+                     <property name="frameShadow">
+                      <enum>QFrame::Plain</enum>
                      </property>
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_120">
+                     <item>
+                      <widget class="QLabel" name="label_162">
+                       <property name="minimumSize">
+                        <size>
+                         <width>163</width>
+                         <height>19</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <pointsize>11</pointsize>
+                        </font>
+                       </property>
+                       <property name="text">
+                        <string>Guiding shafts NT :</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <spacer name="horizontalSpacer_104">
+                       <property name="orientation">
+                        <enum>Qt::Horizontal</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>40</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
                      <item>
                       <widget class="QGroupBox" name="groupBox_74">
                        <property name="title">
@@ -14821,7 +15331,7 @@ QGroupBox::title {
                          </widget>
                         </item>
                         <item>
-                         <widget class="QRadioButton" name="rbGuidingShaftsNT_NOK">
+                         <widget class="QRadioButton" name="rbGuidingShaftsNT_Repair">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                             <horstretch>0</horstretch>
@@ -14845,12 +15355,12 @@ QGroupBox::title {
 </string>
                           </property>
                           <property name="text">
-                           <string>NOK</string>
+                           <string>Repair</string>
                           </property>
                          </widget>
                         </item>
                         <item>
-                         <widget class="QRadioButton" name="rbGuidingShaftsNT_Upgrade">
+                         <widget class="QRadioButton" name="rbGuidingShaftsNT_NA">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                             <horstretch>0</horstretch>
@@ -14869,7 +15379,10 @@ QGroupBox::title {
                            </font>
                           </property>
                           <property name="text">
-                           <string>Upgrade</string>
+                           <string>N/A</string>
+                          </property>
+                          <property name="checked">
+                           <bool>true</bool>
                           </property>
                          </widget>
                         </item>
@@ -14879,13 +15392,51 @@ QGroupBox::title {
                     </layout>
                    </item>
                    <item>
-                    <layout class="QHBoxLayout" name="horizontalLayout_THMotorOK_25">
-                     <property name="leftMargin">
-                      <number>10</number>
+                    <widget class="Line" name="line_71">
+                     <property name="styleSheet">
+                      <string notr="true">background-color: rgb(0, 0, 0);</string>
                      </property>
-                     <property name="topMargin">
-                      <number>8</number>
+                     <property name="frameShadow">
+                      <enum>QFrame::Plain</enum>
                      </property>
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_139">
+                     <item>
+                      <widget class="QLabel" name="label_165">
+                       <property name="minimumSize">
+                        <size>
+                         <width>163</width>
+                         <height>19</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <pointsize>11</pointsize>
+                        </font>
+                       </property>
+                       <property name="text">
+                        <string>Small guiding shafts :</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <spacer name="horizontalSpacer_105">
+                       <property name="orientation">
+                        <enum>Qt::Horizontal</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>40</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
                      <item>
                       <widget class="QGroupBox" name="groupBox_75">
                        <property name="title">
@@ -14932,7 +15483,7 @@ QGroupBox::title {
                          </widget>
                         </item>
                         <item>
-                         <widget class="QRadioButton" name="rbSmallGuidingShafts_NOK">
+                         <widget class="QRadioButton" name="rbSmallGuidingShafts_Repair">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                             <horstretch>0</horstretch>
@@ -14956,12 +15507,12 @@ QGroupBox::title {
 </string>
                           </property>
                           <property name="text">
-                           <string>NOK</string>
+                           <string>Repair</string>
                           </property>
                          </widget>
                         </item>
                         <item>
-                         <widget class="QRadioButton" name="rbSmallGuidingShafts_Upgrade">
+                         <widget class="QRadioButton" name="rbSmallGuidingShafts_NA">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                             <horstretch>0</horstretch>
@@ -14980,7 +15531,10 @@ QGroupBox::title {
                            </font>
                           </property>
                           <property name="text">
-                           <string>Upgrade</string>
+                           <string>N/A</string>
+                          </property>
+                          <property name="checked">
+                           <bool>true</bool>
                           </property>
                          </widget>
                         </item>
@@ -14990,13 +15544,51 @@ QGroupBox::title {
                     </layout>
                    </item>
                    <item>
-                    <layout class="QHBoxLayout" name="horizontalLayout_THMotorOK_26">
-                     <property name="leftMargin">
-                      <number>10</number>
+                    <widget class="Line" name="line_72">
+                     <property name="styleSheet">
+                      <string notr="true">background-color: rgb(0, 0, 0);</string>
                      </property>
-                     <property name="topMargin">
-                      <number>8</number>
+                     <property name="frameShadow">
+                      <enum>QFrame::Plain</enum>
                      </property>
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_140">
+                     <item>
+                      <widget class="QLabel" name="label_166">
+                       <property name="minimumSize">
+                        <size>
+                         <width>163</width>
+                         <height>19</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <pointsize>11</pointsize>
+                        </font>
+                       </property>
+                       <property name="text">
+                        <string>Clamping flange :</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <spacer name="horizontalSpacer_106">
+                       <property name="orientation">
+                        <enum>Qt::Horizontal</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>40</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
                      <item>
                       <widget class="QGroupBox" name="groupBox_76">
                        <property name="title">
@@ -15043,7 +15635,7 @@ QGroupBox::title {
                          </widget>
                         </item>
                         <item>
-                         <widget class="QRadioButton" name="rbClampingFlange_NOK">
+                         <widget class="QRadioButton" name="rbClampingFlange_Repair">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                             <horstretch>0</horstretch>
@@ -15067,12 +15659,12 @@ QGroupBox::title {
 </string>
                           </property>
                           <property name="text">
-                           <string>NOK</string>
+                           <string>Repair</string>
                           </property>
                          </widget>
                         </item>
                         <item>
-                         <widget class="QRadioButton" name="rbClampingFlange_Upgrade">
+                         <widget class="QRadioButton" name="rbClampingFlange_NA">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                             <horstretch>0</horstretch>
@@ -15091,7 +15683,10 @@ QGroupBox::title {
                            </font>
                           </property>
                           <property name="text">
-                           <string>Upgrade</string>
+                           <string>N/A</string>
+                          </property>
+                          <property name="checked">
+                           <bool>true</bool>
                           </property>
                          </widget>
                         </item>
@@ -15101,13 +15696,51 @@ QGroupBox::title {
                     </layout>
                    </item>
                    <item>
-                    <layout class="QHBoxLayout" name="horizontalLayout_THMotorOK_27">
-                     <property name="leftMargin">
-                      <number>10</number>
+                    <widget class="Line" name="line_73">
+                     <property name="styleSheet">
+                      <string notr="true">background-color: rgb(0, 0, 0);</string>
                      </property>
-                     <property name="topMargin">
-                      <number>8</number>
+                     <property name="frameShadow">
+                      <enum>QFrame::Plain</enum>
                      </property>
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_115">
+                     <item>
+                      <widget class="QLabel" name="label_167">
+                       <property name="minimumSize">
+                        <size>
+                         <width>163</width>
+                         <height>19</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <pointsize>11</pointsize>
+                        </font>
+                       </property>
+                       <property name="text">
+                        <string>Adapter cable :</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <spacer name="horizontalSpacer_99">
+                       <property name="orientation">
+                        <enum>Qt::Horizontal</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>40</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
                      <item>
                       <widget class="QGroupBox" name="groupBox_77">
                        <property name="title">
@@ -15154,7 +15787,7 @@ QGroupBox::title {
                          </widget>
                         </item>
                         <item>
-                         <widget class="QRadioButton" name="rbAdapterCable_NOK">
+                         <widget class="QRadioButton" name="rbAdapterCable_Repair">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                             <horstretch>0</horstretch>
@@ -15178,12 +15811,12 @@ QGroupBox::title {
 </string>
                           </property>
                           <property name="text">
-                           <string>NOK</string>
+                           <string>Repair</string>
                           </property>
                          </widget>
                         </item>
                         <item>
-                         <widget class="QRadioButton" name="rbAdapterCable_Upgrade">
+                         <widget class="QRadioButton" name="rbAdapterCable_NA">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                             <horstretch>0</horstretch>
@@ -15202,7 +15835,10 @@ QGroupBox::title {
                            </font>
                           </property>
                           <property name="text">
-                           <string>Upgrade</string>
+                           <string>N/A</string>
+                          </property>
+                          <property name="checked">
+                           <bool>true</bool>
                           </property>
                          </widget>
                         </item>
@@ -15214,8 +15850,8 @@ QGroupBox::title {
                   </layout>
                  </item>
                 </layout>
-               </item>
-              </layout>
+               </widget>
+              </widget>
              </widget>
             </widget>
            </item>
@@ -15478,7 +16114,7 @@ QGroupBox{border: none;}
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1181</width>
+     <width>1178</width>
      <height>21</height>
     </rect>
    </property>
