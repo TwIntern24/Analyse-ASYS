@@ -16,6 +16,9 @@
 #define BEGIN_TESTERINFO "Robot_Testers"
 #define BEGIN_RS485TEST "RS485_Test"
 #define BEGIN_PROTOVOLVERSION "ProtocolVersion"
+#define BEGIN_ARMREPAIR "Arm_Repair"
+#define BEGIN_DMREPAIR "DM_Repair"
+#define BEGIN_ZTREPAIR "ZT_Repair"
 #define NG_VALUE "9999"
 #define JUDGEITEMS 26
 
@@ -92,6 +95,19 @@ enum EZTLength
        Len35mm,
        Len50mm,
        Len65mm
+};
+
+enum Repair
+{
+    Repair_OK,
+    Repair_Repair,
+    Repair_NA
+};
+
+enum Deliver
+{
+    TW,
+    EU
 };
 
 #endif //MAINDEF_H

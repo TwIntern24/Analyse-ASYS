@@ -35,7 +35,7 @@ private slots:
 
     void on_pbSaveIni_clicked();
 
-    void on_pbExportExcel_clicked();
+    void createAnalyseSheet();
 
     void on_pbImageName_clicked();
 
@@ -69,7 +69,7 @@ private slots:
 
     void on_leRepPosPATH_textChanged(const QString &arg1);
 
-    void on_pbPrint_clicked();
+    void createPrintLabel();
 
     void on_pBtn_ImgRemark_ARM_clicked();
 
@@ -101,7 +101,9 @@ private slots:
 
     void on_leZDownFA_textChanged(const QString &arg1);
 
-    void on_pushButton_clicked();
+    void createRepairMatrix();
+
+    void on_pbExport_clicked();
 
 private:
     enum eSHEET
@@ -414,6 +416,15 @@ private:
     void setRadioButtonsIDsInGB4RepairDM( void);
     void setRadioButtonsIDsInGB4RepairZT( void);
 
+    void getDataFromRepair( void );
+    void getRepairFromARM( void );
+    void getRepairFromDM( void );
+    void getRepairFromZT( void );
+    void getDataFromIni4Repair( void);
+    void getDataFromIni4ARMRepair( void);
+    void getDataFromIni4DMRepair( void);
+    void getDataFromIni4ZTRepair( void);
+
     void writeAmount( QAxObject* workbook, sREPAIRITEM item );
     void writeInformation( QAxObject* workbook, sREPAIRITEM item );
     void extendInformation( QAxObject* workbook, sREPAIRITEM item );
@@ -432,6 +443,7 @@ private:
     QButtonGroup *m_pgbRepairARM_BeltReel;
     QButtonGroup *m_pgbRepairARM_TorxScrew;
     QButtonGroup *m_pgbRepairARM_Bearings;
+    QButtonGroup *m_pgbRepairARM_Deliver;
 
     // DM
     QButtonGroup *m_pgbRepairDM_DMLikaMotor;
@@ -440,6 +452,7 @@ private:
     QButtonGroup *m_pgbRepairDM_DMLid;
     QButtonGroup *m_pgbRepairDM_SlipRing;
     QButtonGroup *m_pgbRepairDM_HollowShaft;
+    QButtonGroup *m_pgbRepairDM_Deliver;
 
     // ZT
     QButtonGroup *m_pgbRepairZT_ZStroke35;
@@ -451,6 +464,7 @@ private:
     QButtonGroup *m_pgbRepairZT_SmallGuidingShafts;
     QButtonGroup *m_pgbRepairZT_ClampingFlange;
     QButtonGroup *m_pgbRepairZT_AdapterCable;
+    QButtonGroup *m_pgbRepairZT_Deliver;
 };
 
 #endif // CANALYSEDATA_H

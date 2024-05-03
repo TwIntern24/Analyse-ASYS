@@ -350,22 +350,16 @@ QGroupBox::title {
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_37">
            <property name="spacing">
-            <number>15</number>
-           </property>
-           <property name="leftMargin">
-            <number>3</number>
-           </property>
-           <property name="topMargin">
-            <number>3</number>
-           </property>
-           <property name="rightMargin">
-            <number>3</number>
+            <number>0</number>
            </property>
            <property name="bottomMargin">
             <number>3</number>
            </property>
            <item>
             <widget class="QTabWidget" name="tabWidget">
+             <property name="enabled">
+              <bool>true</bool>
+             </property>
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -1908,7 +1902,7 @@ QPushButton{font: 10.5pt &quot;MS Shell Dlg 2&quot;;}</string>
                       <rect>
                        <x>0</x>
                        <y>0</y>
-                       <width>665</width>
+                       <width>649</width>
                        <height>560</height>
                       </rect>
                      </property>
@@ -5033,258 +5027,14 @@ QGroupBox::title {
                </item>
               </layout>
              </widget>
-             <widget class="QWidget" name="tab_4">
+             <widget class="QWidget" name="tab_ARMRepair">
+              <property name="enabled">
+               <bool>true</bool>
+              </property>
               <attribute name="title">
                <string>Repair-Arm</string>
               </attribute>
-              <layout class="QHBoxLayout" name="horizontalLayout_144">
-               <item>
-                <layout class="QVBoxLayout" name="verticalLayout_45">
-                 <item>
-                  <widget class="QLabel" name="label_138">
-                   <property name="font">
-                    <font>
-                     <pointsize>11</pointsize>
-                    </font>
-                   </property>
-                   <property name="text">
-                    <string>General Information</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="Line" name="line_2">
-                   <property name="orientation">
-                    <enum>Qt::Horizontal</enum>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <layout class="QHBoxLayout" name="horizontalLayout_94">
-                   <item>
-                    <widget class="QLabel" name="label_101">
-                     <property name="font">
-                      <font>
-                       <pointsize>11</pointsize>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>Unit 12NC received:</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <spacer name="horizontalSpacer_110">
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                     <property name="sizeType">
-                      <enum>QSizePolicy::Preferred</enum>
-                     </property>
-                     <property name="sizeHint" stdset="0">
-                      <size>
-                       <width>40</width>
-                       <height>20</height>
-                      </size>
-                     </property>
-                    </spacer>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_123">
-                     <property name="font">
-                      <font>
-                       <pointsize>11</pointsize>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>TextLabel</string>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
-                 </item>
-                 <item>
-                  <layout class="QHBoxLayout" name="horizontalLayout_141">
-                   <item>
-                    <widget class="QLabel" name="label_129">
-                     <property name="font">
-                      <font>
-                       <pointsize>11</pointsize>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>Unit serial number:</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <spacer name="horizontalSpacer_111">
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                     <property name="sizeType">
-                      <enum>QSizePolicy::Preferred</enum>
-                     </property>
-                     <property name="sizeHint" stdset="0">
-                      <size>
-                       <width>40</width>
-                       <height>20</height>
-                      </size>
-                     </property>
-                    </spacer>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_131">
-                     <property name="font">
-                      <font>
-                       <pointsize>11</pointsize>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>TextLabel</string>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
-                 </item>
-                 <item>
-                  <widget class="QLabel" name="label_139">
-                   <property name="font">
-                    <font>
-                     <pointsize>11</pointsize>
-                    </font>
-                   </property>
-                   <property name="text">
-                    <string>Specific Information</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="Line" name="line_9">
-                   <property name="orientation">
-                    <enum>Qt::Horizontal</enum>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <layout class="QHBoxLayout" name="horizontalLayout_142">
-                   <item>
-                    <widget class="QLabel" name="label_134">
-                     <property name="font">
-                      <font>
-                       <pointsize>11</pointsize>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>Arm Serial Number</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <spacer name="horizontalSpacer_112">
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                     <property name="sizeType">
-                      <enum>QSizePolicy::Preferred</enum>
-                     </property>
-                     <property name="sizeHint" stdset="0">
-                      <size>
-                       <width>40</width>
-                       <height>20</height>
-                      </size>
-                     </property>
-                    </spacer>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_135">
-                     <property name="font">
-                      <font>
-                       <pointsize>11</pointsize>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>TextLabel</string>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
-                 </item>
-                 <item>
-                  <layout class="QHBoxLayout" name="horizontalLayout_143">
-                   <item>
-                    <widget class="QLabel" name="label_136">
-                     <property name="font">
-                      <font>
-                       <pointsize>11</pointsize>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>Arm First delivery :</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <spacer name="horizontalSpacer_113">
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                     <property name="sizeType">
-                      <enum>QSizePolicy::Preferred</enum>
-                     </property>
-                     <property name="sizeHint" stdset="0">
-                      <size>
-                       <width>40</width>
-                       <height>20</height>
-                      </size>
-                     </property>
-                    </spacer>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_137">
-                     <property name="font">
-                      <font>
-                       <pointsize>11</pointsize>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>TextLabel</string>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
-                 </item>
-                 <item>
-                  <spacer name="verticalSpacer_2">
-                   <property name="orientation">
-                    <enum>Qt::Vertical</enum>
-                   </property>
-                   <property name="sizeHint" stdset="0">
-                    <size>
-                     <width>20</width>
-                     <height>40</height>
-                    </size>
-                   </property>
-                  </spacer>
-                 </item>
-                </layout>
-               </item>
-               <item>
-                <spacer name="horizontalSpacer_114">
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                 <property name="sizeType">
-                  <enum>QSizePolicy::Fixed</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>200</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
+              <layout class="QHBoxLayout" name="horizontalLayout_94">
                <item>
                 <widget class="QScrollArea" name="scrollArea">
                  <property name="widgetResizable">
@@ -5295,15 +5045,15 @@ QGroupBox::title {
                    <rect>
                     <x>0</x>
                     <y>0</y>
-                    <width>650</width>
-                    <height>787</height>
+                    <width>409</width>
+                    <height>878</height>
                    </rect>
                   </property>
                   <layout class="QGridLayout" name="gridLayout_6">
-                   <item row="2" column="0">
-                    <layout class="QVBoxLayout" name="verticalLayout_43">
+                   <item row="2" column="1">
+                    <layout class="QVBoxLayout" name="verticalLayout_63">
                      <item>
-                      <layout class="QHBoxLayout" name="horizontalLayout_96">
+                      <layout class="QVBoxLayout" name="verticalLayout_11">
                        <item>
                         <widget class="QLabel" name="label_124">
                          <property name="minimumSize">
@@ -5315,6 +5065,8 @@ QGroupBox::title {
                          <property name="font">
                           <font>
                            <pointsize>11</pointsize>
+                           <weight>75</weight>
+                           <bold>true</bold>
                           </font>
                          </property>
                          <property name="text">
@@ -5323,24 +5075,36 @@ QGroupBox::title {
                         </widget>
                        </item>
                        <item>
-                        <spacer name="horizontalSpacer_79">
-                         <property name="orientation">
-                          <enum>Qt::Horizontal</enum>
-                         </property>
-                         <property name="sizeHint" stdset="0">
-                          <size>
-                           <width>40</width>
-                           <height>20</height>
-                          </size>
-                         </property>
-                        </spacer>
-                       </item>
-                       <item>
                         <widget class="QGroupBox" name="groupBox_84">
                          <property name="title">
                           <string/>
                          </property>
                          <layout class="QHBoxLayout" name="horizontalLayout_30">
+                          <property name="leftMargin">
+                           <number>1</number>
+                          </property>
+                          <property name="topMargin">
+                           <number>1</number>
+                          </property>
+                          <property name="rightMargin">
+                           <number>1</number>
+                          </property>
+                          <property name="bottomMargin">
+                           <number>1</number>
+                          </property>
+                          <item>
+                           <spacer name="horizontalSpacer_79">
+                            <property name="orientation">
+                             <enum>Qt::Horizontal</enum>
+                            </property>
+                            <property name="sizeHint" stdset="0">
+                             <size>
+                              <width>40</width>
+                              <height>20</height>
+                             </size>
+                            </property>
+                           </spacer>
+                          </item>
                           <item>
                            <widget class="QRadioButton" name="rbArmBeltsAvrPrice_OK">
                             <property name="sizePolicy">
@@ -5427,20 +5191,14 @@ QGroupBox::title {
                       </layout>
                      </item>
                      <item>
-                      <widget class="Line" name="line_29">
-                       <property name="frameShadow">
-                        <enum>QFrame::Plain</enum>
-                       </property>
-                       <property name="lineWidth">
-                        <number>3</number>
-                       </property>
+                      <widget class="Line" name="line_2">
                        <property name="orientation">
                         <enum>Qt::Horizontal</enum>
                        </property>
                       </widget>
                      </item>
                      <item>
-                      <layout class="QHBoxLayout" name="horizontalLayout_125">
+                      <layout class="QVBoxLayout" name="verticalLayout_45">
                        <item>
                         <widget class="QLabel" name="label_127">
                          <property name="minimumSize">
@@ -5452,6 +5210,8 @@ QGroupBox::title {
                          <property name="font">
                           <font>
                            <pointsize>11</pointsize>
+                           <weight>75</weight>
+                           <bold>true</bold>
                           </font>
                          </property>
                          <property name="text">
@@ -5460,24 +5220,36 @@ QGroupBox::title {
                         </widget>
                        </item>
                        <item>
-                        <spacer name="horizontalSpacer_91">
-                         <property name="orientation">
-                          <enum>Qt::Horizontal</enum>
-                         </property>
-                         <property name="sizeHint" stdset="0">
-                          <size>
-                           <width>40</width>
-                           <height>20</height>
-                          </size>
-                         </property>
-                        </spacer>
-                       </item>
-                       <item>
                         <widget class="QGroupBox" name="groupBox_85">
                          <property name="title">
                           <string/>
                          </property>
                          <layout class="QHBoxLayout" name="horizontalLayout_126">
+                          <property name="leftMargin">
+                           <number>1</number>
+                          </property>
+                          <property name="topMargin">
+                           <number>1</number>
+                          </property>
+                          <property name="rightMargin">
+                           <number>1</number>
+                          </property>
+                          <property name="bottomMargin">
+                           <number>1</number>
+                          </property>
+                          <item>
+                           <spacer name="horizontalSpacer_91">
+                            <property name="orientation">
+                             <enum>Qt::Horizontal</enum>
+                            </property>
+                            <property name="sizeHint" stdset="0">
+                             <size>
+                              <width>40</width>
+                              <height>20</height>
+                             </size>
+                            </property>
+                           </spacer>
+                          </item>
                           <item>
                            <widget class="QRadioButton" name="rbUpperArmHousingUpgrade_OK">
                             <property name="sizePolicy">
@@ -5564,20 +5336,14 @@ QGroupBox::title {
                       </layout>
                      </item>
                      <item>
-                      <widget class="Line" name="line_28">
-                       <property name="frameShadow">
-                        <enum>QFrame::Plain</enum>
-                       </property>
-                       <property name="lineWidth">
-                        <number>3</number>
-                       </property>
+                      <widget class="Line" name="line_9">
                        <property name="orientation">
                         <enum>Qt::Horizontal</enum>
                        </property>
                       </widget>
                      </item>
                      <item>
-                      <layout class="QHBoxLayout" name="horizontalLayout_97">
+                      <layout class="QVBoxLayout" name="verticalLayout_64">
                        <item>
                         <widget class="QLabel" name="label_128">
                          <property name="minimumSize">
@@ -5589,6 +5355,8 @@ QGroupBox::title {
                          <property name="font">
                           <font>
                            <pointsize>11</pointsize>
+                           <weight>75</weight>
+                           <bold>true</bold>
                           </font>
                          </property>
                          <property name="text">
@@ -5597,31 +5365,36 @@ QGroupBox::title {
                         </widget>
                        </item>
                        <item>
-                        <widget class="Line" name="line">
-                         <property name="orientation">
-                          <enum>Qt::Horizontal</enum>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <spacer name="horizontalSpacer_80">
-                         <property name="orientation">
-                          <enum>Qt::Horizontal</enum>
-                         </property>
-                         <property name="sizeHint" stdset="0">
-                          <size>
-                           <width>40</width>
-                           <height>20</height>
-                          </size>
-                         </property>
-                        </spacer>
-                       </item>
-                       <item>
                         <widget class="QGroupBox" name="groupBox_19">
                          <property name="title">
                           <string/>
                          </property>
                          <layout class="QHBoxLayout" name="horizontalLayout_31">
+                          <property name="leftMargin">
+                           <number>1</number>
+                          </property>
+                          <property name="topMargin">
+                           <number>1</number>
+                          </property>
+                          <property name="rightMargin">
+                           <number>1</number>
+                          </property>
+                          <property name="bottomMargin">
+                           <number>1</number>
+                          </property>
+                          <item>
+                           <spacer name="horizontalSpacer_80">
+                            <property name="orientation">
+                             <enum>Qt::Horizontal</enum>
+                            </property>
+                            <property name="sizeHint" stdset="0">
+                             <size>
+                              <width>40</width>
+                              <height>20</height>
+                             </size>
+                            </property>
+                           </spacer>
+                          </item>
                           <item>
                            <widget class="QRadioButton" name="rbUpperArmHousing_OK">
                             <property name="sizePolicy">
@@ -5709,19 +5482,13 @@ QGroupBox::title {
                      </item>
                      <item>
                       <widget class="Line" name="line_27">
-                       <property name="styleSheet">
-                        <string notr="true">background-color: rgb(0, 0, 0);</string>
-                       </property>
-                       <property name="frameShadow">
-                        <enum>QFrame::Plain</enum>
-                       </property>
                        <property name="orientation">
                         <enum>Qt::Horizontal</enum>
                        </property>
                       </widget>
                      </item>
                      <item>
-                      <layout class="QHBoxLayout" name="horizontalLayout_98">
+                      <layout class="QVBoxLayout" name="verticalLayout_65">
                        <item>
                         <widget class="QLabel" name="label_130">
                          <property name="minimumSize">
@@ -5733,6 +5500,8 @@ QGroupBox::title {
                          <property name="font">
                           <font>
                            <pointsize>11</pointsize>
+                           <weight>75</weight>
+                           <bold>true</bold>
                           </font>
                          </property>
                          <property name="text">
@@ -5741,24 +5510,36 @@ QGroupBox::title {
                         </widget>
                        </item>
                        <item>
-                        <spacer name="horizontalSpacer_81">
-                         <property name="orientation">
-                          <enum>Qt::Horizontal</enum>
-                         </property>
-                         <property name="sizeHint" stdset="0">
-                          <size>
-                           <width>40</width>
-                           <height>20</height>
-                          </size>
-                         </property>
-                        </spacer>
-                       </item>
-                       <item>
                         <widget class="QGroupBox" name="groupBox_18">
                          <property name="title">
                           <string/>
                          </property>
                          <layout class="QHBoxLayout" name="horizontalLayout_86">
+                          <property name="leftMargin">
+                           <number>1</number>
+                          </property>
+                          <property name="topMargin">
+                           <number>1</number>
+                          </property>
+                          <property name="rightMargin">
+                           <number>1</number>
+                          </property>
+                          <property name="bottomMargin">
+                           <number>1</number>
+                          </property>
+                          <item>
+                           <spacer name="horizontalSpacer_81">
+                            <property name="orientation">
+                             <enum>Qt::Horizontal</enum>
+                            </property>
+                            <property name="sizeHint" stdset="0">
+                             <size>
+                              <width>40</width>
+                              <height>20</height>
+                             </size>
+                            </property>
+                           </spacer>
+                          </item>
                           <item>
                            <widget class="QRadioButton" name="rbUpperArmLid_OK">
                             <property name="sizePolicy">
@@ -5845,20 +5626,14 @@ QGroupBox::title {
                       </layout>
                      </item>
                      <item>
-                      <widget class="Line" name="line_30">
-                       <property name="frameShadow">
-                        <enum>QFrame::Plain</enum>
-                       </property>
-                       <property name="lineWidth">
-                        <number>3</number>
-                       </property>
+                      <widget class="Line" name="line_28">
                        <property name="orientation">
                         <enum>Qt::Horizontal</enum>
                        </property>
                       </widget>
                      </item>
                      <item>
-                      <layout class="QHBoxLayout" name="horizontalLayout_121">
+                      <layout class="QVBoxLayout" name="verticalLayout_66">
                        <item>
                         <widget class="QLabel" name="label_133">
                          <property name="minimumSize">
@@ -5870,6 +5645,8 @@ QGroupBox::title {
                          <property name="font">
                           <font>
                            <pointsize>11</pointsize>
+                           <weight>75</weight>
+                           <bold>true</bold>
                           </font>
                          </property>
                          <property name="text">
@@ -5878,24 +5655,36 @@ QGroupBox::title {
                         </widget>
                        </item>
                        <item>
-                        <spacer name="horizontalSpacer_90">
-                         <property name="orientation">
-                          <enum>Qt::Horizontal</enum>
-                         </property>
-                         <property name="sizeHint" stdset="0">
-                          <size>
-                           <width>40</width>
-                           <height>20</height>
-                          </size>
-                         </property>
-                        </spacer>
-                       </item>
-                       <item>
                         <widget class="QGroupBox" name="groupBox_53">
                          <property name="title">
                           <string/>
                          </property>
                          <layout class="QHBoxLayout" name="horizontalLayout_124">
+                          <property name="leftMargin">
+                           <number>1</number>
+                          </property>
+                          <property name="topMargin">
+                           <number>1</number>
+                          </property>
+                          <property name="rightMargin">
+                           <number>1</number>
+                          </property>
+                          <property name="bottomMargin">
+                           <number>1</number>
+                          </property>
+                          <item>
+                           <spacer name="horizontalSpacer_90">
+                            <property name="orientation">
+                             <enum>Qt::Horizontal</enum>
+                            </property>
+                            <property name="sizeHint" stdset="0">
+                             <size>
+                              <width>40</width>
+                              <height>20</height>
+                             </size>
+                            </property>
+                           </spacer>
+                          </item>
                           <item>
                            <widget class="QRadioButton" name="rbLowerArmHousingUpgrade_OK">
                             <property name="sizePolicy">
@@ -5982,20 +5771,14 @@ QGroupBox::title {
                       </layout>
                      </item>
                      <item>
-                      <widget class="Line" name="line_31">
-                       <property name="frameShadow">
-                        <enum>QFrame::Plain</enum>
-                       </property>
-                       <property name="lineWidth">
-                        <number>3</number>
-                       </property>
+                      <widget class="Line" name="line_29">
                        <property name="orientation">
                         <enum>Qt::Horizontal</enum>
                        </property>
                       </widget>
                      </item>
                      <item>
-                      <layout class="QHBoxLayout" name="horizontalLayout_99">
+                      <layout class="QVBoxLayout" name="verticalLayout_67">
                        <item>
                         <widget class="QLabel" name="label_132">
                          <property name="minimumSize">
@@ -6007,6 +5790,8 @@ QGroupBox::title {
                          <property name="font">
                           <font>
                            <pointsize>11</pointsize>
+                           <weight>75</weight>
+                           <bold>true</bold>
                           </font>
                          </property>
                          <property name="text">
@@ -6015,24 +5800,36 @@ QGroupBox::title {
                         </widget>
                        </item>
                        <item>
-                        <spacer name="horizontalSpacer_82">
-                         <property name="orientation">
-                          <enum>Qt::Horizontal</enum>
-                         </property>
-                         <property name="sizeHint" stdset="0">
-                          <size>
-                           <width>40</width>
-                           <height>20</height>
-                          </size>
-                         </property>
-                        </spacer>
-                       </item>
-                       <item>
                         <widget class="QGroupBox" name="groupBox_20">
                          <property name="title">
                           <string/>
                          </property>
                          <layout class="QHBoxLayout" name="horizontalLayout_87">
+                          <property name="leftMargin">
+                           <number>1</number>
+                          </property>
+                          <property name="topMargin">
+                           <number>1</number>
+                          </property>
+                          <property name="rightMargin">
+                           <number>1</number>
+                          </property>
+                          <property name="bottomMargin">
+                           <number>1</number>
+                          </property>
+                          <item>
+                           <spacer name="horizontalSpacer_82">
+                            <property name="orientation">
+                             <enum>Qt::Horizontal</enum>
+                            </property>
+                            <property name="sizeHint" stdset="0">
+                             <size>
+                              <width>40</width>
+                              <height>20</height>
+                             </size>
+                            </property>
+                           </spacer>
+                          </item>
                           <item>
                            <widget class="QRadioButton" name="rbLowerArmHousing_OK">
                             <property name="sizePolicy">
@@ -6119,20 +5916,14 @@ QGroupBox::title {
                       </layout>
                      </item>
                      <item>
-                      <widget class="Line" name="line_32">
-                       <property name="frameShadow">
-                        <enum>QFrame::Plain</enum>
-                       </property>
-                       <property name="lineWidth">
-                        <number>3</number>
-                       </property>
+                      <widget class="Line" name="line_30">
                        <property name="orientation">
                         <enum>Qt::Horizontal</enum>
                        </property>
                       </widget>
                      </item>
                      <item>
-                      <layout class="QHBoxLayout" name="horizontalLayout_100">
+                      <layout class="QVBoxLayout" name="verticalLayout_68">
                        <item>
                         <widget class="QLabel" name="label_153">
                          <property name="minimumSize">
@@ -6144,6 +5935,8 @@ QGroupBox::title {
                          <property name="font">
                           <font>
                            <pointsize>11</pointsize>
+                           <weight>75</weight>
+                           <bold>true</bold>
                           </font>
                          </property>
                          <property name="text">
@@ -6152,24 +5945,36 @@ QGroupBox::title {
                         </widget>
                        </item>
                        <item>
-                        <spacer name="horizontalSpacer_83">
-                         <property name="orientation">
-                          <enum>Qt::Horizontal</enum>
-                         </property>
-                         <property name="sizeHint" stdset="0">
-                          <size>
-                           <width>40</width>
-                           <height>20</height>
-                          </size>
-                         </property>
-                        </spacer>
-                       </item>
-                       <item>
                         <widget class="QGroupBox" name="groupBox_21">
                          <property name="title">
                           <string/>
                          </property>
                          <layout class="QHBoxLayout" name="horizontalLayout_88">
+                          <property name="leftMargin">
+                           <number>1</number>
+                          </property>
+                          <property name="topMargin">
+                           <number>1</number>
+                          </property>
+                          <property name="rightMargin">
+                           <number>1</number>
+                          </property>
+                          <property name="bottomMargin">
+                           <number>1</number>
+                          </property>
+                          <item>
+                           <spacer name="horizontalSpacer_83">
+                            <property name="orientation">
+                             <enum>Qt::Horizontal</enum>
+                            </property>
+                            <property name="sizeHint" stdset="0">
+                             <size>
+                              <width>40</width>
+                              <height>20</height>
+                             </size>
+                            </property>
+                           </spacer>
+                          </item>
                           <item>
                            <widget class="QRadioButton" name="rbLowerArmLid_OK">
                             <property name="sizePolicy">
@@ -6256,20 +6061,14 @@ QGroupBox::title {
                       </layout>
                      </item>
                      <item>
-                      <widget class="Line" name="line_49">
-                       <property name="frameShadow">
-                        <enum>QFrame::Plain</enum>
-                       </property>
-                       <property name="lineWidth">
-                        <number>3</number>
-                       </property>
+                      <widget class="Line" name="line_31">
                        <property name="orientation">
                         <enum>Qt::Horizontal</enum>
                        </property>
                       </widget>
                      </item>
                      <item>
-                      <layout class="QHBoxLayout" name="horizontalLayout_102">
+                      <layout class="QVBoxLayout" name="verticalLayout_69">
                        <item>
                         <widget class="QLabel" name="label_154">
                          <property name="minimumSize">
@@ -6281,6 +6080,8 @@ QGroupBox::title {
                          <property name="font">
                           <font>
                            <pointsize>11</pointsize>
+                           <weight>75</weight>
+                           <bold>true</bold>
                           </font>
                          </property>
                          <property name="text">
@@ -6289,24 +6090,36 @@ QGroupBox::title {
                         </widget>
                        </item>
                        <item>
-                        <spacer name="horizontalSpacer_85">
-                         <property name="orientation">
-                          <enum>Qt::Horizontal</enum>
-                         </property>
-                         <property name="sizeHint" stdset="0">
-                          <size>
-                           <width>40</width>
-                           <height>20</height>
-                          </size>
-                         </property>
-                        </spacer>
-                       </item>
-                       <item>
                         <widget class="QGroupBox" name="groupBox_23">
                          <property name="title">
                           <string/>
                          </property>
                          <layout class="QHBoxLayout" name="horizontalLayout_89">
+                          <property name="leftMargin">
+                           <number>1</number>
+                          </property>
+                          <property name="topMargin">
+                           <number>1</number>
+                          </property>
+                          <property name="rightMargin">
+                           <number>1</number>
+                          </property>
+                          <property name="bottomMargin">
+                           <number>1</number>
+                          </property>
+                          <item>
+                           <spacer name="horizontalSpacer_85">
+                            <property name="orientation">
+                             <enum>Qt::Horizontal</enum>
+                            </property>
+                            <property name="sizeHint" stdset="0">
+                             <size>
+                              <width>40</width>
+                              <height>20</height>
+                             </size>
+                            </property>
+                           </spacer>
+                          </item>
                           <item>
                            <widget class="QRadioButton" name="rbArmDriveInterface_OK">
                             <property name="sizePolicy">
@@ -6393,20 +6206,14 @@ QGroupBox::title {
                       </layout>
                      </item>
                      <item>
-                      <widget class="Line" name="line_50">
-                       <property name="frameShadow">
-                        <enum>QFrame::Plain</enum>
-                       </property>
-                       <property name="lineWidth">
-                        <number>3</number>
-                       </property>
+                      <widget class="Line" name="line_32">
                        <property name="orientation">
                         <enum>Qt::Horizontal</enum>
                        </property>
                       </widget>
                      </item>
                      <item>
-                      <layout class="QHBoxLayout" name="horizontalLayout_103">
+                      <layout class="QVBoxLayout" name="verticalLayout_70">
                        <item>
                         <widget class="QLabel" name="label_155">
                          <property name="minimumSize">
@@ -6418,6 +6225,8 @@ QGroupBox::title {
                          <property name="font">
                           <font>
                            <pointsize>11</pointsize>
+                           <weight>75</weight>
+                           <bold>true</bold>
                           </font>
                          </property>
                          <property name="text">
@@ -6426,24 +6235,36 @@ QGroupBox::title {
                         </widget>
                        </item>
                        <item>
-                        <spacer name="horizontalSpacer_86">
-                         <property name="orientation">
-                          <enum>Qt::Horizontal</enum>
-                         </property>
-                         <property name="sizeHint" stdset="0">
-                          <size>
-                           <width>40</width>
-                           <height>20</height>
-                          </size>
-                         </property>
-                        </spacer>
-                       </item>
-                       <item>
                         <widget class="QGroupBox" name="groupBox_26">
                          <property name="title">
                           <string/>
                          </property>
                          <layout class="QHBoxLayout" name="horizontalLayout_90">
+                          <property name="leftMargin">
+                           <number>1</number>
+                          </property>
+                          <property name="topMargin">
+                           <number>1</number>
+                          </property>
+                          <property name="rightMargin">
+                           <number>1</number>
+                          </property>
+                          <property name="bottomMargin">
+                           <number>1</number>
+                          </property>
+                          <item>
+                           <spacer name="horizontalSpacer_86">
+                            <property name="orientation">
+                             <enum>Qt::Horizontal</enum>
+                            </property>
+                            <property name="sizeHint" stdset="0">
+                             <size>
+                              <width>40</width>
+                              <height>20</height>
+                             </size>
+                            </property>
+                           </spacer>
+                          </item>
                           <item>
                            <widget class="QRadioButton" name="rbArmGripperInterfaceScara_OK">
                             <property name="sizePolicy">
@@ -6530,20 +6351,14 @@ QGroupBox::title {
                       </layout>
                      </item>
                      <item>
-                      <widget class="Line" name="line_53">
-                       <property name="frameShadow">
-                        <enum>QFrame::Plain</enum>
-                       </property>
-                       <property name="lineWidth">
-                        <number>3</number>
-                       </property>
+                      <widget class="Line" name="line_49">
                        <property name="orientation">
                         <enum>Qt::Horizontal</enum>
                        </property>
                       </widget>
                      </item>
                      <item>
-                      <layout class="QHBoxLayout" name="horizontalLayout_113">
+                      <layout class="QVBoxLayout" name="verticalLayout_71">
                        <item>
                         <widget class="QLabel" name="label_170">
                          <property name="minimumSize">
@@ -6555,6 +6370,8 @@ QGroupBox::title {
                          <property name="font">
                           <font>
                            <pointsize>11</pointsize>
+                           <weight>75</weight>
+                           <bold>true</bold>
                           </font>
                          </property>
                          <property name="text">
@@ -6563,24 +6380,36 @@ QGroupBox::title {
                         </widget>
                        </item>
                        <item>
-                        <spacer name="horizontalSpacer_87">
-                         <property name="orientation">
-                          <enum>Qt::Horizontal</enum>
-                         </property>
-                         <property name="sizeHint" stdset="0">
-                          <size>
-                           <width>40</width>
-                           <height>20</height>
-                          </size>
-                         </property>
-                        </spacer>
-                       </item>
-                       <item>
                         <widget class="QGroupBox" name="groupBox_34">
                          <property name="title">
                           <string/>
                          </property>
                          <layout class="QHBoxLayout" name="horizontalLayout_91">
+                          <property name="leftMargin">
+                           <number>1</number>
+                          </property>
+                          <property name="topMargin">
+                           <number>1</number>
+                          </property>
+                          <property name="rightMargin">
+                           <number>1</number>
+                          </property>
+                          <property name="bottomMargin">
+                           <number>1</number>
+                          </property>
+                          <item>
+                           <spacer name="horizontalSpacer_87">
+                            <property name="orientation">
+                             <enum>Qt::Horizontal</enum>
+                            </property>
+                            <property name="sizeHint" stdset="0">
+                             <size>
+                              <width>40</width>
+                              <height>20</height>
+                             </size>
+                            </property>
+                           </spacer>
+                          </item>
                           <item>
                            <widget class="QRadioButton" name="rbArmGripperInterfaceNT_OK">
                             <property name="sizePolicy">
@@ -6667,20 +6496,14 @@ QGroupBox::title {
                       </layout>
                      </item>
                      <item>
-                      <widget class="Line" name="line_54">
-                       <property name="frameShadow">
-                        <enum>QFrame::Plain</enum>
-                       </property>
-                       <property name="lineWidth">
-                        <number>3</number>
-                       </property>
+                      <widget class="Line" name="line_50">
                        <property name="orientation">
                         <enum>Qt::Horizontal</enum>
                        </property>
                       </widget>
                      </item>
                      <item>
-                      <layout class="QHBoxLayout" name="horizontalLayout_122">
+                      <layout class="QVBoxLayout" name="verticalLayout_72">
                        <item>
                         <widget class="QLabel" name="label_171">
                          <property name="minimumSize">
@@ -6692,6 +6515,8 @@ QGroupBox::title {
                          <property name="font">
                           <font>
                            <pointsize>11</pointsize>
+                           <weight>75</weight>
+                           <bold>true</bold>
                           </font>
                          </property>
                          <property name="text">
@@ -6700,24 +6525,36 @@ QGroupBox::title {
                         </widget>
                        </item>
                        <item>
-                        <spacer name="horizontalSpacer_89">
-                         <property name="orientation">
-                          <enum>Qt::Horizontal</enum>
-                         </property>
-                         <property name="sizeHint" stdset="0">
-                          <size>
-                           <width>40</width>
-                           <height>20</height>
-                          </size>
-                         </property>
-                        </spacer>
-                       </item>
-                       <item>
                         <widget class="QGroupBox" name="groupBox_45">
                          <property name="title">
                           <string/>
                          </property>
                          <layout class="QHBoxLayout" name="horizontalLayout_92">
+                          <property name="leftMargin">
+                           <number>1</number>
+                          </property>
+                          <property name="topMargin">
+                           <number>1</number>
+                          </property>
+                          <property name="rightMargin">
+                           <number>1</number>
+                          </property>
+                          <property name="bottomMargin">
+                           <number>1</number>
+                          </property>
+                          <item>
+                           <spacer name="horizontalSpacer_89">
+                            <property name="orientation">
+                             <enum>Qt::Horizontal</enum>
+                            </property>
+                            <property name="sizeHint" stdset="0">
+                             <size>
+                              <width>40</width>
+                              <height>20</height>
+                             </size>
+                            </property>
+                           </spacer>
+                          </item>
                           <item>
                            <widget class="QRadioButton" name="rbBeltReel_OK">
                             <property name="sizePolicy">
@@ -6804,20 +6641,14 @@ QGroupBox::title {
                       </layout>
                      </item>
                      <item>
-                      <widget class="Line" name="line_57">
-                       <property name="frameShadow">
-                        <enum>QFrame::Plain</enum>
-                       </property>
-                       <property name="lineWidth">
-                        <number>3</number>
-                       </property>
+                      <widget class="Line" name="line_53">
                        <property name="orientation">
                         <enum>Qt::Horizontal</enum>
                        </property>
                       </widget>
                      </item>
                      <item>
-                      <layout class="QHBoxLayout" name="horizontalLayout_123">
+                      <layout class="QVBoxLayout" name="verticalLayout_73">
                        <item>
                         <widget class="QLabel" name="label_172">
                          <property name="minimumSize">
@@ -6829,6 +6660,8 @@ QGroupBox::title {
                          <property name="font">
                           <font>
                            <pointsize>11</pointsize>
+                           <weight>75</weight>
+                           <bold>true</bold>
                           </font>
                          </property>
                          <property name="text">
@@ -6837,24 +6670,36 @@ QGroupBox::title {
                         </widget>
                        </item>
                        <item>
-                        <spacer name="horizontalSpacer_88">
-                         <property name="orientation">
-                          <enum>Qt::Horizontal</enum>
-                         </property>
-                         <property name="sizeHint" stdset="0">
-                          <size>
-                           <width>40</width>
-                           <height>20</height>
-                          </size>
-                         </property>
-                        </spacer>
-                       </item>
-                       <item>
                         <widget class="QGroupBox" name="groupBox_51">
                          <property name="title">
                           <string/>
                          </property>
                          <layout class="QHBoxLayout" name="horizontalLayout_93">
+                          <property name="leftMargin">
+                           <number>1</number>
+                          </property>
+                          <property name="topMargin">
+                           <number>1</number>
+                          </property>
+                          <property name="rightMargin">
+                           <number>1</number>
+                          </property>
+                          <property name="bottomMargin">
+                           <number>1</number>
+                          </property>
+                          <item>
+                           <spacer name="horizontalSpacer_88">
+                            <property name="orientation">
+                             <enum>Qt::Horizontal</enum>
+                            </property>
+                            <property name="sizeHint" stdset="0">
+                             <size>
+                              <width>40</width>
+                              <height>20</height>
+                             </size>
+                            </property>
+                           </spacer>
+                          </item>
                           <item>
                            <widget class="QRadioButton" name="rbTorxScrew_OK">
                             <property name="sizePolicy">
@@ -6938,23 +6783,17 @@ QGroupBox::title {
                          </layout>
                         </widget>
                        </item>
+                       <item>
+                        <widget class="Line" name="line_54">
+                         <property name="orientation">
+                          <enum>Qt::Horizontal</enum>
+                         </property>
+                        </widget>
+                       </item>
                       </layout>
                      </item>
                      <item>
-                      <widget class="Line" name="line_58">
-                       <property name="frameShadow">
-                        <enum>QFrame::Plain</enum>
-                       </property>
-                       <property name="lineWidth">
-                        <number>3</number>
-                       </property>
-                       <property name="orientation">
-                        <enum>Qt::Horizontal</enum>
-                       </property>
-                      </widget>
-                     </item>
-                     <item>
-                      <layout class="QHBoxLayout" name="horizontalLayout_101">
+                      <layout class="QVBoxLayout" name="verticalLayout_62">
                        <item>
                         <widget class="QLabel" name="label_173">
                          <property name="minimumSize">
@@ -6966,6 +6805,8 @@ QGroupBox::title {
                          <property name="font">
                           <font>
                            <pointsize>11</pointsize>
+                           <weight>75</weight>
+                           <bold>true</bold>
                           </font>
                          </property>
                          <property name="text">
@@ -6974,24 +6815,36 @@ QGroupBox::title {
                         </widget>
                        </item>
                        <item>
-                        <spacer name="horizontalSpacer_84">
-                         <property name="orientation">
-                          <enum>Qt::Horizontal</enum>
-                         </property>
-                         <property name="sizeHint" stdset="0">
-                          <size>
-                           <width>40</width>
-                           <height>20</height>
-                          </size>
-                         </property>
-                        </spacer>
-                       </item>
-                       <item>
                         <widget class="QGroupBox" name="groupBox_52">
                          <property name="title">
                           <string/>
                          </property>
                          <layout class="QHBoxLayout" name="horizontalLayout_95">
+                          <property name="leftMargin">
+                           <number>1</number>
+                          </property>
+                          <property name="topMargin">
+                           <number>1</number>
+                          </property>
+                          <property name="rightMargin">
+                           <number>1</number>
+                          </property>
+                          <property name="bottomMargin">
+                           <number>1</number>
+                          </property>
+                          <item>
+                           <spacer name="horizontalSpacer_84">
+                            <property name="orientation">
+                             <enum>Qt::Horizontal</enum>
+                            </property>
+                            <property name="sizeHint" stdset="0">
+                             <size>
+                              <width>40</width>
+                              <height>20</height>
+                             </size>
+                            </property>
+                           </spacer>
+                          </item>
                           <item>
                            <widget class="QRadioButton" name="rbBearings_OK">
                             <property name="sizePolicy">
@@ -7082,6 +6935,104 @@ QGroupBox::title {
                   </layout>
                  </widget>
                 </widget>
+               </item>
+               <item>
+                <layout class="QVBoxLayout" name="verticalLayout_43">
+                 <item>
+                  <widget class="QFrame" name="frame">
+                   <property name="frameShape">
+                    <enum>QFrame::Box</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <layout class="QVBoxLayout" name="verticalLayout_74">
+                    <item>
+                     <widget class="QLabel" name="label_101">
+                      <property name="font">
+                       <font>
+                        <pointsize>11</pointsize>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string>Deliver to</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QCheckBox" name="cbArmTW">
+                      <property name="font">
+                       <font>
+                        <pointsize>11</pointsize>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string>TW</string>
+                      </property>
+                      <property name="checked">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QCheckBox" name="cbArmEU">
+                      <property name="font">
+                       <font>
+                        <pointsize>11</pointsize>
+                        <weight>50</weight>
+                        <bold>false</bold>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string>EU</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item>
+                  <spacer name="verticalSpacer_2">
+                   <property name="orientation">
+                    <enum>Qt::Vertical</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>20</width>
+                     <height>40</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_108">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_107">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>343</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
                </item>
               </layout>
              </widget>
@@ -7804,7 +7755,7 @@ QCheckBox{font: 10.5pt &quot;MS Shell Dlg 2&quot;;}</string>
                       <rect>
                        <x>0</x>
                        <y>0</y>
-                       <width>667</width>
+                       <width>651</width>
                        <height>680</height>
                       </rect>
                      </property>
@@ -10826,258 +10777,11 @@ QGroupBox::title {
               <zorder>groupBox_DMUpperPanel</zorder>
               <zorder>line_DM</zorder>
              </widget>
-             <widget class="QWidget" name="tab_5">
+             <widget class="QWidget" name="tab_DMRepair">
               <attribute name="title">
                <string>Repair-DM</string>
               </attribute>
-              <layout class="QHBoxLayout" name="horizontalLayout_149">
-               <item>
-                <layout class="QVBoxLayout" name="verticalLayout_46">
-                 <item>
-                  <widget class="QLabel" name="label_140">
-                   <property name="font">
-                    <font>
-                     <pointsize>11</pointsize>
-                    </font>
-                   </property>
-                   <property name="text">
-                    <string>General Information</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="Line" name="line_74">
-                   <property name="orientation">
-                    <enum>Qt::Horizontal</enum>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <layout class="QHBoxLayout" name="horizontalLayout_145">
-                   <item>
-                    <widget class="QLabel" name="label_142">
-                     <property name="font">
-                      <font>
-                       <pointsize>11</pointsize>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>Unit 12NC received:</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <spacer name="horizontalSpacer_115">
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                     <property name="sizeType">
-                      <enum>QSizePolicy::Preferred</enum>
-                     </property>
-                     <property name="sizeHint" stdset="0">
-                      <size>
-                       <width>40</width>
-                       <height>20</height>
-                      </size>
-                     </property>
-                    </spacer>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_144">
-                     <property name="font">
-                      <font>
-                       <pointsize>11</pointsize>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>TextLabel</string>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
-                 </item>
-                 <item>
-                  <layout class="QHBoxLayout" name="horizontalLayout_146">
-                   <item>
-                    <widget class="QLabel" name="label_146">
-                     <property name="font">
-                      <font>
-                       <pointsize>11</pointsize>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>Unit serial number:</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <spacer name="horizontalSpacer_116">
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                     <property name="sizeType">
-                      <enum>QSizePolicy::Preferred</enum>
-                     </property>
-                     <property name="sizeHint" stdset="0">
-                      <size>
-                       <width>40</width>
-                       <height>20</height>
-                      </size>
-                     </property>
-                    </spacer>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_148">
-                     <property name="font">
-                      <font>
-                       <pointsize>11</pointsize>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>TextLabel</string>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
-                 </item>
-                 <item>
-                  <widget class="QLabel" name="label_150">
-                   <property name="font">
-                    <font>
-                     <pointsize>11</pointsize>
-                    </font>
-                   </property>
-                   <property name="text">
-                    <string>Specific Information</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="Line" name="line_75">
-                   <property name="orientation">
-                    <enum>Qt::Horizontal</enum>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <layout class="QHBoxLayout" name="horizontalLayout_147">
-                   <item>
-                    <widget class="QLabel" name="label_151">
-                     <property name="font">
-                      <font>
-                       <pointsize>11</pointsize>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>DM Serial Number</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <spacer name="horizontalSpacer_117">
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                     <property name="sizeType">
-                      <enum>QSizePolicy::Preferred</enum>
-                     </property>
-                     <property name="sizeHint" stdset="0">
-                      <size>
-                       <width>40</width>
-                       <height>20</height>
-                      </size>
-                     </property>
-                    </spacer>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_152">
-                     <property name="font">
-                      <font>
-                       <pointsize>11</pointsize>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>TextLabel</string>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
-                 </item>
-                 <item>
-                  <layout class="QHBoxLayout" name="horizontalLayout_148">
-                   <item>
-                    <widget class="QLabel" name="label_156">
-                     <property name="font">
-                      <font>
-                       <pointsize>11</pointsize>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>DM First delivery :</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <spacer name="horizontalSpacer_118">
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                     <property name="sizeType">
-                      <enum>QSizePolicy::Preferred</enum>
-                     </property>
-                     <property name="sizeHint" stdset="0">
-                      <size>
-                       <width>40</width>
-                       <height>20</height>
-                      </size>
-                     </property>
-                    </spacer>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_157">
-                     <property name="font">
-                      <font>
-                       <pointsize>11</pointsize>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>TextLabel</string>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
-                 </item>
-                 <item>
-                  <spacer name="verticalSpacer_5">
-                   <property name="orientation">
-                    <enum>Qt::Vertical</enum>
-                   </property>
-                   <property name="sizeHint" stdset="0">
-                    <size>
-                     <width>20</width>
-                     <height>40</height>
-                    </size>
-                   </property>
-                  </spacer>
-                 </item>
-                </layout>
-               </item>
-               <item>
-                <spacer name="horizontalSpacer_119">
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                 <property name="sizeType">
-                  <enum>QSizePolicy::Fixed</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>200</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
+              <layout class="QHBoxLayout" name="horizontalLayout_96">
                <item>
                 <widget class="QScrollArea" name="scrollArea_2">
                  <property name="verticalScrollBarPolicy">
@@ -11094,15 +10798,15 @@ QGroupBox::title {
                    <rect>
                     <x>0</x>
                     <y>0</y>
-                    <width>647</width>
-                    <height>659</height>
+                    <width>407</width>
+                    <height>646</height>
                    </rect>
                   </property>
                   <layout class="QGridLayout" name="gridLayout_7">
-                   <item row="0" column="0">
-                    <layout class="QVBoxLayout" name="verticalLayout_11">
+                   <item row="1" column="1">
+                    <layout class="QVBoxLayout" name="verticalLayout_57">
                      <item>
-                      <layout class="QHBoxLayout" name="horizontalLayout_127">
+                      <layout class="QVBoxLayout" name="verticalLayout_44">
                        <item>
                         <widget class="QLabel" name="label_143">
                          <property name="minimumSize">
@@ -11114,6 +10818,8 @@ QGroupBox::title {
                          <property name="font">
                           <font>
                            <pointsize>11</pointsize>
+                           <weight>75</weight>
+                           <bold>true</bold>
                           </font>
                          </property>
                          <property name="text">
@@ -11122,24 +10828,36 @@ QGroupBox::title {
                         </widget>
                        </item>
                        <item>
-                        <spacer name="horizontalSpacer_92">
-                         <property name="orientation">
-                          <enum>Qt::Horizontal</enum>
-                         </property>
-                         <property name="sizeHint" stdset="0">
-                          <size>
-                           <width>40</width>
-                           <height>20</height>
-                          </size>
-                         </property>
-                        </spacer>
-                       </item>
-                       <item>
                         <widget class="QGroupBox" name="groupBox_54">
                          <property name="title">
                           <string/>
                          </property>
                          <layout class="QHBoxLayout" name="horizontalLayout_128">
+                          <property name="leftMargin">
+                           <number>1</number>
+                          </property>
+                          <property name="topMargin">
+                           <number>1</number>
+                          </property>
+                          <property name="rightMargin">
+                           <number>1</number>
+                          </property>
+                          <property name="bottomMargin">
+                           <number>1</number>
+                          </property>
+                          <item>
+                           <spacer name="horizontalSpacer_92">
+                            <property name="orientation">
+                             <enum>Qt::Horizontal</enum>
+                            </property>
+                            <property name="sizeHint" stdset="0">
+                             <size>
+                              <width>40</width>
+                              <height>20</height>
+                             </size>
+                            </property>
+                           </spacer>
+                          </item>
                           <item>
                            <widget class="QRadioButton" name="rbDMLikaMotor_OK">
                             <property name="sizePolicy">
@@ -11227,19 +10945,13 @@ QGroupBox::title {
                      </item>
                      <item>
                       <widget class="Line" name="line_60">
-                       <property name="styleSheet">
-                        <string notr="true">background-color: rgb(0, 0, 0);</string>
-                       </property>
-                       <property name="frameShadow">
-                        <enum>QFrame::Plain</enum>
-                       </property>
                        <property name="orientation">
                         <enum>Qt::Horizontal</enum>
                        </property>
                       </widget>
                      </item>
                      <item>
-                      <layout class="QHBoxLayout" name="horizontalLayout_129">
+                      <layout class="QVBoxLayout" name="verticalLayout_58">
                        <item>
                         <widget class="QLabel" name="label_145">
                          <property name="minimumSize">
@@ -11251,6 +10963,8 @@ QGroupBox::title {
                          <property name="font">
                           <font>
                            <pointsize>11</pointsize>
+                           <weight>75</weight>
+                           <bold>true</bold>
                           </font>
                          </property>
                          <property name="text">
@@ -11259,24 +10973,36 @@ QGroupBox::title {
                         </widget>
                        </item>
                        <item>
-                        <spacer name="horizontalSpacer_93">
-                         <property name="orientation">
-                          <enum>Qt::Horizontal</enum>
-                         </property>
-                         <property name="sizeHint" stdset="0">
-                          <size>
-                           <width>40</width>
-                           <height>20</height>
-                          </size>
-                         </property>
-                        </spacer>
-                       </item>
-                       <item>
                         <widget class="QGroupBox" name="groupBox_57">
                          <property name="title">
                           <string/>
                          </property>
                          <layout class="QHBoxLayout" name="horizontalLayout_130">
+                          <property name="leftMargin">
+                           <number>1</number>
+                          </property>
+                          <property name="topMargin">
+                           <number>1</number>
+                          </property>
+                          <property name="rightMargin">
+                           <number>1</number>
+                          </property>
+                          <property name="bottomMargin">
+                           <number>1</number>
+                          </property>
+                          <item>
+                           <spacer name="horizontalSpacer_93">
+                            <property name="orientation">
+                             <enum>Qt::Horizontal</enum>
+                            </property>
+                            <property name="sizeHint" stdset="0">
+                             <size>
+                              <width>40</width>
+                              <height>20</height>
+                             </size>
+                            </property>
+                           </spacer>
+                          </item>
                           <item>
                            <widget class="QRadioButton" name="rbCableHood_OK">
                             <property name="sizePolicy">
@@ -11364,19 +11090,13 @@ QGroupBox::title {
                      </item>
                      <item>
                       <widget class="Line" name="line_61">
-                       <property name="styleSheet">
-                        <string notr="true">background-color: rgb(0, 0, 0);</string>
-                       </property>
-                       <property name="frameShadow">
-                        <enum>QFrame::Plain</enum>
-                       </property>
                        <property name="orientation">
                         <enum>Qt::Horizontal</enum>
                        </property>
                       </widget>
                      </item>
                      <item>
-                      <layout class="QHBoxLayout" name="horizontalLayout_133">
+                      <layout class="QVBoxLayout" name="verticalLayout_59">
                        <item>
                         <widget class="QLabel" name="label_147">
                          <property name="minimumSize">
@@ -11388,6 +11108,8 @@ QGroupBox::title {
                          <property name="font">
                           <font>
                            <pointsize>11</pointsize>
+                           <weight>75</weight>
+                           <bold>true</bold>
                           </font>
                          </property>
                          <property name="text">
@@ -11396,24 +11118,36 @@ QGroupBox::title {
                         </widget>
                        </item>
                        <item>
-                        <spacer name="horizontalSpacer_95">
-                         <property name="orientation">
-                          <enum>Qt::Horizontal</enum>
-                         </property>
-                         <property name="sizeHint" stdset="0">
-                          <size>
-                           <width>40</width>
-                           <height>20</height>
-                          </size>
-                         </property>
-                        </spacer>
-                       </item>
-                       <item>
                         <widget class="QGroupBox" name="groupBox_60">
                          <property name="title">
                           <string/>
                          </property>
                          <layout class="QHBoxLayout" name="horizontalLayout_134">
+                          <property name="leftMargin">
+                           <number>1</number>
+                          </property>
+                          <property name="topMargin">
+                           <number>1</number>
+                          </property>
+                          <property name="rightMargin">
+                           <number>1</number>
+                          </property>
+                          <property name="bottomMargin">
+                           <number>1</number>
+                          </property>
+                          <item>
+                           <spacer name="horizontalSpacer_95">
+                            <property name="orientation">
+                             <enum>Qt::Horizontal</enum>
+                            </property>
+                            <property name="sizeHint" stdset="0">
+                             <size>
+                              <width>40</width>
+                              <height>20</height>
+                             </size>
+                            </property>
+                           </spacer>
+                          </item>
                           <item>
                            <widget class="QRadioButton" name="rbDMHousing_OK">
                             <property name="sizePolicy">
@@ -11501,19 +11235,13 @@ QGroupBox::title {
                      </item>
                      <item>
                       <widget class="Line" name="line_63">
-                       <property name="styleSheet">
-                        <string notr="true">background-color: rgb(0, 0, 0);</string>
-                       </property>
-                       <property name="frameShadow">
-                        <enum>QFrame::Plain</enum>
-                       </property>
                        <property name="orientation">
                         <enum>Qt::Horizontal</enum>
                        </property>
                       </widget>
                      </item>
                      <item>
-                      <layout class="QHBoxLayout" name="horizontalLayout_135">
+                      <layout class="QVBoxLayout" name="verticalLayout_60">
                        <item>
                         <widget class="QLabel" name="label_149">
                          <property name="minimumSize">
@@ -11525,6 +11253,8 @@ QGroupBox::title {
                          <property name="font">
                           <font>
                            <pointsize>11</pointsize>
+                           <weight>75</weight>
+                           <bold>true</bold>
                           </font>
                          </property>
                          <property name="text">
@@ -11533,24 +11263,36 @@ QGroupBox::title {
                         </widget>
                        </item>
                        <item>
-                        <spacer name="horizontalSpacer_96">
-                         <property name="orientation">
-                          <enum>Qt::Horizontal</enum>
-                         </property>
-                         <property name="sizeHint" stdset="0">
-                          <size>
-                           <width>40</width>
-                           <height>20</height>
-                          </size>
-                         </property>
-                        </spacer>
-                       </item>
-                       <item>
                         <widget class="QGroupBox" name="groupBox_61">
                          <property name="title">
                           <string/>
                          </property>
                          <layout class="QHBoxLayout" name="horizontalLayout_136">
+                          <property name="leftMargin">
+                           <number>1</number>
+                          </property>
+                          <property name="topMargin">
+                           <number>1</number>
+                          </property>
+                          <property name="rightMargin">
+                           <number>1</number>
+                          </property>
+                          <property name="bottomMargin">
+                           <number>1</number>
+                          </property>
+                          <item>
+                           <spacer name="horizontalSpacer_96">
+                            <property name="orientation">
+                             <enum>Qt::Horizontal</enum>
+                            </property>
+                            <property name="sizeHint" stdset="0">
+                             <size>
+                              <width>40</width>
+                              <height>20</height>
+                             </size>
+                            </property>
+                           </spacer>
+                          </item>
                           <item>
                            <widget class="QRadioButton" name="rbDMLid_OK">
                             <property name="sizePolicy">
@@ -11638,19 +11380,13 @@ QGroupBox::title {
                      </item>
                      <item>
                       <widget class="Line" name="line_64">
-                       <property name="styleSheet">
-                        <string notr="true">background-color: rgb(0, 0, 0);</string>
-                       </property>
-                       <property name="frameShadow">
-                        <enum>QFrame::Plain</enum>
-                       </property>
                        <property name="orientation">
                         <enum>Qt::Horizontal</enum>
                        </property>
                       </widget>
                      </item>
                      <item>
-                      <layout class="QHBoxLayout" name="horizontalLayout_137">
+                      <layout class="QVBoxLayout" name="verticalLayout_61">
                        <item>
                         <widget class="QLabel" name="label_168">
                          <property name="minimumSize">
@@ -11662,6 +11398,8 @@ QGroupBox::title {
                          <property name="font">
                           <font>
                            <pointsize>11</pointsize>
+                           <weight>75</weight>
+                           <bold>true</bold>
                           </font>
                          </property>
                          <property name="text">
@@ -11670,24 +11408,36 @@ QGroupBox::title {
                         </widget>
                        </item>
                        <item>
-                        <spacer name="horizontalSpacer_97">
-                         <property name="orientation">
-                          <enum>Qt::Horizontal</enum>
-                         </property>
-                         <property name="sizeHint" stdset="0">
-                          <size>
-                           <width>40</width>
-                           <height>20</height>
-                          </size>
-                         </property>
-                        </spacer>
-                       </item>
-                       <item>
                         <widget class="QGroupBox" name="groupBox_62">
                          <property name="title">
                           <string/>
                          </property>
                          <layout class="QHBoxLayout" name="horizontalLayout_138">
+                          <property name="leftMargin">
+                           <number>1</number>
+                          </property>
+                          <property name="topMargin">
+                           <number>1</number>
+                          </property>
+                          <property name="rightMargin">
+                           <number>1</number>
+                          </property>
+                          <property name="bottomMargin">
+                           <number>1</number>
+                          </property>
+                          <item>
+                           <spacer name="horizontalSpacer_97">
+                            <property name="orientation">
+                             <enum>Qt::Horizontal</enum>
+                            </property>
+                            <property name="sizeHint" stdset="0">
+                             <size>
+                              <width>40</width>
+                              <height>20</height>
+                             </size>
+                            </property>
+                           </spacer>
+                          </item>
                           <item>
                            <widget class="QRadioButton" name="rbSlipRing_OK">
                             <property name="sizePolicy">
@@ -11775,19 +11525,13 @@ QGroupBox::title {
                      </item>
                      <item>
                       <widget class="Line" name="line_65">
-                       <property name="styleSheet">
-                        <string notr="true">background-color: rgb(0, 0, 0);</string>
-                       </property>
-                       <property name="frameShadow">
-                        <enum>QFrame::Plain</enum>
-                       </property>
                        <property name="orientation">
                         <enum>Qt::Horizontal</enum>
                        </property>
                       </widget>
                      </item>
                      <item>
-                      <layout class="QHBoxLayout" name="horizontalLayout_131">
+                      <layout class="QVBoxLayout" name="verticalLayout_56">
                        <item>
                         <widget class="QLabel" name="label_169">
                          <property name="minimumSize">
@@ -11799,6 +11543,8 @@ QGroupBox::title {
                          <property name="font">
                           <font>
                            <pointsize>11</pointsize>
+                           <weight>75</weight>
+                           <bold>true</bold>
                           </font>
                          </property>
                          <property name="text">
@@ -11807,24 +11553,36 @@ QGroupBox::title {
                         </widget>
                        </item>
                        <item>
-                        <spacer name="horizontalSpacer_94">
-                         <property name="orientation">
-                          <enum>Qt::Horizontal</enum>
-                         </property>
-                         <property name="sizeHint" stdset="0">
-                          <size>
-                           <width>40</width>
-                           <height>20</height>
-                          </size>
-                         </property>
-                        </spacer>
-                       </item>
-                       <item>
                         <widget class="QGroupBox" name="groupBox_59">
                          <property name="title">
                           <string/>
                          </property>
                          <layout class="QHBoxLayout" name="horizontalLayout_132">
+                          <property name="leftMargin">
+                           <number>1</number>
+                          </property>
+                          <property name="topMargin">
+                           <number>1</number>
+                          </property>
+                          <property name="rightMargin">
+                           <number>1</number>
+                          </property>
+                          <property name="bottomMargin">
+                           <number>1</number>
+                          </property>
+                          <item>
+                           <spacer name="horizontalSpacer_94">
+                            <property name="orientation">
+                             <enum>Qt::Horizontal</enum>
+                            </property>
+                            <property name="sizeHint" stdset="0">
+                             <size>
+                              <width>40</width>
+                              <height>20</height>
+                             </size>
+                            </property>
+                           </spacer>
+                          </item>
                           <item>
                            <widget class="QRadioButton" name="rbHollowShaft_OK">
                             <property name="sizePolicy">
@@ -11912,8 +11670,8 @@ QGroupBox::title {
                      </item>
                     </layout>
                    </item>
-                   <item row="1" column="0">
-                    <spacer name="verticalSpacer">
+                   <item row="2" column="1">
+                    <spacer name="verticalSpacer_5">
                      <property name="orientation">
                       <enum>Qt::Vertical</enum>
                      </property>
@@ -11928,6 +11686,102 @@ QGroupBox::title {
                   </layout>
                  </widget>
                 </widget>
+               </item>
+               <item>
+                <layout class="QVBoxLayout" name="verticalLayout_77">
+                 <item>
+                  <widget class="QFrame" name="frame_2">
+                   <property name="frameShape">
+                    <enum>QFrame::Box</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <layout class="QVBoxLayout" name="verticalLayout_75">
+                    <item>
+                     <widget class="QLabel" name="label_123">
+                      <property name="font">
+                       <font>
+                        <pointsize>11</pointsize>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string>Deliver to</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QCheckBox" name="cbDMTW">
+                      <property name="font">
+                       <font>
+                        <pointsize>11</pointsize>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string>TW</string>
+                      </property>
+                      <property name="checked">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QCheckBox" name="cbDMEU">
+                      <property name="font">
+                       <font>
+                        <pointsize>11</pointsize>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string>EU</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item>
+                  <spacer name="verticalSpacer_6">
+                   <property name="orientation">
+                    <enum>Qt::Vertical</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>20</width>
+                     <height>40</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_111">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>227</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_112">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>336</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
                </item>
               </layout>
              </widget>
@@ -12645,7 +12499,7 @@ QCheckBox{font: 10.5pt &quot;MS Shell Dlg 2&quot;;}</string>
                       <rect>
                        <x>0</x>
                        <y>0</y>
-                       <width>668</width>
+                       <width>652</width>
                        <height>550</height>
                       </rect>
                      </property>
@@ -14961,258 +14815,11 @@ QGroupBox::title {
               <zorder>groupBox_ZTUpperPanel</zorder>
               <zorder>line_47</zorder>
              </widget>
-             <widget class="QWidget" name="tab_Repair">
+             <widget class="QWidget" name="tab_ZTRepair">
               <attribute name="title">
                <string>Repair-ZT</string>
               </attribute>
-              <layout class="QHBoxLayout" name="horizontalLayout_154">
-               <item>
-                <layout class="QVBoxLayout" name="verticalLayout_47">
-                 <item>
-                  <widget class="QLabel" name="label_163">
-                   <property name="font">
-                    <font>
-                     <pointsize>11</pointsize>
-                    </font>
-                   </property>
-                   <property name="text">
-                    <string>General Information</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="Line" name="line_76">
-                   <property name="orientation">
-                    <enum>Qt::Horizontal</enum>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <layout class="QHBoxLayout" name="horizontalLayout_150">
-                   <item>
-                    <widget class="QLabel" name="label_164">
-                     <property name="font">
-                      <font>
-                       <pointsize>11</pointsize>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>Unit 12NC received:</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <spacer name="horizontalSpacer_121">
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                     <property name="sizeType">
-                      <enum>QSizePolicy::Preferred</enum>
-                     </property>
-                     <property name="sizeHint" stdset="0">
-                      <size>
-                       <width>40</width>
-                       <height>20</height>
-                      </size>
-                     </property>
-                    </spacer>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_174">
-                     <property name="font">
-                      <font>
-                       <pointsize>11</pointsize>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>TextLabel</string>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
-                 </item>
-                 <item>
-                  <layout class="QHBoxLayout" name="horizontalLayout_151">
-                   <item>
-                    <widget class="QLabel" name="label_175">
-                     <property name="font">
-                      <font>
-                       <pointsize>11</pointsize>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>Unit serial number:</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <spacer name="horizontalSpacer_122">
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                     <property name="sizeType">
-                      <enum>QSizePolicy::Preferred</enum>
-                     </property>
-                     <property name="sizeHint" stdset="0">
-                      <size>
-                       <width>40</width>
-                       <height>20</height>
-                      </size>
-                     </property>
-                    </spacer>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_176">
-                     <property name="font">
-                      <font>
-                       <pointsize>11</pointsize>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>TextLabel</string>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
-                 </item>
-                 <item>
-                  <widget class="QLabel" name="label_177">
-                   <property name="font">
-                    <font>
-                     <pointsize>11</pointsize>
-                    </font>
-                   </property>
-                   <property name="text">
-                    <string>Specific Information</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="Line" name="line_77">
-                   <property name="orientation">
-                    <enum>Qt::Horizontal</enum>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <layout class="QHBoxLayout" name="horizontalLayout_152">
-                   <item>
-                    <widget class="QLabel" name="label_178">
-                     <property name="font">
-                      <font>
-                       <pointsize>11</pointsize>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>ZT Serial Number</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <spacer name="horizontalSpacer_123">
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                     <property name="sizeType">
-                      <enum>QSizePolicy::Preferred</enum>
-                     </property>
-                     <property name="sizeHint" stdset="0">
-                      <size>
-                       <width>40</width>
-                       <height>20</height>
-                      </size>
-                     </property>
-                    </spacer>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_179">
-                     <property name="font">
-                      <font>
-                       <pointsize>11</pointsize>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>TextLabel</string>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
-                 </item>
-                 <item>
-                  <layout class="QHBoxLayout" name="horizontalLayout_153">
-                   <item>
-                    <widget class="QLabel" name="label_180">
-                     <property name="font">
-                      <font>
-                       <pointsize>11</pointsize>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>ZT First delivery :</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <spacer name="horizontalSpacer_124">
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                     <property name="sizeType">
-                      <enum>QSizePolicy::Preferred</enum>
-                     </property>
-                     <property name="sizeHint" stdset="0">
-                      <size>
-                       <width>40</width>
-                       <height>20</height>
-                      </size>
-                     </property>
-                    </spacer>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_181">
-                     <property name="font">
-                      <font>
-                       <pointsize>11</pointsize>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>TextLabel</string>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
-                 </item>
-                 <item>
-                  <spacer name="verticalSpacer_6">
-                   <property name="orientation">
-                    <enum>Qt::Vertical</enum>
-                   </property>
-                   <property name="sizeHint" stdset="0">
-                    <size>
-                     <width>20</width>
-                     <height>40</height>
-                    </size>
-                   </property>
-                  </spacer>
-                 </item>
-                </layout>
-               </item>
-               <item>
-                <spacer name="horizontalSpacer_120">
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                 <property name="sizeType">
-                  <enum>QSizePolicy::Fixed</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>200</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
+              <layout class="QHBoxLayout" name="horizontalLayout_97">
                <item>
                 <widget class="QScrollArea" name="scrollArea_3">
                  <property name="verticalScrollBarPolicy">
@@ -15226,15 +14833,15 @@ QGroupBox::title {
                    <rect>
                     <x>0</x>
                     <y>0</y>
-                    <width>647</width>
-                    <height>659</height>
+                    <width>407</width>
+                    <height>646</height>
                    </rect>
                   </property>
                   <layout class="QGridLayout" name="gridLayout_8">
-                   <item row="0" column="0">
-                    <layout class="QVBoxLayout" name="verticalLayout_44">
+                   <item row="0" column="1">
+                    <layout class="QVBoxLayout" name="verticalLayout_48">
                      <item>
-                      <layout class="QHBoxLayout" name="horizontalLayout_114">
+                      <layout class="QVBoxLayout" name="verticalLayout_46">
                        <item>
                         <widget class="QLabel" name="label_141">
                          <property name="minimumSize">
@@ -15246,6 +14853,8 @@ QGroupBox::title {
                          <property name="font">
                           <font>
                            <pointsize>11</pointsize>
+                           <weight>75</weight>
+                           <bold>true</bold>
                           </font>
                          </property>
                          <property name="text">
@@ -15254,20 +14863,17 @@ QGroupBox::title {
                         </widget>
                        </item>
                        <item>
-                        <spacer name="horizontalSpacer_98">
-                         <property name="orientation">
-                          <enum>Qt::Horizontal</enum>
-                         </property>
-                         <property name="sizeHint" stdset="0">
-                          <size>
-                           <width>40</width>
-                           <height>20</height>
-                          </size>
-                         </property>
-                        </spacer>
-                       </item>
-                       <item>
                         <widget class="QGroupBox" name="groupBox_69">
+                         <property name="font">
+                          <font>
+                           <pointsize>11</pointsize>
+                           <weight>75</weight>
+                           <bold>true</bold>
+                          </font>
+                         </property>
+                         <property name="autoFillBackground">
+                          <bool>false</bool>
+                         </property>
                          <property name="title">
                           <string/>
                          </property>
@@ -15288,6 +14894,19 @@ QGroupBox::title {
                            <number>1</number>
                           </property>
                           <item>
+                           <spacer name="horizontalSpacer_98">
+                            <property name="orientation">
+                             <enum>Qt::Horizontal</enum>
+                            </property>
+                            <property name="sizeHint" stdset="0">
+                             <size>
+                              <width>40</width>
+                              <height>20</height>
+                             </size>
+                            </property>
+                           </spacer>
+                          </item>
+                          <item>
                            <widget class="QRadioButton" name="rbZStroke35_OK">
                             <property name="sizePolicy">
                              <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
@@ -15304,6 +14923,8 @@ QGroupBox::title {
                             <property name="font">
                              <font>
                               <pointsize>11</pointsize>
+                              <weight>50</weight>
+                              <bold>false</bold>
                              </font>
                             </property>
                             <property name="text">
@@ -15357,6 +14978,8 @@ QGroupBox::title {
                             <property name="font">
                              <font>
                               <pointsize>11</pointsize>
+                              <weight>50</weight>
+                              <bold>false</bold>
                              </font>
                             </property>
                             <property name="text">
@@ -15374,19 +14997,13 @@ QGroupBox::title {
                      </item>
                      <item>
                       <widget class="Line" name="line_66">
-                       <property name="styleSheet">
-                        <string notr="true">background-color: rgb(0, 0, 0);</string>
-                       </property>
-                       <property name="frameShadow">
-                        <enum>QFrame::Plain</enum>
-                       </property>
                        <property name="orientation">
                         <enum>Qt::Horizontal</enum>
                        </property>
                       </widget>
                      </item>
                      <item>
-                      <layout class="QHBoxLayout" name="horizontalLayout_116">
+                      <layout class="QVBoxLayout" name="verticalLayout_47">
                        <item>
                         <widget class="QLabel" name="label_158">
                          <property name="minimumSize">
@@ -15398,25 +15015,14 @@ QGroupBox::title {
                          <property name="font">
                           <font>
                            <pointsize>11</pointsize>
+                           <weight>75</weight>
+                           <bold>true</bold>
                           </font>
                          </property>
                          <property name="text">
                           <string>Z-stroke 50 - average price : </string>
                          </property>
                         </widget>
-                       </item>
-                       <item>
-                        <spacer name="horizontalSpacer_100">
-                         <property name="orientation">
-                          <enum>Qt::Horizontal</enum>
-                         </property>
-                         <property name="sizeHint" stdset="0">
-                          <size>
-                           <width>40</width>
-                           <height>20</height>
-                          </size>
-                         </property>
-                        </spacer>
                        </item>
                        <item>
                         <widget class="QGroupBox" name="groupBox_70">
@@ -15439,6 +15045,19 @@ QGroupBox::title {
                           <property name="bottomMargin">
                            <number>1</number>
                           </property>
+                          <item>
+                           <spacer name="horizontalSpacer_100">
+                            <property name="orientation">
+                             <enum>Qt::Horizontal</enum>
+                            </property>
+                            <property name="sizeHint" stdset="0">
+                             <size>
+                              <width>40</width>
+                              <height>20</height>
+                             </size>
+                            </property>
+                           </spacer>
+                          </item>
                           <item>
                            <widget class="QRadioButton" name="rbZStroke50_OK">
                             <property name="sizePolicy">
@@ -15526,19 +15145,13 @@ QGroupBox::title {
                      </item>
                      <item>
                       <widget class="Line" name="line_67">
-                       <property name="styleSheet">
-                        <string notr="true">background-color: rgb(0, 0, 0);</string>
-                       </property>
-                       <property name="frameShadow">
-                        <enum>QFrame::Plain</enum>
-                       </property>
                        <property name="orientation">
                         <enum>Qt::Horizontal</enum>
                        </property>
                       </widget>
                      </item>
                      <item>
-                      <layout class="QHBoxLayout" name="horizontalLayout_117">
+                      <layout class="QVBoxLayout" name="verticalLayout_49">
                        <item>
                         <widget class="QLabel" name="label_159">
                          <property name="minimumSize">
@@ -15550,25 +15163,14 @@ QGroupBox::title {
                          <property name="font">
                           <font>
                            <pointsize>11</pointsize>
+                           <weight>75</weight>
+                           <bold>true</bold>
                           </font>
                          </property>
                          <property name="text">
                           <string>ZM housing Scara :</string>
                          </property>
                         </widget>
-                       </item>
-                       <item>
-                        <spacer name="horizontalSpacer_101">
-                         <property name="orientation">
-                          <enum>Qt::Horizontal</enum>
-                         </property>
-                         <property name="sizeHint" stdset="0">
-                          <size>
-                           <width>40</width>
-                           <height>20</height>
-                          </size>
-                         </property>
-                        </spacer>
                        </item>
                        <item>
                         <widget class="QGroupBox" name="groupBox_71">
@@ -15591,6 +15193,19 @@ QGroupBox::title {
                           <property name="bottomMargin">
                            <number>1</number>
                           </property>
+                          <item>
+                           <spacer name="horizontalSpacer_101">
+                            <property name="orientation">
+                             <enum>Qt::Horizontal</enum>
+                            </property>
+                            <property name="sizeHint" stdset="0">
+                             <size>
+                              <width>40</width>
+                              <height>20</height>
+                             </size>
+                            </property>
+                           </spacer>
+                          </item>
                           <item>
                            <widget class="QRadioButton" name="rbZMHousingScara_OK">
                             <property name="sizePolicy">
@@ -15678,19 +15293,13 @@ QGroupBox::title {
                      </item>
                      <item>
                       <widget class="Line" name="line_68">
-                       <property name="styleSheet">
-                        <string notr="true">background-color: rgb(0, 0, 0);</string>
-                       </property>
-                       <property name="frameShadow">
-                        <enum>QFrame::Plain</enum>
-                       </property>
                        <property name="orientation">
                         <enum>Qt::Horizontal</enum>
                        </property>
                       </widget>
                      </item>
                      <item>
-                      <layout class="QHBoxLayout" name="horizontalLayout_118">
+                      <layout class="QVBoxLayout" name="verticalLayout_51">
                        <item>
                         <widget class="QLabel" name="label_160">
                          <property name="minimumSize">
@@ -15702,25 +15311,14 @@ QGroupBox::title {
                          <property name="font">
                           <font>
                            <pointsize>11</pointsize>
+                           <weight>75</weight>
+                           <bold>true</bold>
                           </font>
                          </property>
                          <property name="text">
                           <string>ZM housing NT :</string>
                          </property>
                         </widget>
-                       </item>
-                       <item>
-                        <spacer name="horizontalSpacer_102">
-                         <property name="orientation">
-                          <enum>Qt::Horizontal</enum>
-                         </property>
-                         <property name="sizeHint" stdset="0">
-                          <size>
-                           <width>40</width>
-                           <height>20</height>
-                          </size>
-                         </property>
-                        </spacer>
                        </item>
                        <item>
                         <widget class="QGroupBox" name="groupBox_72">
@@ -15743,6 +15341,19 @@ QGroupBox::title {
                           <property name="bottomMargin">
                            <number>1</number>
                           </property>
+                          <item>
+                           <spacer name="horizontalSpacer_102">
+                            <property name="orientation">
+                             <enum>Qt::Horizontal</enum>
+                            </property>
+                            <property name="sizeHint" stdset="0">
+                             <size>
+                              <width>40</width>
+                              <height>20</height>
+                             </size>
+                            </property>
+                           </spacer>
+                          </item>
                           <item>
                            <widget class="QRadioButton" name="rbZMHousingNT_OK">
                             <property name="sizePolicy">
@@ -15830,19 +15441,13 @@ QGroupBox::title {
                      </item>
                      <item>
                       <widget class="Line" name="line_69">
-                       <property name="styleSheet">
-                        <string notr="true">background-color: rgb(0, 0, 0);</string>
-                       </property>
-                       <property name="frameShadow">
-                        <enum>QFrame::Plain</enum>
-                       </property>
                        <property name="orientation">
                         <enum>Qt::Horizontal</enum>
                        </property>
                       </widget>
                      </item>
                      <item>
-                      <layout class="QHBoxLayout" name="horizontalLayout_119">
+                      <layout class="QVBoxLayout" name="verticalLayout_52">
                        <item>
                         <widget class="QLabel" name="label_161">
                          <property name="minimumSize">
@@ -15854,25 +15459,14 @@ QGroupBox::title {
                          <property name="font">
                           <font>
                            <pointsize>11</pointsize>
+                           <weight>75</weight>
+                           <bold>true</bold>
                           </font>
                          </property>
                          <property name="text">
                           <string>Guiding shafts Scara :</string>
                          </property>
                         </widget>
-                       </item>
-                       <item>
-                        <spacer name="horizontalSpacer_103">
-                         <property name="orientation">
-                          <enum>Qt::Horizontal</enum>
-                         </property>
-                         <property name="sizeHint" stdset="0">
-                          <size>
-                           <width>40</width>
-                           <height>20</height>
-                          </size>
-                         </property>
-                        </spacer>
                        </item>
                        <item>
                         <widget class="QGroupBox" name="groupBox_73">
@@ -15895,6 +15489,19 @@ QGroupBox::title {
                           <property name="bottomMargin">
                            <number>1</number>
                           </property>
+                          <item>
+                           <spacer name="horizontalSpacer_103">
+                            <property name="orientation">
+                             <enum>Qt::Horizontal</enum>
+                            </property>
+                            <property name="sizeHint" stdset="0">
+                             <size>
+                              <width>40</width>
+                              <height>20</height>
+                             </size>
+                            </property>
+                           </spacer>
+                          </item>
                           <item>
                            <widget class="QRadioButton" name="rbGuidingShaftsScara_OK">
                             <property name="sizePolicy">
@@ -15982,19 +15589,13 @@ QGroupBox::title {
                      </item>
                      <item>
                       <widget class="Line" name="line_70">
-                       <property name="styleSheet">
-                        <string notr="true">background-color: rgb(0, 0, 0);</string>
-                       </property>
-                       <property name="frameShadow">
-                        <enum>QFrame::Plain</enum>
-                       </property>
                        <property name="orientation">
                         <enum>Qt::Horizontal</enum>
                        </property>
                       </widget>
                      </item>
                      <item>
-                      <layout class="QHBoxLayout" name="horizontalLayout_120">
+                      <layout class="QVBoxLayout" name="verticalLayout_53">
                        <item>
                         <widget class="QLabel" name="label_162">
                          <property name="minimumSize">
@@ -16006,25 +15607,14 @@ QGroupBox::title {
                          <property name="font">
                           <font>
                            <pointsize>11</pointsize>
+                           <weight>75</weight>
+                           <bold>true</bold>
                           </font>
                          </property>
                          <property name="text">
                           <string>Guiding shafts NT :</string>
                          </property>
                         </widget>
-                       </item>
-                       <item>
-                        <spacer name="horizontalSpacer_104">
-                         <property name="orientation">
-                          <enum>Qt::Horizontal</enum>
-                         </property>
-                         <property name="sizeHint" stdset="0">
-                          <size>
-                           <width>40</width>
-                           <height>20</height>
-                          </size>
-                         </property>
-                        </spacer>
                        </item>
                        <item>
                         <widget class="QGroupBox" name="groupBox_74">
@@ -16047,6 +15637,19 @@ QGroupBox::title {
                           <property name="bottomMargin">
                            <number>1</number>
                           </property>
+                          <item>
+                           <spacer name="horizontalSpacer_104">
+                            <property name="orientation">
+                             <enum>Qt::Horizontal</enum>
+                            </property>
+                            <property name="sizeHint" stdset="0">
+                             <size>
+                              <width>40</width>
+                              <height>20</height>
+                             </size>
+                            </property>
+                           </spacer>
+                          </item>
                           <item>
                            <widget class="QRadioButton" name="rbGuidingShaftsNT_OK">
                             <property name="sizePolicy">
@@ -16134,19 +15737,13 @@ QGroupBox::title {
                      </item>
                      <item>
                       <widget class="Line" name="line_71">
-                       <property name="styleSheet">
-                        <string notr="true">background-color: rgb(0, 0, 0);</string>
-                       </property>
-                       <property name="frameShadow">
-                        <enum>QFrame::Plain</enum>
-                       </property>
                        <property name="orientation">
                         <enum>Qt::Horizontal</enum>
                        </property>
                       </widget>
                      </item>
                      <item>
-                      <layout class="QHBoxLayout" name="horizontalLayout_139">
+                      <layout class="QVBoxLayout" name="verticalLayout_54">
                        <item>
                         <widget class="QLabel" name="label_165">
                          <property name="minimumSize">
@@ -16158,25 +15755,14 @@ QGroupBox::title {
                          <property name="font">
                           <font>
                            <pointsize>11</pointsize>
+                           <weight>75</weight>
+                           <bold>true</bold>
                           </font>
                          </property>
                          <property name="text">
                           <string>Small guiding shafts :</string>
                          </property>
                         </widget>
-                       </item>
-                       <item>
-                        <spacer name="horizontalSpacer_105">
-                         <property name="orientation">
-                          <enum>Qt::Horizontal</enum>
-                         </property>
-                         <property name="sizeHint" stdset="0">
-                          <size>
-                           <width>40</width>
-                           <height>20</height>
-                          </size>
-                         </property>
-                        </spacer>
                        </item>
                        <item>
                         <widget class="QGroupBox" name="groupBox_75">
@@ -16199,6 +15785,19 @@ QGroupBox::title {
                           <property name="bottomMargin">
                            <number>1</number>
                           </property>
+                          <item>
+                           <spacer name="horizontalSpacer_105">
+                            <property name="orientation">
+                             <enum>Qt::Horizontal</enum>
+                            </property>
+                            <property name="sizeHint" stdset="0">
+                             <size>
+                              <width>40</width>
+                              <height>20</height>
+                             </size>
+                            </property>
+                           </spacer>
+                          </item>
                           <item>
                            <widget class="QRadioButton" name="rbSmallGuidingShafts_OK">
                             <property name="sizePolicy">
@@ -16286,19 +15885,13 @@ QGroupBox::title {
                      </item>
                      <item>
                       <widget class="Line" name="line_72">
-                       <property name="styleSheet">
-                        <string notr="true">background-color: rgb(0, 0, 0);</string>
-                       </property>
-                       <property name="frameShadow">
-                        <enum>QFrame::Plain</enum>
-                       </property>
                        <property name="orientation">
                         <enum>Qt::Horizontal</enum>
                        </property>
                       </widget>
                      </item>
                      <item>
-                      <layout class="QHBoxLayout" name="horizontalLayout_140">
+                      <layout class="QVBoxLayout" name="verticalLayout_55">
                        <item>
                         <widget class="QLabel" name="label_166">
                          <property name="minimumSize">
@@ -16310,25 +15903,14 @@ QGroupBox::title {
                          <property name="font">
                           <font>
                            <pointsize>11</pointsize>
+                           <weight>75</weight>
+                           <bold>true</bold>
                           </font>
                          </property>
                          <property name="text">
                           <string>Clamping flange :</string>
                          </property>
                         </widget>
-                       </item>
-                       <item>
-                        <spacer name="horizontalSpacer_106">
-                         <property name="orientation">
-                          <enum>Qt::Horizontal</enum>
-                         </property>
-                         <property name="sizeHint" stdset="0">
-                          <size>
-                           <width>40</width>
-                           <height>20</height>
-                          </size>
-                         </property>
-                        </spacer>
                        </item>
                        <item>
                         <widget class="QGroupBox" name="groupBox_76">
@@ -16351,6 +15933,19 @@ QGroupBox::title {
                           <property name="bottomMargin">
                            <number>1</number>
                           </property>
+                          <item>
+                           <spacer name="horizontalSpacer_106">
+                            <property name="orientation">
+                             <enum>Qt::Horizontal</enum>
+                            </property>
+                            <property name="sizeHint" stdset="0">
+                             <size>
+                              <width>40</width>
+                              <height>20</height>
+                             </size>
+                            </property>
+                           </spacer>
+                          </item>
                           <item>
                            <widget class="QRadioButton" name="rbClampingFlange_OK">
                             <property name="sizePolicy">
@@ -16438,19 +16033,13 @@ QGroupBox::title {
                      </item>
                      <item>
                       <widget class="Line" name="line_73">
-                       <property name="styleSheet">
-                        <string notr="true">background-color: rgb(0, 0, 0);</string>
-                       </property>
-                       <property name="frameShadow">
-                        <enum>QFrame::Plain</enum>
-                       </property>
                        <property name="orientation">
                         <enum>Qt::Horizontal</enum>
                        </property>
                       </widget>
                      </item>
                      <item>
-                      <layout class="QHBoxLayout" name="horizontalLayout_115">
+                      <layout class="QVBoxLayout" name="verticalLayout_50">
                        <item>
                         <widget class="QLabel" name="label_167">
                          <property name="minimumSize">
@@ -16462,25 +16051,14 @@ QGroupBox::title {
                          <property name="font">
                           <font>
                            <pointsize>11</pointsize>
+                           <weight>75</weight>
+                           <bold>true</bold>
                           </font>
                          </property>
                          <property name="text">
                           <string>Adapter cable :</string>
                          </property>
                         </widget>
-                       </item>
-                       <item>
-                        <spacer name="horizontalSpacer_99">
-                         <property name="orientation">
-                          <enum>Qt::Horizontal</enum>
-                         </property>
-                         <property name="sizeHint" stdset="0">
-                          <size>
-                           <width>40</width>
-                           <height>20</height>
-                          </size>
-                         </property>
-                        </spacer>
                        </item>
                        <item>
                         <widget class="QGroupBox" name="groupBox_77">
@@ -16503,6 +16081,19 @@ QGroupBox::title {
                           <property name="bottomMargin">
                            <number>1</number>
                           </property>
+                          <item>
+                           <spacer name="horizontalSpacer_99">
+                            <property name="orientation">
+                             <enum>Qt::Horizontal</enum>
+                            </property>
+                            <property name="sizeHint" stdset="0">
+                             <size>
+                              <width>40</width>
+                              <height>20</height>
+                             </size>
+                            </property>
+                           </spacer>
+                          </item>
                           <item>
                            <widget class="QRadioButton" name="rbAdapterCable_OK">
                             <property name="sizePolicy">
@@ -16590,9 +16181,118 @@ QGroupBox::title {
                      </item>
                     </layout>
                    </item>
+                   <item row="1" column="1">
+                    <spacer name="verticalSpacer">
+                     <property name="orientation">
+                      <enum>Qt::Vertical</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>20</width>
+                       <height>40</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
                   </layout>
                  </widget>
                 </widget>
+               </item>
+               <item>
+                <layout class="QVBoxLayout" name="verticalLayout_76">
+                 <item>
+                  <widget class="QFrame" name="frame_3">
+                   <property name="frameShape">
+                    <enum>QFrame::Box</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <layout class="QVBoxLayout" name="verticalLayout_78">
+                    <item>
+                     <widget class="QLabel" name="label_129">
+                      <property name="font">
+                       <font>
+                        <pointsize>11</pointsize>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string>Deliver to</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QCheckBox" name="cbZTTW">
+                      <property name="font">
+                       <font>
+                        <pointsize>11</pointsize>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string>TW</string>
+                      </property>
+                      <property name="checked">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QCheckBox" name="cbZTEU">
+                      <property name="font">
+                       <font>
+                        <pointsize>11</pointsize>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string>EU</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item>
+                  <spacer name="verticalSpacer_7">
+                   <property name="orientation">
+                    <enum>Qt::Vertical</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>20</width>
+                     <height>40</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_110">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>227</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_109">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>336</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
                </item>
               </layout>
              </widget>
@@ -16601,7 +16301,7 @@ QGroupBox::title {
            <item>
             <widget class="QGroupBox" name="groupBox_FunctionBtns">
              <property name="sizePolicy">
-              <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                <horstretch>0</horstretch>
                <verstretch>0</verstretch>
               </sizepolicy>
@@ -16609,7 +16309,7 @@ QGroupBox::title {
              <property name="minimumSize">
               <size>
                <width>0</width>
-               <height>40</height>
+               <height>60</height>
               </size>
              </property>
              <property name="maximumSize">
@@ -16617,6 +16317,14 @@ QGroupBox::title {
                <width>16777215</width>
                <height>47</height>
               </size>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>8</pointsize>
+               <weight>50</weight>
+               <italic>false</italic>
+               <bold>false</bold>
+              </font>
              </property>
              <property name="styleSheet">
               <string notr="true">QPushButton{font: 16pt &quot;MS Shell Dlg 2&quot;;}
@@ -16667,7 +16375,7 @@ QGroupBox{border: none;}
               <item>
                <widget class="QPushButton" name="pbBack">
                 <property name="sizePolicy">
-                 <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
@@ -16675,8 +16383,17 @@ QGroupBox{border: none;}
                 <property name="minimumSize">
                  <size>
                   <width>93</width>
-                  <height>38</height>
+                  <height>50</height>
                  </size>
+                </property>
+                <property name="font">
+                 <font>
+                  <family>MS Shell Dlg 2</family>
+                  <pointsize>16</pointsize>
+                  <weight>50</weight>
+                  <italic>false</italic>
+                  <bold>false</bold>
+                 </font>
                 </property>
                 <property name="text">
                  <string>Back</string>
@@ -16684,28 +16401,9 @@ QGroupBox{border: none;}
                </widget>
               </item>
               <item>
-               <spacer name="horizontalSpacer_4">
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>38</height>
-                 </size>
-                </property>
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>114</width>
-                  <height>38</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item>
                <widget class="QPushButton" name="pbSaveIni">
                 <property name="sizePolicy">
-                 <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
@@ -16713,8 +16411,17 @@ QGroupBox{border: none;}
                 <property name="minimumSize">
                  <size>
                   <width>151</width>
-                  <height>38</height>
+                  <height>50</height>
                  </size>
+                </property>
+                <property name="font">
+                 <font>
+                  <family>MS Shell Dlg 2</family>
+                  <pointsize>16</pointsize>
+                  <weight>50</weight>
+                  <italic>false</italic>
+                  <bold>false</bold>
+                 </font>
                 </property>
                 <property name="text">
                  <string>Save to Ini</string>
@@ -16722,23 +16429,17 @@ QGroupBox{border: none;}
                </widget>
               </item>
               <item>
-               <widget class="QPushButton" name="pbExportExcel">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
+               <spacer name="horizontalSpacer_4">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
                 </property>
-                <property name="minimumSize">
+                <property name="sizeHint" stdset="0">
                  <size>
-                  <width>191</width>
-                  <height>38</height>
+                  <width>40</width>
+                  <height>20</height>
                  </size>
                 </property>
-                <property name="text">
-                 <string>Save to Excel</string>
-                </property>
-               </widget>
+               </spacer>
               </item>
               <item>
                <widget class="QProgressBar" name="pgbProcess">
@@ -16754,49 +16455,119 @@ QGroupBox{border: none;}
                   <height>25</height>
                  </size>
                 </property>
+                <property name="font">
+                 <font>
+                  <pointsize>11</pointsize>
+                 </font>
+                </property>
                 <property name="value">
                  <number>0</number>
                 </property>
                </widget>
               </item>
               <item>
-               <spacer name="horizontalSpacer_5">
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>38</height>
-                 </size>
+               <widget class="QFrame" name="frame_4">
+                <property name="frameShape">
+                 <enum>QFrame::Box</enum>
                 </property>
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
                 </property>
-                <property name="sizeType">
-                 <enum>QSizePolicy::MinimumExpanding</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>40</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
+                <layout class="QGridLayout" name="gridLayout_9">
+                 <property name="leftMargin">
+                  <number>3</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>3</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>3</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>3</number>
+                 </property>
+                 <property name="verticalSpacing">
+                  <number>7</number>
+                 </property>
+                 <item row="0" column="0">
+                  <widget class="QCheckBox" name="cbAnalyseSheet">
+                   <property name="font">
+                    <font>
+                     <pointsize>11</pointsize>
+                    </font>
+                   </property>
+                   <property name="text">
+                    <string>Analyse Sheet</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="1" column="1">
+                  <widget class="QCheckBox" name="cbMOMSheet">
+                   <property name="font">
+                    <font>
+                     <pointsize>11</pointsize>
+                    </font>
+                   </property>
+                   <property name="text">
+                    <string>MOM Sheet</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="1">
+                  <widget class="QCheckBox" name="cbRepairMatrix">
+                   <property name="font">
+                    <font>
+                     <pointsize>11</pointsize>
+                    </font>
+                   </property>
+                   <property name="text">
+                    <string>Repair Matrix</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="1" column="0">
+                  <widget class="QCheckBox" name="cbPrintLabel">
+                   <property name="font">
+                    <font>
+                     <pointsize>11</pointsize>
+                    </font>
+                   </property>
+                   <property name="text">
+                    <string>Print Label</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
               </item>
               <item>
-               <widget class="QPushButton" name="pbPrint">
+               <widget class="QPushButton" name="pbExport">
                 <property name="sizePolicy">
-                 <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
                 <property name="minimumSize">
                  <size>
-                  <width>131</width>
-                  <height>38</height>
+                  <width>0</width>
+                  <height>50</height>
                  </size>
                 </property>
+                <property name="font">
+                 <font>
+                  <family>MS Shell Dlg 2</family>
+                  <pointsize>16</pointsize>
+                  <weight>50</weight>
+                  <italic>false</italic>
+                  <bold>false</bold>
+                 </font>
+                </property>
+                <property name="layoutDirection">
+                 <enum>Qt::LeftToRight</enum>
+                </property>
                 <property name="text">
-                 <string>Print Label</string>
+                 <string>Export</string>
                 </property>
                </widget>
               </item>
@@ -16815,30 +16586,6 @@ QGroupBox{border: none;}
                  </size>
                 </property>
                </spacer>
-              </item>
-              <item>
-               <widget class="QPushButton" name="pushButton">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>0</height>
-                 </size>
-                </property>
-                <property name="font">
-                 <font>
-                  <pointsize>16</pointsize>
-                 </font>
-                </property>
-                <property name="text">
-                 <string>Create Repair Sheet</string>
-                </property>
-               </widget>
               </item>
              </layout>
             </widget>
@@ -16974,9 +16721,6 @@ QGroupBox{border: none;}
   <tabstop>leAnalyseDateZT</tabstop>
   <tabstop>teZTComments</tabstop>
   <tabstop>leRepairNRZT</tabstop>
-  <tabstop>pbBack</tabstop>
-  <tabstop>pbSaveIni</tabstop>
-  <tabstop>pbExportExcel</tabstop>
   <tabstop>leRobotSN1st</tabstop>
  </tabstops>
  <resources/>

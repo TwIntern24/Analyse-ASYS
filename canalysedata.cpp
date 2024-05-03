@@ -35,6 +35,10 @@ CAnalyseData::CAnalyseData(QWidget *parent) :
     ui->stackedWidget->setCurrentIndex(0);
     ui->stackedWidget_Image->setCurrentIndex(0);
 
+    ui->pbBack->setStyleSheet("font-size: 16px;font-weight: bold;");
+    ui->pbExport->setStyleSheet("font-size: 16px;font-weight: bold;");
+    ui->pbSaveIni->setStyleSheet("font-size: 16px;font-weight: bold;");
+
 
 
 
@@ -493,9 +497,9 @@ void CAnalyseData::displaySet( bool bSN)
         ui->tabWidget->hide();
         ui->pbBack->hide();
         ui->pbSaveIni->hide();
-        ui->pbExportExcel->hide();
+//        ui->pbExportExcel->hide();
         ui->pgbProcess->hide();
-        ui->pbPrint->hide();
+//        ui->pbPrint->hide();
     }// show the Robot SN page
     else
     {
@@ -504,9 +508,9 @@ void CAnalyseData::displaySet( bool bSN)
         ui->tabWidget->show();
         ui->pbBack->show();
         ui->pbSaveIni->show();
-        ui->pbExportExcel->show();
+//        ui->pbExportExcel->show();
         ui->pgbProcess->show();
-        ui->pbPrint->show();
+//        ui->pbPrint->show();
     }
 }
 
@@ -586,6 +590,7 @@ void CAnalyseData::on_pbRobotSNHide_clicked()
         getDataFromIni4Arm();
         getDataFromIni4DM();
         getDataFromIni4ZT();
+        getDataFromIni4Repair();
         split3PartFromSN();
           // for test
 //          getDataFromIni4ArmAnalyseData();
@@ -3253,7 +3258,9 @@ void CAnalyseData::on_pbSaveIni_clicked()
 
     // others
     getArmSNFromArm();//armSN
+    getDataFromRepair();
 }
+
 
 void CAnalyseData::getDataFromGUIArm(void)
 {
@@ -3609,7 +3616,7 @@ void CAnalyseData::setRadioButtonsIDsInGB4ZT( void)
 }
 
 // ------------ WRITE EXCEL ------------------
-void CAnalyseData::on_pbExportExcel_clicked()
+void CAnalyseData::createAnalyseSheet()
 {
 //    // save the protocol to excel file
 //    //m_filePathExcelTmp = "D:\\ASYS\\Projects\\Analyse_ASYS\\AnalyseTmp-Ray.xls";//QApplication::applicationDirPath()
@@ -4742,7 +4749,7 @@ void CAnalyseData::on_leZDownFA_textChanged(const QString &arg1)
 }
 
 //-------------------------------------------------------- Print Function --------------------------------------------------------//
-void CAnalyseData::on_pbPrint_clicked()
+void CAnalyseData::createPrintLabel()
 {
     progressSave(30);
     createLabelFile();
@@ -5009,176 +5016,191 @@ void CAnalyseData::createLabelFile()
 void CAnalyseData::setRadioButtonsIDsInGB4RepairARM( void){
     // set ArmBelts
     m_pgbRepairARM_ArmBelts = new QButtonGroup( this);
-    m_pgbRepairARM_ArmBelts->addButton(ui->rbArmBeltsAvrPrice_OK, 0);
-    m_pgbRepairARM_ArmBelts->addButton(ui->rbArmBeltsAvrPrice_Repair, 1);
-    m_pgbRepairARM_ArmBelts->addButton(ui->rbArmBeltsAvrPrice_NA, 2);
+    m_pgbRepairARM_ArmBelts->addButton(ui->rbArmBeltsAvrPrice_OK, Repair_OK);
+    m_pgbRepairARM_ArmBelts->addButton(ui->rbArmBeltsAvrPrice_Repair, Repair_Repair);
+    m_pgbRepairARM_ArmBelts->addButton(ui->rbArmBeltsAvrPrice_NA, Repair_NA);
 
     // set UpperArmHousingUpgrade
     m_pgbRepairARM_UpperArmHousingUpgrade = new QButtonGroup( this);
-    m_pgbRepairARM_UpperArmHousingUpgrade->addButton(ui->rbUpperArmHousingUpgrade_OK, 0);
-    m_pgbRepairARM_UpperArmHousingUpgrade->addButton(ui->rbUpperArmHousingUpgrade_Repair, 1);
-    m_pgbRepairARM_UpperArmHousingUpgrade->addButton(ui->rbUpperArmHousingUpgrade_NA, 2);
+    m_pgbRepairARM_UpperArmHousingUpgrade->addButton(ui->rbUpperArmHousingUpgrade_OK, Repair_OK);
+    m_pgbRepairARM_UpperArmHousingUpgrade->addButton(ui->rbUpperArmHousingUpgrade_Repair, Repair_Repair);
+    m_pgbRepairARM_UpperArmHousingUpgrade->addButton(ui->rbUpperArmHousingUpgrade_NA, Repair_NA);
 
     // set UpperArmHousing
     m_pgbRepairARM_UpperArmHousing = new QButtonGroup( this);
-    m_pgbRepairARM_UpperArmHousing->addButton(ui->rbUpperArmHousing_OK, 0);
-    m_pgbRepairARM_UpperArmHousing->addButton(ui->rbUpperArmHousing_Repair, 1);
-    m_pgbRepairARM_UpperArmHousing->addButton(ui->rbUpperArmHousing_NA, 2);
+    m_pgbRepairARM_UpperArmHousing->addButton(ui->rbUpperArmHousing_OK, Repair_OK);
+    m_pgbRepairARM_UpperArmHousing->addButton(ui->rbUpperArmHousing_Repair, Repair_Repair);
+    m_pgbRepairARM_UpperArmHousing->addButton(ui->rbUpperArmHousing_NA, Repair_NA);
 
     // set UpperArmLid
     m_pgbRepairARM_UpperArmLid = new QButtonGroup( this);
-    m_pgbRepairARM_UpperArmLid->addButton(ui->rbUpperArmLid_OK, 0);
-    m_pgbRepairARM_UpperArmLid->addButton(ui->rbUpperArmLid_Repair, 1);
-    m_pgbRepairARM_UpperArmLid->addButton(ui->rbUpperArmLid_NA, 2);
+    m_pgbRepairARM_UpperArmLid->addButton(ui->rbUpperArmLid_OK, Repair_OK);
+    m_pgbRepairARM_UpperArmLid->addButton(ui->rbUpperArmLid_Repair, Repair_Repair);
+    m_pgbRepairARM_UpperArmLid->addButton(ui->rbUpperArmLid_NA, Repair_NA);
 
     // set LowerArmHousingUpgrade
     m_pgbRepairARM_LowerArmHousingUpgrade = new QButtonGroup( this);
-    m_pgbRepairARM_LowerArmHousingUpgrade->addButton(ui->rbLowerArmHousingUpgrade_OK, 0);
-    m_pgbRepairARM_LowerArmHousingUpgrade->addButton(ui->rbLowerArmHousingUpgrade_Repair, 1);
-    m_pgbRepairARM_LowerArmHousingUpgrade->addButton(ui->rbLowerArmHousingUpgrade_NA, 2);
+    m_pgbRepairARM_LowerArmHousingUpgrade->addButton(ui->rbLowerArmHousingUpgrade_OK, Repair_OK);
+    m_pgbRepairARM_LowerArmHousingUpgrade->addButton(ui->rbLowerArmHousingUpgrade_Repair, Repair_Repair);
+    m_pgbRepairARM_LowerArmHousingUpgrade->addButton(ui->rbLowerArmHousingUpgrade_NA, Repair_NA);
 
     // set LowerArmHousing
     m_pgbRepairARM_LowerArmHousing = new QButtonGroup( this);
-    m_pgbRepairARM_LowerArmHousing->addButton(ui->rbLowerArmHousing_OK, 0);
-    m_pgbRepairARM_LowerArmHousing->addButton(ui->rbLowerArmHousing_Repair, 1);
-    m_pgbRepairARM_LowerArmHousing->addButton(ui->rbLowerArmHousing_NA, 2);
+    m_pgbRepairARM_LowerArmHousing->addButton(ui->rbLowerArmHousing_OK, Repair_OK);
+    m_pgbRepairARM_LowerArmHousing->addButton(ui->rbLowerArmHousing_Repair, Repair_Repair);
+    m_pgbRepairARM_LowerArmHousing->addButton(ui->rbLowerArmHousing_NA, Repair_NA);
 
     // set LowerArmLid
     m_pgbRepairARM_LowerArmLid = new QButtonGroup( this);
-    m_pgbRepairARM_LowerArmLid->addButton(ui->rbLowerArmLid_OK, 0);
-    m_pgbRepairARM_LowerArmLid->addButton(ui->rbLowerArmLid_Repair, 1);
-    m_pgbRepairARM_LowerArmLid->addButton(ui->rbLowerArmLid_NA, 2);
+    m_pgbRepairARM_LowerArmLid->addButton(ui->rbLowerArmLid_OK, Repair_OK);
+    m_pgbRepairARM_LowerArmLid->addButton(ui->rbLowerArmLid_Repair, Repair_Repair);
+    m_pgbRepairARM_LowerArmLid->addButton(ui->rbLowerArmLid_NA, Repair_NA);
 
     // set ArmDriveInterface
     m_pgbRepairARM_ArmDriveInterface = new QButtonGroup( this);
-    m_pgbRepairARM_ArmDriveInterface->addButton(ui->rbArmDriveInterface_OK, 0);
-    m_pgbRepairARM_ArmDriveInterface->addButton(ui->rbArmDriveInterface_Repair, 1);
-    m_pgbRepairARM_ArmDriveInterface->addButton(ui->rbArmDriveInterface_NA, 2);
+    m_pgbRepairARM_ArmDriveInterface->addButton(ui->rbArmDriveInterface_OK, Repair_OK);
+    m_pgbRepairARM_ArmDriveInterface->addButton(ui->rbArmDriveInterface_Repair, Repair_Repair);
+    m_pgbRepairARM_ArmDriveInterface->addButton(ui->rbArmDriveInterface_NA, Repair_NA);
 
     // set ArmGripperInterfaceScara
     m_pgbRepairARM_ArmGripperInterfaceScara = new QButtonGroup( this);
-    m_pgbRepairARM_ArmGripperInterfaceScara->addButton(ui->rbArmGripperInterfaceScara_OK, 0);
-    m_pgbRepairARM_ArmGripperInterfaceScara->addButton(ui->rbArmGripperInterfaceScara_Repair, 1);
-    m_pgbRepairARM_ArmGripperInterfaceScara->addButton(ui->rbArmGripperInterfaceScara_NA, 2);
+    m_pgbRepairARM_ArmGripperInterfaceScara->addButton(ui->rbArmGripperInterfaceScara_OK, Repair_OK);
+    m_pgbRepairARM_ArmGripperInterfaceScara->addButton(ui->rbArmGripperInterfaceScara_Repair, Repair_Repair);
+    m_pgbRepairARM_ArmGripperInterfaceScara->addButton(ui->rbArmGripperInterfaceScara_NA, Repair_NA);
 
     // set ArmGripperInterfaceNT
     m_pgbRepairARM_ArmGripperInterfaceNT = new QButtonGroup( this);
-    m_pgbRepairARM_ArmGripperInterfaceNT->addButton(ui->rbArmGripperInterfaceScara_OK, 0);
-    m_pgbRepairARM_ArmGripperInterfaceNT->addButton(ui->rbArmGripperInterfaceScara_Repair, 1);
-    m_pgbRepairARM_ArmGripperInterfaceNT->addButton(ui->rbArmGripperInterfaceScara_NA, 2);
+    m_pgbRepairARM_ArmGripperInterfaceNT->addButton(ui->rbArmGripperInterfaceScara_OK, Repair_OK);
+    m_pgbRepairARM_ArmGripperInterfaceNT->addButton(ui->rbArmGripperInterfaceScara_Repair, Repair_Repair);
+    m_pgbRepairARM_ArmGripperInterfaceNT->addButton(ui->rbArmGripperInterfaceScara_NA, Repair_NA);
 
     // set BeltReel
     m_pgbRepairARM_BeltReel = new QButtonGroup( this);
-    m_pgbRepairARM_BeltReel->addButton(ui->rbBeltReel_OK, 0);
-    m_pgbRepairARM_BeltReel->addButton(ui->rbBeltReel_Repair, 1);
-    m_pgbRepairARM_BeltReel->addButton(ui->rbBeltReel_NA, 2);
+    m_pgbRepairARM_BeltReel->addButton(ui->rbBeltReel_OK, Repair_OK);
+    m_pgbRepairARM_BeltReel->addButton(ui->rbBeltReel_Repair, Repair_Repair);
+    m_pgbRepairARM_BeltReel->addButton(ui->rbBeltReel_NA, Repair_NA);
 
     // set TorxScrew
     m_pgbRepairARM_TorxScrew = new QButtonGroup( this);
-    m_pgbRepairARM_TorxScrew->addButton(ui->rbTorxScrew_OK, 0);
-    m_pgbRepairARM_TorxScrew->addButton(ui->rbTorxScrew_Repair, 1);
-    m_pgbRepairARM_TorxScrew->addButton(ui->rbTorxScrew_NA, 2);
+    m_pgbRepairARM_TorxScrew->addButton(ui->rbTorxScrew_OK, Repair_OK);
+    m_pgbRepairARM_TorxScrew->addButton(ui->rbTorxScrew_Repair, Repair_Repair);
+    m_pgbRepairARM_TorxScrew->addButton(ui->rbTorxScrew_NA, Repair_NA);
 
     // set Bearings
     m_pgbRepairARM_Bearings = new QButtonGroup( this);
-    m_pgbRepairARM_Bearings->addButton(ui->rbBearings_OK, 0);
-    m_pgbRepairARM_Bearings->addButton(ui->rbBearings_Repair, 1);
-    m_pgbRepairARM_Bearings->addButton(ui->rbBearings_NA, 2);
+    m_pgbRepairARM_Bearings->addButton(ui->rbBearings_OK, Repair_OK);
+    m_pgbRepairARM_Bearings->addButton(ui->rbBearings_Repair, Repair_Repair);
+    m_pgbRepairARM_Bearings->addButton(ui->rbBearings_NA, Repair_NA);
+
+    // set DeliverTo
+    m_pgbRepairARM_Deliver = new QButtonGroup( this);
+    m_pgbRepairARM_Deliver->addButton(ui->cbArmTW, TW);
+    m_pgbRepairARM_Deliver->addButton(ui->cbArmEU, EU);
 
 }
 
 void CAnalyseData::setRadioButtonsIDsInGB4RepairDM( void){
     // set DMLikaMotor
     m_pgbRepairDM_DMLikaMotor = new QButtonGroup( this);
-    m_pgbRepairDM_DMLikaMotor->addButton(ui->rbDMLikaMotor_OK, 0);
-    m_pgbRepairDM_DMLikaMotor->addButton(ui->rbDMLikaMotor_Repair, 1);
-    m_pgbRepairDM_DMLikaMotor->addButton(ui->rbDMLikaMotor_NA, 2);
+    m_pgbRepairDM_DMLikaMotor->addButton(ui->rbDMLikaMotor_OK, Repair_OK);
+    m_pgbRepairDM_DMLikaMotor->addButton(ui->rbDMLikaMotor_Repair, Repair_Repair);
+    m_pgbRepairDM_DMLikaMotor->addButton(ui->rbDMLikaMotor_NA, Repair_NA);
 
     // set CableHood
     m_pgbRepairDM_CableHood = new QButtonGroup( this);
-    m_pgbRepairDM_CableHood->addButton(ui->rbCableHood_OK, 0);
-    m_pgbRepairDM_CableHood->addButton(ui->rbCableHood_Repair, 1);
-    m_pgbRepairDM_CableHood->addButton(ui->rbCableHood_NA, 2);
+    m_pgbRepairDM_CableHood->addButton(ui->rbCableHood_OK, Repair_OK);
+    m_pgbRepairDM_CableHood->addButton(ui->rbCableHood_Repair, Repair_Repair);
+    m_pgbRepairDM_CableHood->addButton(ui->rbCableHood_NA, Repair_NA);
 
     // set DMHousing
     m_pgbRepairDM_DMHousing = new QButtonGroup( this);
-    m_pgbRepairDM_DMHousing->addButton(ui->rbDMHousing_OK, 0);
-    m_pgbRepairDM_DMHousing->addButton(ui->rbDMHousing_Repair, 1);
-    m_pgbRepairDM_DMHousing->addButton(ui->rbDMHousing_NA, 2);
+    m_pgbRepairDM_DMHousing->addButton(ui->rbDMHousing_OK, Repair_OK);
+    m_pgbRepairDM_DMHousing->addButton(ui->rbDMHousing_Repair, Repair_Repair);
+    m_pgbRepairDM_DMHousing->addButton(ui->rbDMHousing_NA, Repair_NA);
 
     // set DMLid
     m_pgbRepairDM_DMLid = new QButtonGroup( this);
-    m_pgbRepairDM_DMLid->addButton(ui->rbDMLid_OK, 0);
-    m_pgbRepairDM_DMLid->addButton(ui->rbDMLid_Repair, 1);
-    m_pgbRepairDM_DMLid->addButton(ui->rbDMLid_NA, 2);
+    m_pgbRepairDM_DMLid->addButton(ui->rbDMLid_OK, Repair_OK);
+    m_pgbRepairDM_DMLid->addButton(ui->rbDMLid_Repair, Repair_Repair);
+    m_pgbRepairDM_DMLid->addButton(ui->rbDMLid_NA, Repair_NA);
 
     // set SlipRing
     m_pgbRepairDM_SlipRing = new QButtonGroup( this);
-    m_pgbRepairDM_SlipRing->addButton(ui->rbSlipRing_OK, 0);
-    m_pgbRepairDM_SlipRing->addButton(ui->rbSlipRing_Repair, 1);
-    m_pgbRepairDM_SlipRing->addButton(ui->rbSlipRing_NA, 2);
+    m_pgbRepairDM_SlipRing->addButton(ui->rbSlipRing_OK, Repair_OK);
+    m_pgbRepairDM_SlipRing->addButton(ui->rbSlipRing_Repair, Repair_Repair);
+    m_pgbRepairDM_SlipRing->addButton(ui->rbSlipRing_NA, Repair_NA);
 
     // set HollowShaft
     m_pgbRepairDM_HollowShaft = new QButtonGroup( this);
-    m_pgbRepairDM_HollowShaft->addButton(ui->rbHollowShaft_OK, 0);
-    m_pgbRepairDM_HollowShaft->addButton(ui->rbHollowShaft_Repair, 1);
-    m_pgbRepairDM_HollowShaft->addButton(ui->rbHollowShaft_NA, 2);
+    m_pgbRepairDM_HollowShaft->addButton(ui->rbHollowShaft_OK, Repair_OK);
+    m_pgbRepairDM_HollowShaft->addButton(ui->rbHollowShaft_Repair, Repair_Repair);
+    m_pgbRepairDM_HollowShaft->addButton(ui->rbHollowShaft_NA, Repair_NA);
+
+    // set DeliverTo
+    m_pgbRepairDM_Deliver = new QButtonGroup( this);
+    m_pgbRepairDM_Deliver->addButton(ui->cbDMTW, TW);
+    m_pgbRepairDM_Deliver->addButton(ui->cbDMEU, EU);
 }
 
 void CAnalyseData::setRadioButtonsIDsInGB4RepairZT( void){
     // set ZStroke35
     m_pgbRepairZT_ZStroke35 = new QButtonGroup( this);
-    m_pgbRepairZT_ZStroke35->addButton(ui->rbZStroke35_OK, 0);
-    m_pgbRepairZT_ZStroke35->addButton(ui->rbZStroke35_Repair, 1);
-    m_pgbRepairZT_ZStroke35->addButton(ui->rbZStroke35_NA, 2);
+    m_pgbRepairZT_ZStroke35->addButton(ui->rbZStroke35_OK, Repair_OK);
+    m_pgbRepairZT_ZStroke35->addButton(ui->rbZStroke35_Repair, Repair_Repair);
+    m_pgbRepairZT_ZStroke35->addButton(ui->rbZStroke35_NA, Repair_NA);
 
     // set ZStroke50
     m_pgbRepairZT_ZStroke50 = new QButtonGroup( this);
-    m_pgbRepairZT_ZStroke50->addButton(ui->rbZStroke50_OK, 0);
-    m_pgbRepairZT_ZStroke50->addButton(ui->rbZStroke50_Repair, 1);
-    m_pgbRepairZT_ZStroke50->addButton(ui->rbZStroke50_NA, 2);
+    m_pgbRepairZT_ZStroke50->addButton(ui->rbZStroke50_OK, Repair_OK);
+    m_pgbRepairZT_ZStroke50->addButton(ui->rbZStroke50_Repair, Repair_Repair);
+    m_pgbRepairZT_ZStroke50->addButton(ui->rbZStroke50_NA, Repair_NA);
 
     // set ZMHousingScara
     m_pgbRepairZT_ZMHousingScara = new QButtonGroup( this);
-    m_pgbRepairZT_ZMHousingScara->addButton(ui->rbZMHousingScara_OK, 0);
-    m_pgbRepairZT_ZMHousingScara->addButton(ui->rbZMHousingScara_Repair, 1);
-    m_pgbRepairZT_ZMHousingScara->addButton(ui->rbZMHousingScara_NA, 2);
+    m_pgbRepairZT_ZMHousingScara->addButton(ui->rbZMHousingScara_OK, Repair_OK);
+    m_pgbRepairZT_ZMHousingScara->addButton(ui->rbZMHousingScara_Repair, Repair_Repair);
+    m_pgbRepairZT_ZMHousingScara->addButton(ui->rbZMHousingScara_NA, Repair_NA);
 
     // set ZMHousingNT
     m_pgbRepairZT_ZMHousingNT = new QButtonGroup( this);
-    m_pgbRepairZT_ZMHousingNT->addButton(ui->rbZMHousingNT_OK, 0);
-    m_pgbRepairZT_ZMHousingNT->addButton(ui->rbZMHousingNT_Repair, 1);
-    m_pgbRepairZT_ZMHousingNT->addButton(ui->rbZMHousingNT_NA, 2);
+    m_pgbRepairZT_ZMHousingNT->addButton(ui->rbZMHousingNT_OK, Repair_OK);
+    m_pgbRepairZT_ZMHousingNT->addButton(ui->rbZMHousingNT_Repair, Repair_Repair);
+    m_pgbRepairZT_ZMHousingNT->addButton(ui->rbZMHousingNT_NA, Repair_NA);
 
     // set GuidingShaftsScara
     m_pgbRepairZT_GuidingShaftsScara = new QButtonGroup( this);
-    m_pgbRepairZT_GuidingShaftsScara->addButton(ui->rbGuidingShaftsScara_OK, 0);
-    m_pgbRepairZT_GuidingShaftsScara->addButton(ui->rbGuidingShaftsScara_Repair, 1);
-    m_pgbRepairZT_GuidingShaftsScara->addButton(ui->rbGuidingShaftsScara_NA, 2);
+    m_pgbRepairZT_GuidingShaftsScara->addButton(ui->rbGuidingShaftsScara_OK, Repair_OK);
+    m_pgbRepairZT_GuidingShaftsScara->addButton(ui->rbGuidingShaftsScara_Repair, Repair_Repair);
+    m_pgbRepairZT_GuidingShaftsScara->addButton(ui->rbGuidingShaftsScara_NA, Repair_NA);
 
     // set GuidingShaftsNT
     m_pgbRepairZT_GuidingShaftsNT = new QButtonGroup( this);
-    m_pgbRepairZT_GuidingShaftsNT->addButton(ui->rbGuidingShaftsNT_OK, 0);
-    m_pgbRepairZT_GuidingShaftsNT->addButton(ui->rbGuidingShaftsNT_Repair, 1);
-    m_pgbRepairZT_GuidingShaftsNT->addButton(ui->rbGuidingShaftsNT_NA, 2);
+    m_pgbRepairZT_GuidingShaftsNT->addButton(ui->rbGuidingShaftsNT_OK, Repair_OK);
+    m_pgbRepairZT_GuidingShaftsNT->addButton(ui->rbGuidingShaftsNT_Repair, Repair_Repair);
+    m_pgbRepairZT_GuidingShaftsNT->addButton(ui->rbGuidingShaftsNT_NA, Repair_NA);
 
     // set SmallGuidingShafts
     m_pgbRepairZT_SmallGuidingShafts = new QButtonGroup( this);
-    m_pgbRepairZT_SmallGuidingShafts->addButton(ui->rbSmallGuidingShafts_OK, 0);
-    m_pgbRepairZT_SmallGuidingShafts->addButton(ui->rbSmallGuidingShafts_Repair, 1);
-    m_pgbRepairZT_SmallGuidingShafts->addButton(ui->rbSmallGuidingShafts_NA, 2);
+    m_pgbRepairZT_SmallGuidingShafts->addButton(ui->rbSmallGuidingShafts_OK, Repair_OK);
+    m_pgbRepairZT_SmallGuidingShafts->addButton(ui->rbSmallGuidingShafts_Repair, Repair_Repair);
+    m_pgbRepairZT_SmallGuidingShafts->addButton(ui->rbSmallGuidingShafts_NA, Repair_NA);
 
     // set ClampingFlange
     m_pgbRepairZT_ClampingFlange = new QButtonGroup( this);
-    m_pgbRepairZT_ClampingFlange->addButton(ui->rbClampingFlange_OK, 0);
-    m_pgbRepairZT_ClampingFlange->addButton(ui->rbClampingFlange_Repair, 1);
-    m_pgbRepairZT_ClampingFlange->addButton(ui->rbClampingFlange_NA, 2);
+    m_pgbRepairZT_ClampingFlange->addButton(ui->rbClampingFlange_OK, Repair_OK);
+    m_pgbRepairZT_ClampingFlange->addButton(ui->rbClampingFlange_Repair, Repair_Repair);
+    m_pgbRepairZT_ClampingFlange->addButton(ui->rbClampingFlange_NA, Repair_NA);
 
     // set AdapterCable
     m_pgbRepairZT_AdapterCable = new QButtonGroup( this);
-    m_pgbRepairZT_AdapterCable->addButton(ui->rbAdapterCable_OK, 0);
-    m_pgbRepairZT_AdapterCable->addButton(ui->rbAdapterCable_Repair, 1);
-    m_pgbRepairZT_AdapterCable->addButton(ui->rbAdapterCable_NA, 2);
+    m_pgbRepairZT_AdapterCable->addButton(ui->rbAdapterCable_OK, Repair_OK);
+    m_pgbRepairZT_AdapterCable->addButton(ui->rbAdapterCable_Repair, Repair_Repair);
+    m_pgbRepairZT_AdapterCable->addButton(ui->rbAdapterCable_NA, Repair_NA);
+
+    // set DeliverTo
+    m_pgbRepairZT_Deliver = new QButtonGroup( this);
+    m_pgbRepairZT_Deliver->addButton(ui->cbZTTW, TW);
+    m_pgbRepairZT_Deliver->addButton(ui->cbZTEU, EU);
 }
 
 void CAnalyseData::writeAmount( QAxObject* workbook, sREPAIRITEM item )
@@ -5218,7 +5240,7 @@ void CAnalyseData::extendInformation( QAxObject* workbook, sREPAIRITEM item )
     cell->setProperty("Value", value);
 }
 
-void CAnalyseData::buildRepairTable( void)
+void CAnalyseData::buildRepairTable( void )
 {
 
     // Value                                                                                // Cell     // Function
@@ -5248,6 +5270,7 @@ void CAnalyseData::buildRepairTable( void)
     vecRepairItems.append({m_pgbRepairARM_BeltReel->checkedId(),                            "E44",      writeAmount});
     vecRepairItems.append({m_pgbRepairARM_TorxScrew->checkedId(),                           "E45",      writeAmount});
     vecRepairItems.append({m_pgbRepairARM_Bearings->checkedId(),                            "E46",      writeAmount});
+    vecRepairItems.append({m_pgbRepairARM_Deliver->checkedId(),                             "E47",      writeAmount});
 
 ////    // ------ DM parts ------------------------------------------------------------------------------------
     vecRepairItems.append({m_pgbRepairDM_DMLikaMotor->checkedId(),                          "E15",      writeAmount});
@@ -5256,6 +5279,7 @@ void CAnalyseData::buildRepairTable( void)
     vecRepairItems.append({m_pgbRepairDM_DMLid->checkedId(),                                "E51",      writeAmount});
     vecRepairItems.append({m_pgbRepairDM_SlipRing->checkedId(),                             "E52",      writeAmount});
     vecRepairItems.append({m_pgbRepairDM_HollowShaft->checkedId(),                          "E53",      writeAmount});
+    vecRepairItems.append({m_pgbRepairDM_Deliver->checkedId(),                              "E54",      writeAmount});
 
 ////    // ------ Z-module parts ------------------------------------------------------------------------------
     vecRepairItems.append({m_pgbRepairZT_ZStroke35->checkedId(),                            "E17",      writeAmount});
@@ -5267,15 +5291,843 @@ void CAnalyseData::buildRepairTable( void)
     vecRepairItems.append({m_pgbRepairZT_SmallGuidingShafts->checkedId(),                   "E60",      writeAmount});
     vecRepairItems.append({m_pgbRepairZT_ClampingFlange->checkedId(),                       "E61",      writeAmount});
     vecRepairItems.append({m_pgbRepairZT_AdapterCable->checkedId(),                         "E62",      writeAmount});
+    vecRepairItems.append({m_pgbRepairZT_Deliver->checkedId(),                              "E63",      writeAmount});
 
     // ------ Upgrade part --------------------------------------------------------------------------------
 
     // ------ Labour & Packaging --------------------------------------------------------------------------
 }
 
+void CAnalyseData::getDataFromRepair(){
+    getRepairFromARM();
+    getRepairFromDM();
+    getRepairFromZT();
+}
+void CAnalyseData::getRepairFromARM( void )
+{
+    QSettings settings(m_filePath,QSettings::IniFormat);
+    settings.beginGroup(BEGIN_ARMREPAIR);
+
+    QString strInputName = "ArmBelts";
+    switch( m_pgbRepairARM_ArmBelts->checkedId())
+    {
+      case Repair_OK:
+        settings.setValue(strInputName, Repair_OK);
+        break;
+      case Repair_Repair:
+        settings.setValue(strInputName, Repair_Repair);
+        break;
+      case Repair_NA:
+        settings.setValue(strInputName, Repair_NA);
+        break;
+    }
+    strInputName = "UpperArmHousingUpgrade";
+    switch( m_pgbRepairARM_UpperArmHousingUpgrade->checkedId())
+    {
+      case Repair_OK:
+        settings.setValue(strInputName, Repair_OK);
+        break;
+      case Repair_Repair:
+        settings.setValue(strInputName, Repair_Repair);
+        break;
+      case Repair_NA:
+        settings.setValue(strInputName, Repair_NA);
+        break;
+    }
+    strInputName = "UpperArmHousing";
+    switch( m_pgbRepairARM_UpperArmHousing->checkedId())
+    {
+      case Repair_OK:
+        settings.setValue(strInputName, Repair_OK);
+        break;
+      case Repair_Repair:
+        settings.setValue(strInputName, Repair_Repair);
+        break;
+      case Repair_NA:
+        settings.setValue(strInputName, Repair_NA);
+        break;
+    }
+    strInputName = "UpperArmLid";
+    switch( m_pgbRepairARM_UpperArmLid->checkedId())
+    {
+      case Repair_OK:
+        settings.setValue(strInputName, Repair_OK);
+        break;
+      case Repair_Repair:
+        settings.setValue(strInputName, Repair_Repair);
+        break;
+      case Repair_NA:
+        settings.setValue(strInputName, Repair_NA);
+        break;
+    }
+    strInputName = "LowerArmHousingUpgrade";
+    switch( m_pgbRepairARM_LowerArmHousingUpgrade->checkedId())
+    {
+      case Repair_OK:
+        settings.setValue(strInputName, Repair_OK);
+        break;
+      case Repair_Repair:
+        settings.setValue(strInputName, Repair_Repair);
+        break;
+      case Repair_NA:
+        settings.setValue(strInputName, Repair_NA);
+        break;
+    }
+    strInputName = "LowerArmHousing";
+    switch( m_pgbRepairARM_LowerArmHousing->checkedId())
+    {
+      case Repair_OK:
+        settings.setValue(strInputName, Repair_OK);
+        break;
+      case Repair_Repair:
+        settings.setValue(strInputName, Repair_Repair);
+        break;
+      case Repair_NA:
+        settings.setValue(strInputName, Repair_NA);
+        break;
+    }
+    strInputName = "LowerArmLid";
+    switch( m_pgbRepairARM_LowerArmLid->checkedId())
+    {
+      case Repair_OK:
+        settings.setValue(strInputName, Repair_OK);
+        break;
+      case Repair_Repair:
+        settings.setValue(strInputName, Repair_Repair);
+        break;
+      case Repair_NA:
+        settings.setValue(strInputName, Repair_NA);
+        break;
+    }
+    strInputName = "ArmDriveInterface";
+    switch( m_pgbRepairARM_ArmDriveInterface->checkedId())
+    {
+      case Repair_OK:
+        settings.setValue(strInputName, Repair_OK);
+        break;
+      case Repair_Repair:
+        settings.setValue(strInputName, Repair_Repair);
+        break;
+      case Repair_NA:
+        settings.setValue(strInputName, Repair_NA);
+        break;
+    }
+    strInputName = "ArmGripperInterfaceScara";
+    switch( m_pgbRepairARM_ArmGripperInterfaceScara->checkedId())
+    {
+      case Repair_OK:
+        settings.setValue(strInputName, Repair_OK);
+        break;
+      case Repair_Repair:
+        settings.setValue(strInputName, Repair_Repair);
+        break;
+      case Repair_NA:
+        settings.setValue(strInputName, Repair_NA);
+        break;
+    }
+    strInputName = "ArmGripperInterfaceNT";
+    switch( m_pgbRepairARM_ArmGripperInterfaceNT->checkedId())
+    {
+      case Repair_OK:
+        settings.setValue(strInputName, Repair_OK);
+        break;
+      case Repair_Repair:
+        settings.setValue(strInputName, Repair_Repair);
+        break;
+      case Repair_NA:
+        settings.setValue(strInputName, Repair_NA);
+        break;
+    }
+    strInputName = "BeltReel";
+    switch( m_pgbRepairARM_BeltReel->checkedId())
+    {
+      case Repair_OK:
+        settings.setValue(strInputName, Repair_OK);
+        break;
+      case Repair_Repair:
+        settings.setValue(strInputName, Repair_Repair);
+        break;
+      case Repair_NA:
+        settings.setValue(strInputName, Repair_NA);
+        break;
+    }
+    strInputName = "TorxScrew";
+    switch( m_pgbRepairARM_TorxScrew->checkedId())
+    {
+      case Repair_OK:
+        settings.setValue(strInputName, Repair_OK);
+        break;
+      case Repair_Repair:
+        settings.setValue(strInputName, Repair_Repair);
+        break;
+      case Repair_NA:
+        settings.setValue(strInputName, Repair_NA);
+        break;
+    }
+    strInputName = "Bearings";
+    switch( m_pgbRepairARM_Bearings->checkedId())
+    {
+      case Repair_OK:
+        settings.setValue(strInputName, Repair_OK);
+        break;
+      case Repair_Repair:
+        settings.setValue(strInputName, Repair_Repair);
+        break;
+      case Repair_NA:
+        settings.setValue(strInputName, Repair_NA);
+        break;
+    }
+    strInputName = "Deliver";
+    switch( m_pgbRepairARM_Deliver->checkedId())
+    {
+        case TW:
+        settings.setValue(strInputName, TW);
+        break;
+        case EU:
+        settings.setValue(strInputName, EU);
+        break;
+    }
 
 
-void CAnalyseData::on_pushButton_clicked()
+}
+void CAnalyseData::getRepairFromDM( void )
+{
+    QSettings settings(m_filePath,QSettings::IniFormat);
+    settings.beginGroup(BEGIN_DMREPAIR);
+
+    QString strInputName = "DMLikaMotor";
+    switch( m_pgbRepairDM_DMLikaMotor->checkedId())
+    {
+      case Repair_OK:
+        settings.setValue(strInputName, Repair_OK);
+        break;
+      case Repair_Repair:
+        settings.setValue(strInputName, Repair_Repair);
+        break;
+      case Repair_NA:
+        settings.setValue(strInputName, Repair_NA);
+        break;
+    }
+    strInputName = "CableHood";
+    switch( m_pgbRepairDM_CableHood->checkedId())
+    {
+        case Repair_OK:
+        settings.setValue(strInputName, Repair_OK);
+        break;
+        case Repair_Repair:
+        settings.setValue(strInputName, Repair_Repair);
+        break;
+        case Repair_NA:
+        settings.setValue(strInputName, Repair_NA);
+        break;
+    }
+    strInputName = "DMLid";
+    switch( m_pgbRepairDM_DMLid->checkedId())
+    {
+        case Repair_OK:
+        settings.setValue(strInputName, Repair_OK);
+        break;
+        case Repair_Repair:
+        settings.setValue(strInputName, Repair_Repair);
+        break;
+        case Repair_NA:
+        settings.setValue(strInputName, Repair_NA);
+        break;
+    }
+    strInputName = "SlipRing";
+    switch( m_pgbRepairDM_SlipRing->checkedId())
+    {
+        case Repair_OK:
+        settings.setValue(strInputName, Repair_OK);
+        break;
+        case Repair_Repair:
+        settings.setValue(strInputName, Repair_Repair);
+        break;
+        case Repair_NA:
+        settings.setValue(strInputName, Repair_NA);
+        break;
+    }
+    strInputName = "HollowShaft";
+    switch( m_pgbRepairDM_HollowShaft->checkedId())
+    {
+        case Repair_OK:
+        settings.setValue(strInputName, Repair_OK);
+        break;
+        case Repair_Repair:
+        settings.setValue(strInputName, Repair_Repair);
+        break;
+        case Repair_NA:
+        settings.setValue(strInputName, Repair_NA);
+        break;
+    }
+    strInputName = "Deliver";
+    switch( m_pgbRepairDM_Deliver->checkedId())
+    {
+        case TW:
+        settings.setValue(strInputName, TW);
+        break;
+        case EU:
+        settings.setValue(strInputName, EU);
+        break;
+    }
+}
+void CAnalyseData::getRepairFromZT( void )
+{
+    QSettings settings(m_filePath,QSettings::IniFormat);
+    settings.beginGroup(BEGIN_ZTREPAIR);
+
+    QString strInputName = "ZStroke35";
+    switch( m_pgbRepairZT_ZStroke35->checkedId())
+    {
+      case Repair_OK:
+        settings.setValue(strInputName, Repair_OK);
+        break;
+      case Repair_Repair:
+        settings.setValue(strInputName, Repair_Repair);
+        break;
+      case Repair_NA:
+        settings.setValue(strInputName, Repair_NA);
+        break;
+    }
+    strInputName = "ZStroke50";
+    switch( m_pgbRepairZT_ZStroke50->checkedId())
+    {
+      case Repair_OK:
+        settings.setValue(strInputName, Repair_OK);
+        break;
+      case Repair_Repair:
+        settings.setValue(strInputName, Repair_Repair);
+        break;
+      case Repair_NA:
+        settings.setValue(strInputName, Repair_NA);
+        break;
+    }
+    strInputName = "ZMHousingScara";
+    switch( m_pgbRepairZT_ZMHousingScara->checkedId())
+    {
+      case Repair_OK:
+        settings.setValue(strInputName, Repair_OK);
+        break;
+      case Repair_Repair:
+        settings.setValue(strInputName, Repair_Repair);
+        break;
+      case Repair_NA:
+        settings.setValue(strInputName, Repair_NA);
+        break;
+    }
+    strInputName = "ZMHousingNT";
+    switch( m_pgbRepairZT_ZMHousingNT->checkedId())
+    {
+      case Repair_OK:
+        settings.setValue(strInputName, Repair_OK);
+        break;
+      case Repair_Repair:
+        settings.setValue(strInputName, Repair_Repair);
+        break;
+      case Repair_NA:
+        settings.setValue(strInputName, Repair_NA);
+        break;
+    }
+    strInputName = "GuidingShaftsScara";
+    switch( m_pgbRepairZT_GuidingShaftsScara->checkedId())
+    {
+      case Repair_OK:
+        settings.setValue(strInputName, Repair_OK);
+        break;
+      case Repair_Repair:
+        settings.setValue(strInputName, Repair_Repair);
+        break;
+      case Repair_NA:
+        settings.setValue(strInputName, Repair_NA);
+        break;
+    }
+    strInputName = "GuidingShaftsNT";
+    switch( m_pgbRepairZT_GuidingShaftsNT->checkedId())
+    {
+      case Repair_OK:
+        settings.setValue(strInputName, Repair_OK);
+        break;
+      case Repair_Repair:
+        settings.setValue(strInputName, Repair_Repair);
+        break;
+      case Repair_NA:
+        settings.setValue(strInputName, Repair_NA);
+        break;
+    }
+    strInputName = "SmallGuidingShafts";
+    switch( m_pgbRepairZT_SmallGuidingShafts->checkedId())
+    {
+      case Repair_OK:
+        settings.setValue(strInputName, Repair_OK);
+        break;
+      case Repair_Repair:
+        settings.setValue(strInputName, Repair_Repair);
+        break;
+      case Repair_NA:
+        settings.setValue(strInputName, Repair_NA);
+        break;
+    }
+    strInputName = "ClampingFlange";
+    switch( m_pgbRepairZT_ClampingFlange->checkedId())
+    {
+      case Repair_OK:
+        settings.setValue(strInputName, Repair_OK);
+        break;
+      case Repair_Repair:
+        settings.setValue(strInputName, Repair_Repair);
+        break;
+      case Repair_NA:
+        settings.setValue(strInputName, Repair_NA);
+        break;
+    }
+    strInputName = "AdapterCable";
+    switch( m_pgbRepairZT_AdapterCable->checkedId())
+    {
+      case Repair_OK:
+        settings.setValue(strInputName, Repair_OK);
+        break;
+      case Repair_Repair:
+        settings.setValue(strInputName, Repair_Repair);
+        break;
+      case Repair_NA:
+        settings.setValue(strInputName, Repair_NA);
+        break;
+    }
+    strInputName = "Deliver";
+    switch( m_pgbRepairZT_Deliver->checkedId())
+    {
+        case TW:
+        settings.setValue(strInputName, TW);
+        break;
+        case EU:
+        settings.setValue(strInputName, EU);
+        break;
+    }
+}
+
+void CAnalyseData::getDataFromIni4Repair(){
+    getDataFromIni4ARMRepair();
+    getDataFromIni4DMRepair();
+    getDataFromIni4ZTRepair();
+}
+void CAnalyseData::getDataFromIni4ARMRepair( void)
+{
+    QSettings settings(m_filePath,QSettings::IniFormat);
+    settings.beginGroup(BEGIN_ARMREPAIR);
+
+    QString strInputName = "ArmBelts";
+    int iType = settings.value(strInputName).toInt();
+    switch(iType)
+    {
+      case Repair_OK:
+        ui->rbArmBeltsAvrPrice_OK->setChecked( true);
+        break;
+      case Repair_Repair:
+        ui->rbArmBeltsAvrPrice_Repair->setChecked( true);
+        break;
+      case Repair_NA:
+        ui->rbArmBeltsAvrPrice_NA->setChecked( true);
+        break;
+    }
+    strInputName = "UpperArmHousingUpgrade";
+    iType = settings.value(strInputName).toInt();
+    switch(iType)
+    {
+      case Repair_OK:
+        ui->rbUpperArmHousingUpgrade_OK->setChecked( true);
+        break;
+      case Repair_Repair:
+        ui->rbUpperArmHousingUpgrade_Repair->setChecked( true);
+        break;
+      case Repair_NA:
+        ui->rbUpperArmHousingUpgrade_NA->setChecked( true);
+        break;
+    }
+    strInputName = "UpperArmHousing";
+    iType = settings.value(strInputName).toInt();
+    switch(iType)
+    {
+      case Repair_OK:
+        ui->rbUpperArmHousing_OK->setChecked( true);
+        break;
+      case Repair_Repair:
+        ui->rbUpperArmHousing_Repair->setChecked( true);
+        break;
+      case Repair_NA:
+        ui->rbUpperArmHousing_NA->setChecked( true);
+        break;
+    }
+    strInputName = "UpperArmLid";
+    iType = settings.value(strInputName).toInt();
+    switch(iType)
+    {
+      case Repair_OK:
+        ui->rbUpperArmLid_OK->setChecked( true);
+        break;
+      case Repair_Repair:
+        ui->rbUpperArmLid_Repair->setChecked( true);
+        break;
+      case Repair_NA:
+        ui->rbUpperArmLid_NA->setChecked( true);
+        break;
+    }
+    strInputName = "LowerArmHousingUpgrade";
+    iType = settings.value(strInputName).toInt();
+    switch(iType)
+    {
+      case Repair_OK:
+        ui->rbLowerArmHousingUpgrade_OK->setChecked( true);
+        break;
+      case Repair_Repair:
+        ui->rbLowerArmHousingUpgrade_Repair->setChecked( true);
+        break;
+      case Repair_NA:
+        ui->rbLowerArmHousingUpgrade_NA->setChecked( true);
+        break;
+    }
+    strInputName = "LowerArmHousing";
+    iType = settings.value(strInputName).toInt();
+    switch(iType)
+    {
+      case Repair_OK:
+        ui->rbLowerArmHousing_OK->setChecked( true);
+        break;
+      case Repair_Repair:
+        ui->rbLowerArmHousing_Repair->setChecked( true);
+        break;
+      case Repair_NA:
+        ui->rbLowerArmHousing_NA->setChecked( true);
+        break;
+    }
+    strInputName = "LowerArmLid";
+    iType = settings.value(strInputName).toInt();
+    switch(iType)
+    {
+      case Repair_OK:
+        ui->rbLowerArmLid_OK->setChecked( true);
+        break;
+      case Repair_Repair:
+        ui->rbLowerArmLid_Repair->setChecked( true);
+        break;
+      case Repair_NA:
+        ui->rbLowerArmLid_NA->setChecked( true);
+        break;
+    }
+    strInputName = "ArmDriveInterfac";
+    iType = settings.value(strInputName).toInt();
+    switch(iType)
+    {
+      case Repair_OK:
+        ui->rbArmDriveInterface_OK->setChecked( true);
+        break;
+      case Repair_Repair:
+        ui->rbArmDriveInterface_Repair->setChecked( true);
+        break;
+      case Repair_NA:
+        ui->rbArmDriveInterface_NA->setChecked( true);
+        break;
+    }
+    strInputName = "ArmGripperInterfaceScara";
+    iType = settings.value(strInputName).toInt();
+    switch(iType)
+    {
+      case Repair_OK:
+        ui->rbArmGripperInterfaceScara_OK->setChecked( true);
+        break;
+      case Repair_Repair:
+        ui->rbArmGripperInterfaceScara_Repair->setChecked( true);
+        break;
+      case Repair_NA:
+        ui->rbArmGripperInterfaceScara_NA->setChecked( true);
+        break;
+    }
+    strInputName = "ArmGripperInterfaceNT";
+    iType = settings.value(strInputName).toInt();
+    switch(iType)
+    {
+      case Repair_OK:
+        ui->rbArmGripperInterfaceNT_OK->setChecked( true);
+        break;
+      case Repair_Repair:
+        ui->rbArmGripperInterfaceNT_Repair->setChecked( true);
+        break;
+      case Repair_NA:
+        ui->rbArmGripperInterfaceNT_NA->setChecked( true);
+        break;
+    }
+    strInputName = "BeltReel";
+    iType = settings.value(strInputName).toInt();
+    switch(iType)
+    {
+      case Repair_OK:
+        ui->rbBeltReel_OK->setChecked( true);
+        break;
+      case Repair_Repair:
+        ui->rbBeltReel_Repair->setChecked( true);
+        break;
+      case Repair_NA:
+        ui->rbBeltReel_NA->setChecked( true);
+        break;
+    }
+    strInputName = "TorxScrew";
+    iType = settings.value(strInputName).toInt();
+    switch(iType)
+    {
+      case Repair_OK:
+        ui->rbTorxScrew_OK->setChecked( true);
+        break;
+      case Repair_Repair:
+        ui->rbTorxScrew_Repair->setChecked( true);
+        break;
+      case Repair_NA:
+        ui->rbTorxScrew_NA->setChecked( true);
+        break;
+    }
+    strInputName = "Bearings";
+    iType = settings.value(strInputName).toInt();
+    switch(iType)
+    {
+      case Repair_OK:
+        ui->rbBearings_OK->setChecked( true);
+        break;
+      case Repair_Repair:
+        ui->rbBearings_Repair->setChecked( true);
+        break;
+      case Repair_NA:
+        ui->rbBearings_NA->setChecked( true);
+        break;
+    }
+    strInputName = "Deliver";
+    iType = settings.value(strInputName).toInt();
+    switch(iType)
+    {
+      case TW:
+        ui->cbArmTW->setChecked(true);
+        break;
+      case EU:
+        ui->cbArmEU->setChecked( true);
+        break;
+    }
+}
+void CAnalyseData::getDataFromIni4DMRepair( void)
+{
+    QSettings settings(m_filePath,QSettings::IniFormat);
+    settings.beginGroup(BEGIN_DMREPAIR);
+
+    QString strInputName = "DMLikaMotor";
+    int iType = settings.value(strInputName).toInt();
+    switch(iType)
+    {
+      case Repair_OK:
+        ui->rbDMLikaMotor_OK->setChecked( true);
+        break;
+      case Repair_Repair:
+        ui->rbDMLikaMotor_Repair->setChecked( true);
+        break;
+      case Repair_NA:
+        ui->rbDMLikaMotor_NA->setChecked( true);
+        break;
+    }
+    strInputName = "CableHood";
+    iType = settings.value(strInputName).toInt();
+    switch(iType)
+    {
+      case Repair_OK:
+        ui->rbCableHood_OK->setChecked( true);
+        break;
+      case Repair_Repair:
+        ui->rbCableHood_Repair->setChecked( true);
+        break;
+      case Repair_NA:
+        ui->rbCableHood_NA->setChecked( true);
+        break;
+    }
+    strInputName = "DMHousing";
+    iType = settings.value(strInputName).toInt();
+    switch(iType)
+    {
+      case Repair_OK:
+        ui->rbDMHousing_OK->setChecked( true);
+        break;
+      case Repair_Repair:
+        ui->rbDMHousing_Repair->setChecked( true);
+        break;
+      case Repair_NA:
+        ui->rbDMHousing_NA->setChecked( true);
+        break;
+    }
+    strInputName = "DMLid";
+    iType = settings.value(strInputName).toInt();
+    switch(iType)
+    {
+      case Repair_OK:
+        ui->rbDMLid_OK->setChecked( true);
+        break;
+      case Repair_Repair:
+        ui->rbDMLid_Repair->setChecked( true);
+        break;
+      case Repair_NA:
+        ui->rbDMLid_NA->setChecked( true);
+        break;
+    }
+    strInputName = "SlipRing";
+    iType = settings.value(strInputName).toInt();
+    switch(iType)
+    {
+      case Repair_OK:
+        ui->rbSlipRing_OK->setChecked( true);
+        break;
+      case Repair_Repair:
+        ui->rbSlipRing_Repair->setChecked( true);
+        break;
+      case Repair_NA:
+        ui->rbSlipRing_NA->setChecked( true);
+        break;
+    }
+    strInputName = "HollowShaft";
+    iType = settings.value(strInputName).toInt();
+    switch(iType)
+    {
+      case Repair_OK:
+        ui->rbHollowShaft_OK->setChecked( true);
+        break;
+      case Repair_Repair:
+        ui->rbHollowShaft_Repair->setChecked( true);
+        break;
+      case Repair_NA:
+        ui->rbHollowShaft_NA->setChecked( true);
+        break;
+    }
+    strInputName = "Deliver";
+    iType = settings.value(strInputName).toInt();
+    switch(iType)
+    {
+      case TW:
+        ui->cbDMTW->setChecked( true);
+        break;
+      case EU:
+        ui->cbDMEU->setChecked( true);
+        break;
+    }
+}
+void CAnalyseData::getDataFromIni4ZTRepair( void)
+{
+    QSettings settings(m_filePath,QSettings::IniFormat);
+    settings.beginGroup(BEGIN_ZTREPAIR);
+
+    QString strInputName = "ZStroke35";
+    int iType = settings.value(strInputName).toInt();
+    switch(iType)
+    {
+      case Repair_OK:
+        ui->rbZStroke35_OK->setChecked( true);
+        break;
+      case Repair_Repair:
+        ui->rbZStroke35_Repair->setChecked( true);
+        break;
+      case Repair_NA:
+        ui->rbZStroke35_NA->setChecked( true);
+        break;
+    }
+    strInputName = "ZStroke50";
+    iType = settings.value(strInputName).toInt();
+    switch(iType)
+    {
+      case Repair_OK:
+        ui->rbZStroke50_OK->setChecked( true);
+        break;
+      case Repair_Repair:
+        ui->rbZStroke50_Repair->setChecked( true);
+        break;
+      case Repair_NA:
+        ui->rbZStroke50_NA->setChecked( true);
+        break;
+    }
+    strInputName = "ZMHousingScara";
+    iType = settings.value(strInputName).toInt();
+    switch(iType)
+    {
+      case Repair_OK:
+        ui->rbZMHousingScara_OK->setChecked( true);
+        break;
+      case Repair_Repair:
+        ui->rbZMHousingScara_Repair->setChecked( true);
+        break;
+      case Repair_NA:
+        ui->rbZMHousingScara_NA->setChecked( true);
+        break;
+    }
+    strInputName = "ZMHousingNT";
+    iType = settings.value(strInputName).toInt();
+    switch(iType)
+    {
+      case Repair_OK:
+        ui->rbZMHousingNT_OK->setChecked( true);
+        break;
+      case Repair_Repair:
+        ui->rbZMHousingNT_Repair->setChecked( true);
+        break;
+      case Repair_NA:
+        ui->rbZMHousingNT_NA->setChecked( true);
+        break;
+    }
+    strInputName = "GuidingShaftsScara";
+    iType = settings.value(strInputName).toInt();
+    switch(iType)
+    {
+      case Repair_OK:
+        ui->rbGuidingShaftsScara_OK->setChecked( true);
+        break;
+      case Repair_Repair:
+        ui->rbGuidingShaftsScara_Repair->setChecked( true);
+        break;
+      case Repair_NA:
+        ui->rbGuidingShaftsScara_NA->setChecked( true);
+        break;
+    }
+    strInputName = "GuidingShaftsNT";
+    iType = settings.value(strInputName).toInt();
+    switch(iType)
+    {
+      case Repair_OK:
+        ui->rbGuidingShaftsNT_OK->setChecked( true);
+        break;
+      case Repair_Repair:
+        ui->rbGuidingShaftsNT_Repair->setChecked( true);
+        break;
+      case Repair_NA:
+        ui->rbGuidingShaftsNT_NA->setChecked( true);
+        break;
+    }
+    strInputName = "SmallGuidingShafts";
+    iType = settings.value(strInputName).toInt();
+    switch(iType)
+    {
+      case Repair_OK:
+        ui->rbSmallGuidingShafts_OK->setChecked( true);
+        break;
+      case Repair_Repair:
+        ui->rbSmallGuidingShafts_Repair->setChecked( true);
+        break;
+      case Repair_NA:
+        ui->rbSmallGuidingShafts_NA->setChecked( true);
+        break;
+    }
+    strInputName = "Deliver";
+    iType = settings.value(strInputName).toInt();
+    switch(iType)
+    {
+      case TW:
+        ui->cbZTTW->setChecked(true);
+        break;
+      case EU:
+        ui->cbZTEU->setChecked( true);
+        break;
+    }
+
+}
+
+void CAnalyseData::createRepairMatrix( void )
 {
 
 //    QString m_robotNumber = ui->lbRobotType->text() + ui->leRobotTypeSN->text();
@@ -5337,4 +6189,22 @@ void CAnalyseData::on_pushButton_clicked()
 
     closeExcel();
     progressSave(100);
+}
+
+void CAnalyseData::on_pbExport_clicked()
+{
+    if(ui->cbAnalyseSheet->isChecked()){
+        // export Analyse Excel
+        createAnalyseSheet();
+    }
+    if(ui->cbRepairMatrix->isChecked()){
+        // create Repair Matrix
+        createRepairMatrix();
+    }
+    if(ui->cbPrintLabel->isChecked()){
+        createPrintLabel();
+    }
+    if(ui->cbMOMSheet->isChecked()){
+
+    }
 }
