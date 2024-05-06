@@ -571,6 +571,7 @@ void CAnalyseData::on_pbRobotSNHide_clicked()
       QString strExcelRepairTemp = settings.value("TemplateVersionRepair").toString();  //Repair_matrix_MK5  //************
 //    Template for the Repair Sheet:
       m_filePathExcelRepairTmp = QDir::toNativeSeparators(QApplication::applicationDirPath()) + "\\" + strExcelRepairTemp + ".xlsx";
+      qDebug() << "REPAIR Temp " << m_filePathExcelRepairTmp;
       QString m_robotNumber;
       QStringList parts = m_fileName.split("_");
       if(parts.size() > 1) {
@@ -3700,11 +3701,11 @@ void CAnalyseData::createAnalyseSheet()
     QString strValueA3 = rangeA3->dynamicCall("Value()").toString();        //strRange: the raw value of cell A3
 
     //                               strText,    strSavePath,   strFileName,                   iFileType, iSize //1: jpg, 2: jpeg, 3. png
-//    libDataMatrix.GenerateDataMatrix(strValueA1, strDMFolder, (m_fileName + "_DataMatrix_ARM"),   1,        200);    //(m_fileName + "_QrCode_ARM")
-//    libDataMatrix.GenerateDataMatrix(strValueA2, strDMFolder, (m_fileName + "_DataMatrix_DM"),    1,        200);
-//    libDataMatrix.GenerateDataMatrix(strValueA3, strDMFolder, (m_fileName + "_DataMatrix_Z"),     1,        200);
+    libDataMatrix.GenerateDataMatrix(strValueA1, strDMFolder, (m_fileName + "_DataMatrix_ARM"),   1,        200);    //(m_fileName + "_QrCode_ARM")
+    libDataMatrix.GenerateDataMatrix(strValueA2, strDMFolder, (m_fileName + "_DataMatrix_DM"),    1,        200);
+    libDataMatrix.GenerateDataMatrix(strValueA3, strDMFolder, (m_fileName + "_DataMatrix_Z"),     1,        200);
 
-    //18, 17, 17 -> 0.25 inch
+    // 18, 17, 17 -> 0.25 inch
     insertDataMatrix(m_objWorkbook, 4, "A1", (strDMFolder + "\\" + m_fileName + "_DataMatrix_ARM.jpg"), 21.6);
     insertDataMatrix(m_objWorkbook, 4, "A2", (strDMFolder + "\\" + m_fileName + "_DataMatrix_DM.jpg"), 22);
     insertDataMatrix(m_objWorkbook, 4, "A3", (strDMFolder + "\\" + m_fileName + "_DataMatrix_Z.jpg"), 22);
@@ -6142,13 +6143,10 @@ void CAnalyseData::createRepairMatrix( void )
 //    m_filePathExcelRepair = "D:\\Data\\twintern\\Jana\\Work\\Emily\\Files\\RepairSheet_w.xlsx";  //
 //    m_filePathExcelRepair.append(m_robotType + ui->leRobotTypeSN->text() +"_w.xlsx"); // strExcelFilePath + "\\" + strExcelRepairTemp + "_" + m_robotNumber +"_w.xlsx";
 
-    m_filePathExcelRepairTmp = "D:\\Data\\twintern\\Jana\\Work\\Emily\\Files\\Repair_matrix _MK5.xlsx";
+//    m_filePathExcelRepairTmp = "D:\\Data\\twintern\\Jana\\Work\\Emily\\Files\\Repair_matrix _MK5.xlsx";
     progressSave(3);
     closeExcel();
-//    //closeExcel1();
-//    on_pbSaveIni_clicked();
     progressSave(6);
-//    createLabelFile();
     progressSave(10);
     buildRepairTable();
     if(QFile::exists(m_filePathExcelRepair))
@@ -6202,7 +6200,6 @@ void CAnalyseData::createRepairMatrix( void )
 void CAnalyseData::on_pbExport_clicked( void )
 {
 
-
     // track progress
     int counterAll=0;
     int counterItem=0;
@@ -6245,12 +6242,7 @@ void CAnalyseData::on_pbExport_clicked( void )
 // ************** Create MOM Sheet -----------------------------
 
 void CAnalyseData::createMOMSheet( void ){
-//    progressSave(3);
     closeExcel();
-    //closeExcel1();
-//    on_pbSaveIni_clicked();
-//    progressSave(6);
-//    createLabelFile();
     progressSave(3);
     buildProtocolTable();
     if(QFile::exists(m_filePathExcelMOM))
@@ -6323,7 +6315,7 @@ void CAnalyseData::createMOMSheet( void ){
 
     cell->setProperty("Value", strResAnalysis);
 
-    // make headings bold:
+    // make headers bold:
     int idx = strResAnalysis.indexOf("SA:");
     QAxObject* chars = cell->querySubObject("Characters(int, int)", idx, 3);
     QAxObject *font = chars->querySubObject("Font");
@@ -6370,7 +6362,6 @@ void CAnalyseData::writeGeneralInfoMOM(){
 
 
 }
-
 void CAnalyseData::writeArmInfoMOM(){
     getNextLineIdx(); // "SA:/n"
     // "- Geometry: \n"
@@ -6430,7 +6421,6 @@ void CAnalyseData::writeArmInfoMOM(){
     getNextLineIdx(); //"Visual:\n"
     getNextLineIdx(); // "\n"
 }
-
 void CAnalyseData::writeDMInfoMOM(){
     getNextLineIdx(); // "DM:\n"
     // Geometry 180
@@ -6464,7 +6454,6 @@ void CAnalyseData::writeDMInfoMOM(){
     getNextLineIdx(); // "- Motor / Encoder: \n"
     getNextLineIdx(); // "\n"
 }
-
 void CAnalyseData::writeZInfoMOM(){
     getNextLineIdx(); // "Z: \n"
     getNextLineIdx(); // "Positioning: \n"
@@ -6488,12 +6477,10 @@ void CAnalyseData::getNextLineIdx (){
     startPos++;
     startPos = strResAnalysis.indexOf("\n", startPos);
 }
-
 void CAnalyseData::insertAndReturnLastIdx(QString insertText){
     strResAnalysis.insert(startPos, insertText);
     startPos += insertText.length();
 }
-
 void CAnalyseData::removeAndReturnLastIdx(int numberRemove){
     strResAnalysis.remove(startPos-numberRemove, numberRemove);
     startPos-=numberRemove;
