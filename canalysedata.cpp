@@ -571,7 +571,6 @@ void CAnalyseData::on_pbRobotSNHide_clicked()
       QString strExcelRepairTemp = settings.value("TemplateVersionRepair").toString();  //Repair_matrix_MK5  //************
 //    Template for the Repair Sheet:
       m_filePathExcelRepairTmp = QDir::toNativeSeparators(QApplication::applicationDirPath()) + "\\" + strExcelRepairTemp + ".xlsx";
-      qDebug() << "REPAIR Temp " << m_filePathExcelRepairTmp;
       QString m_robotNumber;
       QStringList parts = m_fileName.split("_");
       if(parts.size() > 1) {
@@ -3681,7 +3680,7 @@ void CAnalyseData::createAnalyseSheet()
         {
             writeGeneralItem(m_objWorkbook, item);
         }
-        progressSave(20 + (item_count++)*80/vecProtocolItems.size());
+        progressSave(20 + (item_count++)*70/vecProtocolItems.size());
     }
 
     //-------------------------- For creating DataMatrix -----------------------------------// *********************************
@@ -3723,6 +3722,7 @@ void CAnalyseData::createAnalyseSheet()
 
     closeExcel();
     progressSave(100);
+    qDebug() << "Analyse Sheet created.";
 }
 
 void CAnalyseData::closeExcel( void)
@@ -4814,6 +4814,7 @@ void CAnalyseData::createPrintLabel()
        QMessageBox::critical(NULL, "Error", "Print Error", QMessageBox::Yes, QMessageBox::Yes);
        return;
     }
+    qDebug() << "Print Label created.";
 }
 
 void CAnalyseData::on_pBtn_ImgRemark_ARM_clicked()
@@ -5257,12 +5258,12 @@ void CAnalyseData::buildRepairTable( void )
     vecRepairItems.append({"'"+ui->leNew12NC->text(),                                       "C4",       writeInformation});
     vecRepairItems.append({"'"+ui->leRobotSN->text(),                                       "C5",       writeInformation});
     vecRepairItems.append({"'"+ui->leARMSN->text(),                                         "D7",       writeInformation});
-    vecRepairItems.append({ui->leArmFirstDelivery->text()+ "; "+ui->leArmLastRepair->text(),"B7",       extendInformation});
+    vecRepairItems.append({ui->leArmFirstDelivery->text()+ " ; "+ui->leArmLastRepair->text(),"B7",       extendInformation});
     vecRepairItems.append({((ui->leDMSN->text()).split("-"))[3],                            "D8",       writeInformation});
-    vecRepairItems.append({ui->leDMFirstDelivery->text()+"; "+ui->leDMLastRepair->text(),   "B8",       extendInformation});
+    vecRepairItems.append({ui->leDMFirstDelivery->text()+" ; "+ui->leDMLastRepair->text(),   "B8",       extendInformation});
     vecRepairItems.append({((ui->leZTSN2->text()).split("-"))[3],                           "D9",       writeInformation});
-    vecRepairItems.append({ui->leZTFirstDelivery->text()+"; "+ui->leZTLastRepair->text(),   "B9",       extendInformation});
-    vecRepairItems.append({ui->leRepairNo->text()+ "; " +ui->leLastRepairDate->text(),      "F5",       extendInformation});
+    vecRepairItems.append({ui->leZTFirstDelivery->text()+" ; "+ui->leZTLastRepair->text(),   "B9",       extendInformation});
+    vecRepairItems.append({ui->leRepairNo->text()+ " ; " +ui->leLastRepairDate->text(),      "F5",       extendInformation});
     vecRepairItems.append({ui->leFirstDeliveryDate->text(),                                 "F6",       extendInformation});
 
     // ------ Arm parts ------------------------------------------------------------------------------------
@@ -6195,6 +6196,7 @@ void CAnalyseData::createRepairMatrix( void )
 
     closeExcel();
     progressSave(100);
+    qDebug() << "Repair Matrix created.";
 }
 
 void CAnalyseData::on_pbExport_clicked( void )
@@ -6340,6 +6342,7 @@ void CAnalyseData::createMOMSheet( void ){
 
     closeExcel();
     progressSave(100);
+    qDebug() << "MOM Sheet created.";
 }
 
 void CAnalyseData::writeGeneralInfoMOM(){
