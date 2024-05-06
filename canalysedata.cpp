@@ -547,9 +547,10 @@ void CAnalyseData::on_pbRobotSNHide_clicked()
       m_fileName = ui->leRobotSN1st->text();
 
       #ifdef USEAPPLICATIONPATH
-        m_settingFilePath = QApplication::applicationDirPath()+"\\Setting.ini";    //QApplication::applicationDirPath()
+        m_settingFilePath = QApplication::applicationDirPath()+"\\Setting_debug.ini";    //QApplication::applicationDirPath()
       #else
-        m_settingFilePath = "D:\\ASYS\\Projects\\Analyse_ASYS\\Setting.ini";
+//        m_settingFilePath = "D:\\ASYS\\Projects\\Analyse_ASYS\\Setting.ini";
+          m_settingFilePath = "D:\\Data\\twintern\\Jana\\Work\\Emily\\Analysis_ASYS_Material\\Analyse_ASYS_ver2.0.3.1\\Analyse_ASYS\\release"
       #endif
       QSettings settings(m_settingFilePath,QSettings::IniFormat);
       settings.beginGroup("PathSetting");
@@ -575,8 +576,16 @@ void CAnalyseData::on_pbRobotSNHide_clicked()
       if(parts.size() > 1) {
         m_robotNumber = parts[1];
       }
-      qDebug() << "RobotTypeSN" << m_robotNumber;
-      m_filePathExcelRepair = "D:\\Data\\twintern\\Jana\\Work\\Emily\\Files\\"+ strExcelRepairTemp + "_"+ m_robotNumber +"_w.xlsx"; // strExcelFilePath + "\\" + strExcelRepairTemp + "_" + m_robotNumber +"_w.xlsx";
+
+      m_filePathExcelRepair =strExcelFilePath + "\\" + strExcelRepairTemp + "_"+ m_robotNumber +"_w.xlsx"; // strExcelFilePath + "\\" + strExcelRepairTemp + "_" + m_robotNumber +"_w.xlsx";
+
+      QString strExcelMOMTemp = settings.value("TemplateVersionMOM").toString();  //MOM_ARR-NT  //************
+//    Template for the MOM Sheet:
+      m_filePathExcelMOMTmp = QDir::toNativeSeparators(QApplication::applicationDirPath()) + "\\" + strExcelMOMTemp + ".xlsx";
+      strExcelMOMTemp.chop(6);
+      m_filePathExcelMOM =strExcelFilePath + "\\" + strExcelMOMTemp + m_robotNumber +".xlsx"; // strExcelFilePath + "\\" + strExcelRepairTemp + "_" + m_robotNumber +"_w.xlsx";
+
+
 
       // for image path //ImageFilePath
       m_imgDefaultPath = settings.value("ImageFilePath").toString();
@@ -3629,11 +3638,12 @@ void CAnalyseData::createAnalyseSheet()
     progressSave(3);
     closeExcel();
     //closeExcel1();    
-    on_pbSaveIni_clicked();
+//    on_pbSaveIni_clicked();
     progressSave(6);
-    createLabelFile();
+//    createLabelFile();
     progressSave(10);
     buildProtocolTable();
+//    qDebug() << m_filePathExcel;
     if(QFile::exists(m_filePathExcel))
     {
         QFile::remove(m_filePathExcel);
@@ -3671,7 +3681,7 @@ void CAnalyseData::createAnalyseSheet()
             writeGeneralItem(m_objWorkbook, item);
         }
         progressSave(20 + (item_count++)*80/vecProtocolItems.size());
-    }// forecah()
+    }
 
     //-------------------------- For creating DataMatrix -----------------------------------// *********************************
     QAxObject *worksheet = m_objWorkbook->querySubObject("Sheets(int)", 4); // get 4th sheet ("Label" sheet)
@@ -3690,15 +3700,15 @@ void CAnalyseData::createAnalyseSheet()
     QString strValueA3 = rangeA3->dynamicCall("Value()").toString();        //strRange: the raw value of cell A3
 
     //                               strText,    strSavePath,   strFileName,                   iFileType, iSize //1: jpg, 2: jpeg, 3. png
-    libDataMatrix.GenerateDataMatrix(strValueA1, strDMFolder, (m_fileName + "_DataMatrix_ARM"),   1,        200);    //(m_fileName + "_QrCode_ARM")
-    libDataMatrix.GenerateDataMatrix(strValueA2, strDMFolder, (m_fileName + "_DataMatrix_DM"),    1,        200);
-    libDataMatrix.GenerateDataMatrix(strValueA3, strDMFolder, (m_fileName + "_DataMatrix_Z"),     1,        200);
+//    libDataMatrix.GenerateDataMatrix(strValueA1, strDMFolder, (m_fileName + "_DataMatrix_ARM"),   1,        200);    //(m_fileName + "_QrCode_ARM")
+//    libDataMatrix.GenerateDataMatrix(strValueA2, strDMFolder, (m_fileName + "_DataMatrix_DM"),    1,        200);
+//    libDataMatrix.GenerateDataMatrix(strValueA3, strDMFolder, (m_fileName + "_DataMatrix_Z"),     1,        200);
 
     //18, 17, 17 -> 0.25 inch
     insertDataMatrix(m_objWorkbook, 4, "A1", (strDMFolder + "\\" + m_fileName + "_DataMatrix_ARM.jpg"), 21.6);
     insertDataMatrix(m_objWorkbook, 4, "A2", (strDMFolder + "\\" + m_fileName + "_DataMatrix_DM.jpg"), 22);
     insertDataMatrix(m_objWorkbook, 4, "A3", (strDMFolder + "\\" + m_fileName + "_DataMatrix_Z.jpg"), 22);
-    //-----------------------------------------------------------------------------------------------------------------//
+//    //-----------------------------------------------------------------------------------------------------------------//
 
     // add to disable checking compatibility
     m_objWorkbook->setProperty("DisplayAlerts", false);
@@ -4910,7 +4920,7 @@ void CAnalyseData::getLabelData()
 
 void CAnalyseData::createLabelFile()
 {
-    on_pbSaveIni_clicked();
+//    on_pbSaveIni_clicked();
     getLabelData();
     //--- Get file paths --//
     QSettings settings(m_settingFilePath,QSettings::IniFormat);
@@ -4975,13 +4985,13 @@ void CAnalyseData::createLabelFile()
 
     QAxObject* rangeA1 = worksheetLabel->querySubObject("Range())", "A1");       //ex: The cell A1
     QString strValueA1 = rangeA1->dynamicCall("Value()").toString();        //strRange: the raw value of cell A1
-
+    qDebug() << strValueA1;
     QAxObject* rangeA2 = worksheetLabel->querySubObject("Range())", "A2");       //ex: The cell A2
     QString strValueA2 = rangeA2->dynamicCall("Value()").toString();        //strRange: the raw value of cell A2
-
+    qDebug() << strValueA2;
     QAxObject* rangeA3 = worksheetLabel->querySubObject("Range())", "A3");       //ex: The cell A3
     QString strValueA3 = rangeA3->dynamicCall("Value()").toString();        //strRange: the raw value of cell A3
-
+    qDebug() << strValueA3;
     //                               strText,    strSavePath,   strFileName,                   iFileType, iSize //1: jpg, 2: jpeg, 3. png
     libDataMatrix.GenerateDataMatrix(strValueA1, strDMFolder, (m_fileName + "_DataMatrix_ARM"),   1,        200);    //(m_fileName + "_QrCode_ARM")
     libDataMatrix.GenerateDataMatrix(strValueA2, strDMFolder, (m_fileName + "_DataMatrix_DM"),    1,        200);
@@ -5010,7 +5020,7 @@ void CAnalyseData::createLabelFile()
 
 
 
-// ************** Create Repair Sheet ---------------------------------------------------------------------------- //
+// ************** Create Repair Table ---------------------------------------------------------------------------- //
 
 
 void CAnalyseData::setRadioButtonsIDsInGB4RepairARM( void){
@@ -5212,7 +5222,6 @@ void CAnalyseData::writeAmount( QAxObject* workbook, sREPAIRITEM item )
     // if checkbox "repair" is checked -> write "1"
     if(item.Value.toInt() == 1){
         QString value = "'1";
-        qDebug() << value;
         cell->setProperty("Value", value);
     }
 }
@@ -5242,16 +5251,15 @@ void CAnalyseData::extendInformation( QAxObject* workbook, sREPAIRITEM item )
 
 void CAnalyseData::buildRepairTable( void )
 {
-
     // Value                                                                                // Cell     // Function
     // ----- General Information --------------------------------------------------------------------------
     vecRepairItems.append({"'"+ui->leNew12NC->text(),                                       "C4",       writeInformation});
     vecRepairItems.append({"'"+ui->leRobotSN->text(),                                       "C5",       writeInformation});
     vecRepairItems.append({"'"+ui->leARMSN->text(),                                         "D7",       writeInformation});
     vecRepairItems.append({ui->leArmFirstDelivery->text()+ "; "+ui->leArmLastRepair->text(),"B7",       extendInformation});
-    vecRepairItems.append({"'"+ui->leDMSN->text(),                                          "D8",       writeInformation});
+    vecRepairItems.append({((ui->leDMSN->text()).split("-"))[3],                            "D8",       writeInformation});
     vecRepairItems.append({ui->leDMFirstDelivery->text()+"; "+ui->leDMLastRepair->text(),   "B8",       extendInformation});
-    vecRepairItems.append({"'"+ui->leZTSN2->text(),                                         "D9",       writeInformation});
+    vecRepairItems.append({((ui->leZTSN2->text()).split("-"))[3],                           "D9",       writeInformation});
     vecRepairItems.append({ui->leZTFirstDelivery->text()+"; "+ui->leZTLastRepair->text(),   "B9",       extendInformation});
     vecRepairItems.append({ui->leRepairNo->text()+ "; " +ui->leLastRepairDate->text(),      "F5",       extendInformation});
     vecRepairItems.append({ui->leFirstDeliveryDate->text(),                                 "F6",       extendInformation});
@@ -5298,7 +5306,7 @@ void CAnalyseData::buildRepairTable( void )
     // ------ Labour & Packaging --------------------------------------------------------------------------
 }
 
-void CAnalyseData::getDataFromRepair(){
+void CAnalyseData::getDataFromRepair( void ){
     getRepairFromARM();
     getRepairFromDM();
     getRepairFromZT();
@@ -5705,7 +5713,7 @@ void CAnalyseData::getRepairFromZT( void )
     }
 }
 
-void CAnalyseData::getDataFromIni4Repair(){
+void CAnalyseData::getDataFromIni4Repair( void ){
     getDataFromIni4ARMRepair();
     getDataFromIni4DMRepair();
     getDataFromIni4ZTRepair();
@@ -6164,7 +6172,7 @@ void CAnalyseData::createRepairMatrix( void )
         QMessageBox::critical(NULL, "Error", "Office is not installed", QMessageBox::Yes, QMessageBox::Yes);
         return;
     }
-    workbooks->setProperty("Visible",false);    //new code*********************
+    workbooks->setProperty("Visible",false);
     workbooks->dynamicCall("Open (const QString&)", m_filePathExcelRepairTmp);   // Open the file；
     m_objWorkbook = m_objExcel->querySubObject("ActiveWorkBook"); // Get the active workbook.
     progressSave(20);
@@ -6191,20 +6199,302 @@ void CAnalyseData::createRepairMatrix( void )
     progressSave(100);
 }
 
-void CAnalyseData::on_pbExport_clicked()
+void CAnalyseData::on_pbExport_clicked( void )
 {
+
+
+    // track progress
+    int counterAll=0;
+    int counterItem=0;
+    if(ui->cbAnalyseSheet->isChecked())
+        counterAll++;
+    if(ui->cbRepairMatrix->isChecked())
+        counterAll++;
+    if(ui->cbPrintLabel->isChecked())
+        counterAll++;
+    if(ui->cbMOMSheet->isChecked())
+        counterAll++;
+
+    ui->lbProcess->setText(QString::number(counterItem) +"/"+QString::number(counterAll));
+
+    progressSave(3);
+    on_pbSaveIni_clicked();
+    progressSave(6);
+
     if(ui->cbAnalyseSheet->isChecked()){
         // export Analyse Excel
         createAnalyseSheet();
+        ui->lbProcess->setText(QString::number(++counterItem) +"/"+QString::number(counterAll));
     }
     if(ui->cbRepairMatrix->isChecked()){
         // create Repair Matrix
         createRepairMatrix();
+        ui->lbProcess->setText(QString::number(++counterItem) +"/"+QString::number(counterAll));
     }
     if(ui->cbPrintLabel->isChecked()){
         createPrintLabel();
+        ui->lbProcess->setText(QString::number(++counterItem) +"/"+QString::number(counterAll));
     }
     if(ui->cbMOMSheet->isChecked()){
-
+        createMOMSheet();
+        ui->lbProcess->setText(QString::number(++counterItem) +"/"+ QString::number(counterAll));
     }
+}
+
+
+// ************** Create MOM Sheet -----------------------------
+
+void CAnalyseData::createMOMSheet( void ){
+//    progressSave(3);
+    closeExcel();
+    //closeExcel1();
+//    on_pbSaveIni_clicked();
+//    progressSave(6);
+//    createLabelFile();
+    progressSave(3);
+    buildProtocolTable();
+    if(QFile::exists(m_filePathExcelMOM))
+    {
+        QFile::remove(m_filePathExcelMOM);
+    }
+
+    m_objExcel = new QAxObject("Excel.Application");
+    if( m_objExcel==nullptr)
+    {
+        progressSave(0);
+        QMessageBox::critical(NULL, "Error", "Excel is not installed", QMessageBox::Yes, QMessageBox::Yes);
+        return;
+    }
+
+    m_objExcel->setProperty("Visible",false);
+    QAxObject* workbooks = m_objExcel->querySubObject("WorkBooks");// get the workbook.
+    if( workbooks==nullptr)
+    {
+        progressSave(0);
+        QMessageBox::critical(NULL, "Error", "Office is not installed", QMessageBox::Yes, QMessageBox::Yes);
+        return;
+    }
+    workbooks->setProperty("Visible",false);    //new code*********************
+    workbooks->dynamicCall("Open (const QString&)", m_filePathExcelMOMTmp);   // Open the file；
+    m_objWorkbook = m_objExcel->querySubObject("ActiveWorkBook"); // Get the active workbook.
+    progressSave(20);
+    QAxObject *worksheet = m_objWorkbook->querySubObject("WorkSheets(int)", 1);
+
+    int row = 0, column = 0;
+
+    // Write Robot Number
+    CAnalyseData::getRowColumn("A2", &row, &column);
+    QAxObject* cell = worksheet->querySubObject("Cells(int,int)", row, column);
+    QString value = m_robotType + m_robotSN;
+    cell->setProperty("Value", value);
+
+    // Write MN (repair number)
+    column++;
+    cell = worksheet->querySubObject("Cells(int,int)", row, column);
+    value = ui->leRepairNRARM->text();
+    cell->setProperty("Value", value);
+
+    // Write WK
+    QStringList parts = m_fileName.split("_");
+    if(parts.size() > 2) {
+      value = parts[2];
+    }
+    column++;
+    cell = worksheet->querySubObject("Cells(int,int)", row, column);
+    cell->setProperty("Value", value);
+
+    // Write Result Analysis
+    column++;
+    cell = worksheet->querySubObject("Cells(int,int)", row, column);
+    strResAnalysis = cell->property("Value").toString();
+    startPos = 0;
+    getNextLineIdx();
+    getNextLineIdx(); // skip a line
+
+    progressSave(30);
+    writeGeneralInfoMOM();
+    progressSave(40);
+    writeArmInfoMOM();
+    progressSave(60);
+    writeDMInfoMOM();
+    progressSave(80);
+    writeZInfoMOM();
+    progressSave(95);
+
+    cell->setProperty("Value", strResAnalysis);
+
+    // make headings bold:
+    int idx = strResAnalysis.indexOf("SA:");
+    QAxObject* chars = cell->querySubObject("Characters(int, int)", idx, 3);
+    QAxObject *font = chars->querySubObject("Font");
+    font->setProperty("Bold", true);
+    idx = strResAnalysis.indexOf("DM:");
+    chars = cell->querySubObject("Characters(int, int)", idx, 3);
+    font = chars->querySubObject("Font");
+    font->setProperty("Bold", true);
+    idx = strResAnalysis.indexOf("Z:");
+    chars = cell->querySubObject("Characters(int, int)", idx, 3);
+    font = chars->querySubObject("Font");
+    font->setProperty("Bold", true);
+
+    m_objWorkbook->setProperty("DisplayAlerts", false);
+    m_objWorkbook->setProperty("CheckCompatibility", false);
+    m_objWorkbook->setProperty("DoNotPromptForConvert", true);
+
+    m_objWorkbook->dynamicCall("SaveAs(const QString&)",
+                                     QDir::toNativeSeparators(m_filePathExcelMOM));
+
+    progressSave(98);
+
+    closeExcel();
+    progressSave(100);
+}
+
+void CAnalyseData::writeGeneralInfoMOM(){
+    // First Delivery
+    insertAndReturnLastIdx(ui->leFirstDeliveryDate->text());
+    getNextLineIdx();
+    //Repair No
+    insertAndReturnLastIdx(ui->leRepairNo->text());
+    getNextLineIdx();
+    // Last repair date
+    if(!(ui->leLastRepairDate->text()).isEmpty()){
+        removeAndReturnLastIdx(2);
+        insertAndReturnLastIdx(ui->leLastRepairDate->text());
+    }
+    getNextLineIdx(); // "Delivered in white box\n"
+    getNextLineIdx(); // "packed regarding spec: No, ARM down holder placed incorrectly\n"
+    getNextLineIdx(); // "Delivered in white box\n"
+    getNextLineIdx(); // "Unit starts on testing: OK\n"
+    getNextLineIdx(); // "/n"
+
+
+}
+
+void CAnalyseData::writeArmInfoMOM(){
+    getNextLineIdx(); // "SA:/n"
+    // "- Geometry: \n"
+    switch(m_pgbGeoChkARM->checkedId())
+    {
+      case Test_OK:
+        insertAndReturnLastIdx("OK");
+        break;
+      case Test_NG:
+        insertAndReturnLastIdx("NOK");
+        break;
+      case Test_NA:
+        insertAndReturnLastIdx("N/A");
+        break;
+    }
+    getNextLineIdx();
+    // Rz
+    startPos-=21;
+    insertAndReturnLastIdx(ui->leGeoRz->text()+" mRad ");
+    getNextLineIdx();
+    getNextLineIdx();
+    // Rx
+    startPos-=21;
+    insertAndReturnLastIdx(ui->leGeoRx->text()+" mRad ");
+    getNextLineIdx();
+    getNextLineIdx();
+    // Ry
+    startPos-=21;
+    insertAndReturnLastIdx(ui->leGeoRy->text()+" mRad ");
+    getNextLineIdx();
+    getNextLineIdx();
+
+    // delta H4
+    startPos-=29;
+    insertAndReturnLastIdx(ui->leGeoDelHeight->text()+" mm ");
+    getNextLineIdx();
+    getNextLineIdx();
+    // Position TH
+    startPos-=22;
+    insertAndReturnLastIdx(ui->leRepPosPATH->text()+" ");
+    getNextLineIdx();
+    getNextLineIdx();
+    // "- Electrics ARM: \n"
+    switch(m_pgbEleChkARM->checkedId())
+    {
+      case Test_OK:
+        insertAndReturnLastIdx(" OK");
+        break;
+      case Test_NG:
+        insertAndReturnLastIdx(" NOK");
+        break;
+      case Test_NA:
+        insertAndReturnLastIdx(" N/A");
+        break;
+    }
+    getNextLineIdx();
+    getNextLineIdx(); //"Visual:\n"
+    getNextLineIdx(); // "\n"
+}
+
+void CAnalyseData::writeDMInfoMOM(){
+    getNextLineIdx(); // "DM:\n"
+    // Geometry 180
+    startPos-=44;
+    insertAndReturnLastIdx(" "+ui->le180DegVal->text()+" ");
+    getNextLineIdx();
+    // Geometry 270
+    startPos-=26;
+    insertAndReturnLastIdx(ui->le270DegVal->text()+" ");
+    getNextLineIdx();
+    getNextLineIdx();
+    // 0-Positioning TH (???????)
+    startPos-=19;
+    insertAndReturnLastIdx(ui->leZeroingPosTH->text()+" mm ");
+    getNextLineIdx();
+    getNextLineIdx();
+    // Electrics DM:
+    switch(m_pgbEleChkDM->checkedId())
+    {
+      case Test_OK:
+        insertAndReturnLastIdx(" OK");
+        break;
+      case Test_NG:
+        insertAndReturnLastIdx(" NOK");
+        break;
+      case Test_NA:
+        insertAndReturnLastIdx(" N/A");
+        break;
+    }
+    getNextLineIdx(); // "Visual:\n"
+    getNextLineIdx(); // "- Motor / Encoder: \n"
+    getNextLineIdx(); // "\n"
+}
+
+void CAnalyseData::writeZInfoMOM(){
+    getNextLineIdx(); // "Z: \n"
+    getNextLineIdx(); // "Positioning: \n"
+    getNextLineIdx(); // "Electrics: \n"
+    // Electrics ZT:
+    switch(m_pgbCableZT->checkedId())
+    {
+      case Test_OK:
+        insertAndReturnLastIdx(" OK");
+        break;
+      case Test_NG:
+        insertAndReturnLastIdx(" NOK");
+        break;
+      case Test_NA:
+        insertAndReturnLastIdx(" N/A");
+        break;
+    }
+}
+
+void CAnalyseData::getNextLineIdx (){
+    startPos++;
+    startPos = strResAnalysis.indexOf("\n", startPos);
+}
+
+void CAnalyseData::insertAndReturnLastIdx(QString insertText){
+    strResAnalysis.insert(startPos, insertText);
+    startPos += insertText.length();
+}
+
+void CAnalyseData::removeAndReturnLastIdx(int numberRemove){
+    strResAnalysis.remove(startPos-numberRemove, numberRemove);
+    startPos-=numberRemove;
 }

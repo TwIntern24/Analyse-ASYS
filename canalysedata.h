@@ -220,8 +220,10 @@ private:
     QString m_settingFilePath = "";
     QString m_filePathExcel = "";
     QString m_filePathExcelRepair = "";
+    QString m_filePathExcelMOM = "";
     QString m_filePathExcelTmp = "";
     QString m_filePathExcelRepairTmp = "";
+    QString m_filePathExcelMOMTmp = "";
     QString m_comments4Arm = "";
     QString m_comments4DM = "";
     QString m_comments4ZT = "";    
@@ -406,8 +408,8 @@ private:
 
 
 
-    QString m_filePathXls = "D:\\Data\\Jana\\Work\\Emily\\Tials\\CreateFiles\\_files\\Repair.xlsx";
-    QString m_filePathXlsTemp = "D:\\Data\\Jana\\Work\\Emily\\Tials\\CreateFiles\\_files\\Repair_temp.xls";
+//    QString m_filePathXls = "D:\\Data\\Jana\\Work\\Emily\\Tials\\CreateFiles\\_files\\Repair.xlsx";
+//    QString m_filePathXlsTemp = "D:\\Data\\Jana\\Work\\Emily\\Tials\\CreateFiles\\_files\\Repair_temp.xls";
 
     QVector<sREPAIRITEM> vecRepairItems;
     void buildRepairTable( void );
@@ -428,6 +430,19 @@ private:
     void writeAmount( QAxObject* workbook, sREPAIRITEM item );
     void writeInformation( QAxObject* workbook, sREPAIRITEM item );
     void extendInformation( QAxObject* workbook, sREPAIRITEM item );
+
+    // ---- Create MOM Sheet ------
+    QString strResAnalysis;
+    int startPos = 0;
+    void createMOMSheet( void );
+    void getNextLineIdx ( void );
+    void insertAndReturnLastIdx(QString insertText);
+    void removeAndReturnLastIdx(int numberRemove);
+    void writeGeneralInfoMOM( void );
+    void writeArmInfoMOM( void );
+    void writeDMInfoMOM( void );
+    void writeZInfoMOM( void );
+
 
     // ARM
     QButtonGroup *m_pgbRepairARM_ArmBelts;

@@ -375,7 +375,7 @@ QGroupBox::title {
               <enum>QTabWidget::Triangular</enum>
              </property>
              <property name="currentIndex">
-              <number>5</number>
+              <number>2</number>
              </property>
              <property name="iconSize">
               <size>
@@ -1901,7 +1901,7 @@ QPushButton{font: 10.5pt &quot;MS Shell Dlg 2&quot;;}</string>
                      <property name="geometry">
                       <rect>
                        <x>0</x>
-                       <y>0</y>
+                       <y>-118</y>
                        <width>649</width>
                        <height>560</height>
                       </rect>
@@ -5045,7 +5045,7 @@ QGroupBox::title {
                    <rect>
                     <x>0</x>
                     <y>0</y>
-                    <width>409</width>
+                    <width>305</width>
                     <height>878</height>
                    </rect>
                   </property>
@@ -7754,7 +7754,7 @@ QCheckBox{font: 10.5pt &quot;MS Shell Dlg 2&quot;;}</string>
                      <property name="geometry">
                       <rect>
                        <x>0</x>
-                       <y>0</y>
+                       <y>-190</y>
                        <width>651</width>
                        <height>680</height>
                       </rect>
@@ -10798,7 +10798,7 @@ QGroupBox::title {
                    <rect>
                     <x>0</x>
                     <y>0</y>
-                    <width>407</width>
+                    <width>328</width>
                     <height>646</height>
                    </rect>
                   </property>
@@ -14833,7 +14833,7 @@ QGroupBox::title {
                    <rect>
                     <x>0</x>
                     <y>0</y>
-                    <width>407</width>
+                    <width>309</width>
                     <height>646</height>
                    </rect>
                   </property>
@@ -16440,6 +16440,30 @@ QGroupBox{border: none;}
                  </size>
                 </property>
                </spacer>
+              </item>
+              <item>
+               <widget class="QLabel" name="lbProcess">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="font">
+                 <font>
+                  <pointsize>11</pointsize>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>0/0</string>
+                </property>
+               </widget>
               </item>
               <item>
                <widget class="QProgressBar" name="pgbProcess">
