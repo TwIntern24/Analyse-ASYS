@@ -75,6 +75,13 @@ enum ETestResult
        Test_NA      //new code******************************
 };
 
+enum EHDMotorType
+{
+    V0,
+    V1,
+    DFV1
+};
+
 enum EAnalyseAdvice
 {
        NFF,
@@ -97,14 +104,14 @@ enum EZTLength
        Len65mm
 };
 
-enum Repair
+enum ERepair
 {
+    Repair_NA,
     Repair_OK,
-    Repair_Repair,
-    Repair_NA
+    Repair_Repair
 };
 
-enum Deliver
+enum EDeliver
 {
     TW,
     EU

@@ -149,6 +149,38 @@ void CAnalyseData::initVal(void)
     ui->leDMLastRepair->clear();
     ui->leZTFirstDelivery->clear();
     ui->leZTLastRepair->clear();
+
+    ui->rbArmBeltsAvrPrice_NA->setChecked(true);
+    ui->rbUpperArmHousingUpgrade_NA->setChecked(true);
+    ui->rbUpperArmHousing_NA->setChecked(true);
+    ui->rbUpperArmLid_NA->setChecked(true);
+    ui->rbLowerArmHousingUpgrade_NA->setChecked(true);
+    ui->rbLowerArmHousing_NA->setChecked(true);
+    ui->rbLowerArmLid_NA->setChecked(true);
+    ui->rbArmDriveInterface_NA->setChecked(true);
+    ui->rbArmGripperInterfaceScara_NA->setChecked(true);
+    ui->rbArmGripperInterfaceNT_NA->setChecked(true);
+    ui->rbBeltReel_NA->setChecked(true);
+    ui->rbTorxScrew_NA->setChecked(true);
+    ui->rbBearings_NA->setChecked(true);
+    ui->cbArmTW->setChecked(true);
+    ui->rbDMLikaMotor_NA->setChecked(true);
+    ui->rbCableHood_NA->setChecked(true);
+    ui->rbDMHousing_NA->setChecked(true);
+    ui->rbDMLid_NA->setChecked(true);
+    ui->rbSlipRing_NA->setChecked(true);
+    ui->rbHollowShaft_NA->setChecked(true);
+    ui->cbDMTW->setChecked(true);
+    ui->rbZStroke35_NA->setChecked(true);
+    ui->rbZStroke50_NA->setChecked(true);
+    ui->rbZMHousingScara_NA->setChecked(true);
+    ui->rbZMHousingNT_NA->setChecked(true);
+    ui->rbGuidingShaftsScara_NA->setChecked(true);
+    ui->rbGuidingShaftsNT_NA->setChecked(true);
+    ui->rbSmallGuidingShafts_NA->setChecked(true);
+    ui->rbClampingFlange_NA->setChecked(true);
+    ui->rbAdapterCable_NA->setChecked(true);
+    ui->cbZTTW->setChecked(true);
 }
 
 //
@@ -499,6 +531,7 @@ void CAnalyseData::displaySet( bool bSN)
         ui->pbSaveIni->hide();
 //        ui->pbExportExcel->hide();
         ui->pgbProcess->hide();
+        ui->lbStatus->hide();
 //        ui->pbPrint->hide();
     }// show the Robot SN page
     else
@@ -510,7 +543,10 @@ void CAnalyseData::displaySet( bool bSN)
         ui->pbSaveIni->show();
 //        ui->pbExportExcel->show();
         ui->pgbProcess->show();
+        ui->lbStatus->show();
+        ui->lbStatus->setText("Status");
 //        ui->pbPrint->show();
+        ui->tabWidget->setCurrentIndex(0);
     }
 }
 
@@ -621,6 +657,7 @@ void CAnalyseData::getDataFromIni4Arm( void)
     getDataFromIni4ArmSN();
     getDataFromIni4ArmNCNR();
     getDataFromIni4ArmGrayBoxData();
+    getDataFromIni4HDMotorType();
     getDataFromIni4ArmAdviceCauser();
     getDataFromIni4ArmOKUpgrade();
     getDataFromIni4ArmVacFlowVal();
@@ -729,6 +766,27 @@ void CAnalyseData::getDataFromIni4ArmGrayBoxData( void)
     if(ui->leRobotSN->text() == "" || ui->leARMSN->text() == "" || ui->leRepairNRARM->text() == "" || ui->leGrayboxSN->text() == "" ||
        ui->leRepairNo->text() == "" || ui->leLastRepairDate->text() == "" || ui->leFirstDeliveryDate->text() == "")
         QMessageBox::critical(NULL, "Error", "Arm Data Incomplete!", QMessageBox::Yes, QMessageBox::Yes);
+}
+
+void CAnalyseData::getDataFromIni4HDMotorType( void)
+{
+    QSettings settings(m_filePath,QSettings::IniFormat);
+    settings.beginGroup(BEGIN_ARMINFO1);
+    QString strInputName = "hdMotorType";
+    int iType = settings.value(strInputName).toInt();
+
+    switch (iType)
+    {
+      case V0:
+        ui->rbHDMotorType_V0->setChecked( true);
+      break;
+      case V1:
+        ui->rbHDMotorType_V1->setChecked( true);
+      break;
+      case DFV1:
+        ui->rbHDMotorType_DFV1->setChecked( true);
+      break;
+    }
 }
 
 void CAnalyseData::getDataFromIni4ArmAdviceCauser( void)
@@ -1714,7 +1772,7 @@ void CAnalyseData::getDataFromIni4DMCommutationData( void)
     QString strValue;
 
     strValue = settings.value(strInputName).toString();
-    if(strValue==NG_VALUE)
+    if(strValue==NG_VALUE || strValue.contains("N/A"))
     {
         strValue = "N/A";
     }
@@ -1724,7 +1782,7 @@ void CAnalyseData::getDataFromIni4DMCommutationData( void)
     strValue = "";
     strInputName = "101/val";//"commutationR";
     strValue = settings.value(strInputName).toString();
-    if(strValue==NG_VALUE)
+    if(strValue==NG_VALUE || strValue.contains("N/A"))
     {
         strValue = "N/A";
     }
@@ -2383,6 +2441,25 @@ void CAnalyseData::getGrayBoxDataFromARM( void)
     settings.setValue("lastRepairDateARM", strLastRepairDate_ARM);
 }
 
+void CAnalyseData::getHDMotorTypeFromARM( void)
+{
+    QSettings settings(m_filePath,QSettings::IniFormat);
+    settings.beginGroup(BEGIN_ARMINFO1);
+    QString strInputName = "hdMotorTpye";
+    switch( m_pgbHDMotorType->checkedId())
+    {
+      case V0:
+        settings.setValue(strInputName, V0);
+      break;
+      case V1:
+        settings.setValue(strInputName, V1);
+      break;
+      case DFV1:
+        settings.setValue(strInputName, DFV1);
+      break;
+    }
+}
+
 void CAnalyseData::getAdviceCauserFromARM( void)
 {
     QSettings settings(m_filePath,QSettings::IniFormat);
@@ -2979,13 +3056,13 @@ void CAnalyseData::getCommutationDataFromDM( void)
 
     QString strComTH, strComR;
     strComTH = ui->leCommutationTH->text();
-    if(strComTH==NG_VALUE)
+    if(strComTH==NG_VALUE || strComTH.contains("N/A"))
     {
         strComTH = "N/A";
     }
     settings.setValue("98/val", strComTH);
     strComR = ui->leCommutationR->text();
-    if(strComR==NG_VALUE)
+    if(strComR==NG_VALUE|| strComR.contains("N/A"))
     {
         strComR = "N/A";
     }
@@ -3258,6 +3335,7 @@ void CAnalyseData::getAnalyseDataFromZT( void)
 
 void CAnalyseData::on_pbSaveIni_clicked()
 {
+    ui->lbStatus->setText("Creating .ini file");
     // for Arm
     getDataFromGUIArm();
     // for DM
@@ -3268,6 +3346,8 @@ void CAnalyseData::on_pbSaveIni_clicked()
     // others
     getArmSNFromArm();//armSN
     getDataFromRepair();
+    qDebug() << ".ini file created";
+    ui->lbStatus->setText(".ini file was created");
 }
 
 
@@ -3277,6 +3357,7 @@ void CAnalyseData::getDataFromGUIArm(void)
     getImagePathFromArm();
     getRobotTypeNoSNNCNRFromArm();// get Robot type and no./robotSN/old12NC/new12NC/repairNR
     getGrayBoxDataFromARM();// get grayboxSN/firstDeliveryDate/repairNo/lastRepairDate
+    getHDMotorTypeFromARM();// get hdMotorType
     getAdviceCauserFromARM();// get analyseAdviceARM/analyseCauserARM
     getArmOKUpgradeFromARM();// get isARMOk/isUpgradeARM
     getVacFlowValFromARM();// get vacARM/flowARM
@@ -3341,6 +3422,12 @@ void CAnalyseData::setRadioButtonsIDsInGB4ARM( void)
 //        delete m_pgbFunChkARM;
 //        delete m_pgbDataTransChkARM;
 //    }
+    m_pgbHDMotorType = new QButtonGroup( this );
+    m_pgbHDMotorType->addButton(ui->rbHDMotorType_V0, V0);
+    m_pgbHDMotorType->addButton(ui->rbHDMotorType_V1, V1);
+    m_pgbHDMotorType->addButton(ui->rbHDMotorType_DFV1, DFV1);
+
+
     // set Analyse Advice group
     m_pgbAnalyseAdvARM = new QButtonGroup( this);
     m_pgbAnalyseAdvARM->addButton(ui->rbNFFARM, 0);
@@ -3635,6 +3722,7 @@ void CAnalyseData::createAnalyseSheet()
 //      //m_filePathExcelTmp = "D:\\ASYS\\Projects\\Analyse_ASYS\\AnalyseTmp-Ray.xls";
 //      m_filePathExcelTmp = "D:\\ASYS\\Projects\\Analyse_ASYS\\ANALYSETILT_0728.xls";
 //    #endif
+    ui->lbStatus->setText("Creating Analyse Sheet");
     progressSave(3);
     closeExcel();
     //closeExcel1();    
@@ -3723,6 +3811,7 @@ void CAnalyseData::createAnalyseSheet()
     closeExcel();
     progressSave(100);
     qDebug() << "Analyse Sheet created.";
+    ui->lbStatus->setText("Analyse Sheet was created");
 }
 
 void CAnalyseData::closeExcel( void)
@@ -4762,6 +4851,7 @@ void CAnalyseData::on_leZDownFA_textChanged(const QString &arg1)
 //-------------------------------------------------------- Print Function --------------------------------------------------------//
 void CAnalyseData::createPrintLabel()
 {
+    ui->lbStatus->setText("Creating Print Label");
     progressSave(30);
     createLabelFile();
     progressSave(60);
@@ -4815,6 +4905,8 @@ void CAnalyseData::createPrintLabel()
        return;
     }
     qDebug() << "Print Label created.";
+    ui->lbStatus->setText("Print Label was created");
+
 }
 
 void CAnalyseData::on_pBtn_ImgRemark_ARM_clicked()
@@ -6145,6 +6237,8 @@ void CAnalyseData::createRepairMatrix( void )
 //    m_filePathExcelRepair.append(m_robotType + ui->leRobotTypeSN->text() +"_w.xlsx"); // strExcelFilePath + "\\" + strExcelRepairTemp + "_" + m_robotNumber +"_w.xlsx";
 
 //    m_filePathExcelRepairTmp = "D:\\Data\\twintern\\Jana\\Work\\Emily\\Files\\Repair_matrix _MK5.xlsx";
+
+    ui->lbStatus->setText("Creating Repair Matrix");
     progressSave(3);
     closeExcel();
     progressSave(6);
@@ -6197,10 +6291,13 @@ void CAnalyseData::createRepairMatrix( void )
     closeExcel();
     progressSave(100);
     qDebug() << "Repair Matrix created.";
+    ui->lbStatus->setText("Repair Matrix was created");
+
 }
 
 void CAnalyseData::on_pbExport_clicked( void )
 {
+    ui->lbStatus->setText("Starting export");
 
     // track progress
     int counterAll=0;
@@ -6215,10 +6312,12 @@ void CAnalyseData::on_pbExport_clicked( void )
         counterAll++;
 
     ui->lbProcess->setText(QString::number(counterItem) +"/"+QString::number(counterAll));
-
-    progressSave(3);
-    on_pbSaveIni_clicked();
-    progressSave(6);
+    qDebug() << counterAll;
+    if(counterAll > 0){
+        progressSave(3);
+        on_pbSaveIni_clicked();
+        progressSave(6);
+    }
 
     if(ui->cbAnalyseSheet->isChecked()){
         // export Analyse Excel
@@ -6238,12 +6337,17 @@ void CAnalyseData::on_pbExport_clicked( void )
         createMOMSheet();
         ui->lbProcess->setText(QString::number(++counterItem) +"/"+ QString::number(counterAll));
     }
+    ui->lbStatus->setText("Export finished");
+
 }
 
 
 // ************** Create MOM Sheet -----------------------------
 
 void CAnalyseData::createMOMSheet( void ){
+
+//    on_pbSaveIni_clicked();
+    ui->lbStatus->setText("Creating MOM Sheet");
     closeExcel();
     progressSave(3);
     buildProtocolTable();
@@ -6302,8 +6406,6 @@ void CAnalyseData::createMOMSheet( void ){
     cell = worksheet->querySubObject("Cells(int,int)", row, column);
     strResAnalysis = cell->property("Value").toString();
     startPos = 0;
-    getNextLineIdx();
-    getNextLineIdx(); // skip a line
 
     progressSave(30);
     writeGeneralInfoMOM();
@@ -6316,6 +6418,7 @@ void CAnalyseData::createMOMSheet( void ){
     progressSave(95);
 
     cell->setProperty("Value", strResAnalysis);
+    qDebug() << strResAnalysis;
 
     // make headers bold:
     int idx = strResAnalysis.indexOf("SA:");
@@ -6343,9 +6446,27 @@ void CAnalyseData::createMOMSheet( void ){
     closeExcel();
     progressSave(100);
     qDebug() << "MOM Sheet created.";
+    ui->lbStatus->setText("MOM Sheet was created");
+
 }
 
 void CAnalyseData::writeGeneralInfoMOM(){
+
+    getNextLineIdx();
+    // Version
+    switch(m_pgbHDMotorType->checkedId())
+    {
+      case V0:
+        insertAndReturnLastIdx(": V0");
+        break;
+      case V1:
+        insertAndReturnLastIdx(": V1");
+        break;
+      case DFV1:
+        insertAndReturnLastIdx(": DFV1");
+        break;
+    }
+    getNextLineIdx();
     // First Delivery
     insertAndReturnLastIdx(ui->leFirstDeliveryDate->text());
     getNextLineIdx();
@@ -6382,29 +6503,62 @@ void CAnalyseData::writeArmInfoMOM(){
     }
     getNextLineIdx();
     // Rz
-    startPos-=21;
-    insertAndReturnLastIdx(ui->leGeoRz->text()+" mRad ");
-    getNextLineIdx();
+    double dRz = ui->leGeoRz->text().toDouble();
+    if(qAbs(dRz)> 0.5){
+        startPos-=21;
+        insertAndReturnLastIdx(ui->leGeoRz->text()+" mRad ");
+        getNextLineIdx();
+    }else{
+        removeAndReturnLastIdx(26);
+//        getNextLineIdx();
+    }
     getNextLineIdx();
     // Rx
-    startPos-=21;
-    insertAndReturnLastIdx(ui->leGeoRx->text()+" mRad ");
-    getNextLineIdx();
+    double dRx = ui->leGeoRx->text().toDouble();
+    if(qAbs(dRx)> 0.7){
+        startPos-=21;
+        insertAndReturnLastIdx(ui->leGeoRx->text()+" mRad ");
+        getNextLineIdx();
+    }else{
+        removeAndReturnLastIdx(26);
+//        getNextLineIdx();
+    }
     getNextLineIdx();
     // Ry
-    startPos-=21;
-    insertAndReturnLastIdx(ui->leGeoRy->text()+" mRad ");
-    getNextLineIdx();
+    double dRy = ui->leGeoRy->text().toDouble();
+    if(qAbs(dRy)> 0.6){
+        startPos-=21;
+        insertAndReturnLastIdx(ui->leGeoRy->text()+" mRad ");
+        getNextLineIdx();
+    }else{
+        removeAndReturnLastIdx(26);
+//        getNextLineIdx();
+    }
     getNextLineIdx();
 
     // delta H4
-    startPos-=29;
-    insertAndReturnLastIdx(ui->leGeoDelHeight->text()+" mm ");
-    getNextLineIdx();
+    double dH4 = ui->leGeoRy->text().toDouble();
+    if(dH4 > -0.14 && dH4 < 0.13){
+        startPos-=29;
+        insertAndReturnLastIdx(ui->leGeoDelHeight->text()+" mm ");
+        getNextLineIdx();
+    }else{
+        removeAndReturnLastIdx(35);
+//        getNextLineIdx();
+    }
+
     getNextLineIdx();
     // Position TH
     startPos-=22;
-    insertAndReturnLastIdx(ui->leRepPosPATH->text()+" ");
+    QString pos1 = ui->leRepPosPATH->text();
+    QString pos2 = ui->leRepPosPAR->text();
+    if(pos1.contains(".")){
+        pos1.chop(pos1.indexOf(".")+1);
+    }
+    if(pos2.contains(".")){
+        pos2.chop(pos2.indexOf(".")+1);
+    }
+    insertAndReturnLastIdx(pos1 +" µm (spec.= +/- 600 µm)\nPos_R="+pos2+" ");
     getNextLineIdx();
     getNextLineIdx();
     // "- Electrics ARM: \n"
@@ -6428,7 +6582,7 @@ void CAnalyseData::writeDMInfoMOM(){
     getNextLineIdx(); // "DM:\n"
     // Geometry 180
     startPos-=44;
-    insertAndReturnLastIdx(" "+ui->le180DegVal->text()+" ");
+    insertAndReturnLastIdx(ui->le180DegVal->text()+" ");
     getNextLineIdx();
     // Geometry 270
     startPos-=26;
@@ -6437,9 +6591,10 @@ void CAnalyseData::writeDMInfoMOM(){
     getNextLineIdx();
     // 0-Positioning TH (???????)
     startPos-=19;
-    insertAndReturnLastIdx(ui->leZeroingPosTH->text()+" mm ");
+    insertAndReturnLastIdx("Pos_TH="+ui->leZeroingPosTH->text()+" mm (spec.=+/-0.1 mm)\nPos_Z="+ui->leZeroingPosR->text()+" mm ");
     getNextLineIdx();
     getNextLineIdx();
+//    getNextLineIdx();
     // Electrics DM:
     switch(m_pgbEleChkDM->checkedId())
     {
@@ -6455,14 +6610,28 @@ void CAnalyseData::writeDMInfoMOM(){
     }
     getNextLineIdx(); // "Visual:\n"
     getNextLineIdx(); // "- Motor / Encoder: \n"
+    int motor1=m_pgbTHMotorChkDM->checkedId();
+    int motor2=m_pgbRMotorChkDM->checkedId();
+    if(motor1==Test_OK && motor2 ==Test_OK){
+        insertAndReturnLastIdx(" OK");
+    }else if(motor1==Test_NG || motor2 ==Test_NG){
+        insertAndReturnLastIdx(" NOK");
+    }else if(motor1==Test_NA || motor2 ==Test_NA){
+        insertAndReturnLastIdx(" N/A");
+    }
+    getNextLineIdx();
     getNextLineIdx(); // "\n"
 }
 void CAnalyseData::writeZInfoMOM(){
+    qDebug() << strResAnalysis;
     getNextLineIdx(); // "Z: \n"
     getNextLineIdx(); // "Positioning: \n"
     getNextLineIdx(); // "Electrics: \n"
+    getNextLineIdx(); // "Visual: \n"
+    getNextLineIdx(); // "Spindle/Motor:"
     // Electrics ZT:
-    switch(m_pgbCableZT->checkedId())
+    startPos=strResAnalysis.length();
+    switch(m_pgbZMotorZT->checkedId())
     {
       case Test_OK:
         insertAndReturnLastIdx(" OK");

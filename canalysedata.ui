@@ -31,7 +31,7 @@
    </property>
    <layout class="QVBoxLayout" name="verticalLayout_42">
     <property name="spacing">
-     <number>1</number>
+     <number>0</number>
     </property>
     <property name="leftMargin">
      <number>1</number>
@@ -43,7 +43,7 @@
      <number>1</number>
     </property>
     <property name="bottomMargin">
-     <number>1</number>
+     <number>0</number>
     </property>
     <item>
      <widget class="QStackedWidget" name="stackedWidget">
@@ -375,7 +375,7 @@ QGroupBox::title {
               <enum>QTabWidget::Triangular</enum>
              </property>
              <property name="currentIndex">
-              <number>2</number>
+              <number>0</number>
              </property>
              <property name="iconSize">
               <size>
@@ -430,7 +430,7 @@ QGroupBox::title {
                  <property name="title">
                   <string/>
                  </property>
-                 <layout class="QHBoxLayout" name="horizontalLayout_6" stretch="11,2,33">
+                 <layout class="QHBoxLayout" name="horizontalLayout_6" stretch="11,0,33">
                   <property name="spacing">
                    <number>5</number>
                   </property>
@@ -1225,6 +1225,114 @@ QGroupBox::title {
                         </widget>
                        </item>
                        <item>
+                        <widget class="QGroupBox" name="groupBox_63">
+                         <property name="font">
+                          <font>
+                           <family>MS Shell Dlg 2</family>
+                           <pointsize>11</pointsize>
+                           <weight>50</weight>
+                           <italic>false</italic>
+                           <bold>false</bold>
+                          </font>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">QRadioButton{font: 10.5pt &quot;MS Shell Dlg 2&quot;;}
+QGroupBox {
+	font: 10.5pt &quot;MS Shell Dlg 2&quot;;
+    border: 1px solid lightgray;
+    margin-top: 2ex; /* leave space at the top for the title */
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    subcontrol-position: top left; 
+}
+</string>
+                         </property>
+                         <property name="title">
+                          <string>HD Motor Type:</string>
+                         </property>
+                         <layout class="QVBoxLayout" name="verticalLayout_79">
+                          <property name="spacing">
+                           <number>0</number>
+                          </property>
+                          <property name="leftMargin">
+                           <number>6</number>
+                          </property>
+                          <property name="topMargin">
+                           <number>10</number>
+                          </property>
+                          <property name="rightMargin">
+                           <number>6</number>
+                          </property>
+                          <property name="bottomMargin">
+                           <number>6</number>
+                          </property>
+                          <item>
+                           <widget class="QRadioButton" name="rbHDMotorType_V0">
+                            <property name="font">
+                             <font>
+                              <family>MS Shell Dlg 2</family>
+                              <pointsize>11</pointsize>
+                              <weight>50</weight>
+                              <italic>false</italic>
+                              <bold>false</bold>
+                             </font>
+                            </property>
+                            <property name="text">
+                             <string>V0</string>
+                            </property>
+                           </widget>
+                          </item>
+                          <item>
+                           <widget class="QRadioButton" name="rbHDMotorType_V1">
+                            <property name="font">
+                             <font>
+                              <family>MS Shell Dlg 2</family>
+                              <pointsize>11</pointsize>
+                              <weight>50</weight>
+                              <italic>false</italic>
+                              <bold>false</bold>
+                             </font>
+                            </property>
+                            <property name="text">
+                             <string>V1</string>
+                            </property>
+                           </widget>
+                          </item>
+                          <item>
+                           <widget class="QRadioButton" name="rbHDMotorType_DFV1">
+                            <property name="font">
+                             <font>
+                              <family>MS Shell Dlg 2</family>
+                              <pointsize>11</pointsize>
+                              <weight>50</weight>
+                              <italic>false</italic>
+                              <bold>false</bold>
+                             </font>
+                            </property>
+                            <property name="text">
+                             <string>DF V1</string>
+                            </property>
+                           </widget>
+                          </item>
+                          <item>
+                           <spacer name="verticalSpacer_8">
+                            <property name="orientation">
+                             <enum>Qt::Vertical</enum>
+                            </property>
+                            <property name="sizeHint" stdset="0">
+                             <size>
+                              <width>20</width>
+                              <height>40</height>
+                             </size>
+                            </property>
+                           </spacer>
+                          </item>
+                         </layout>
+                        </widget>
+                       </item>
+                       <item>
                         <widget class="QGroupBox" name="gbAnalyseAdvARM">
                          <property name="styleSheet">
                           <string notr="true">QRadioButton{font: 10.5pt &quot;MS Shell Dlg 2&quot;;}
@@ -1901,7 +2009,7 @@ QPushButton{font: 10.5pt &quot;MS Shell Dlg 2&quot;;}</string>
                      <property name="geometry">
                       <rect>
                        <x>0</x>
-                       <y>-118</y>
+                       <y>0</y>
                        <width>649</width>
                        <height>560</height>
                       </rect>
@@ -5044,9 +5152,9 @@ QGroupBox::title {
                   <property name="geometry">
                    <rect>
                     <x>0</x>
-                    <y>0</y>
-                    <width>305</width>
-                    <height>878</height>
+                    <y>-271</y>
+                    <width>306</width>
+                    <height>920</height>
                    </rect>
                   </property>
                   <layout class="QGridLayout" name="gridLayout_6">
@@ -5054,6 +5162,9 @@ QGroupBox::title {
                     <layout class="QVBoxLayout" name="verticalLayout_63">
                      <item>
                       <layout class="QVBoxLayout" name="verticalLayout_11">
+                       <property name="spacing">
+                        <number>10</number>
+                       </property>
                        <item>
                         <widget class="QLabel" name="label_124">
                          <property name="minimumSize">
@@ -5199,6 +5310,9 @@ QGroupBox::title {
                      </item>
                      <item>
                       <layout class="QVBoxLayout" name="verticalLayout_45">
+                       <property name="spacing">
+                        <number>10</number>
+                       </property>
                        <item>
                         <widget class="QLabel" name="label_127">
                          <property name="minimumSize">
@@ -5344,6 +5458,9 @@ QGroupBox::title {
                      </item>
                      <item>
                       <layout class="QVBoxLayout" name="verticalLayout_64">
+                       <property name="spacing">
+                        <number>10</number>
+                       </property>
                        <item>
                         <widget class="QLabel" name="label_128">
                          <property name="minimumSize">
@@ -5489,6 +5606,9 @@ QGroupBox::title {
                      </item>
                      <item>
                       <layout class="QVBoxLayout" name="verticalLayout_65">
+                       <property name="spacing">
+                        <number>10</number>
+                       </property>
                        <item>
                         <widget class="QLabel" name="label_130">
                          <property name="minimumSize">
@@ -5634,6 +5754,9 @@ QGroupBox::title {
                      </item>
                      <item>
                       <layout class="QVBoxLayout" name="verticalLayout_66">
+                       <property name="spacing">
+                        <number>10</number>
+                       </property>
                        <item>
                         <widget class="QLabel" name="label_133">
                          <property name="minimumSize">
@@ -5779,6 +5902,9 @@ QGroupBox::title {
                      </item>
                      <item>
                       <layout class="QVBoxLayout" name="verticalLayout_67">
+                       <property name="spacing">
+                        <number>10</number>
+                       </property>
                        <item>
                         <widget class="QLabel" name="label_132">
                          <property name="minimumSize">
@@ -5924,6 +6050,9 @@ QGroupBox::title {
                      </item>
                      <item>
                       <layout class="QVBoxLayout" name="verticalLayout_68">
+                       <property name="spacing">
+                        <number>10</number>
+                       </property>
                        <item>
                         <widget class="QLabel" name="label_153">
                          <property name="minimumSize">
@@ -6069,6 +6198,9 @@ QGroupBox::title {
                      </item>
                      <item>
                       <layout class="QVBoxLayout" name="verticalLayout_69">
+                       <property name="spacing">
+                        <number>10</number>
+                       </property>
                        <item>
                         <widget class="QLabel" name="label_154">
                          <property name="minimumSize">
@@ -6214,6 +6346,9 @@ QGroupBox::title {
                      </item>
                      <item>
                       <layout class="QVBoxLayout" name="verticalLayout_70">
+                       <property name="spacing">
+                        <number>10</number>
+                       </property>
                        <item>
                         <widget class="QLabel" name="label_155">
                          <property name="minimumSize">
@@ -6359,6 +6494,9 @@ QGroupBox::title {
                      </item>
                      <item>
                       <layout class="QVBoxLayout" name="verticalLayout_71">
+                       <property name="spacing">
+                        <number>10</number>
+                       </property>
                        <item>
                         <widget class="QLabel" name="label_170">
                          <property name="minimumSize">
@@ -6504,6 +6642,9 @@ QGroupBox::title {
                      </item>
                      <item>
                       <layout class="QVBoxLayout" name="verticalLayout_72">
+                       <property name="spacing">
+                        <number>10</number>
+                       </property>
                        <item>
                         <widget class="QLabel" name="label_171">
                          <property name="minimumSize">
@@ -6649,6 +6790,9 @@ QGroupBox::title {
                      </item>
                      <item>
                       <layout class="QVBoxLayout" name="verticalLayout_73">
+                       <property name="spacing">
+                        <number>10</number>
+                       </property>
                        <item>
                         <widget class="QLabel" name="label_172">
                          <property name="minimumSize">
@@ -6794,6 +6938,9 @@ QGroupBox::title {
                      </item>
                      <item>
                       <layout class="QVBoxLayout" name="verticalLayout_62">
+                       <property name="spacing">
+                        <number>10</number>
+                       </property>
                        <item>
                         <widget class="QLabel" name="label_173">
                          <property name="minimumSize">
@@ -6957,7 +7104,7 @@ QGroupBox::title {
                        </font>
                       </property>
                       <property name="text">
-                       <string>Deliver to</string>
+                       <string>Repair in:</string>
                       </property>
                      </widget>
                     </item>
@@ -7754,7 +7901,7 @@ QCheckBox{font: 10.5pt &quot;MS Shell Dlg 2&quot;;}</string>
                      <property name="geometry">
                       <rect>
                        <x>0</x>
-                       <y>-190</y>
+                       <y>0</y>
                        <width>651</width>
                        <height>680</height>
                       </rect>
@@ -10799,7 +10946,7 @@ QGroupBox::title {
                     <x>0</x>
                     <y>0</y>
                     <width>328</width>
-                    <height>646</height>
+                    <height>633</height>
                    </rect>
                   </property>
                   <layout class="QGridLayout" name="gridLayout_7">
@@ -10807,6 +10954,9 @@ QGroupBox::title {
                     <layout class="QVBoxLayout" name="verticalLayout_57">
                      <item>
                       <layout class="QVBoxLayout" name="verticalLayout_44">
+                       <property name="spacing">
+                        <number>10</number>
+                       </property>
                        <item>
                         <widget class="QLabel" name="label_143">
                          <property name="minimumSize">
@@ -10952,6 +11102,9 @@ QGroupBox::title {
                      </item>
                      <item>
                       <layout class="QVBoxLayout" name="verticalLayout_58">
+                       <property name="spacing">
+                        <number>10</number>
+                       </property>
                        <item>
                         <widget class="QLabel" name="label_145">
                          <property name="minimumSize">
@@ -11097,6 +11250,9 @@ QGroupBox::title {
                      </item>
                      <item>
                       <layout class="QVBoxLayout" name="verticalLayout_59">
+                       <property name="spacing">
+                        <number>10</number>
+                       </property>
                        <item>
                         <widget class="QLabel" name="label_147">
                          <property name="minimumSize">
@@ -11242,6 +11398,9 @@ QGroupBox::title {
                      </item>
                      <item>
                       <layout class="QVBoxLayout" name="verticalLayout_60">
+                       <property name="spacing">
+                        <number>10</number>
+                       </property>
                        <item>
                         <widget class="QLabel" name="label_149">
                          <property name="minimumSize">
@@ -11387,6 +11546,9 @@ QGroupBox::title {
                      </item>
                      <item>
                       <layout class="QVBoxLayout" name="verticalLayout_61">
+                       <property name="spacing">
+                        <number>10</number>
+                       </property>
                        <item>
                         <widget class="QLabel" name="label_168">
                          <property name="minimumSize">
@@ -11532,6 +11694,9 @@ QGroupBox::title {
                      </item>
                      <item>
                       <layout class="QVBoxLayout" name="verticalLayout_56">
+                       <property name="spacing">
+                        <number>10</number>
+                       </property>
                        <item>
                         <widget class="QLabel" name="label_169">
                          <property name="minimumSize">
@@ -11708,7 +11873,7 @@ QGroupBox::title {
                        </font>
                       </property>
                       <property name="text">
-                       <string>Deliver to</string>
+                       <string>Repair in:</string>
                       </property>
                      </widget>
                     </item>
@@ -14834,7 +14999,7 @@ QGroupBox::title {
                     <x>0</x>
                     <y>0</y>
                     <width>309</width>
-                    <height>646</height>
+                    <height>644</height>
                    </rect>
                   </property>
                   <layout class="QGridLayout" name="gridLayout_8">
@@ -14842,6 +15007,9 @@ QGroupBox::title {
                     <layout class="QVBoxLayout" name="verticalLayout_48">
                      <item>
                       <layout class="QVBoxLayout" name="verticalLayout_46">
+                       <property name="spacing">
+                        <number>10</number>
+                       </property>
                        <item>
                         <widget class="QLabel" name="label_141">
                          <property name="minimumSize">
@@ -14858,7 +15026,7 @@ QGroupBox::title {
                           </font>
                          </property>
                          <property name="text">
-                          <string>Z-stroke 35 - average price :</string>
+                          <string>Z-stroke 35 :</string>
                          </property>
                         </widget>
                        </item>
@@ -15004,6 +15172,9 @@ QGroupBox::title {
                      </item>
                      <item>
                       <layout class="QVBoxLayout" name="verticalLayout_47">
+                       <property name="spacing">
+                        <number>10</number>
+                       </property>
                        <item>
                         <widget class="QLabel" name="label_158">
                          <property name="minimumSize">
@@ -15020,7 +15191,7 @@ QGroupBox::title {
                           </font>
                          </property>
                          <property name="text">
-                          <string>Z-stroke 50 - average price : </string>
+                          <string>Z-stroke 50 : </string>
                          </property>
                         </widget>
                        </item>
@@ -15152,6 +15323,9 @@ QGroupBox::title {
                      </item>
                      <item>
                       <layout class="QVBoxLayout" name="verticalLayout_49">
+                       <property name="spacing">
+                        <number>10</number>
+                       </property>
                        <item>
                         <widget class="QLabel" name="label_159">
                          <property name="minimumSize">
@@ -15300,6 +15474,9 @@ QGroupBox::title {
                      </item>
                      <item>
                       <layout class="QVBoxLayout" name="verticalLayout_51">
+                       <property name="spacing">
+                        <number>10</number>
+                       </property>
                        <item>
                         <widget class="QLabel" name="label_160">
                          <property name="minimumSize">
@@ -15448,6 +15625,9 @@ QGroupBox::title {
                      </item>
                      <item>
                       <layout class="QVBoxLayout" name="verticalLayout_52">
+                       <property name="spacing">
+                        <number>10</number>
+                       </property>
                        <item>
                         <widget class="QLabel" name="label_161">
                          <property name="minimumSize">
@@ -15596,6 +15776,9 @@ QGroupBox::title {
                      </item>
                      <item>
                       <layout class="QVBoxLayout" name="verticalLayout_53">
+                       <property name="spacing">
+                        <number>10</number>
+                       </property>
                        <item>
                         <widget class="QLabel" name="label_162">
                          <property name="minimumSize">
@@ -15744,6 +15927,9 @@ QGroupBox::title {
                      </item>
                      <item>
                       <layout class="QVBoxLayout" name="verticalLayout_54">
+                       <property name="spacing">
+                        <number>10</number>
+                       </property>
                        <item>
                         <widget class="QLabel" name="label_165">
                          <property name="minimumSize">
@@ -15892,6 +16078,9 @@ QGroupBox::title {
                      </item>
                      <item>
                       <layout class="QVBoxLayout" name="verticalLayout_55">
+                       <property name="spacing">
+                        <number>10</number>
+                       </property>
                        <item>
                         <widget class="QLabel" name="label_166">
                          <property name="minimumSize">
@@ -16040,6 +16229,9 @@ QGroupBox::title {
                      </item>
                      <item>
                       <layout class="QVBoxLayout" name="verticalLayout_50">
+                       <property name="spacing">
+                        <number>10</number>
+                       </property>
                        <item>
                         <widget class="QLabel" name="label_167">
                          <property name="minimumSize">
@@ -16219,7 +16411,7 @@ QGroupBox::title {
                        </font>
                       </property>
                       <property name="text">
-                       <string>Deliver to</string>
+                       <string>Repair in:</string>
                       </property>
                      </widget>
                     </item>
@@ -16619,6 +16811,22 @@ QGroupBox{border: none;}
         </item>
        </layout>
       </widget>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="lbStatus">
+      <property name="font">
+       <font>
+        <pointsize>9</pointsize>
+        <italic>true</italic>
+       </font>
+      </property>
+      <property name="text">
+       <string>Status</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
      </widget>
     </item>
    </layout>

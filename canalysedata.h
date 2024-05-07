@@ -166,6 +166,7 @@ private:
     QTextDocument *m_ptdDocumentARM = Q_NULLPTR;
 
     //QButtonGroup *m_pgbRobotTypeARM;
+    QButtonGroup *m_pgbHDMotorType;
     QButtonGroup *m_pgbAnalyseAdvARM;
     QButtonGroup *m_pgbCauserARM;
     QButtonGroup *m_pgbRepairARMUpgradeChk;
@@ -289,6 +290,7 @@ private:
     void getRobotTypeNoSNNCNRFromArm( void);// get robotSN/old12NC/new12NC/repairNR
     void getArmSNFromArm( void);//armSN
     void getGrayBoxDataFromARM( void);// get grayboxSN/firstDeliveryDate/repairNo/lastRepairDate
+    void getHDMotorTypeFromARM( void);// get hdMotorType
     void getAdviceCauserFromARM( void);// get analyseAdviceARM/analyseCauserARM
     void getArmOKUpgradeFromARM( void);// get isARMOk/isUpgradeARM
     void getVacFlowValFromARM( void);// get vacARM/flowARM
@@ -339,6 +341,7 @@ private:
     void getDataFromIni4ArmNCNR( void);
     void getDataFromIni4ArmSN( void);
     void getDataFromIni4ArmGrayBoxData( void);
+    void getDataFromIni4HDMotorType( void);
     void getDataFromIni4ArmAdviceCauser( void);
     void getDataFromIni4ArmOKUpgrade( void);
     void getDataFromIni4ArmVacFlowVal( void);
