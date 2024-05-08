@@ -2009,7 +2009,7 @@ QPushButton{font: 10.5pt &quot;MS Shell Dlg 2&quot;;}</string>
                      <property name="geometry">
                       <rect>
                        <x>0</x>
-                       <y>0</y>
+                       <y>-131</y>
                        <width>649</width>
                        <height>560</height>
                       </rect>
@@ -5152,7 +5152,7 @@ QGroupBox::title {
                   <property name="geometry">
                    <rect>
                     <x>0</x>
-                    <y>-271</y>
+                    <y>0</y>
                     <width>306</width>
                     <height>920</height>
                    </rect>
@@ -7901,7 +7901,7 @@ QCheckBox{font: 10.5pt &quot;MS Shell Dlg 2&quot;;}</string>
                      <property name="geometry">
                       <rect>
                        <x>0</x>
-                       <y>0</y>
+                       <y>-178</y>
                        <width>651</width>
                        <height>680</height>
                       </rect>
@@ -16713,7 +16713,7 @@ QGroupBox{border: none;}
                     </font>
                    </property>
                    <property name="text">
-                    <string>Analyse Sheet</string>
+                    <string>Analyse Report</string>
                    </property>
                   </widget>
                  </item>

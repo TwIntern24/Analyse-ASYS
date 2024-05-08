@@ -3335,7 +3335,8 @@ void CAnalyseData::getAnalyseDataFromZT( void)
 
 void CAnalyseData::on_pbSaveIni_clicked()
 {
-    ui->lbStatus->setText("Creating .ini file");
+    qDebug() << "mFilePath" << m_filePath;
+    ui->lbStatus->setText("Creating Ini file");
     // for Arm
     getDataFromGUIArm();
     // for DM
@@ -3347,7 +3348,7 @@ void CAnalyseData::on_pbSaveIni_clicked()
     getArmSNFromArm();//armSN
     getDataFromRepair();
     qDebug() << ".ini file created";
-    ui->lbStatus->setText(".ini file was created");
+    ui->lbStatus->setText("Ini file was created");
 }
 
 
@@ -6313,10 +6314,17 @@ void CAnalyseData::on_pbExport_clicked( void )
 
     ui->lbProcess->setText(QString::number(counterItem) +"/"+QString::number(counterAll));
     qDebug() << counterAll;
+
     if(counterAll > 0){
         progressSave(3);
         on_pbSaveIni_clicked();
         progressSave(6);
+    }else{
+        progressSave(3);
+        on_pbSaveIni_clicked();
+        progressSave(0);
+        ui->lbStatus->setText("WARNING: No export selected! Ini file was still created.");
+        return;
     }
 
     if(ui->cbAnalyseSheet->isChecked()){
@@ -6504,7 +6512,7 @@ void CAnalyseData::writeArmInfoMOM(){
     getNextLineIdx();
     // Rz
     double dRz = ui->leGeoRz->text().toDouble();
-    if(qAbs(dRz)> 0.5){
+    if(qAbs(dRz)> Rz_UP){
         startPos-=21;
         insertAndReturnLastIdx(ui->leGeoRz->text()+" mRad ");
         getNextLineIdx();
@@ -6515,7 +6523,7 @@ void CAnalyseData::writeArmInfoMOM(){
     getNextLineIdx();
     // Rx
     double dRx = ui->leGeoRx->text().toDouble();
-    if(qAbs(dRx)> 0.7){
+    if(qAbs(dRx)> Rx_UP){
         startPos-=21;
         insertAndReturnLastIdx(ui->leGeoRx->text()+" mRad ");
         getNextLineIdx();
@@ -6526,7 +6534,7 @@ void CAnalyseData::writeArmInfoMOM(){
     getNextLineIdx();
     // Ry
     double dRy = ui->leGeoRy->text().toDouble();
-    if(qAbs(dRy)> 0.6){
+    if(qAbs(dRy)> Ry_UP){
         startPos-=21;
         insertAndReturnLastIdx(ui->leGeoRy->text()+" mRad ");
         getNextLineIdx();
@@ -6538,7 +6546,7 @@ void CAnalyseData::writeArmInfoMOM(){
 
     // delta H4
     double dH4 = ui->leGeoRy->text().toDouble();
-    if(dH4 > -0.14 && dH4 < 0.13){
+    if(dH4 < DeltaHeight_DN && dH4 > DeltaHeight_UP){
         startPos-=29;
         insertAndReturnLastIdx(ui->leGeoDelHeight->text()+" mm ");
         getNextLineIdx();
@@ -6549,17 +6557,28 @@ void CAnalyseData::writeArmInfoMOM(){
 
     getNextLineIdx();
     // Position TH
-    startPos-=22;
-    QString pos1 = ui->leRepPosPATH->text();
-    QString pos2 = ui->leRepPosPAR->text();
-    if(pos1.contains(".")){
-        pos1.chop(pos1.indexOf(".")+1);
+
+    double posR = ui->leRepPosPAR->text().toDouble();
+    double posTH = ui->leRepPosPATH->text().toDouble();
+    qDebug() << QString::number(posR);
+    qDebug() << QString::number(posTH);
+    if(qAbs(posR) > REPPOSPA_UP && qAbs(posTH) > REPPOSPA_UP){
+        startPos-=22;
+        insertAndReturnLastIdx(QString::number(posTH) +" µm (spec.= +/- 600 µm), Pos_R="+QString::number(posR)+" ");
+        getNextLineIdx();
+    }else if(qAbs(posTH) > REPPOSPA_UP && qAbs(posR) <= REPPOSPA_UP){
+        startPos-=22;
+        insertAndReturnLastIdx(QString::number(posTH)+" ");
+        getNextLineIdx();
+    }else if(qAbs(posTH) <= REPPOSPA_UP && qAbs(posR) > REPPOSPA_UP){
+        startPos-=22;
+        removeAndReturnLastIdx(4);
+        insertAndReturnLastIdx("R="+QString::number(posR)+" ");
+        getNextLineIdx();
+    }else{
+        removeAndReturnLastIdx(30);
+        insertAndReturnLastIdx("OK");
     }
-    if(pos2.contains(".")){
-        pos2.chop(pos2.indexOf(".")+1);
-    }
-    insertAndReturnLastIdx(pos1 +" µm (spec.= +/- 600 µm)\nPos_R="+pos2+" ");
-    getNextLineIdx();
     getNextLineIdx();
     // "- Electrics ARM: \n"
     switch(m_pgbEleChkARM->checkedId())
@@ -6581,20 +6600,55 @@ void CAnalyseData::writeArmInfoMOM(){
 void CAnalyseData::writeDMInfoMOM(){
     getNextLineIdx(); // "DM:\n"
     // Geometry 180
-    startPos-=44;
-    insertAndReturnLastIdx(ui->le180DegVal->text()+" ");
-    getNextLineIdx();
+    double geo180 = ui->le180DegVal_2->text().toDouble();
+    double geo270 = ui->le270DegVal_2->text().toDouble();
+    if(qAbs(geo180) > MicroHite_UP){
+        startPos-=44;
+        insertAndReturnLastIdx(ui->le180DegVal->text()+" ");
+        getNextLineIdx();
+    }else{
+        startPos-=38;
+        removeAndReturnLastIdx(16);
+        getNextLineIdx();
+    }
     // Geometry 270
-    startPos-=26;
-    insertAndReturnLastIdx(ui->le270DegVal->text()+" ");
+    if(qAbs(geo270) > MicroHite_UP){
+        startPos-=26;
+        insertAndReturnLastIdx(ui->le270DegVal->text()+" ");
+        getNextLineIdx();
+    }else{
+        startPos-=22;
+        removeAndReturnLastIdx(16);
+        getNextLineIdx();
+    }
+    if(qAbs(geo180) <= MicroHite_UP && qAbs(geo270) <= MicroHite_UP){
+        removeAndReturnLastIdx(21);
+        insertAndReturnLastIdx("OK");
+    }
     getNextLineIdx();
+    // 0-Positioning TH
+    double posTH = ui->leZeroingPosTH->text().toDouble();
+    double posR = ui->leZeroingPosR->text().toDouble();
+    qDebug() << "0TH: "<< posTH;
+    qDebug() << "0R: "<< posR;
+    if(qAbs(posTH)>0.1 && qAbs(posR)>0.1){
+        startPos-=19;
+        insertAndReturnLastIdx("Pos_TH="+ui->leZeroingPosTH->text()+" mm, Pos_R="+ui->leZeroingPosR->text()+" mm ");
+        getNextLineIdx();
+    }else if(qAbs(posTH)<= 0.1 && qAbs(posR)>0.1){
+        startPos-=19;
+        insertAndReturnLastIdx("Pos_R="+ui->leZeroingPosR->text()+" mm ");
+        getNextLineIdx();
+    }else if(qAbs(posTH)>0.1 && qAbs(posR)<=0.1){
+        startPos-=19;
+        insertAndReturnLastIdx("Pos_TH="+ui->leZeroingPosTH->text()+" mm ");
+        getNextLineIdx();
+    }else {
+        removeAndReturnLastIdx(19);
+        insertAndReturnLastIdx("OK");
+    }
+
     getNextLineIdx();
-    // 0-Positioning TH (???????)
-    startPos-=19;
-    insertAndReturnLastIdx("Pos_TH="+ui->leZeroingPosTH->text()+" mm (spec.=+/-0.1 mm)\nPos_Z="+ui->leZeroingPosR->text()+" mm ");
-    getNextLineIdx();
-    getNextLineIdx();
-//    getNextLineIdx();
     // Electrics DM:
     switch(m_pgbEleChkDM->checkedId())
     {

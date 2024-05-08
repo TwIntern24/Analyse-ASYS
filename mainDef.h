@@ -77,8 +77,8 @@ enum ETestResult
 
 enum EHDMotorType
 {
-    V0,
     V1,
+    V0,
     DFV1
 };
 
