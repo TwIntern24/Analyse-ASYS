@@ -3723,7 +3723,7 @@ void CAnalyseData::createAnalyseSheet()
 //      //m_filePathExcelTmp = "D:\\ASYS\\Projects\\Analyse_ASYS\\AnalyseTmp-Ray.xls";
 //      m_filePathExcelTmp = "D:\\ASYS\\Projects\\Analyse_ASYS\\ANALYSETILT_0728.xls";
 //    #endif
-    ui->lbStatus->setText("Creating Analyse Sheet");
+    ui->lbStatus->setText("Creating Analyse Report");
     progressSave(3);
     closeExcel();
     //closeExcel1();    
@@ -6380,7 +6380,7 @@ void CAnalyseData::createMOMSheet( void ){
         QMessageBox::critical(NULL, "Error", "Office is not installed", QMessageBox::Yes, QMessageBox::Yes);
         return;
     }
-    workbooks->setProperty("Visible",false);    //new code*********************
+    workbooks->setProperty("Visible",false);
     workbooks->dynamicCall("Open (const QString&)", m_filePathExcelMOMTmp);   // Open the file；
     m_objWorkbook = m_objExcel->querySubObject("ActiveWorkBook"); // Get the active workbook.
     progressSave(20);
@@ -6404,10 +6404,14 @@ void CAnalyseData::createMOMSheet( void ){
     QStringList parts = m_fileName.split("_");
     if(parts.size() > 2) {
       value = parts[2];
+      qDebug() << value;
+      value.remove(0, 2);
+      qDebug() << value;
+
     }
     column++;
     cell = worksheet->querySubObject("Cells(int,int)", row, column);
-    cell->setProperty("Value", value);
+    cell->setProperty("Value", "WK"+value);
 
     // Write Result Analysis
     column++;
@@ -6426,7 +6430,6 @@ void CAnalyseData::createMOMSheet( void ){
     progressSave(95);
 
     cell->setProperty("Value", strResAnalysis);
-    qDebug() << strResAnalysis;
 
     // make headers bold:
     int idx = strResAnalysis.indexOf("SA:");
@@ -6560,8 +6563,6 @@ void CAnalyseData::writeArmInfoMOM(){
 
     double posR = ui->leRepPosPAR->text().toDouble();
     double posTH = ui->leRepPosPATH->text().toDouble();
-    qDebug() << QString::number(posR);
-    qDebug() << QString::number(posTH);
     if(qAbs(posR) > REPPOSPA_UP && qAbs(posTH) > REPPOSPA_UP){
         startPos-=22;
         insertAndReturnLastIdx(QString::number(posTH) +" µm (spec.= +/- 600 µm), Pos_R="+QString::number(posR)+" ");
@@ -6629,8 +6630,6 @@ void CAnalyseData::writeDMInfoMOM(){
     // 0-Positioning TH
     double posTH = ui->leZeroingPosTH->text().toDouble();
     double posR = ui->leZeroingPosR->text().toDouble();
-    qDebug() << "0TH: "<< posTH;
-    qDebug() << "0R: "<< posR;
     if(qAbs(posTH)>0.1 && qAbs(posR)>0.1){
         startPos-=19;
         insertAndReturnLastIdx("Pos_TH="+ui->leZeroingPosTH->text()+" mm, Pos_R="+ui->leZeroingPosR->text()+" mm ");
@@ -6677,7 +6676,6 @@ void CAnalyseData::writeDMInfoMOM(){
     getNextLineIdx(); // "\n"
 }
 void CAnalyseData::writeZInfoMOM(){
-    qDebug() << strResAnalysis;
     getNextLineIdx(); // "Z: \n"
     getNextLineIdx(); // "Positioning: \n"
     getNextLineIdx(); // "Electrics: \n"
