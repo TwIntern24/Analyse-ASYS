@@ -6,14 +6,14 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1210</width>
-    <height>741</height>
+    <width>1030</width>
+    <height>753</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
     <width>970</width>
-    <height>600</height>
+    <height>640</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -29,10 +29,7 @@
      <height>0</height>
     </size>
    </property>
-   <layout class="QVBoxLayout" name="verticalLayout_42">
-    <property name="spacing">
-     <number>0</number>
-    </property>
+   <layout class="QGridLayout" name="gridLayout_11">
     <property name="leftMargin">
      <number>1</number>
     </property>
@@ -45,7 +42,7 @@
     <property name="bottomMargin">
      <number>0</number>
     </property>
-    <item>
+    <item row="0" column="0">
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
        <number>1</number>
@@ -345,7 +342,7 @@ QGroupBox::title {
           <property name="minimumSize">
            <size>
             <width>0</width>
-            <height>0</height>
+            <height>500</height>
            </size>
           </property>
           <property name="styleSheet">
@@ -450,7 +447,7 @@ QGroupBox::title {
                    <number>3</number>
                   </property>
                   <property name="bottomMargin">
-                   <number>2</number>
+                   <number>3</number>
                   </property>
                   <item>
                    <widget class="QGroupBox" name="groupBox_SerialNums">
@@ -870,16 +867,7 @@ QGroupBox{border: none;}</string>
                        <property name="title">
                         <string/>
                        </property>
-                       <layout class="QFormLayout" name="formLayout_11">
-                        <property name="formAlignment">
-                         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-                        </property>
-                        <property name="horizontalSpacing">
-                         <number>3</number>
-                        </property>
-                        <property name="verticalSpacing">
-                         <number>7</number>
-                        </property>
+                       <layout class="QGridLayout" name="gridLayout_12">
                         <property name="leftMargin">
                          <number>5</number>
                         </property>
@@ -891,6 +879,12 @@ QGroupBox{border: none;}</string>
                         </property>
                         <property name="bottomMargin">
                          <number>6</number>
+                        </property>
+                        <property name="horizontalSpacing">
+                         <number>3</number>
+                        </property>
+                        <property name="verticalSpacing">
+                         <number>7</number>
                         </property>
                         <item row="0" column="0">
                          <widget class="QLabel" name="label_12">
@@ -999,6 +993,12 @@ QGroupBox{border: none;}</string>
                        </property>
                        <item>
                         <widget class="QGroupBox" name="groupBox_2">
+                         <property name="minimumSize">
+                          <size>
+                           <width>182</width>
+                           <height>0</height>
+                          </size>
+                         </property>
                          <property name="font">
                           <font>
                            <family>MS Shell Dlg 2</family>
@@ -1026,16 +1026,7 @@ QGroupBox::title {
                          <property name="title">
                           <string>Robot</string>
                          </property>
-                         <layout class="QFormLayout" name="formLayout_2">
-                          <property name="formAlignment">
-                           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-                          </property>
-                          <property name="horizontalSpacing">
-                           <number>3</number>
-                          </property>
-                          <property name="verticalSpacing">
-                           <number>8</number>
-                          </property>
+                         <layout class="QGridLayout" name="gridLayout_10">
                           <property name="leftMargin">
                            <number>6</number>
                           </property>
@@ -1048,10 +1039,16 @@ QGroupBox::title {
                           <property name="bottomMargin">
                            <number>3</number>
                           </property>
+                          <property name="horizontalSpacing">
+                           <number>3</number>
+                          </property>
+                          <property name="verticalSpacing">
+                           <number>8</number>
+                          </property>
                           <item row="0" column="0">
                            <widget class="QLabel" name="label_2">
                             <property name="sizePolicy">
-                             <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                             <sizepolicy hsizetype="Minimum" vsizetype="MinimumExpanding">
                               <horstretch>0</horstretch>
                               <verstretch>0</verstretch>
                              </sizepolicy>
@@ -1098,7 +1095,7 @@ QGroupBox::title {
                           <item row="1" column="0">
                            <widget class="QLabel" name="label_3">
                             <property name="sizePolicy">
-                             <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                             <sizepolicy hsizetype="Minimum" vsizetype="MinimumExpanding">
                               <horstretch>0</horstretch>
                               <verstretch>0</verstretch>
                              </sizepolicy>
@@ -1142,7 +1139,7 @@ QGroupBox::title {
                           <item row="2" column="0">
                            <widget class="QLabel" name="label_4">
                             <property name="sizePolicy">
-                             <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                             <sizepolicy hsizetype="Minimum" vsizetype="MinimumExpanding">
                               <horstretch>0</horstretch>
                               <verstretch>0</verstretch>
                              </sizepolicy>
@@ -1186,7 +1183,7 @@ QGroupBox::title {
                           <item row="3" column="0">
                            <widget class="QLabel" name="label_5">
                             <property name="sizePolicy">
-                             <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                             <sizepolicy hsizetype="Minimum" vsizetype="MinimumExpanding">
                               <horstretch>0</horstretch>
                               <verstretch>0</verstretch>
                              </sizepolicy>
@@ -1557,6 +1554,19 @@ QGroupBox::title {
                               <property name="verticalSpacing">
                                <number>5</number>
                               </property>
+                              <item row="0" column="0">
+                               <widget class="QLabel" name="label_ArmFirstDelivery">
+                                <property name="minimumSize">
+                                 <size>
+                                  <width>85</width>
+                                  <height>22</height>
+                                 </size>
+                                </property>
+                                <property name="text">
+                                 <string>First Delivery: </string>
+                                </property>
+                               </widget>
+                              </item>
                               <item row="0" column="1">
                                <widget class="QLineEdit" name="leArmFirstDelivery">
                                 <property name="sizePolicy">
@@ -1585,6 +1595,19 @@ QGroupBox::title {
                                 </property>
                                </widget>
                               </item>
+                              <item row="1" column="0">
+                               <widget class="QLabel" name="label_ArmLastRepair">
+                                <property name="minimumSize">
+                                 <size>
+                                  <width>85</width>
+                                  <height>22</height>
+                                 </size>
+                                </property>
+                                <property name="text">
+                                 <string>Last Repair:   </string>
+                                </property>
+                               </widget>
+                              </item>
                               <item row="1" column="1">
                                <widget class="QLineEdit" name="leArmLastRepair">
                                 <property name="sizePolicy">
@@ -1607,32 +1630,6 @@ QGroupBox::title {
                                   <italic>false</italic>
                                   <bold>false</bold>
                                  </font>
-                                </property>
-                               </widget>
-                              </item>
-                              <item row="0" column="0">
-                               <widget class="QLabel" name="label_ArmFirstDelivery">
-                                <property name="minimumSize">
-                                 <size>
-                                  <width>85</width>
-                                  <height>22</height>
-                                 </size>
-                                </property>
-                                <property name="text">
-                                 <string>First Delivery: </string>
-                                </property>
-                               </widget>
-                              </item>
-                              <item row="1" column="0">
-                               <widget class="QLabel" name="label_ArmLastRepair">
-                                <property name="minimumSize">
-                                 <size>
-                                  <width>85</width>
-                                  <height>22</height>
-                                 </size>
-                                </property>
-                                <property name="text">
-                                 <string>Last Repair:   </string>
                                 </property>
                                </widget>
                               </item>
@@ -2016,7 +2013,7 @@ QPushButton{font: 10.5pt &quot;MS Shell Dlg 2&quot;;}</string>
                       <rect>
                        <x>0</x>
                        <y>0</y>
-                       <width>681</width>
+                       <width>501</width>
                        <height>560</height>
                       </rect>
                      </property>
@@ -2092,7 +2089,7 @@ QRadioButton{font: 10.5pt &quot;MS Shell Dlg 2&quot;;}
                             <number>10</number>
                            </property>
                            <property name="topMargin">
-                            <number>8</number>
+                            <number>5</number>
                            </property>
                            <item>
                             <widget class="QLabel" name="label_14">
@@ -2215,7 +2212,7 @@ QRadioButton{font: 10.5pt &quot;MS Shell Dlg 2&quot;;}
                             <number>10</number>
                            </property>
                            <property name="topMargin">
-                            <number>8</number>
+                            <number>5</number>
                            </property>
                            <item>
                             <widget class="QLabel" name="label_15">
@@ -2335,7 +2332,7 @@ QRadioButton{font: 10.5pt &quot;MS Shell Dlg 2&quot;;}
                             <number>10</number>
                            </property>
                            <property name="topMargin">
-                            <number>8</number>
+                            <number>5</number>
                            </property>
                            <item>
                             <widget class="QLabel" name="label_32">
@@ -2455,7 +2452,7 @@ QRadioButton{font: 10.5pt &quot;MS Shell Dlg 2&quot;;}
                             <number>10</number>
                            </property>
                            <property name="topMargin">
-                            <number>8</number>
+                            <number>5</number>
                            </property>
                            <item>
                             <widget class="QLabel" name="label_30">
@@ -2575,7 +2572,7 @@ QRadioButton{font: 10.5pt &quot;MS Shell Dlg 2&quot;;}
                             <number>10</number>
                            </property>
                            <property name="topMargin">
-                            <number>8</number>
+                            <number>5</number>
                            </property>
                            <item>
                             <widget class="QLabel" name="label_19">
@@ -2698,7 +2695,7 @@ QRadioButton{font: 10.5pt &quot;MS Shell Dlg 2&quot;;}
                             <number>10</number>
                            </property>
                            <property name="topMargin">
-                            <number>8</number>
+                            <number>5</number>
                            </property>
                            <item>
                             <widget class="QLabel" name="label_20">
@@ -2821,7 +2818,7 @@ QRadioButton{font: 10.5pt &quot;MS Shell Dlg 2&quot;;}
                             <number>10</number>
                            </property>
                            <property name="topMargin">
-                            <number>8</number>
+                            <number>5</number>
                            </property>
                            <item>
                             <widget class="QLabel" name="label_22">
@@ -2947,7 +2944,7 @@ QRadioButton{font: 10.5pt &quot;MS Shell Dlg 2&quot;;}
                             <number>10</number>
                            </property>
                            <property name="topMargin">
-                            <number>8</number>
+                            <number>5</number>
                            </property>
                            <item>
                             <widget class="QLabel" name="label_24">
@@ -3070,7 +3067,7 @@ QRadioButton{font: 10.5pt &quot;MS Shell Dlg 2&quot;;}
                             <number>10</number>
                            </property>
                            <property name="topMargin">
-                            <number>8</number>
+                            <number>5</number>
                            </property>
                            <item>
                             <widget class="QLabel" name="label_26">
@@ -3206,7 +3203,7 @@ QRadioButton::checked{color: red; font: 10pt &quot;MS Shell Dlg 2&quot;;}
                             <number>10</number>
                            </property>
                            <property name="topMargin">
-                            <number>8</number>
+                            <number>5</number>
                            </property>
                            <item>
                             <widget class="QLabel" name="label_51">
@@ -3341,7 +3338,7 @@ QRadioButton::checked{color: red; font: 10pt &quot;MS Shell Dlg 2&quot;;}
                             <number>10</number>
                            </property>
                            <property name="topMargin">
-                            <number>8</number>
+                            <number>5</number>
                            </property>
                            <item>
                             <widget class="QLabel" name="label_52">
@@ -3476,7 +3473,7 @@ QRadioButton::checked{color: red; font: 10pt &quot;MS Shell Dlg 2&quot;;}
                             <number>10</number>
                            </property>
                            <property name="topMargin">
-                            <number>8</number>
+                            <number>5</number>
                            </property>
                            <item>
                             <widget class="QLabel" name="label_53">
@@ -3611,7 +3608,7 @@ QRadioButton::checked{color: red; font: 10pt &quot;MS Shell Dlg 2&quot;;}
                             <number>10</number>
                            </property>
                            <property name="topMargin">
-                            <number>8</number>
+                            <number>5</number>
                            </property>
                            <item>
                             <widget class="QLabel" name="label_54">
@@ -3746,7 +3743,7 @@ QRadioButton::checked{color: red; font: 10pt &quot;MS Shell Dlg 2&quot;;}
                             <number>10</number>
                            </property>
                            <property name="topMargin">
-                            <number>8</number>
+                            <number>5</number>
                            </property>
                            <item>
                             <widget class="QLabel" name="label_55">
@@ -3860,7 +3857,7 @@ QRadioButton::checked{color: red; font: 10pt &quot;MS Shell Dlg 2&quot;;}
                             <number>10</number>
                            </property>
                            <property name="topMargin">
-                            <number>8</number>
+                            <number>5</number>
                            </property>
                            <item>
                             <widget class="QLabel" name="label_58">
@@ -3974,7 +3971,7 @@ QRadioButton::checked{color: red; font: 10pt &quot;MS Shell Dlg 2&quot;;}
                             <number>10</number>
                            </property>
                            <property name="topMargin">
-                            <number>8</number>
+                            <number>5</number>
                            </property>
                            <item>
                             <widget class="QLabel" name="label_59">
@@ -4315,7 +4312,6 @@ p, li { white-space: pre-wrap; }
                             <property name="font">
                              <font>
                               <family>MS Shell Dlg 2</family>
-                              <pointsize>11</pointsize>
                               <weight>1</weight>
                               <italic>false</italic>
                               <bold>false</bold>
@@ -5159,8 +5155,8 @@ QGroupBox::title {
                   <property name="geometry">
                    <rect>
                     <x>0</x>
-                    <y>-341</y>
-                    <width>339</width>
+                    <y>0</y>
+                    <width>281</width>
                     <height>998</height>
                    </rect>
                   </property>
@@ -5188,7 +5184,7 @@ QGroupBox::title {
                           </font>
                          </property>
                          <property name="text">
-                          <string>Arm belts - average price : </string>
+                          <string>Arm belts: </string>
                          </property>
                         </widget>
                        </item>
@@ -7224,9 +7220,9 @@ QGroupBox::title {
                  <property name="title">
                   <string/>
                  </property>
-                 <layout class="QHBoxLayout" name="horizontalLayout_67" stretch="3,1,1,4,1">
+                 <layout class="QHBoxLayout" name="horizontalLayout_101">
                   <property name="spacing">
-                   <number>15</number>
+                   <number>5</number>
                   </property>
                   <property name="leftMargin">
                    <number>3</number>
@@ -7908,8 +7904,8 @@ QCheckBox{font: 10.5pt &quot;MS Shell Dlg 2&quot;;}</string>
                      <property name="geometry">
                       <rect>
                        <x>0</x>
-                       <y>0</y>
-                       <width>683</width>
+                       <y>-264</y>
+                       <width>503</width>
                        <height>680</height>
                       </rect>
                      </property>
@@ -7977,7 +7973,7 @@ QGroupBox{border: none;}
                             <number>10</number>
                            </property>
                            <property name="topMargin">
-                            <number>8</number>
+                            <number>5</number>
                            </property>
                            <item>
                             <widget class="QLabel" name="label_46">
@@ -8095,7 +8091,7 @@ QGroupBox{border: none;}
                             <number>10</number>
                            </property>
                            <property name="topMargin">
-                            <number>8</number>
+                            <number>5</number>
                            </property>
                            <item>
                             <widget class="QLabel" name="label_38">
@@ -8213,7 +8209,7 @@ QGroupBox{border: none;}
                             <number>10</number>
                            </property>
                            <property name="topMargin">
-                            <number>8</number>
+                            <number>5</number>
                            </property>
                            <item>
                             <widget class="QLabel" name="label_35">
@@ -8343,7 +8339,7 @@ QGroupBox{border: none;}
                             <number>10</number>
                            </property>
                            <property name="topMargin">
-                            <number>8</number>
+                            <number>5</number>
                            </property>
                            <item>
                             <widget class="QLabel" name="label_44">
@@ -8510,7 +8506,7 @@ QGroupBox{border: none;}
                             <number>10</number>
                            </property>
                            <property name="topMargin">
-                            <number>8</number>
+                            <number>5</number>
                            </property>
                            <item>
                             <widget class="QLabel" name="label_42">
@@ -8677,7 +8673,7 @@ QGroupBox{border: none;}
                             <number>10</number>
                            </property>
                            <property name="topMargin">
-                            <number>8</number>
+                            <number>5</number>
                            </property>
                            <item>
                             <widget class="QLabel" name="label_37">
@@ -8812,7 +8808,7 @@ QGroupBox{border: none;}
                             <number>10</number>
                            </property>
                            <property name="topMargin">
-                            <number>8</number>
+                            <number>5</number>
                            </property>
                            <item>
                             <widget class="QLabel" name="label_76">
@@ -8947,7 +8943,7 @@ QGroupBox{border: none;}
                             <number>10</number>
                            </property>
                            <property name="topMargin">
-                            <number>8</number>
+                            <number>5</number>
                            </property>
                            <item>
                             <widget class="QLabel" name="label_80">
@@ -9520,7 +9516,10 @@ QGroupBox{border: none;}
                             <number>10</number>
                            </property>
                            <property name="topMargin">
-                            <number>8</number>
+                            <number>5</number>
+                           </property>
+                           <property name="bottomMargin">
+                            <number>0</number>
                            </property>
                            <item>
                             <widget class="QLabel" name="label_40">
@@ -9655,7 +9654,7 @@ QGroupBox{border: none;}
                             <number>10</number>
                            </property>
                            <property name="topMargin">
-                            <number>8</number>
+                            <number>5</number>
                            </property>
                            <item>
                             <widget class="QLabel" name="label_87">
@@ -9790,7 +9789,7 @@ QGroupBox{border: none;}
                             <number>10</number>
                            </property>
                            <property name="topMargin">
-                            <number>8</number>
+                            <number>5</number>
                            </property>
                            <item>
                             <widget class="QLabel" name="label_86">
@@ -9925,7 +9924,7 @@ QGroupBox{border: none;}
                             <number>10</number>
                            </property>
                            <property name="topMargin">
-                            <number>8</number>
+                            <number>5</number>
                            </property>
                            <item>
                             <widget class="QLabel" name="label_41">
@@ -10060,7 +10059,7 @@ QGroupBox{border: none;}
                             <number>10</number>
                            </property>
                            <property name="topMargin">
-                            <number>8</number>
+                            <number>5</number>
                            </property>
                            <item>
                             <widget class="QLabel" name="label_89">
@@ -10177,6 +10176,122 @@ QGroupBox{border: none;}
                           </layout>
                          </item>
                          <item>
+                          <widget class="Line" name="line">
+                           <property name="frameShadow">
+                            <enum>QFrame::Plain</enum>
+                           </property>
+                           <property name="lineWidth">
+                            <number>3</number>
+                           </property>
+                           <property name="orientation">
+                            <enum>Qt::Horizontal</enum>
+                           </property>
+                          </widget>
+                         </item>
+                         <item>
+                          <layout class="QHBoxLayout" name="horizontalLayout_SurfaceOK_DM_4">
+                           <property name="leftMargin">
+                            <number>10</number>
+                           </property>
+                           <property name="topMargin">
+                            <number>5</number>
+                           </property>
+                           <item>
+                            <widget class="QLabel" name="label_135">
+                             <property name="minimumSize">
+                              <size>
+                               <width>148</width>
+                               <height>19</height>
+                              </size>
+                             </property>
+                             <property name="text">
+                              <string>Cable holder:</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item>
+                            <widget class="QGroupBox" name="groupBox_66">
+                             <property name="title">
+                              <string/>
+                             </property>
+                             <layout class="QHBoxLayout" name="horizontalLayout_100">
+                              <property name="spacing">
+                               <number>15</number>
+                              </property>
+                              <property name="leftMargin">
+                               <number>1</number>
+                              </property>
+                              <property name="topMargin">
+                               <number>1</number>
+                              </property>
+                              <property name="rightMargin">
+                               <number>1</number>
+                              </property>
+                              <property name="bottomMargin">
+                               <number>1</number>
+                              </property>
+                              <item>
+                               <widget class="QRadioButton" name="rbCableHolderNEW">
+                                <property name="sizePolicy">
+                                 <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                                  <horstretch>0</horstretch>
+                                  <verstretch>0</verstretch>
+                                 </sizepolicy>
+                                </property>
+                                <property name="minimumSize">
+                                 <size>
+                                  <width>60</width>
+                                  <height>19</height>
+                                 </size>
+                                </property>
+                                <property name="text">
+                                 <string>NEW</string>
+                                </property>
+                               </widget>
+                              </item>
+                              <item>
+                               <widget class="QRadioButton" name="rbCableHolderOLD">
+                                <property name="sizePolicy">
+                                 <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                                  <horstretch>0</horstretch>
+                                  <verstretch>0</verstretch>
+                                 </sizepolicy>
+                                </property>
+                                <property name="minimumSize">
+                                 <size>
+                                  <width>60</width>
+                                  <height>19</height>
+                                 </size>
+                                </property>
+                                <property name="styleSheet">
+                                 <string notr="true">QRadioButton::checked{color: red; font: 10pt &quot;MS Shell Dlg 2&quot;;}
+
+</string>
+                                </property>
+                                <property name="text">
+                                 <string>OLD</string>
+                                </property>
+                               </widget>
+                              </item>
+                             </layout>
+                            </widget>
+                           </item>
+                           <item>
+                            <spacer name="horizontalSpacer_115">
+                             <property name="orientation">
+                              <enum>Qt::Horizontal</enum>
+                             </property>
+                             <property name="sizeHint" stdset="0">
+                              <size>
+                               <width>40</width>
+                               <height>20</height>
+                              </size>
+                             </property>
+                            </spacer>
+                           </item>
+                          </layout>
+                         </item>
+                         <item>
                           <widget class="Line" name="line_44">
                            <property name="frameShadow">
                             <enum>QFrame::Plain</enum>
@@ -10190,12 +10305,12 @@ QGroupBox{border: none;}
                           </widget>
                          </item>
                          <item>
-                          <layout class="QHBoxLayout" name="horizontalLayout_FuncTest_DM">
+                          <layout class="QHBoxLayout" name="horizontalLayout_FuncTest_DM" stretch="0,0,0">
                            <property name="leftMargin">
                             <number>10</number>
                            </property>
                            <property name="topMargin">
-                            <number>8</number>
+                            <number>5</number>
                            </property>
                            <item>
                             <widget class="QLabel" name="label_88">
@@ -10330,7 +10445,7 @@ QGroupBox{border: none;}
                             <number>10</number>
                            </property>
                            <property name="topMargin">
-                            <number>8</number>
+                            <number>5</number>
                            </property>
                            <item>
                             <widget class="QLabel" name="label_90">
@@ -10417,7 +10532,7 @@ QGroupBox{border: none;}
                             <number>10</number>
                            </property>
                            <property name="topMargin">
-                            <number>8</number>
+                            <number>5</number>
                            </property>
                            <item>
                             <widget class="QLabel" name="label_92">
@@ -10504,7 +10619,7 @@ QGroupBox{border: none;}
                             <number>10</number>
                            </property>
                            <property name="topMargin">
-                            <number>8</number>
+                            <number>5</number>
                            </property>
                            <item>
                             <widget class="QLabel" name="label_75">
@@ -10952,8 +11067,8 @@ QGroupBox::title {
                    <rect>
                     <x>0</x>
                     <y>0</y>
-                    <width>391</width>
-                    <height>521</height>
+                    <width>307</width>
+                    <height>572</height>
                    </rect>
                   </property>
                   <layout class="QGridLayout" name="gridLayout_7">
@@ -11990,7 +12105,7 @@ QGroupBox::title {
                  </property>
                  <layout class="QHBoxLayout" name="horizontalLayout_74" stretch="3,1,1,4,1">
                   <property name="spacing">
-                   <number>15</number>
+                   <number>5</number>
                   </property>
                   <property name="leftMargin">
                    <number>3</number>
@@ -12169,6 +12284,9 @@ QGroupBox::title {
                     </item>
                     <item>
                      <layout class="QHBoxLayout" name="horizontalLayout_71">
+                      <property name="topMargin">
+                       <number>0</number>
+                      </property>
                       <item>
                        <widget class="QLabel" name="label_94">
                         <property name="styleSheet">
@@ -12670,8 +12788,8 @@ QCheckBox{font: 10.5pt &quot;MS Shell Dlg 2&quot;;}</string>
                      <property name="geometry">
                       <rect>
                        <x>0</x>
-                       <y>0</y>
-                       <width>684</width>
+                       <y>-134</y>
+                       <width>504</width>
                        <height>550</height>
                       </rect>
                      </property>
@@ -12779,7 +12897,7 @@ QLabel{font: 10.5pt &quot;MS Shell Dlg 2&quot;;}</string>
                                   <number>10</number>
                                  </property>
                                  <property name="topMargin">
-                                  <number>8</number>
+                                  <number>5</number>
                                  </property>
                                  <property name="rightMargin">
                                   <number>0</number>
@@ -12916,7 +13034,7 @@ QLabel{font: 10.5pt &quot;MS Shell Dlg 2&quot;;}
                                   <number>10</number>
                                  </property>
                                  <property name="topMargin">
-                                  <number>8</number>
+                                  <number>5</number>
                                  </property>
                                  <property name="rightMargin">
                                   <number>0</number>
@@ -13095,7 +13213,7 @@ QLabel{font: 10.5pt &quot;MS Shell Dlg 2&quot;;}</string>
                                   <number>10</number>
                                  </property>
                                  <property name="topMargin">
-                                  <number>8</number>
+                                  <number>5</number>
                                  </property>
                                  <property name="rightMargin">
                                   <number>0</number>
@@ -13201,7 +13319,7 @@ QLabel{font: 10.5pt &quot;MS Shell Dlg 2&quot;;}</string>
                                   <number>10</number>
                                  </property>
                                  <property name="topMargin">
-                                  <number>8</number>
+                                  <number>5</number>
                                  </property>
                                  <property name="rightMargin">
                                   <number>0</number>
@@ -13353,7 +13471,7 @@ QLabel{font: 10.5pt &quot;MS Shell Dlg 2&quot;;}</string>
                                   <number>10</number>
                                  </property>
                                  <property name="topMargin">
-                                  <number>8</number>
+                                  <number>5</number>
                                  </property>
                                  <property name="rightMargin">
                                   <number>0</number>
@@ -13456,7 +13574,7 @@ QLabel{font: 10.5pt &quot;MS Shell Dlg 2&quot;;}</string>
                                   <number>10</number>
                                  </property>
                                  <property name="topMargin">
-                                  <number>8</number>
+                                  <number>5</number>
                                  </property>
                                  <property name="rightMargin">
                                   <number>0</number>
@@ -13608,7 +13726,7 @@ QLabel{font: 10.5pt &quot;MS Shell Dlg 2&quot;;}</string>
                                   <number>10</number>
                                  </property>
                                  <property name="topMargin">
-                                  <number>8</number>
+                                  <number>5</number>
                                  </property>
                                  <property name="rightMargin">
                                   <number>0</number>
@@ -13711,7 +13829,7 @@ QLabel{font: 10.5pt &quot;MS Shell Dlg 2&quot;;}</string>
                                   <number>10</number>
                                  </property>
                                  <property name="topMargin">
-                                  <number>8</number>
+                                  <number>5</number>
                                  </property>
                                  <property name="rightMargin">
                                   <number>0</number>
@@ -13873,7 +13991,7 @@ QRadioButton{font: 10.5pt &quot;MS Shell Dlg 2&quot;;}
                                <number>10</number>
                               </property>
                               <property name="topMargin">
-                               <number>8</number>
+                               <number>5</number>
                               </property>
                               <item>
                                <widget class="QLabel" name="label_99">
@@ -13990,7 +14108,7 @@ QRadioButton{font: 10.5pt &quot;MS Shell Dlg 2&quot;;}
                                <number>10</number>
                               </property>
                               <property name="topMargin">
-                               <number>8</number>
+                               <number>5</number>
                               </property>
                               <item>
                                <widget class="QLabel" name="label_109">
@@ -14107,7 +14225,7 @@ QRadioButton{font: 10.5pt &quot;MS Shell Dlg 2&quot;;}
                                <number>10</number>
                               </property>
                               <property name="topMargin">
-                               <number>8</number>
+                               <number>5</number>
                               </property>
                               <item>
                                <widget class="QLabel" name="label_97">
@@ -14224,7 +14342,7 @@ QRadioButton{font: 10.5pt &quot;MS Shell Dlg 2&quot;;}
                                <number>10</number>
                               </property>
                               <property name="topMargin">
-                               <number>8</number>
+                               <number>5</number>
                               </property>
                               <item>
                                <widget class="QLabel" name="label_102">
@@ -14341,7 +14459,7 @@ QRadioButton{font: 10.5pt &quot;MS Shell Dlg 2&quot;;}
                                <number>10</number>
                               </property>
                               <property name="topMargin">
-                               <number>8</number>
+                               <number>5</number>
                               </property>
                               <item>
                                <widget class="QLabel" name="label_118">
@@ -14458,7 +14576,7 @@ QRadioButton{font: 10.5pt &quot;MS Shell Dlg 2&quot;;}
                                <number>10</number>
                               </property>
                               <property name="topMargin">
-                               <number>8</number>
+                               <number>5</number>
                               </property>
                               <item>
                                <widget class="QLabel" name="label_119">
@@ -14575,7 +14693,7 @@ QRadioButton{font: 10.5pt &quot;MS Shell Dlg 2&quot;;}
                                <number>10</number>
                               </property>
                               <property name="topMargin">
-                               <number>8</number>
+                               <number>5</number>
                               </property>
                               <item>
                                <widget class="QLabel" name="label_98">
@@ -15005,7 +15123,7 @@ QGroupBox::title {
                    <rect>
                     <x>0</x>
                     <y>0</y>
-                    <width>316</width>
+                    <width>294</width>
                     <height>644</height>
                    </rect>
                   </property>
@@ -16498,22 +16616,6 @@ QGroupBox::title {
             </widget>
            </item>
            <item>
-            <spacer name="horizontalSpacer_5">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-             <property name="sizeType">
-              <enum>QSizePolicy::MinimumExpanding</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>40</width>
-               <height>2</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-           <item>
             <widget class="QGroupBox" name="groupBox_FunctionBtns">
              <property name="sizePolicy">
               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Expanding">
@@ -16666,7 +16768,7 @@ QGroupBox{border: none;}
                 </property>
                 <property name="minimumSize">
                  <size>
-                  <width>0</width>
+                  <width>25</width>
                   <height>0</height>
                  </size>
                 </property>
@@ -16802,6 +16904,12 @@ QGroupBox{border: none;}
                   <bold>false</bold>
                  </font>
                 </property>
+                <property name="toolTip">
+                 <string>Ini file is always created</string>
+                </property>
+                <property name="toolTipDuration">
+                 <number>0</number>
+                </property>
                 <property name="layoutDirection">
                  <enum>Qt::LeftToRight</enum>
                 </property>
@@ -16859,8 +16967,8 @@ QGroupBox{border: none;}
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1210</width>
-     <height>26</height>
+     <width>1030</width>
+     <height>21</height>
     </rect>
    </property>
   </widget>

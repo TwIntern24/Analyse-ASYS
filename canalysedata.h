@@ -195,6 +195,7 @@ private:
     QButtonGroup *m_pgbEleChkDM;
     QButtonGroup *m_pgbDataTransChkDM;
     QButtonGroup *m_pgbSurfaceDamegeChkDM;
+    QButtonGroup *m_pgbCableHolderChkDM;
     QButtonGroup *m_pgbFunChkDM;
     QButtonGroup *m_pgbConductivityChkDM;
 
@@ -262,6 +263,7 @@ private:
     void writeRepairOrNotItem(QAxObject* workbook, sPROTOCOLITEM item);
     void writeUpgradeItem(QAxObject* workbook, sPROTOCOLITEM item);
     void writeCommentsItem(QAxObject* workbook, sPROTOCOLITEM item);
+    void writeOldNew(QAxObject *workbook, sPROTOCOLITEM item);
     void writeGeneralItem(QAxObject* workbook, sPROTOCOLITEM item);
     void writeRobotType(QAxObject *workbook, sPROTOCOLITEM item);
     void writeCurrentItem(QAxObject *workbook, sPROTOCOLITEM item); //*****************
@@ -433,6 +435,7 @@ private:
     void writeAmount( QAxObject* workbook, sREPAIRITEM item );
     void writeInformation( QAxObject* workbook, sREPAIRITEM item );
     void extendInformation( QAxObject* workbook, sREPAIRITEM item );
+    void writeRepairIn(QAxObject *workbook, sREPAIRITEM item);
 
     // ---- Create MOM Sheet ------
     QString strResAnalysis;
@@ -461,7 +464,7 @@ private:
     QButtonGroup *m_pgbRepairARM_BeltReel;
     QButtonGroup *m_pgbRepairARM_TorxScrew;
     QButtonGroup *m_pgbRepairARM_Bearings;
-    QButtonGroup *m_pgbRepairARM_Deliver;
+    QButtonGroup *m_pgbRepairARM_RepairIn;
 
     // DM
     QButtonGroup *m_pgbRepairDM_DMLikaMotor;
@@ -470,7 +473,7 @@ private:
     QButtonGroup *m_pgbRepairDM_DMLid;
     QButtonGroup *m_pgbRepairDM_SlipRing;
     QButtonGroup *m_pgbRepairDM_HollowShaft;
-    QButtonGroup *m_pgbRepairDM_Deliver;
+    QButtonGroup *m_pgbRepairDM_RepairIn;
 
     // ZT
     QButtonGroup *m_pgbRepairZT_ZStroke35;
@@ -482,7 +485,9 @@ private:
     QButtonGroup *m_pgbRepairZT_SmallGuidingShafts;
     QButtonGroup *m_pgbRepairZT_ClampingFlange;
     QButtonGroup *m_pgbRepairZT_AdapterCable;
-    QButtonGroup *m_pgbRepairZT_Deliver;
+    QButtonGroup *m_pgbRepairZT_RepairIn;
+
+
 };
 
 #endif // CANALYSEDATA_H

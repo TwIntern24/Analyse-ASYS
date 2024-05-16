@@ -75,6 +75,13 @@ enum ETestResult
        Test_NA      //new code******************************
 };
 
+enum EOldNew
+{
+    OldNew_NEW,
+    OldNew_OLD,
+    OldNew_NA=-1
+};
+
 enum EHDMotorType
 {
     V1,
@@ -111,10 +118,10 @@ enum ERepair
     Repair_Repair
 };
 
-enum EDeliver
+enum ERepairIn
 {
-    TW,
-    EU
+    RepairIn_TW,
+    RepairIn_EU
 };
 
 #endif //MAINDEF_H
