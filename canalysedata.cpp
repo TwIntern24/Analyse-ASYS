@@ -1427,6 +1427,9 @@ void CAnalyseData::getDataFromIni4DMSN( void)
     if(strListVal.count()!=9)
     {
         QMessageBox::critical(NULL, "Error", "Drive Module Data Incomplete!", QMessageBox::Yes, QMessageBox::Yes);
+        strListVal = strListVal.mid(4);
+        strValue = strListVal.join("-");
+        ui->leDMSN->setText(strValue);
         return;
     }
     else
@@ -1906,6 +1909,13 @@ void CAnalyseData::getDataFromIni4ZTSN( void)
     if(strListVal.count()!=9)
     {
         QMessageBox::critical(NULL, "Error", "Z-Drive Data Incomplete!", QMessageBox::Yes, QMessageBox::Yes);
+        if(!strTmp.contains("--")){ // strZTLen is not missing
+            strZTLen = strListVal[1];
+            ui->leZTLen->setText(strZTLen);
+        }
+        strListVal = strListVal.mid(4);
+        strValue = strListVal.join("-");
+        ui->leZTSN2->setText(strValue);
         return;
     }
     else
@@ -2780,6 +2790,10 @@ void CAnalyseData::getDMSNFromDM( void)
     strDMSNPre = "ARD-140-BD-BA-";
     strDMSN = ui->leDMSN->text();
     strDMAll = strDMSNPre + strDMSN;
+    QStringList strListVal = strDMAll.split("-");
+    if(strListVal.count()!=9 || !strDMSN.contains("-A")){
+        QMessageBox::warning(this, "Drive modul SN warning", "Drive Modul SN doesn't have usual format. Check serial number.\n\n File still saved.");
+    }
     settings.setValue("4/val", strDMAll);
 }
 
@@ -3146,7 +3160,10 @@ void CAnalyseData::getZTSNFromZT( void)
     strDMSNMid = "-AA-AA-";
     strDMSN = ui->leZTSN2->text();
     strDMSNAll = strDMSNPre + strZTLen + strDMSNMid + strDMSN;
-
+    QStringList strListVal = strDMSNAll.split("-");
+    if(strListVal.count()!=9 || !strDMSN.contains("-A") || strZTLen.isEmpty()){
+        QMessageBox::warning(this, "Z-Drive SN warning", "Z-Drive SN doesn't have usual format. Check serial number.\n\n File still saved.");
+    }
     settings.setValue("5/val", strDMSNAll);
 }
 
@@ -3796,7 +3813,7 @@ void CAnalyseData::createAnalyseSheet()
         return;
     }
 
-    m_objExcel->setProperty("Visible",false);
+    m_objExcel->setProperty("Visible", false);
     QAxObject* workbooks = m_objExcel->querySubObject("WorkBooks");// get the workbook.
     if( workbooks==nullptr)
     {
@@ -3804,7 +3821,7 @@ void CAnalyseData::createAnalyseSheet()
         QMessageBox::critical(NULL, "Error", "Office is not installed", QMessageBox::Yes, QMessageBox::Yes);
         return;
     }
-    workbooks->setProperty("Visible",false);    //new code*********************
+    workbooks->setProperty("Visible", false);    //new code*********************
     workbooks->dynamicCall("Open (const QString&)", m_filePathExcelTmp);   // Open the file；
     m_objWorkbook = m_objExcel->querySubObject("ActiveWorkBook"); // Get the active workbook.
     progressSave(20);
@@ -3844,7 +3861,7 @@ void CAnalyseData::createAnalyseSheet()
     libDataMatrix.GenerateDataMatrix(strValueA2, strDMFolder, (m_fileName + "_DataMatrix_DM"),    1,        200);
     libDataMatrix.GenerateDataMatrix(strValueA3, strDMFolder, (m_fileName + "_DataMatrix_Z"),     1,        200);
 
-    // 18, 17, 17 -> 0.25 inch
+//     18, 17, 17 -> 0.25 inch
     insertDataMatrix(m_objWorkbook, 4, "A1", (strDMFolder + "\\" + m_fileName + "_DataMatrix_ARM.jpg"), 21.6);
     insertDataMatrix(m_objWorkbook, 4, "A2", (strDMFolder + "\\" + m_fileName + "_DataMatrix_DM.jpg"), 22);
     insertDataMatrix(m_objWorkbook, 4, "A3", (strDMFolder + "\\" + m_fileName + "_DataMatrix_Z.jpg"), 22);
@@ -6444,6 +6461,13 @@ void CAnalyseData::createRepairMatrix( void )
 
 void CAnalyseData::on_pbExport_clicked( void )
 {
+    // if fields for label are empty, give a warning!
+    if(ui->leRobotTypeSN->text().isEmpty() || ui->leARMSN->text().isEmpty() || ui->leDMSN->text().isEmpty() || ui->leZTSN2->text().isEmpty()){
+        QMessageBox::warning(this, "Information missing", "Please fill out Robot Type serial number, Arm serial number, DM serial number, and Z serial number before exporting.");
+        return;
+    }
+
+
     ui->lbStatus->setText("Starting export");
 
     // track progress

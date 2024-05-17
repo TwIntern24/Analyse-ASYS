@@ -7904,7 +7904,7 @@ QCheckBox{font: 10.5pt &quot;MS Shell Dlg 2&quot;;}</string>
                      <property name="geometry">
                       <rect>
                        <x>0</x>
-                       <y>-264</y>
+                       <y>0</y>
                        <width>503</width>
                        <height>680</height>
                       </rect>
@@ -12788,7 +12788,7 @@ QCheckBox{font: 10.5pt &quot;MS Shell Dlg 2&quot;;}</string>
                      <property name="geometry">
                       <rect>
                        <x>0</x>
-                       <y>-134</y>
+                       <y>0</y>
                        <width>504</width>
                        <height>550</height>
                       </rect>
