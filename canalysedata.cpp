@@ -585,10 +585,10 @@ void CAnalyseData::on_pbRobotSNHide_clicked()
       m_fileName = ui->leRobotSN1st->text();
 
       #ifdef USEAPPLICATIONPATH
-        m_settingFilePath = QApplication::applicationDirPath()+"\\Setting_debug.ini";    //QApplication::applicationDirPath()
+        m_settingFilePath = QApplication::applicationDirPath()+"\\Setting.ini";    //QApplication::applicationDirPath()
       #else
-//        m_settingFilePath = "D:\\ASYS\\Projects\\Analyse_ASYS\\Setting.ini";
-          m_settingFilePath = "D:\\Data\\twintern\\Jana\\Work\\Emily\\Analysis_ASYS_Material\\Analyse_ASYS_ver2.0.3.1\\Analyse_ASYS\\release"
+          m_settingFilePath = "D:\\ASYS\\Projects\\Analyse_ASYS\\Setting.ini";
+//        m_settingFilePath = "D:\\Data\\twintern\\Jana\\Work\\Emily\\Analysis_ASYS_Material\\Analyse_ASYS_ver2.0.3.1\\Analyse_ASYS\\release"
       #endif
       QSettings settings(m_settingFilePath,QSettings::IniFormat);
       settings.beginGroup("PathSetting");
