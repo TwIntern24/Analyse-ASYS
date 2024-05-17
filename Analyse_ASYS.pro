@@ -38,6 +38,6 @@ FORMS    += canalysedata.ui
 RC_FILE += \
  icon.rc
 
-INCLUDEPATH += "D:\Data\twintern\Jana\Work\Emily\Analysis_ASYS_Material\Analyse_ASYS_ver2.0.3.1\Analyse_ASYS\DataMatrix_ZXing"
+INCLUDEPATH += "D:\Data\Projects\PJ_DigitizedAnalysisProtocol_Record\20231026_BK_0_ver2.0.3.1\Analyse_ASYS\DataMatrix_ZXing"
 
-LIBS += "D:\Data\twintern\Jana\Work\Emily\Analysis_ASYS_Material\Analyse_ASYS_ver2.0.3.1\Analyse_ASYS\release\DataMatrixGeneratorLib.dll"
+LIBS += "D:\Data\Projects\PJ_DigitizedAnalysisProtocol_Record\20231026_BK_0_ver2.0.3.1\Analyse_ASYS\release\DataMatrixGeneratorLib.dll"
