@@ -108,3 +108,18 @@ Date     : 2023/10/26
 Programer: Stanley/Emily
 Content  : 1.  Text of field for upper/lower arm tension changed. (OAG->UA Tension, UAG->LA Tension)
            2. Procol version changeD to v1.4 (ANALYSETILT_v1.4)
+
+Version  : 2.0.4.0
+Templates: ANALYSETILT_v1.5
+	   Repair_matrix_MK5_xxxx_w
+	   MOM_AAR-NT
+Date     : 2024/5/17
+Programer: Stanley/Emily/Jana
+Content  : 1. Add automatic creation of Repair Matrix
+	   2. Add automatic creation of MOM Sheet 
+	   3. Change layout to fit Repair radio/check boxes(OK, Repair, N/A and TW, EU) in new tabs
+	   4. Add HD Motor Type in layout
+	   5. Change layout for export to have check boxes, only one export button, and status information
+	   6. Change Analyse Report version (ANALYSETILT_v1.5) -> add cable holder in DM, change formula for DM and Z labels
+	   7. Fix bugs in text field color 
+	   8. Add warnings when serial number is not in usual format to prevent issues at Data Matrix creation
