@@ -585,10 +585,11 @@ void CAnalyseData::on_pbRobotSNHide_clicked()
       m_fileName = ui->leRobotSN1st->text();
 
       #ifdef USEAPPLICATIONPATH
-        m_settingFilePath = QApplication::applicationDirPath()+"\\Setting_debug.ini";    //QApplication::applicationDirPath()
+        m_settingFilePath = QApplication::applicationDirPath()+"\\Setting.ini";    //QApplication::applicationDirPath()
+        qDebug() << "SettingsPath"<< m_settingFilePath;
       #else
-//        m_settingFilePath = "D:\\ASYS\\Projects\\Analyse_ASYS\\Setting.ini";
-          m_settingFilePath = "D:\\Data\\twintern\\Jana\\Work\\Emily\\Analysis_ASYS_Material\\Analyse_ASYS_ver2.0.3.1\\Analyse_ASYS\\release"
+//          m_settingFilePath = "D:\\ASYS\\Projects\\Analyse_ASYS\\Setting.ini";
+//        m_settingFilePath = "D:\Data\twintern\Jana\Work\Emily\Analysis_ASYS_Material\Analyse_ASYS_ver2.0.4.0\Analyse_ASYS\release"
       #endif
       QSettings settings(m_settingFilePath,QSettings::IniFormat);
       settings.beginGroup("PathSetting");
@@ -599,14 +600,13 @@ void CAnalyseData::on_pbRobotSNHide_clicked()
 //      qDebug() << m_filePathExcelTmp;
 
       m_filePath = settings.value("IniFilePath").toString();    //m_filePath = settings.value("LastTargetFilePath").toString();
+       qDebug() << m_filePath;
       //m_imgPath = m_filePath+"\\"+m_fileName+".jpg";// add to insert image into excel
       QString strExcelFilePath = settings.value("ExcelFilePath").toString();  //*****************
       m_filePathExcel =  strExcelFilePath + "\\" + m_fileName +".xls";      //m_filePathExcel = m_filePath+"\\"+m_fileName+".xls";
       m_filePath += "\\"+m_fileName+".ini"; // mark
-//      qDebug() << m_filePath;
-//      qDebug() << m_filePathExcel;
 
-      QString strExcelRepairTemp = settings.value("TemplateVersionRepair").toString();  //Repair_matrix_MK5  //************
+      QString strExcelRepairTemp = settings.value("TemplateVersionRepair").toString();  //Repair_matrix _MK5_xxxx_w  //************
 //    Template for the Repair Sheet:
       m_filePathExcelRepairTmp = QDir::toNativeSeparators(QApplication::applicationDirPath()) + "\\" + strExcelRepairTemp + ".xlsx";
       QString m_robotNumber;
@@ -614,9 +614,9 @@ void CAnalyseData::on_pbRobotSNHide_clicked()
       if(parts.size() > 1) {
         m_robotNumber = parts[1];
       }
-
-      m_filePathExcelRepair =strExcelFilePath + "\\" + strExcelRepairTemp + "_"+ m_robotNumber +"_w.xlsx"; // strExcelFilePath + "\\" + strExcelRepairTemp + "_" + m_robotNumber +"_w.xlsx";
-
+      strExcelRepairTemp.chop(6); //Repair_matrix _MK5_
+      m_filePathExcelRepair =strExcelFilePath + "\\" + strExcelRepairTemp + m_robotNumber +"_w.xlsx"; // strExcelFilePath + "\\" + Repair_matrix _MK5_ + m_robotNumber +"_w.xlsx";
+      qDebug() << m_filePathExcelRepair;
       QString strExcelMOMTemp = settings.value("TemplateVersionMOM").toString();  //MOM_ARR-NT  //************
 //    Template for the MOM Sheet:
       m_filePathExcelMOMTmp = QDir::toNativeSeparators(QApplication::applicationDirPath()) + "\\" + strExcelMOMTemp + ".xlsx";
