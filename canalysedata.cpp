@@ -19,7 +19,7 @@ CAnalyseData::CAnalyseData(QWidget *parent) :
     ui(new Ui::CAnalyseData)
 {
     ui->setupUi(this);
-    m_version = "2.0.3.1";
+    m_version = "2.0.4.0";
     this->setWindowTitle( "Analyse-ASYS Ver. "+ m_version);
 
     displaySet( true);
