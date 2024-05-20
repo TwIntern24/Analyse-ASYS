@@ -35,8 +35,6 @@ private slots:
 
     void on_pbSaveIni_clicked();
 
-    void createAnalyseSheet();
-
     void on_pbImageName_clicked();
 
     void on_leRepairNRARM_textChanged(const QString &arg1);
@@ -101,11 +99,14 @@ private slots:
 
     void on_leZDownFA_textChanged(const QString &arg1);
 
-    void createRepairMatrix();
-
-    void on_pbExport_clicked();
+    void on_pbExport_clicked();         // Export button/function
 
 private:
+
+/* ------------------------------
+ * ------ ANALYSE DATA  -------------
+ */
+
     enum eSHEET
     {
         AnalyseARM = 1,
@@ -114,14 +115,6 @@ private:
         Label,
         Data
     };
-    struct sPROTOCOLITEM
-    {
-        eSHEET Sheet;
-        QVariant Value;
-        QString Cell;
-        void (CAnalyseData::* p_func)(QAxObject* workbook, sPROTOCOLITEM item); // Member function pointer.
-    };
-
     enum eColorChk
     {
         ARMVaccum = 0,
@@ -155,7 +148,13 @@ private:
         ZFACurrentDown
     };
 
-
+    struct sPROTOCOLITEM
+    {
+        eSHEET Sheet;
+        QVariant Value;
+        QString Cell;
+        void (CAnalyseData::* p_func)(QAxObject* workbook, sPROTOCOLITEM item); // Member function pointer.
+    };
 
     Ui::CAnalyseData *ui;
     QAxObject* m_objExcel = nullptr;
@@ -256,6 +255,11 @@ private:
     bool m_bChkColor[JUDGEITEMS];
 
     QVector<sPROTOCOLITEM> vecProtocolItems;
+
+    // Main Functions
+    void createAnalyseSheet();
+    void buildProtocolTable( void);
+
     void writeRobotTypeItem(QAxObject* workbook, sPROTOCOLITEM item);
     void writeAdviceItem(QAxObject* workbook, sPROTOCOLITEM item);
     void writeCauserItem(QAxObject* workbook, sPROTOCOLITEM item);
@@ -272,7 +276,6 @@ private:
     void insertRemarkImg(QAxObject* workbook, sPROTOCOLITEM item);  //***************
     void chkTextCokorItem(QAxObject* workbook, sPROTOCOLITEM item);
     void getRowColumn(QString cell, int* row, int* column);
-    void buildProtocolTable( void);
     void displaySet( bool bSN);
     void closeExcel(void);
     void progressSave(int value);
@@ -401,56 +404,19 @@ private:
 
     void createLabelFile();
 
-    //************** REPAIR SHEET ****************************
+    //*******************************************************
+    //************** REPAIR DATA ****************************
 
-    struct sREPAIRITEM
+    struct sREPAIRITEM  // struct for Repair Matrix items
     {
         QVariant Value;
         QString Cell;
         void (CAnalyseData::* p_func)( QAxObject* workbook, sREPAIRITEM item );
-
     };
 
-
-
-//    QString m_filePathXls = "D:\\Data\\Jana\\Work\\Emily\\Tials\\CreateFiles\\_files\\Repair.xlsx";
-//    QString m_filePathXlsTemp = "D:\\Data\\Jana\\Work\\Emily\\Tials\\CreateFiles\\_files\\Repair_temp.xls";
-
-    QVector<sREPAIRITEM> vecRepairItems;
-    void buildRepairTable( void );
-
-    void setRadioButtonsIDsInGB4RepairARM( void);
-    void setRadioButtonsIDsInGB4RepairDM( void);
-    void setRadioButtonsIDsInGB4RepairZT( void);
-
-    void getDataFromRepair( void );
-    void getRepairFromARM( void );
-    void getRepairFromDM( void );
-    void getRepairFromZT( void );
-    void getDataFromIni4Repair( void);
-    void getDataFromIni4ARMRepair( void);
-    void getDataFromIni4DMRepair( void);
-    void getDataFromIni4ZTRepair( void);
-
-    void writeAmount( QAxObject* workbook, sREPAIRITEM item );
-    void writeInformation( QAxObject* workbook, sREPAIRITEM item );
-    void extendInformation( QAxObject* workbook, sREPAIRITEM item );
-    void writeRepairIn(QAxObject *workbook, sREPAIRITEM item);
-
-    // ---- Create MOM Sheet ------
-    QString strResAnalysis;
-    int startPos = 0;
-    void createMOMSheet( void );
-    void getNextLineIdx ( void );
-    void insertAndReturnLastIdx(QString insertText);
-    void removeAndReturnLastIdx(int numberRemove);
-    void writeGeneralInfoMOM( void );
-    void writeArmInfoMOM( void );
-    void writeDMInfoMOM( void );
-    void writeZInfoMOM( void );
-
-
-    // ARM
+    // VARIABLES ------------------------
+    QVector<sREPAIRITEM> vecRepairItems;    // Vector for saving Repair Matrix items
+    // arm
     QButtonGroup *m_pgbRepairARM_ArmBelts;
     QButtonGroup *m_pgbRepairARM_UpperArmHousingUpgrade;
     QButtonGroup *m_pgbRepairARM_UpperArmHousing;
@@ -465,7 +431,6 @@ private:
     QButtonGroup *m_pgbRepairARM_TorxScrew;
     QButtonGroup *m_pgbRepairARM_Bearings;
     QButtonGroup *m_pgbRepairARM_RepairIn;
-
     // DM
     QButtonGroup *m_pgbRepairDM_DMLikaMotor;
     QButtonGroup *m_pgbRepairDM_CableHood;
@@ -474,7 +439,6 @@ private:
     QButtonGroup *m_pgbRepairDM_SlipRing;
     QButtonGroup *m_pgbRepairDM_HollowShaft;
     QButtonGroup *m_pgbRepairDM_RepairIn;
-
     // ZT
     QButtonGroup *m_pgbRepairZT_ZStroke35;
     QButtonGroup *m_pgbRepairZT_ZStroke50;
@@ -487,6 +451,56 @@ private:
     QButtonGroup *m_pgbRepairZT_AdapterCable;
     QButtonGroup *m_pgbRepairZT_RepairIn;
 
+    // FUNCTIONS ---------------------------
+    // create buttons groups for repair data
+    void setRadioButtonsIDsInGB4RepairARM( void);
+    void setRadioButtonsIDsInGB4RepairDM( void);
+    void setRadioButtonsIDsInGB4RepairZT( void);
+
+    // Main Functions
+    void createRepairMatrix();
+    void buildRepairTable( void );
+
+    // functions for saving repair data in .ini file
+    void getDataFromRepair( void );
+    void getRepairFromARM( void );
+    void getRepairFromDM( void );
+    void getRepairFromZT( void );
+
+    // functions for loading repair data from .ini file
+    void getDataFromIni4Repair( void);
+    void getDataFromIni4ARMRepair( void);
+    void getDataFromIni4DMRepair( void);
+    void getDataFromIni4ZTRepair( void);
+
+    // helper functions for writing in Excel
+    void writeAmount( QAxObject* workbook, sREPAIRITEM item );
+    void writeInformation( QAxObject* workbook, sREPAIRITEM item );
+    void extendInformation( QAxObject* workbook, sREPAIRITEM item );
+    void writeRepairIn(QAxObject *workbook, sREPAIRITEM item);
+
+
+    //*******************************************************
+    //************** MOM SHEET ******************************
+
+    // VARIABLES ---------------------------
+    QString strResAnalysis;     // String for text in Results Analysis column in MOM Sheet
+    int startPos = 0;       // variable for char counting
+
+    // FUNCTIONS ---------------------------
+    // Main Function
+    void createMOMSheet( void );
+
+    // write MOM Sheet
+    void writeGeneralInfoMOM( void );
+    void writeArmInfoMOM( void );
+    void writeDMInfoMOM( void );
+    void writeZInfoMOM( void );
+
+    // helper functions for char counting in string
+    void getNextLineIdx ( void );
+    void insertAndReturnLastIdx(QString insertText);
+    void removeAndReturnLastIdx(int numberRemove);
 
 };
 

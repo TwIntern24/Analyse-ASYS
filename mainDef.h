@@ -63,16 +63,16 @@
 
 enum ERobotTypes
 {
-       Robot_AAR,
-       Robot_AARNT,
-       Robot_NXT
+    Robot_AAR,
+    Robot_AARNT,
+    Robot_NXT
 };
 
 enum ETestResult
 {
-       Test_OK,
-       Test_NG,
-       Test_NA      //new code******************************
+    Test_OK,
+    Test_NG,
+    Test_NA      //new code******************************
 };
 
 enum EOldNew
@@ -91,24 +91,24 @@ enum EHDMotorType
 
 enum EAnalyseAdvice
 {
-       NFF,
-       Warrenty,
-       GoodWill,
-       WithCosts,
-       ScrapItem
+    NFF,
+    Warrenty,
+    GoodWill,
+    WithCosts,
+    ScrapItem
 };
 
 enum ECauserChk
 {
-       Customer,
-       ASYS
+    Customer,
+    ASYS
 };
 
 enum EZTLength
 {
-       Len35mm,
-       Len50mm,
-       Len65mm
+    Len35mm,
+    Len50mm,
+    Len65mm
 };
 
 enum ERepair
@@ -118,7 +118,7 @@ enum ERepair
     Repair_Repair
 };
 
-enum ERepairIn
+enum ERepairInChk
 {
     RepairIn_TW,
     RepairIn_EU

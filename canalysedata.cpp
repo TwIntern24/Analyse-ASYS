@@ -48,6 +48,8 @@ CAnalyseData::~CAnalyseData()
     delete ui;
 }
 
+
+// *********** initial values and button grouping **********
 void CAnalyseData::initVal(void)
 {
    //-- clear all value --//
@@ -184,7 +186,6 @@ void CAnalyseData::initVal(void)
 
 }
 
-//
 void CAnalyseData::addIniTesterGroup(QString strGroupName)
 {
     QSettings settings(m_filePath, QSettings::IniFormat);
@@ -216,7 +217,6 @@ void CAnalyseData::addIniTesterGroup(QString strGroupName)
     }
     settings.endGroup();
 }
-
 void CAnalyseData::addIniRS485Group(QString strGroupName)
 {
     QSettings settings(m_filePath, QSettings::IniFormat);
@@ -227,7 +227,6 @@ void CAnalyseData::addIniRS485Group(QString strGroupName)
     settings.setValue(str1, strVal);
     settings.endGroup();
 }
-
 void CAnalyseData::addIniProtocolVersionGroup(QString strGroupName)
 {
     QSettings settings(m_filePath, QSettings::IniFormat);
@@ -241,7 +240,6 @@ void CAnalyseData::addIniProtocolVersionGroup(QString strGroupName)
     settings.setValue(str3, strVal);
     settings.endGroup();
 }
-
 void CAnalyseData::addIniNormalGroup(QString strGroupName)
 {
     QSettings settings(m_filePath, QSettings::IniFormat);
@@ -297,7 +295,6 @@ void CAnalyseData::addIniNormalGroup(QString strGroupName)
     }
     settings.endGroup();
 }
-
 void CAnalyseData::createNewIniFile(void)
 {
     QString strGroup[6] = {BEGIN_ROBOTINFO, BEGIN_CHECKSINFO, BEGIN_DMINFO, BEGIN_ZAXEINFO, BEGIN_PACKINFO, BEGIN_ARMINFO};
@@ -310,7 +307,6 @@ void CAnalyseData::createNewIniFile(void)
     addIniRS485Group(BEGIN_RS485TEST);
     addIniProtocolVersionGroup(BEGIN_PROTOVOLVERSION);
 }
-
 void CAnalyseData::split3PartFromSN(void)
 { // ANALYSE_AAR-NT2468_KW2316 >>> [0]:ANALYSE->Protocol; [1]:AAR-NT2468; [2]:KW2316
     bool bRst = false;
@@ -353,206 +349,510 @@ void CAnalyseData::split3PartFromSN(void)
     }
 }
 
-void CAnalyseData::buildProtocolTable( void)
+// ----- Analyse Data Group Buttons ---------
+void CAnalyseData::setRadioButtonsIDsInGB4ARM( void)
 {
-                               // Sheet                  // Value                                                 // Cell             // Function
-    //---- ARM -----------------------------------------------------------------------------------------------------------------------------------------//
-    vecProtocolItems.append({eSHEET::AnalyseARM,     ui->lbRobotType->text(),                                       "B1",           nullptr});  //Changed ***
-    vecProtocolItems.append({eSHEET::AnalyseARM,     ui->leRobotTypeSN->text(),                                     "C1",           nullptr});  //Changed ***
-    vecProtocolItems.append({eSHEET::AnalyseARM,     ui->leArmFirstDelivery->text(),                                "E3",           nullptr});  //new ***
-    vecProtocolItems.append({eSHEET::AnalyseARM,     ui->leArmLastRepair->text(),                                   "E4",           nullptr});  //new ***
-    vecProtocolItems.append({eSHEET::AnalyseARM,     ui->leRobotSN->text(),                                         "D7",           nullptr});
-    vecProtocolItems.append({eSHEET::AnalyseARM,     ui->leARMSN->text(),                                           "D8",           nullptr});
-    vecProtocolItems.append({eSHEET::AnalyseARM,     ui->leOld12NC->text(),                                         "D10",          nullptr});
-    vecProtocolItems.append({eSHEET::AnalyseARM,     ui->leNew12NC->text(),                                         "D11",          nullptr});
-    vecProtocolItems.append({eSHEET::AnalyseARM,     ui->leRepairNRARM->text(),                                     "D13",          nullptr});
-    vecProtocolItems.append({eSHEET::AnalyseARM,     ui->leVacuumARM->text(),                                       "D14",          chkTextCokorItem});
-    vecProtocolItems.append({eSHEET::AnalyseARM,     ui->leFlowARM->text(),                                         "D15",          chkTextCokorItem});
-    vecProtocolItems.append({eSHEET::AnalyseARM,     ui->leOAG->text(),                                             "D16",          chkTextCokorItem});
-    vecProtocolItems.append({eSHEET::AnalyseARM,     ui->leUAG->text(),                                             "D17",          chkTextCokorItem});
-    vecProtocolItems.append({eSHEET::AnalyseARM,     ui->leGeoRz->text(),                                           "D18",          chkTextCokorItem});
-    vecProtocolItems.append({eSHEET::AnalyseARM,     ui->leGeoRx->text(),                                           "D19",          chkTextCokorItem});
-    vecProtocolItems.append({eSHEET::AnalyseARM,     ui->leGeoRy->text(),                                           "D20",          chkTextCokorItem});
-    vecProtocolItems.append({eSHEET::AnalyseARM,     ui->leGeoDelHeight->text(),                                    "D21",          chkTextCokorItem});
-//    vecProtocolItems.append({eSHEET::AnalyseARM,     m_pgbGeoChkARM->checkedId(),                                   "E22",          nullptr});
-    vecProtocolItems.append({eSHEET::AnalyseARM,     m_pgbGeoChkARM->checkedId(),                                   "D22",          nullptr});  //Changed ***
-//    vecProtocolItems.append({eSHEET::AnalyseARM,     m_pgbEleChkARM->checkedId(),                                   "E23",          nullptr});
-    vecProtocolItems.append({eSHEET::AnalyseARM,     m_pgbEleChkARM->checkedId(),                                   "D23",          nullptr});  //Changed ***
-//    vecProtocolItems.append({eSHEET::AnalyseARM,     m_pgbDataTransChkARM->checkedId(),                             "E24",          nullptr});
-//    vecProtocolItems.append({eSHEET::AnalyseARM,     m_pgbSurfaceDamegeChkARM->checkedId(),                         "E25",          nullptr});
-//    vecProtocolItems.append({eSHEET::AnalyseARM,     m_pgbFunChkARM->checkedId(),                                   "E26",          nullptr});
-    vecProtocolItems.append({eSHEET::AnalyseARM,     m_pgbDataTransChkARM->checkedId(),                             "D24",          nullptr});  //****
-    vecProtocolItems.append({eSHEET::AnalyseARM,     m_pgbSurfaceDamegeChkARM->checkedId(),                         "D25",          nullptr});  //****
-    vecProtocolItems.append({eSHEET::AnalyseARM,     m_pgbFunChkARM->checkedId(),                                   "D26",          nullptr});  //****
-    vecProtocolItems.append({eSHEET::AnalyseARM,     ui->leRepPosPAR->text(),                                       "D27",          chkTextCokorItem});
-    vecProtocolItems.append({eSHEET::AnalyseARM,     ui->leRepPosPATH->text(),                                      "D28",          chkTextCokorItem});
-//    vecProtocolItems.append({eSHEET::AnalyseARM,     m_pgbMagAttChkARM->checkedId(),                                "E29",          nullptr});
-    vecProtocolItems.append({eSHEET::AnalyseARM,     m_pgbMagAttChkARM->checkedId(),                                "D29",          nullptr});  //****
-    vecProtocolItems.append({eSHEET::AnalyseARM,     ui->leAnalysePerformerARM->text(),                             "D33",          nullptr});
-    vecProtocolItems.append({eSHEET::AnalyseARM,     ui->leAnalyseDateARM->text(),                                  "D34",          nullptr});
-    vecProtocolItems.append({eSHEET::AnalyseARM,     ui->leGrayboxSN->text(),                                       "I1",           nullptr});
-    vecProtocolItems.append({eSHEET::AnalyseARM,     ui->leFirstDeliveryDate->text(),                               "I2",           nullptr});
-    vecProtocolItems.append({eSHEET::AnalyseARM,     ui->leRepairNo->text(),                                        "I3",           nullptr});
-    vecProtocolItems.append({eSHEET::AnalyseARM,     ui->leLastRepairDate->text(),                                  "I4",           nullptr});
-    vecProtocolItems.append({eSHEET::AnalyseARM,     m_pgbAnalyseAdvARM->checkedId(),                               "F7",           writeAdviceItem});
-    vecProtocolItems.append({eSHEET::AnalyseARM,     m_pgbCauserARM->checkedId(),                                   "H7",           writeCauserItem});
-    vecProtocolItems.append({eSHEET::AnalyseARM,     m_pgbRepairARMUpgradeChk->checkedId(),                         "I10",          writeRepairOrNotItem});
-    vecProtocolItems.append({eSHEET::AnalyseARM,     ui->cbUpgradeARM->isChecked(),                                 "I11",          writeUpgradeItem});
-    vecProtocolItems.append({eSHEET::AnalyseARM,     m_comments4Arm,                                                "H14",          writeCommentsItem});
-    vecProtocolItems.append({eSHEET::AnalyseARM,     m_imgPath,                                                     "B36",          insertImgItem});//B45
-    vecProtocolItems.append({eSHEET::AnalyseARM,     m_RemarkImgPath_ARM,                                           "G36",          insertRemarkImg});//new code ******
+    // set Robot type group
+//    m_pgbRobotTypeARM = new QButtonGroup( this);
+//    m_pgbRobotTypeARM->addButton( ui->rbAAR, 0);
+//    m_pgbRobotTypeARM->addButton( ui->rbAARNT, 1);
+//    m_pgbRobotTypeARM->addButton( ui->rbNXT, 2);
+//    ui->rbAAR->setChecked( true);
+//    if(m_pgbAnalyseAdvARM!=nullptr)
+//    {
+//        delete m_pgbAnalyseAdvARM;
+//        delete m_pgbCauserARM;
+//        delete m_pgbRepairARMUpgradeChk;
+//        delete m_pgbSurfaceDamegeChkARM;
+//        delete m_pgbMagAttChkARM;
+//        delete m_pgbEleChkARM;
+//        delete m_pgbGeoChkARM;
+//        delete m_pgbFunChkARM;
+//        delete m_pgbDataTransChkARM;
+//    }
+    m_pgbHDMotorType = new QButtonGroup( this );
+    m_pgbHDMotorType->addButton(ui->rbHDMotorType_V0, V0);
+    m_pgbHDMotorType->addButton(ui->rbHDMotorType_V1, V1);
+    m_pgbHDMotorType->addButton(ui->rbHDMotorType_DFV1, DFV1);
 
-    //---- DM -----------------------------------------------------------------------------------------------------------------------------------------//
-    vecProtocolItems.append({eSHEET::AnalyseDM,      ui->lbRobotType->text(),                                       "B1",           nullptr});  //Changed****
-    vecProtocolItems.append({eSHEET::AnalyseDM,      ui->leRobotTypeSN->text(),                                     "C1",           nullptr});  //Changed***
-    vecProtocolItems.append({eSHEET::AnalyseDM,      ui->leDMFirstDelivery->text(),                                 "E3",           nullptr});  //new ***
-    vecProtocolItems.append({eSHEET::AnalyseDM,      ui->leDMLastRepair->text(),                                    "E4",           nullptr});  //new ***
-    vecProtocolItems.append({eSHEET::AnalyseDM,      ui->leRobotSN->text(),                                         "D7",           nullptr});
-    vecProtocolItems.append({eSHEET::AnalyseDM,      ui->leDMSN->text(),                                            "D9",           nullptr});
-    vecProtocolItems.append({eSHEET::AnalyseDM,      ui->leRepairNRARM->text(),                                     "D13",          nullptr});
-    vecProtocolItems.append({eSHEET::AnalyseDM,      ui->leVacuumDM->text(),                                        "D14",          chkTextCokorItem});
-    vecProtocolItems.append({eSHEET::AnalyseDM,      ui->leFlowDM->text(),                                          "D15",          chkTextCokorItem});
-    vecProtocolItems.append({eSHEET::AnalyseDM,      ui->le180DegVal->text(),                                       "D17",          chkTextCokorItem});
-    vecProtocolItems.append({eSHEET::AnalyseDM,      ui->le270DegVal->text(),                                       "D18",          chkTextCokorItem});
-    vecProtocolItems.append({eSHEET::AnalyseDM,      ui->le180DegVal_2->text(),                                     "F17",          chkTextCokorItem});
-    vecProtocolItems.append({eSHEET::AnalyseDM,      ui->le270DegVal_2->text(),                                     "F18",          chkTextCokorItem});
-//    vecProtocolItems.append({eSHEET::AnalyseDM,      m_pgbTHMotorChkDM->checkedId(),                                "E19",          nullptr});
-//    vecProtocolItems.append({eSHEET::AnalyseDM,      m_pgbRMotorChkDM->checkedId(),                                 "E20",          nullptr});
-//    vecProtocolItems.append({eSHEET::AnalyseDM,      m_pgbTHGearChkDM->checkedId(),                                 "E21",          nullptr});
-//    vecProtocolItems.append({eSHEET::AnalyseDM,      m_pgbRGearChkDM->checkedId(),                                  "E22",          nullptr});
-//    vecProtocolItems.append({eSHEET::AnalyseDM,      m_pgbTiltChkDM->checkedId(),                                   "E23",          nullptr});
-    vecProtocolItems.append({eSHEET::AnalyseDM,      m_pgbTHMotorChkDM->checkedId(),                                "D19",          nullptr});
-    vecProtocolItems.append({eSHEET::AnalyseDM,      m_pgbRMotorChkDM->checkedId(),                                 "D20",          nullptr});
-    vecProtocolItems.append({eSHEET::AnalyseDM,      m_pgbTHGearChkDM->checkedId(),                                 "D21",          nullptr});
-    vecProtocolItems.append({eSHEET::AnalyseDM,      m_pgbRGearChkDM->checkedId(),                                  "D22",          nullptr});
-    vecProtocolItems.append({eSHEET::AnalyseDM,      m_pgbTiltChkDM->checkedId(),                                   "D23",          nullptr});
-    vecProtocolItems.append({eSHEET::AnalyseDM,      ui->leCommutationTH->text(),                                   "D24",          chkTextCokorItem});
-    vecProtocolItems.append({eSHEET::AnalyseDM,      ui->leCommutationR->text(),                                    "D25",          chkTextCokorItem});
-//    vecProtocolItems.append({eSHEET::AnalyseDM,      m_pgbEncJumpTHChkDM->checkedId(),                              "E26",          nullptr});
-//    vecProtocolItems.append({eSHEET::AnalyseDM,      m_pgbEncJumpRChkDM->checkedId(),                               "E27",          nullptr});
-//    vecProtocolItems.append({eSHEET::AnalyseDM,      m_pgbEleChkDM->checkedId(),                                    "E28",          nullptr});
-//    vecProtocolItems.append({eSHEET::AnalyseDM,      m_pgbDataTransChkDM->checkedId(),                              "E29",          nullptr});
-//    vecProtocolItems.append({eSHEET::AnalyseDM,      m_pgbSurfaceDamegeChkDM->checkedId(),                          "E30",          nullptr});
-//    vecProtocolItems.append({eSHEET::AnalyseDM,      m_pgbFunChkDM->checkedId(),                                    "E31",          nullptr});
-    vecProtocolItems.append({eSHEET::AnalyseDM,      m_pgbEncJumpTHChkDM->checkedId(),                              "D26",          nullptr});
-    vecProtocolItems.append({eSHEET::AnalyseDM,      m_pgbEncJumpRChkDM->checkedId(),                               "D27",          nullptr});
-    vecProtocolItems.append({eSHEET::AnalyseDM,      m_pgbEleChkDM->checkedId(),                                    "D28",          nullptr});
-    vecProtocolItems.append({eSHEET::AnalyseDM,      m_pgbDataTransChkDM->checkedId(),                              "D29",          nullptr});
-    vecProtocolItems.append({eSHEET::AnalyseDM,      m_pgbSurfaceDamegeChkDM->checkedId(),                          "D30",          nullptr});
-    vecProtocolItems.append({eSHEET::AnalyseDM,      m_pgbCableHolderChkDM->checkedId(),                            "D31",          writeOldNew});  //new code *******
-    vecProtocolItems.append({eSHEET::AnalyseDM,      m_pgbFunChkDM->checkedId(),                                    "D32",          nullptr});  //Cell changed ***
-    vecProtocolItems.append({eSHEET::AnalyseDM,      ui->leZeroingPosTH->text(),                                    "D33",          chkTextCokorItem});//Cell changed ***
-    vecProtocolItems.append({eSHEET::AnalyseDM,      ui->leZeroingPosR->text(),                                     "D34",          chkTextCokorItem});//Cell changed ***
-//    vecProtocolItems.append({eSHEET::AnalyseDM,      m_pgbConductivityChkDM->checkedId(),                           "E34",          nullptr});
-    vecProtocolItems.append({eSHEET::AnalyseDM,      m_pgbConductivityChkDM->checkedId(),                           "D35",          nullptr});//Cell changed ***
-    vecProtocolItems.append({eSHEET::AnalyseDM,      ui->leAnalysePerformerDM->text(),                              "D39",          nullptr});//Cell changed ***
-    vecProtocolItems.append({eSHEET::AnalyseDM,      ui->leAnalyseDateDM->text(),                                   "D40",          nullptr});//Cell changed ***
-    vecProtocolItems.append({eSHEET::AnalyseDM,      m_pgbAnalyseAdvDM->checkedId(),                                "F7",           writeAdviceItem});
-    vecProtocolItems.append({eSHEET::AnalyseDM,      m_pgbCauserDM->checkedId(),                                    "H7",           writeCauserItem});
-    vecProtocolItems.append({eSHEET::AnalyseDM,      m_pgbRepairDMUpgradeChk->checkedId(),                          "I10",          writeRepairOrNotItem});
-    vecProtocolItems.append({eSHEET::AnalyseDM,      ui->cbUpgradeDM->isChecked(),                                  "I11",          writeUpgradeItem});
-    vecProtocolItems.append({eSHEET::AnalyseDM,      m_comments4DM,                                                 "H14",          writeCommentsItem});
-    vecProtocolItems.append({eSHEET::AnalyseDM,      m_RemarkImgPath_DM,                                            "G37",          insertRemarkImg});//Cell changed ***
 
-    //---- ZT -----------------------------------------------------------------------------------------------------------------------------------------//
-    vecProtocolItems.append({eSHEET::AnalyseZT,      ui->lbRobotType->text(),                                       "B1",           nullptr});  //Changed ***
-    vecProtocolItems.append({eSHEET::AnalyseZT,      ui->leRobotTypeSN->text(),                                     "C1",           nullptr});  //Chenged ***
-    vecProtocolItems.append({eSHEET::AnalyseZT,      ui->leZTFirstDelivery->text(),                                 "E3",           nullptr});  //new ***
-    vecProtocolItems.append({eSHEET::AnalyseZT,      ui->leZTLastRepair->text(),                                    "E4",           nullptr});  //new ***
-    vecProtocolItems.append({eSHEET::AnalyseZT,      ui->leRobotSN->text(),                                         "D7",           nullptr});
-    vecProtocolItems.append({eSHEET::AnalyseZT,      ui->leZTLen->text()+"-XX-XX-",                                 "C9",           nullptr});
-    vecProtocolItems.append({eSHEET::AnalyseZT,      ui->leZTSN2->text(),                                           "D9",           nullptr});
-    vecProtocolItems.append({eSHEET::AnalyseZT,      ui->leRepairNRARM->text(),                                     "D13",          nullptr});
-    vecProtocolItems.append({eSHEET::AnalyseZT,      ui->leZUpSCARA->text(),                                        "F14",          chkTextCokorItem});
-    vecProtocolItems.append({eSHEET::AnalyseZT,      ui->leZDownSCARA->text(),                                      "F15",          chkTextCokorItem});
-    vecProtocolItems.append({eSHEET::AnalyseZT,      ui->leZUpSCARANT->text(),                                      "F16",          chkTextCokorItem});
-    vecProtocolItems.append({eSHEET::AnalyseZT,      ui->leZDownSCARANT->text(),                                    "F17",          chkTextCokorItem});
-    vecProtocolItems.append({eSHEET::AnalyseZT,      ui->leZUpNXT->text(),                                          "F18",          chkTextCokorItem});
-    vecProtocolItems.append({eSHEET::AnalyseZT,      ui->leZDownNXT->text(),                                        "F19",          chkTextCokorItem});
-    vecProtocolItems.append({eSHEET::AnalyseZT,      ui->leZUpFA->text(),                                           "F20",          chkTextCokorItem});
-    vecProtocolItems.append({eSHEET::AnalyseZT,      ui->leZDownFA->text(),                                         "F21",          chkTextCokorItem});
-//    vecProtocolItems.append({eSHEET::AnalyseZT,      m_pgbLVDTZT->checkedId(),                                      "E22",          nullptr});
-//    vecProtocolItems.append({eSHEET::AnalyseZT,      m_pgbRefSenZT->checkedId(),                                    "E23",          nullptr});
-//    vecProtocolItems.append({eSHEET::AnalyseZT,      m_pgbZMotorZT->checkedId(),                                    "E24",          nullptr});
-//    vecProtocolItems.append({eSHEET::AnalyseZT,      m_pgbRunningNoiseZT->checkedId(),                              "E25",          nullptr});
-//    vecProtocolItems.append({eSHEET::AnalyseZT,      m_pgbCableZT->checkedId(),                                     "E26",          nullptr});
-//    vecProtocolItems.append({eSHEET::AnalyseZT,      m_pgbSurfaceDamegeChkZT->checkedId(),                          "E27",          nullptr});
-//    vecProtocolItems.append({eSHEET::AnalyseZT,      m_pgbConductivityChkZT->checkedId(),                           "E28",          nullptr});
-    vecProtocolItems.append({eSHEET::AnalyseZT,      m_pgbLVDTZT->checkedId(),                                      "D22",          nullptr});
-    vecProtocolItems.append({eSHEET::AnalyseZT,      m_pgbRefSenZT->checkedId(),                                    "D23",          nullptr});
-    vecProtocolItems.append({eSHEET::AnalyseZT,      m_pgbZMotorZT->checkedId(),                                    "D24",          nullptr});
-    vecProtocolItems.append({eSHEET::AnalyseZT,      m_pgbRunningNoiseZT->checkedId(),                              "D25",          nullptr});
-    vecProtocolItems.append({eSHEET::AnalyseZT,      m_pgbCableZT->checkedId(),                                     "D26",          nullptr});
-    vecProtocolItems.append({eSHEET::AnalyseZT,      m_pgbSurfaceDamegeChkZT->checkedId(),                          "D27",          nullptr});
-    vecProtocolItems.append({eSHEET::AnalyseZT,      m_pgbConductivityChkZT->checkedId(),                           "D28",          nullptr});
-    vecProtocolItems.append({eSHEET::AnalyseZT,      ui->leAnalysePerformerZT->text(),                              "E32",          nullptr});
-    vecProtocolItems.append({eSHEET::AnalyseZT,      ui->leAnalyseDateZT->text(),                                   "E33",          nullptr});
-    vecProtocolItems.append({eSHEET::AnalyseZT,      m_pgbAnalyseAdvZT->checkedId(),                                "F7",           writeAdviceItem});
-//    vecProtocolItems.append({eSHEET::AnalyseZT,      m_pgbCauserZT->checkedId(),                                    "H7",           writeCauserItem}); *******
-    vecProtocolItems.append({eSHEET::AnalyseZT,      m_pgbCauserZT->checkedId(),                                    "I7",           writeCauserItem});
-//    vecProtocolItems.append({eSHEET::AnalyseZT,      m_pgbRepairZTUpgradeChk->checkedId(),                          "I10",          writeRepairOrNotItem});
-    vecProtocolItems.append({eSHEET::AnalyseZT,      m_pgbRepairZTUpgradeChk->checkedId(),                          "J10",          writeRepairOrNotItem}); //****
-//    vecProtocolItems.append({eSHEET::AnalyseZT,      ui->cbUpgradeZT->isChecked(),                                  "I11",          writeUpgradeItem});
-    vecProtocolItems.append({eSHEET::AnalyseZT,      ui->cbUpgradeZT->isChecked(),                                  "J11",          writeUpgradeItem}); //*****
-    vecProtocolItems.append({eSHEET::AnalyseZT,      m_comments4ZT,                                                 "I14",          writeCommentsItem});
-//    vecProtocolItems.append({eSHEET::AnalyseZT,      m_RemarkImgPath_ZT,                                            "H36",          insertRemarkImg});
-    vecProtocolItems.append({eSHEET::AnalyseZT,      m_RemarkImgPath_ZT,                                            "I36",          insertRemarkImg});  //new code ******
+    // set Analyse Advice group
+    m_pgbAnalyseAdvARM = new QButtonGroup( this);
+    m_pgbAnalyseAdvARM->addButton(ui->rbNFFARM, 0);
+    m_pgbAnalyseAdvARM->addButton(ui->rbWarrentyARM, 1);
+    m_pgbAnalyseAdvARM->addButton(ui->rbGoodWillARM, 2);
+    m_pgbAnalyseAdvARM->addButton(ui->rbWithCostsARM, 3);
+    m_pgbAnalyseAdvARM->addButton(ui->rbScrapItemARM, 4);
+    //ui->rbNFFARM->setChecked(true);
 
-    //---- Data -----------------------------------------------------------------------------------------------------------------------------------------//
-    //m_robotType
-    vecProtocolItems.append({eSHEET::Data,           ui->lbRobotType->text(),                                        "F1",          writeRobotType});  //***********
-    vecProtocolItems.append({eSHEET::Data,           ui->lbRobotType->text()+ui->leRobotTypeSN->text(),              "A4",          nullptr});
-    vecProtocolItems.append({eSHEET::Data,           ui->leRMinus208H4->text(),                                      "B4",          nullptr});
-    vecProtocolItems.append({eSHEET::Data,           ui->leRMinus208Rx->text(),                                      "C4",          nullptr});
-    vecProtocolItems.append({eSHEET::Data,           ui->leRMinus208Ry->text(),                                      "D4",          nullptr});
-    vecProtocolItems.append({eSHEET::Data,           ui->leR0H4->text(),                                             "E4",          nullptr});
-    vecProtocolItems.append({eSHEET::Data,           ui->leR0Rx->text(),                                             "F4",          nullptr});
-    vecProtocolItems.append({eSHEET::Data,           ui->leR0Ry->text(),                                             "G4",          nullptr});
-    vecProtocolItems.append({eSHEET::Data,           ui->leR75H4->text(),                                            "H4",          nullptr});
-    vecProtocolItems.append({eSHEET::Data,           ui->leR75Rx->text(),                                            "I4",          nullptr});
-    vecProtocolItems.append({eSHEET::Data,           ui->leR75Ry->text(),                                            "J4",          nullptr});
-    vecProtocolItems.append({eSHEET::Data,           ui->leR174H4->text(),                                           "K4",          nullptr});
-    vecProtocolItems.append({eSHEET::Data,           ui->leR174Rx->text(),                                           "L4",          nullptr});
-    vecProtocolItems.append({eSHEET::Data,           ui->leR174Ry->text(),                                           "M4",          nullptr});
-    vecProtocolItems.append({eSHEET::Data,           ui->leR203H4->text(),                                           "N4",          nullptr});
-    vecProtocolItems.append({eSHEET::Data,           ui->leR203Rx->text(),                                           "O4",          nullptr});
-    vecProtocolItems.append({eSHEET::Data,           ui->leR203Ry->text(),                                           "P4",          nullptr});
-    vecProtocolItems.append({eSHEET::Data,           ui->leR385H4->text(),                                           "Q4",          nullptr});
-    vecProtocolItems.append({eSHEET::Data,           ui->leR385Rx->text(),                                           "R4",          nullptr});
-    vecProtocolItems.append({eSHEET::Data,           ui->leR385Ry->text(),                                           "S4",          nullptr});
+    // set Causer group
+    m_pgbCauserARM = new QButtonGroup( this);
+    m_pgbCauserARM->addButton( ui->rbCustomerARM, 0);
+    m_pgbCauserARM->addButton( ui->rbASYSARM, 1);
+    //ui->rbCustomerARM->setChecked( true);
+
+    // set ARM repair or not
+    m_pgbRepairARMUpgradeChk = new QButtonGroup( this);
+    m_pgbRepairARMUpgradeChk->addButton( ui->rbRepairARM, 1);
+    m_pgbRepairARMUpgradeChk->addButton( ui->rbARMIsOK, 0);
+    //ui->rbRepairARM->setChecked( true);
+
+    // set ARM Analyse result
+//    m_pgbAnalyseChk = new QButtonGroup( this);
+//    m_pgbAnalyseChk->addButton( ui->rbARMAnalyseOK, 0);
+//    m_pgbAnalyseChk->addButton( ui->rbARMAnalyseNOK, 1);
+//    ui->rbARMAnalyseNOK->setChecked( true);
+
+    // set ARM surface damage result
+    m_pgbSurfaceDamegeChkARM = new QButtonGroup( this);
+    m_pgbSurfaceDamegeChkARM->addButton( ui->rbSurfNotDamegeOKARM, 0);
+    m_pgbSurfaceDamegeChkARM->addButton( ui->rbSurfNotDamegeNOKARM, 1);
+    m_pgbSurfaceDamegeChkARM->addButton( ui->rbSurfNotDamegeNAARM, 2);  //new code*****************
+    //ui->rbSurfNotDamegeNOKARM->setChecked( true);
+
+    // set ARM Magnetic result
+    m_pgbMagAttChkARM = new QButtonGroup( this);
+    m_pgbMagAttChkARM->addButton( ui->rbMagAttOK, 0);
+    m_pgbMagAttChkARM->addButton( ui->rbMagAttNOK, 1);
+    m_pgbMagAttChkARM->addButton( ui->rbMagAttNA, 2);  //new code*****************
+    //ui->rbMagAttNOK->setChecked( true);
+
+    // set ARM Electricity result
+    m_pgbEleChkARM = new QButtonGroup( this);
+    m_pgbEleChkARM->addButton( ui->rbEletricityOKARM, 0);
+    m_pgbEleChkARM->addButton( ui->rbEletricityNOKARM, 1);
+    m_pgbEleChkARM->addButton( ui->rbEletricityNAARM, 2);  //new code*****************
+    //ui->rbEletricityNOKARM->setChecked( true);
+
+    // set ARM GEO result
+    m_pgbGeoChkARM = new QButtonGroup( this);
+    m_pgbGeoChkARM->addButton( ui->rbGeoOK, 0);
+    m_pgbGeoChkARM->addButton( ui->rbGeoNOK, 1);
+    m_pgbGeoChkARM->addButton( ui->rbGeoNA, 2);  //new code*****************
+   //ui->rbGeoNOK->setChecked( true);
+
+    // set ARM function result
+    m_pgbFunChkARM = new QButtonGroup( this);
+    m_pgbFunChkARM->addButton( ui->rbFunTestOKARM, 0);
+    m_pgbFunChkARM->addButton( ui->rbFunTestNOKARM, 1);
+    m_pgbFunChkARM->addButton( ui->rbFunTestNAARM, 2);  //new code*****************
+    //ui->rbFunTestNOKARM->setChecked( true);
+
+    // set ARM Data transfer result
+    m_pgbDataTransChkARM = new QButtonGroup( this);
+    m_pgbDataTransChkARM->addButton( ui->rbDataTransOKARM, 0);
+    m_pgbDataTransChkARM->addButton( ui->rbDataTransNOKARM, 1);
+    m_pgbDataTransChkARM->addButton( ui->rbDataTransNAARM, 2);  //new code*****************
+    //ui->rbDataTransNOKARM->setChecked( true);
+}
+void CAnalyseData::setRadioButtonsIDsInGB4DM( void)
+{
+//    if(m_pgbAnalyseAdvDM!=nullptr)
+//    {
+//        delete m_pgbAnalyseAdvDM;
+//        delete m_pgbCauserDM;
+//        delete m_pgbRepairDMUpgradeChk;
+//        delete m_pgbSurfaceDamegeChkDM;
+//        delete m_pgbEleChkDM;
+//        delete m_pgbFunChkDM;
+//        delete m_pgbDataTransChkDM;
+//        delete m_pgbTHMotorChkDM;
+//        delete m_pgbRMotorChkDM;
+//        delete m_pgbTHGearChkDM;
+//        delete m_pgbRGearChkDM;
+//        delete m_pgbTiltChkDM;
+//        delete m_pgbEncJumpTHChkDM;
+//        delete m_pgbEncJumpRChkDM;
+//        delete m_pgbConductivityChkDM;
+//    }
+    // set Analyse Advice group
+    m_pgbAnalyseAdvDM = new QButtonGroup( this);
+    m_pgbAnalyseAdvDM->addButton(ui->rbNFFDM, 0);
+    m_pgbAnalyseAdvDM->addButton(ui->rbWarrentyDM, 1);
+    m_pgbAnalyseAdvDM->addButton(ui->rbGoodWillDM, 2);
+    m_pgbAnalyseAdvDM->addButton(ui->rbWithCostsDM, 3);
+    m_pgbAnalyseAdvDM->addButton(ui->rbScrapItemDM, 4);
+    //ui->rbNFFDM->setChecked(true);
+
+    // set Causer group
+    m_pgbCauserDM = new QButtonGroup( this);
+    m_pgbCauserDM->addButton( ui->rbCustomerDM, 0);
+    m_pgbCauserDM->addButton( ui->rbASYSDM, 1);
+    //ui->rbCustomerDM->setChecked( true);
+
+    // set DM repair or not
+    m_pgbRepairDMUpgradeChk = new QButtonGroup( this);
+    m_pgbRepairDMUpgradeChk->addButton( ui->rbRepairDM, 1);
+    m_pgbRepairDMUpgradeChk->addButton( ui->rbDMIsOK, 0);
+    //ui->rbRepairDM->setChecked( true);
+
+    // set DM Analyse result
+//    m_pgbAnalyseChkDM = new QButtonGroup( this);
+//    m_pgbAnalyseChkDM->addButton( ui->rbDMAnalyseOK, 0);
+//    m_pgbAnalyseChkDM->addButton( ui->rbDMAnalyseNOK, 1);
+//    ui->rbDMAnalyseNOK->setChecked( true);
+
+    // set DM surface damage result
+    m_pgbSurfaceDamegeChkDM = new QButtonGroup( this);
+    m_pgbSurfaceDamegeChkDM->addButton( ui->rbSurfNotDamegeOKDM, 0);
+    m_pgbSurfaceDamegeChkDM->addButton( ui->rbSurfNotDamegeNOKDM, 1);
+    m_pgbSurfaceDamegeChkDM->addButton( ui->rbSurfNotDamegeNADM, 2);     //new code****************************
+    //ui->rbSurfNotDamegeNOKDM->setChecked( true);
+
+    // set DM cable holder
+    m_pgbCableHolderChkDM = new QButtonGroup( this);
+    m_pgbCableHolderChkDM->addButton( ui->rbCableHolderNEW, OldNew_NEW);
+    m_pgbCableHolderChkDM->addButton( ui->rbCableHolderOLD, OldNew_OLD);
+//    m_pgbCableHolderChkDM->addButton(nullptr, OldNew_NA);
+
+
+    // set DM Electricity result
+    m_pgbEleChkDM = new QButtonGroup( this);
+    m_pgbEleChkDM->addButton( ui->rbEletricityOKDM, 0);
+    m_pgbEleChkDM->addButton( ui->rbEletricityNOKDM, 1);
+    m_pgbEleChkDM->addButton( ui->rbEletricityNADM, 2);     //new code****************************
+    //ui->rbEletricityNOKDM->setChecked( true);
+
+    // set DM function result
+    m_pgbFunChkDM = new QButtonGroup( this);
+    m_pgbFunChkDM->addButton( ui->rbFunTestOKDM, 0);
+    m_pgbFunChkDM->addButton( ui->rbFunTestNOKDM, 1);
+    m_pgbFunChkDM->addButton( ui->rbFunTestNADM, 2);     //new code****************************
+    //ui->rbFunTestNOKDM->setChecked( true);
+
+    // set DM Data transfer result
+    m_pgbDataTransChkDM = new QButtonGroup( this);
+    m_pgbDataTransChkDM->addButton( ui->rbDataTransTestOKDM, 0);
+    m_pgbDataTransChkDM->addButton( ui->rbDataTransTestNOKDM, 1);
+    m_pgbDataTransChkDM->addButton( ui->rbDataTransTestNADM, 2);     //new code****************************
+    //ui->rbDataTransTestNOKDM->setChecked( true);
+
+    // set DM TH Motor
+    m_pgbTHMotorChkDM = new QButtonGroup( this);
+    m_pgbTHMotorChkDM->addButton( ui->rbTHMotorOK, 0);
+    m_pgbTHMotorChkDM->addButton( ui->rbTHMotorNOK, 1);
+    m_pgbTHMotorChkDM->addButton( ui->rbTHMotorNA, 2);     //new code****************************
+    //ui->rbTHMotorNOK->setChecked( true);
+
+    // set DM R Motor
+    m_pgbRMotorChkDM = new QButtonGroup( this);
+    m_pgbRMotorChkDM->addButton( ui->rbRMotorOK, 0);
+    m_pgbRMotorChkDM->addButton( ui->rbRMotorNOK, 1);
+    m_pgbRMotorChkDM->addButton( ui->rbRMotorNA, 2);     //new code****************************
+    //ui->rbRMotorNOK->setChecked( true);
+
+    // set DM TH Gear
+    m_pgbTHGearChkDM = new QButtonGroup( this);
+    m_pgbTHGearChkDM->addButton( ui->rbTHGearOK, 0);
+    m_pgbTHGearChkDM->addButton( ui->rbTHGearNOK, 1);
+    m_pgbTHGearChkDM->addButton( ui->rbTHGearNA, 2);     //new code****************************
+    //ui->rbTHGearNOK->setChecked( true);
+
+    // set DM R Gear
+    m_pgbRGearChkDM = new QButtonGroup( this);
+    m_pgbRGearChkDM->addButton( ui->rbRGearOK, 0);
+    m_pgbRGearChkDM->addButton( ui->rbRGearNOK, 1);
+    m_pgbRGearChkDM->addButton( ui->rbRGearNA, 2);     //new code****************************
+    //ui->rbRGearNOK->setChecked( true);
+
+    // set DM Tilt ok or not
+    m_pgbTiltChkDM = new QButtonGroup( this);
+    m_pgbTiltChkDM->addButton( ui->rbTiltOK, 0);
+    m_pgbTiltChkDM->addButton( ui->rbTiltNOK, 1);
+    m_pgbTiltChkDM->addButton( ui->rbTiltNA, 2);     //new code****************************
+    //ui->rbTiltNOK->setChecked( true);
+
+    // set DM Encoder Jump TH
+    m_pgbEncJumpTHChkDM = new QButtonGroup( this);
+    m_pgbEncJumpTHChkDM->addButton( ui->rbEncJumpTestTHOK, 0);
+    m_pgbEncJumpTHChkDM->addButton( ui->rbEncJumpTestTHNOK, 1);
+    m_pgbEncJumpTHChkDM->addButton( ui->rbEncJumpTestTHNA, 2);     //new code****************************
+    //ui->rbEncJumpTestTHNOK->setChecked( true);
+
+    // set DM Encoder Jump R
+    m_pgbEncJumpRChkDM = new QButtonGroup( this);
+    m_pgbEncJumpRChkDM->addButton( ui->rbEncJumpTestROK, 0);
+    m_pgbEncJumpRChkDM->addButton( ui->rbEncJumpTestRNOK, 1);
+    m_pgbEncJumpRChkDM->addButton( ui->rbEncJumpTestRNA, 2);     //new code****************************
+    //ui->rbEncJumpTestRNOK->setChecked( true);
+
+    // set DM conductivity
+    m_pgbConductivityChkDM = new QButtonGroup( this);
+    m_pgbConductivityChkDM->addButton( ui->rbConductivityChkOKDM, 0);
+    m_pgbConductivityChkDM->addButton( ui->rbConductivityChkNOKDM, 1);
+    m_pgbConductivityChkDM->addButton( ui->rbConductivityChkNADM, 2);     //new code****************************
+    //ui->rbConductivityChkNOKDM->setChecked( true);
+}
+void CAnalyseData::setRadioButtonsIDsInGB4ZT( void)
+{
+    // set Analyse Advice group
+    m_pgbAnalyseAdvZT = new QButtonGroup( this);
+    m_pgbAnalyseAdvZT->addButton(ui->rbNFFZT, 0);
+    m_pgbAnalyseAdvZT->addButton(ui->rbWarrentyZT, 1);
+    m_pgbAnalyseAdvZT->addButton(ui->rbGoodWillZT, 2);
+    m_pgbAnalyseAdvZT->addButton(ui->rbWithCostsZT, 3);
+    m_pgbAnalyseAdvZT->addButton(ui->rbScrapItemZT, 4);
+    //ui->rbNFFZT->setChecked(true);
+
+    // set Causer group
+    m_pgbCauserZT = new QButtonGroup( this);
+    m_pgbCauserZT->addButton( ui->rbCustomerZT, 0);
+    m_pgbCauserZT->addButton( ui->rbASYSZT, 1);
+    //ui->rbCustomerZT->setChecked( true);
+
+    // set ZT repair or not
+    m_pgbRepairZTUpgradeChk = new QButtonGroup( this);
+    m_pgbRepairZTUpgradeChk->addButton( ui->rbRepairZT, 1);
+    m_pgbRepairZTUpgradeChk->addButton( ui->rbZTIsOK, 0);
+    //ui->rbRepairZT->setChecked( true);
+
+    // set ZT Analyse result
+//    m_pgbAnalyseChkZT = new QButtonGroup( this);
+//    m_pgbAnalyseChkZT->addButton( ui->rbZTAnalyseOK, 0);
+//    m_pgbAnalyseChkZT->addButton( ui->rbZTAnalyseNOK, 1);
+//    ui->rbZTAnalyseNOK->setChecked( true);
+
+    // set ZT surface damage result
+    m_pgbSurfaceDamegeChkZT = new QButtonGroup( this);
+    m_pgbSurfaceDamegeChkZT->addButton( ui->rbSurfNotDamegeOKZT, 0);
+    m_pgbSurfaceDamegeChkZT->addButton( ui->rbSurfNotDamegeNOKZT, 1);
+    m_pgbSurfaceDamegeChkZT->addButton( ui->rbSurfNotDamegeNAZT, 2);    //new code**************************
+    //ui->rbSurfNotDamegeNOKZT->setChecked( true);
+
+    // set ZT LVDT
+    m_pgbLVDTZT = new QButtonGroup( this);
+    m_pgbLVDTZT->addButton( ui->rbLVDTOK, 0);
+    m_pgbLVDTZT->addButton( ui->rbLVDTNOK, 1);
+    m_pgbLVDTZT->addButton( ui->rbLVDTNA, 2);       //new code**************************
+    //ui->rbLVDTNOK->setChecked( true);
+
+    // set ZT Ref Sensor
+    m_pgbRefSenZT = new QButtonGroup( this);
+    m_pgbRefSenZT->addButton( ui->rbRefSensorOK, 0);
+    m_pgbRefSenZT->addButton( ui->rbRefSensorNOK, 1);
+    m_pgbRefSenZT->addButton( ui->rbRefSensorNA, 2);       //new code**************************
+    //ui->rbRefSensorNOK->setChecked( true);
+
+    // set ZT Z Motor
+    m_pgbZMotorZT = new QButtonGroup( this);
+    m_pgbZMotorZT->addButton( ui->rbZMotorOK, 0);
+    m_pgbZMotorZT->addButton( ui->rbZMotorNOK, 1);
+    m_pgbZMotorZT->addButton( ui->rbZMotorNA, 2);       //new code**************************
+   // ui->rbZMotorNOK->setChecked( true);
+
+    // set ZT Running Noise
+    m_pgbRunningNoiseZT = new QButtonGroup( this);
+    m_pgbRunningNoiseZT->addButton( ui->rbRunNoiseOK, 0);
+    m_pgbRunningNoiseZT->addButton( ui->rbRunNoiseNOK, 1);
+    m_pgbRunningNoiseZT->addButton( ui->rbRunNoiseNA, 2);       //new code**************************
+    //ui->rbRunNoiseNOK->setChecked( true);
+
+    // set ZT Cable
+    m_pgbCableZT = new QButtonGroup( this);
+    m_pgbCableZT->addButton( ui->rbCableOK, 0);
+    m_pgbCableZT->addButton( ui->rbCableNOK, 1);
+    m_pgbCableZT->addButton( ui->rbCableNA, 2);       //new code**************************
+    //ui->rbCableNOK->setChecked( true);
+
+    // set ZT conductivity
+    m_pgbConductivityChkZT = new QButtonGroup( this);
+    m_pgbConductivityChkZT->addButton( ui->rbConductivityChkOKZT, 0);
+    m_pgbConductivityChkZT->addButton( ui->rbConductivityChkNOKZT, 1);
+    m_pgbConductivityChkZT->addButton( ui->rbConductivityChkNAZT, 2);   //new code**************************
+    //ui->rbConductivityChkNOKZT->setChecked( true);
 }
 
-void CAnalyseData::displaySet( bool bSN)
-{
-    if( bSN==true)
-    {
-        ui->gbRobotSN->show();
-        ui->stackedWidget->setCurrentIndex(0);  //ui->pbRobotSNHide->show();
-        ui->tabWidget->hide();
-        ui->pbBack->hide();
-        ui->pbSaveIni->hide();
-        ui->pgbProcess->hide();
-        ui->lbStatus->hide();
-    }// show the Robot SN page
-    else
-    {
-        ui->gbRobotSN->hide();
-        ui->stackedWidget->setCurrentIndex(1);  //ui->pbRobotSNHide->hide();
-        ui->tabWidget->show();
-        ui->pbBack->show();
-        ui->pbSaveIni->show();
-        ui->pgbProcess->show();
-        ui->lbStatus->show();
-        ui->lbStatus->setText("Status");
-        ui->tabWidget->setCurrentIndex(0);
-        ui->cbAnalyseSheet->setChecked(false);
-        ui->cbMOMSheet->setChecked(false);
-        ui->cbPrintLabel->setChecked(false);
-        ui->cbRepairMatrix->setChecked(false);
-    }
+// ----- Repair Data Group Buttons ----------
+void CAnalyseData::setRadioButtonsIDsInGB4RepairARM( void){
+    // set ArmBelts
+    m_pgbRepairARM_ArmBelts = new QButtonGroup( this);
+    m_pgbRepairARM_ArmBelts->addButton(ui->rbArmBeltsAvrPrice_OK, Repair_OK);
+    m_pgbRepairARM_ArmBelts->addButton(ui->rbArmBeltsAvrPrice_Repair, Repair_Repair);
+    m_pgbRepairARM_ArmBelts->addButton(ui->rbArmBeltsAvrPrice_NA, Repair_NA);
+
+    // set UpperArmHousingUpgrade
+    m_pgbRepairARM_UpperArmHousingUpgrade = new QButtonGroup( this);
+    m_pgbRepairARM_UpperArmHousingUpgrade->addButton(ui->rbUpperArmHousingUpgrade_OK, Repair_OK);
+    m_pgbRepairARM_UpperArmHousingUpgrade->addButton(ui->rbUpperArmHousingUpgrade_Repair, Repair_Repair);
+    m_pgbRepairARM_UpperArmHousingUpgrade->addButton(ui->rbUpperArmHousingUpgrade_NA, Repair_NA);
+
+    // set UpperArmHousing
+    m_pgbRepairARM_UpperArmHousing = new QButtonGroup( this);
+    m_pgbRepairARM_UpperArmHousing->addButton(ui->rbUpperArmHousing_OK, Repair_OK);
+    m_pgbRepairARM_UpperArmHousing->addButton(ui->rbUpperArmHousing_Repair, Repair_Repair);
+    m_pgbRepairARM_UpperArmHousing->addButton(ui->rbUpperArmHousing_NA, Repair_NA);
+
+    // set UpperArmLid
+    m_pgbRepairARM_UpperArmLid = new QButtonGroup( this);
+    m_pgbRepairARM_UpperArmLid->addButton(ui->rbUpperArmLid_OK, Repair_OK);
+    m_pgbRepairARM_UpperArmLid->addButton(ui->rbUpperArmLid_Repair, Repair_Repair);
+    m_pgbRepairARM_UpperArmLid->addButton(ui->rbUpperArmLid_NA, Repair_NA);
+
+    // set LowerArmHousingUpgrade
+    m_pgbRepairARM_LowerArmHousingUpgrade = new QButtonGroup( this);
+    m_pgbRepairARM_LowerArmHousingUpgrade->addButton(ui->rbLowerArmHousingUpgrade_OK, Repair_OK);
+    m_pgbRepairARM_LowerArmHousingUpgrade->addButton(ui->rbLowerArmHousingUpgrade_Repair, Repair_Repair);
+    m_pgbRepairARM_LowerArmHousingUpgrade->addButton(ui->rbLowerArmHousingUpgrade_NA, Repair_NA);
+
+    // set LowerArmHousing
+    m_pgbRepairARM_LowerArmHousing = new QButtonGroup( this);
+    m_pgbRepairARM_LowerArmHousing->addButton(ui->rbLowerArmHousing_OK, Repair_OK);
+    m_pgbRepairARM_LowerArmHousing->addButton(ui->rbLowerArmHousing_Repair, Repair_Repair);
+    m_pgbRepairARM_LowerArmHousing->addButton(ui->rbLowerArmHousing_NA, Repair_NA);
+
+    // set LowerArmLid
+    m_pgbRepairARM_LowerArmLid = new QButtonGroup( this);
+    m_pgbRepairARM_LowerArmLid->addButton(ui->rbLowerArmLid_OK, Repair_OK);
+    m_pgbRepairARM_LowerArmLid->addButton(ui->rbLowerArmLid_Repair, Repair_Repair);
+    m_pgbRepairARM_LowerArmLid->addButton(ui->rbLowerArmLid_NA, Repair_NA);
+
+    // set ArmDriveInterface
+    m_pgbRepairARM_ArmDriveInterface = new QButtonGroup( this);
+    m_pgbRepairARM_ArmDriveInterface->addButton(ui->rbArmDriveInterface_OK, Repair_OK);
+    m_pgbRepairARM_ArmDriveInterface->addButton(ui->rbArmDriveInterface_Repair, Repair_Repair);
+    m_pgbRepairARM_ArmDriveInterface->addButton(ui->rbArmDriveInterface_NA, Repair_NA);
+
+    // set ArmGripperInterfaceScara
+    m_pgbRepairARM_ArmGripperInterfaceScara = new QButtonGroup( this);
+    m_pgbRepairARM_ArmGripperInterfaceScara->addButton(ui->rbArmGripperInterfaceScara_OK, Repair_OK);
+    m_pgbRepairARM_ArmGripperInterfaceScara->addButton(ui->rbArmGripperInterfaceScara_Repair, Repair_Repair);
+    m_pgbRepairARM_ArmGripperInterfaceScara->addButton(ui->rbArmGripperInterfaceScara_NA, Repair_NA);
+
+    // set ArmGripperInterfaceNT
+    m_pgbRepairARM_ArmGripperInterfaceNT = new QButtonGroup( this);
+    m_pgbRepairARM_ArmGripperInterfaceNT->addButton(ui->rbArmGripperInterfaceNT_OK, Repair_OK);
+    m_pgbRepairARM_ArmGripperInterfaceNT->addButton(ui->rbArmGripperInterfaceNT_Repair, Repair_Repair);
+    m_pgbRepairARM_ArmGripperInterfaceNT->addButton(ui->rbArmGripperInterfaceNT_NA, Repair_NA);
+
+    // set BeltReel
+    m_pgbRepairARM_BeltReel = new QButtonGroup( this);
+    m_pgbRepairARM_BeltReel->addButton(ui->rbBeltReel_OK, Repair_OK);
+    m_pgbRepairARM_BeltReel->addButton(ui->rbBeltReel_Repair, Repair_Repair);
+    m_pgbRepairARM_BeltReel->addButton(ui->rbBeltReel_NA, Repair_NA);
+
+    // set TorxScrew
+    m_pgbRepairARM_TorxScrew = new QButtonGroup( this);
+    m_pgbRepairARM_TorxScrew->addButton(ui->rbTorxScrew_OK, Repair_OK);
+    m_pgbRepairARM_TorxScrew->addButton(ui->rbTorxScrew_Repair, Repair_Repair);
+    m_pgbRepairARM_TorxScrew->addButton(ui->rbTorxScrew_NA, Repair_NA);
+
+    // set Bearings
+    m_pgbRepairARM_Bearings = new QButtonGroup( this);
+    m_pgbRepairARM_Bearings->addButton(ui->rbBearings_OK, Repair_OK);
+    m_pgbRepairARM_Bearings->addButton(ui->rbBearings_Repair, Repair_Repair);
+    m_pgbRepairARM_Bearings->addButton(ui->rbBearings_NA, Repair_NA);
+
+    // set DeliverTo
+    m_pgbRepairARM_RepairIn = new QButtonGroup( this);
+    m_pgbRepairARM_RepairIn->addButton(ui->cbArmTW, RepairIn_TW);
+    m_pgbRepairARM_RepairIn->addButton(ui->cbArmEU, RepairIn_EU);
+
+}
+void CAnalyseData::setRadioButtonsIDsInGB4RepairDM( void){
+    // set DMLikaMotor
+    m_pgbRepairDM_DMLikaMotor = new QButtonGroup( this);
+    m_pgbRepairDM_DMLikaMotor->addButton(ui->rbDMLikaMotor_OK, Repair_OK);
+    m_pgbRepairDM_DMLikaMotor->addButton(ui->rbDMLikaMotor_Repair, Repair_Repair);
+    m_pgbRepairDM_DMLikaMotor->addButton(ui->rbDMLikaMotor_NA, Repair_NA);
+
+    // set CableHood
+    m_pgbRepairDM_CableHood = new QButtonGroup( this);
+    m_pgbRepairDM_CableHood->addButton(ui->rbCableHood_OK, Repair_OK);
+    m_pgbRepairDM_CableHood->addButton(ui->rbCableHood_Repair, Repair_Repair);
+    m_pgbRepairDM_CableHood->addButton(ui->rbCableHood_NA, Repair_NA);
+
+    // set DMHousing
+    m_pgbRepairDM_DMHousing = new QButtonGroup( this);
+    m_pgbRepairDM_DMHousing->addButton(ui->rbDMHousing_OK, Repair_OK);
+    m_pgbRepairDM_DMHousing->addButton(ui->rbDMHousing_Repair, Repair_Repair);
+    m_pgbRepairDM_DMHousing->addButton(ui->rbDMHousing_NA, Repair_NA);
+
+    // set DMLid
+    m_pgbRepairDM_DMLid = new QButtonGroup( this);
+    m_pgbRepairDM_DMLid->addButton(ui->rbDMLid_OK, Repair_OK);
+    m_pgbRepairDM_DMLid->addButton(ui->rbDMLid_Repair, Repair_Repair);
+    m_pgbRepairDM_DMLid->addButton(ui->rbDMLid_NA, Repair_NA);
+
+    // set SlipRing
+    m_pgbRepairDM_SlipRing = new QButtonGroup( this);
+    m_pgbRepairDM_SlipRing->addButton(ui->rbSlipRing_OK, Repair_OK);
+    m_pgbRepairDM_SlipRing->addButton(ui->rbSlipRing_Repair, Repair_Repair);
+    m_pgbRepairDM_SlipRing->addButton(ui->rbSlipRing_NA, Repair_NA);
+
+    // set HollowShaft
+    m_pgbRepairDM_HollowShaft = new QButtonGroup( this);
+    m_pgbRepairDM_HollowShaft->addButton(ui->rbHollowShaft_OK, Repair_OK);
+    m_pgbRepairDM_HollowShaft->addButton(ui->rbHollowShaft_Repair, Repair_Repair);
+    m_pgbRepairDM_HollowShaft->addButton(ui->rbHollowShaft_NA, Repair_NA);
+
+    // set RepairIn
+    m_pgbRepairDM_RepairIn = new QButtonGroup( this);
+    m_pgbRepairDM_RepairIn->addButton(ui->cbDMTW, RepairIn_TW);
+    m_pgbRepairDM_RepairIn->addButton(ui->cbDMEU, RepairIn_EU);
+}
+void CAnalyseData::setRadioButtonsIDsInGB4RepairZT( void){
+    // set ZStroke35
+    m_pgbRepairZT_ZStroke35 = new QButtonGroup( this);
+    m_pgbRepairZT_ZStroke35->addButton(ui->rbZStroke35_OK, Repair_OK);
+    m_pgbRepairZT_ZStroke35->addButton(ui->rbZStroke35_Repair, Repair_Repair);
+    m_pgbRepairZT_ZStroke35->addButton(ui->rbZStroke35_NA, Repair_NA);
+
+    // set ZStroke50
+    m_pgbRepairZT_ZStroke50 = new QButtonGroup( this);
+    m_pgbRepairZT_ZStroke50->addButton(ui->rbZStroke50_OK, Repair_OK);
+    m_pgbRepairZT_ZStroke50->addButton(ui->rbZStroke50_Repair, Repair_Repair);
+    m_pgbRepairZT_ZStroke50->addButton(ui->rbZStroke50_NA, Repair_NA);
+
+    // set ZMHousingScara
+    m_pgbRepairZT_ZMHousingScara = new QButtonGroup( this);
+    m_pgbRepairZT_ZMHousingScara->addButton(ui->rbZMHousingScara_OK, Repair_OK);
+    m_pgbRepairZT_ZMHousingScara->addButton(ui->rbZMHousingScara_Repair, Repair_Repair);
+    m_pgbRepairZT_ZMHousingScara->addButton(ui->rbZMHousingScara_NA, Repair_NA);
+
+    // set ZMHousingNT
+    m_pgbRepairZT_ZMHousingNT = new QButtonGroup( this);
+    m_pgbRepairZT_ZMHousingNT->addButton(ui->rbZMHousingNT_OK, Repair_OK);
+    m_pgbRepairZT_ZMHousingNT->addButton(ui->rbZMHousingNT_Repair, Repair_Repair);
+    m_pgbRepairZT_ZMHousingNT->addButton(ui->rbZMHousingNT_NA, Repair_NA);
+
+    // set GuidingShaftsScara
+    m_pgbRepairZT_GuidingShaftsScara = new QButtonGroup( this);
+    m_pgbRepairZT_GuidingShaftsScara->addButton(ui->rbGuidingShaftsScara_OK, Repair_OK);
+    m_pgbRepairZT_GuidingShaftsScara->addButton(ui->rbGuidingShaftsScara_Repair, Repair_Repair);
+    m_pgbRepairZT_GuidingShaftsScara->addButton(ui->rbGuidingShaftsScara_NA, Repair_NA);
+
+    // set GuidingShaftsNT
+    m_pgbRepairZT_GuidingShaftsNT = new QButtonGroup( this);
+    m_pgbRepairZT_GuidingShaftsNT->addButton(ui->rbGuidingShaftsNT_OK, Repair_OK);
+    m_pgbRepairZT_GuidingShaftsNT->addButton(ui->rbGuidingShaftsNT_Repair, Repair_Repair);
+    m_pgbRepairZT_GuidingShaftsNT->addButton(ui->rbGuidingShaftsNT_NA, Repair_NA);
+
+    // set SmallGuidingShafts
+    m_pgbRepairZT_SmallGuidingShafts = new QButtonGroup( this);
+    m_pgbRepairZT_SmallGuidingShafts->addButton(ui->rbSmallGuidingShafts_OK, Repair_OK);
+    m_pgbRepairZT_SmallGuidingShafts->addButton(ui->rbSmallGuidingShafts_Repair, Repair_Repair);
+    m_pgbRepairZT_SmallGuidingShafts->addButton(ui->rbSmallGuidingShafts_NA, Repair_NA);
+
+    // set ClampingFlange
+    m_pgbRepairZT_ClampingFlange = new QButtonGroup( this);
+    m_pgbRepairZT_ClampingFlange->addButton(ui->rbClampingFlange_OK, Repair_OK);
+    m_pgbRepairZT_ClampingFlange->addButton(ui->rbClampingFlange_Repair, Repair_Repair);
+    m_pgbRepairZT_ClampingFlange->addButton(ui->rbClampingFlange_NA, Repair_NA);
+
+    // set AdapterCable
+    m_pgbRepairZT_AdapterCable = new QButtonGroup( this);
+    m_pgbRepairZT_AdapterCable->addButton(ui->rbAdapterCable_OK, Repair_OK);
+    m_pgbRepairZT_AdapterCable->addButton(ui->rbAdapterCable_Repair, Repair_Repair);
+    m_pgbRepairZT_AdapterCable->addButton(ui->rbAdapterCable_NA, Repair_NA);
+
+    // set RepairIn
+    m_pgbRepairZT_RepairIn = new QButtonGroup( this);
+    m_pgbRepairZT_RepairIn->addButton(ui->cbZTTW, RepairIn_TW);
+    m_pgbRepairZT_RepairIn->addButton(ui->cbZTEU, RepairIn_EU);
 }
 
-//---------------------------------------- Next Button clicked ------------------------------//
+
+// **********GET FROM .ini (Next/back button clicked) ******************
 void CAnalyseData::on_pbRobotSNHide_clicked()
 {
     //-------- User input error check --------//
@@ -588,8 +888,7 @@ void CAnalyseData::on_pbRobotSNHide_clicked()
         m_settingFilePath = QApplication::applicationDirPath()+"\\Setting.ini";    //QApplication::applicationDirPath()
         qDebug() << "SettingsPath"<< m_settingFilePath;
       #else
-//          m_settingFilePath = "D:\\ASYS\\Projects\\Analyse_ASYS\\Setting.ini";
-//        m_settingFilePath = "D:\Data\twintern\Jana\Work\Emily\Analysis_ASYS_Material\Analyse_ASYS_ver2.0.4.0\Analyse_ASYS\release"
+          m_settingFilePath = "D:\\ASYS\\Projects\\Analyse_ASYS\\Setting.ini";
       #endif
       QSettings settings(m_settingFilePath,QSettings::IniFormat);
       settings.beginGroup("PathSetting");
@@ -653,7 +952,42 @@ void CAnalyseData::on_pbRobotSNHide_clicked()
       }
     //}
 }
+void CAnalyseData::on_pbBack_clicked()
+{
+    displaySet( true);
+}
 
+void CAnalyseData::displaySet( bool bSN)
+{
+    if( bSN==true)
+    {
+        ui->gbRobotSN->show();
+        ui->stackedWidget->setCurrentIndex(0);  //ui->pbRobotSNHide->show();
+        ui->tabWidget->hide();
+        ui->pbBack->hide();
+        ui->pbSaveIni->hide();
+        ui->pgbProcess->hide();
+        ui->lbStatus->hide();
+    }// show the Robot SN page
+    else
+    {
+        ui->gbRobotSN->hide();
+        ui->stackedWidget->setCurrentIndex(1);  //ui->pbRobotSNHide->hide();
+        ui->tabWidget->show();
+        ui->pbBack->show();
+        ui->pbSaveIni->show();
+        ui->pgbProcess->show();
+        ui->lbStatus->show();
+        ui->lbStatus->setText("Status");
+        ui->tabWidget->setCurrentIndex(0);
+        ui->cbAnalyseSheet->setChecked(false);
+        ui->cbMOMSheet->setChecked(false);
+        ui->cbPrintLabel->setChecked(false);
+        ui->cbRepairMatrix->setChecked(false);
+    }
+}
+
+// ------- Analyse Data ----
 void CAnalyseData::getDataFromIni4Arm( void)
 {
     getDataFromIni4ArmSN();
@@ -671,7 +1005,6 @@ void CAnalyseData::getDataFromIni4Arm( void)
     getDataFromIni4ArmULVal();
     getDataFromIni4ArmComments();// to get ARM comments
 }
-
 void CAnalyseData::getDataFromIni4ArmRobTypeNo( void)
 {
     QSettings settings(m_filePath,QSettings::IniFormat);
@@ -688,7 +1021,6 @@ void CAnalyseData::getDataFromIni4ArmSN( void)
     strValue = settings.value("10/val").toString();
     ui->leARMSN->setText(strValue);
 }
-
 void CAnalyseData::getDataFromIni4ArmNCNR( void)
 {
     QSettings settings(m_filePath,QSettings::IniFormat);
@@ -736,7 +1068,6 @@ void CAnalyseData::getDataFromIni4ArmNCNR( void)
 
 
 }
-
 void CAnalyseData::getDataFromIni4ArmGrayBoxData( void)
 {
     QSettings settings(m_filePath,QSettings::IniFormat);
@@ -769,7 +1100,6 @@ void CAnalyseData::getDataFromIni4ArmGrayBoxData( void)
        ui->leRepairNo->text() == "" || ui->leLastRepairDate->text() == "" || ui->leFirstDeliveryDate->text() == "")
         QMessageBox::critical(NULL, "Error", "Arm Data Incomplete!", QMessageBox::Yes, QMessageBox::Yes);
 }
-
 void CAnalyseData::getDataFromIni4HDMotorType( void)
 {
     QSettings settings(m_filePath,QSettings::IniFormat);
@@ -790,7 +1120,6 @@ void CAnalyseData::getDataFromIni4HDMotorType( void)
       break;
     }
 }
-
 void CAnalyseData::getDataFromIni4ArmAdviceCauser( void)
 {
     QSettings settings(m_filePath,QSettings::IniFormat);
@@ -830,7 +1159,6 @@ void CAnalyseData::getDataFromIni4ArmAdviceCauser( void)
       break;
     }// switch()
 }
-
 void CAnalyseData::getDataFromIni4ArmOKUpgrade( void)
 {
     QSettings settings(m_filePath,QSettings::IniFormat);
@@ -862,7 +1190,6 @@ void CAnalyseData::getDataFromIni4ArmOKUpgrade( void)
       break;
     }// switch()
 }
-
 void CAnalyseData::getDataFromIni4ArmVacFlowVal( void)
 {
     QSettings settings(m_filePath,QSettings::IniFormat);
@@ -879,7 +1206,6 @@ void CAnalyseData::getDataFromIni4ArmVacFlowVal( void)
     strValue = settings.value(strInputName).toString();
     ui->leFlowARM->setText(strValue);
 }
-
 //float  CAnalyseData::mmMradCovert(int len, bool bMm2Mrad, float fVal)
 //{
 //    float fRst;
@@ -888,7 +1214,6 @@ void CAnalyseData::getDataFromIni4ArmVacFlowVal( void)
 //    //double dMrad= double(qAtan(fVal/len)*1000);
 //    return fRst;
 //}
-
 QString CAnalyseData::calGeoMaxVal(QString strName)
 {
   QSettings settings(m_filePath, QSettings::IniFormat);
@@ -992,7 +1317,6 @@ QString CAnalyseData::calGeoMaxVal(QString strName)
 //  strRst = QString::number(fMax, 'f', 3);
   return strRst;
 }
-
 void CAnalyseData::getDataFromIni4ArmGeoData( void)
 {
 //    QSettings settings(m_filePath,QSettings::IniFormat);
@@ -1021,7 +1345,6 @@ void CAnalyseData::getDataFromIni4ArmGeoData( void)
     strValue = calGeoMaxVal(strInputName);
     ui->leGeoDelHeight->setText(strValue);
 }
-
 void CAnalyseData::getDataFromIni4ArmTestsResults( void)
 {
     QSettings settings(m_filePath,QSettings::IniFormat);
@@ -1123,7 +1446,6 @@ void CAnalyseData::getDataFromIni4ArmTestsResults( void)
         break;
     }// switch()
 }
-
 void CAnalyseData::getDataFromIni4ArmRepPosPAData( void)
 {
     QSettings settings(m_filePath,QSettings::IniFormat);
@@ -1159,7 +1481,6 @@ void CAnalyseData::getDataFromIni4ArmRepPosPAData( void)
     }
     ui->leRepPosPATH->setText(strValue);
 }
-
 void CAnalyseData::getDataFromIni4ArmAnalyseData( void)
 {
     QSettings settings(m_filePath,QSettings::IniFormat);
@@ -1186,7 +1507,6 @@ void CAnalyseData::getDataFromIni4ArmAnalyseData( void)
     ui->leAnalyseDateDM->setText(strDateTmp[0]);
     ui->leAnalyseDateZT->setText(strDateTmp[0]);
 }
-
 void CAnalyseData::getDataFromIni4ArmEndDefectTiltData( void)
 {
     QSettings settings(m_filePath,QSettings::IniFormat);
@@ -1356,7 +1676,6 @@ void CAnalyseData::getDataFromIni4ArmEndDefectTiltData( void)
     m_strTiltValH4[i] = settings.value(strInputName).toString();
     ui->leR385H4->setText(m_strTiltValH4[i]);
 }
-
 void CAnalyseData::getDataFromIni4ArmULVal( void)
 {
     QSettings settings(m_filePath,QSettings::IniFormat);
@@ -1373,7 +1692,6 @@ void CAnalyseData::getDataFromIni4ArmULVal( void)
     strValue = settings.value(strInputName).toString();
     ui->leUAG->setText(strValue);
 }
-
 void CAnalyseData::getDataFromIni4ArmComments( void)
 {
     QSettings settings(m_filePath,QSettings::IniFormat);
@@ -1398,7 +1716,6 @@ void CAnalyseData::getDataFromIni4ArmComments( void)
         ui->lbl_ImgRemarkFileName_ARM->clear();
     }
 }
-
 void CAnalyseData::getDataFromIni4DM( void)
 {
 
@@ -1414,7 +1731,6 @@ void CAnalyseData::getDataFromIni4DM( void)
     getDataFromIni4DMComments();
     getDataFromIni4DMDeliveryRepairDate();
 }
-
 void CAnalyseData::getDataFromIni4DMSN( void)
 {
     QSettings settings(m_filePath,QSettings::IniFormat);
@@ -1438,7 +1754,6 @@ void CAnalyseData::getDataFromIni4DMSN( void)
         ui->leDMSN->setText(strValue);
     }
 }
-
 void CAnalyseData::getDataFromIni4DMAdviceCauser( void)
 {
     QSettings settings(m_filePath,QSettings::IniFormat);
@@ -1478,7 +1793,6 @@ void CAnalyseData::getDataFromIni4DMAdviceCauser( void)
       break;
     }// switch()
 }
-
 void CAnalyseData::getDataFromIni4DMOKUpgrade( void)
 {
     QSettings settings(m_filePath,QSettings::IniFormat);
@@ -1510,7 +1824,6 @@ void CAnalyseData::getDataFromIni4DMOKUpgrade( void)
       break;
     }// switch()
 }
-
 void CAnalyseData::getDataFromIni4DMVacFlowVal( void)
 {
     QSettings settings(m_filePath,QSettings::IniFormat);
@@ -1528,7 +1841,6 @@ void CAnalyseData::getDataFromIni4DMVacFlowVal( void)
     strValue = settings.value(strInputName).toString();
     ui->leFlowDM->setText(strValue);
 }
-
 void CAnalyseData::getDataFromIni4DMAngleData( void)
 {
     QSettings settings(m_filePath,QSettings::IniFormat);
@@ -1570,7 +1882,6 @@ void CAnalyseData::getDataFromIni4DMAngleData( void)
     }else
         ui->le270DegVal->setText("N/A");
 }
-
 void CAnalyseData::getDataFromIni4DMTestsResults( void)
 {
     QSettings settings(m_filePath,QSettings::IniFormat);
@@ -1784,7 +2095,6 @@ void CAnalyseData::getDataFromIni4DMTestsResults( void)
         break;
     }// switch()
 }
-
 void CAnalyseData::getDataFromIni4DMCommutationData( void)
 {
     QSettings settings(m_filePath,QSettings::IniFormat);
@@ -1809,7 +2119,6 @@ void CAnalyseData::getDataFromIni4DMCommutationData( void)
     }
     ui->leCommutationR->setText(strValue);
 }
-
 void CAnalyseData::getDataFromIni4DMZeroingPosData( void)
 {
     QSettings settings(m_filePath,QSettings::IniFormat);
@@ -1826,7 +2135,6 @@ void CAnalyseData::getDataFromIni4DMZeroingPosData( void)
     strValue = settings.value(strInputName).toString();
     ui->leZeroingPosR->setText(strValue);
 }
-
 void CAnalyseData::getDataFromIni4DMAnalyseData( void)
 {
     QSettings settings(m_filePath,QSettings::IniFormat);
@@ -1843,7 +2151,6 @@ void CAnalyseData::getDataFromIni4DMAnalyseData( void)
     strValue = settings.value(strInputName).toString();
     ui->leAnalyseDateDM->setText(strValue);
 }
-
 void CAnalyseData::getDataFromIni4DMComments( void)
 {
     QSettings settings(m_filePath,QSettings::IniFormat);
@@ -1868,7 +2175,6 @@ void CAnalyseData::getDataFromIni4DMComments( void)
         ui->lbl_ImgRemarkFileName_DM->clear();
     }
 }
-
 void CAnalyseData::getDataFromIni4DMDeliveryRepairDate()
 {
     QSettings settings(m_filePath,QSettings::IniFormat);
@@ -1883,7 +2189,6 @@ void CAnalyseData::getDataFromIni4DMDeliveryRepairDate()
     strValue = settings.value("lastRepairDateDM").toString();
     ui->leDMLastRepair->setText(strValue);
 }
-
 void CAnalyseData::getDataFromIni4ZT( void)
 {
     getDataFromIni4ZTSN();
@@ -1895,7 +2200,6 @@ void CAnalyseData::getDataFromIni4ZT( void)
     getDataFromIni4ZTComments();
     getDataFromIni4ZTDeliveryRepairDate();
 }
-
 void CAnalyseData::getDataFromIni4ZTSN( void)
 {
     QSettings settings(m_filePath,QSettings::IniFormat);
@@ -1926,7 +2230,6 @@ void CAnalyseData::getDataFromIni4ZTSN( void)
         ui->leZTSN2->setText(strValue);
     }
 }
-
 void CAnalyseData::getDataFromIni4ZTAdviceCauser( void)
 {
     QSettings settings(m_filePath,QSettings::IniFormat);
@@ -1966,7 +2269,6 @@ void CAnalyseData::getDataFromIni4ZTAdviceCauser( void)
       break;
     }// switch()
 }
-
 void CAnalyseData::getDataFromIni4ZTOKUpgrade( void)
 {
     QSettings settings(m_filePath,QSettings::IniFormat);
@@ -1998,7 +2300,6 @@ void CAnalyseData::getDataFromIni4ZTOKUpgrade( void)
       break;
     }// switch()
 }
-
 void CAnalyseData::getDataFromIni4ZTMeasureData( void)
 {
     QSettings settings(m_filePath,QSettings::IniFormat);
@@ -2047,7 +2348,6 @@ void CAnalyseData::getDataFromIni4ZTMeasureData( void)
         ui->leZDownSCARA->setText(strDNVal);
     }
 }
-
 void CAnalyseData::getDataFromIni4ZTTestsResults( void)
 {
     QSettings settings(m_filePath,QSettings::IniFormat);
@@ -2164,7 +2464,6 @@ void CAnalyseData::getDataFromIni4ZTTestsResults( void)
         break;
     }// switch()
 }
-
 void CAnalyseData::getDataFromIni4ZTAnalyseData( void)
 {
     QSettings settings(m_filePath,QSettings::IniFormat);
@@ -2181,7 +2480,6 @@ void CAnalyseData::getDataFromIni4ZTAnalyseData( void)
     strValue = settings.value(strInputName).toString();
     ui->leAnalyseDateZT->setText(strValue);
 }
-
 void CAnalyseData::getDataFromIni4ZTComments( void)
 {
     QSettings settings(m_filePath,QSettings::IniFormat);
@@ -2206,7 +2504,6 @@ void CAnalyseData::getDataFromIni4ZTComments( void)
         ui->lbl_ImgRemarkFileName_ZT->clear();
     }
 }
-
 void CAnalyseData::getDataFromIni4ZTDeliveryRepairDate()
 {
     QSettings settings(m_filePath,QSettings::IniFormat);
@@ -2222,12 +2519,512 @@ void CAnalyseData::getDataFromIni4ZTDeliveryRepairDate()
     ui->leZTLastRepair->setText(strValue);
 }
 
-void CAnalyseData::on_pbBack_clicked()
+// ------- Repair Data ----
+void CAnalyseData::getDataFromIni4Repair( void ){
+    getDataFromIni4ARMRepair();
+    getDataFromIni4DMRepair();
+    getDataFromIni4ZTRepair();
+}
+void CAnalyseData::getDataFromIni4ARMRepair( void)
 {
-    displaySet( true);
+    QSettings settings(m_filePath,QSettings::IniFormat);
+    settings.beginGroup(BEGIN_ARMREPAIR);
+
+    QString strInputName = "ArmBelts";
+    int iType = settings.value(strInputName).toInt();
+    switch(iType)
+    {
+      case Repair_OK:
+        ui->rbArmBeltsAvrPrice_OK->setChecked( true);
+        break;
+      case Repair_Repair:
+        ui->rbArmBeltsAvrPrice_Repair->setChecked( true);
+        break;
+      case Repair_NA:
+        ui->rbArmBeltsAvrPrice_NA->setChecked( true);
+        break;
+    }
+    strInputName = "UpperArmHousingUpgrade";
+    iType = settings.value(strInputName).toInt();
+    switch(iType)
+    {
+      case Repair_OK:
+        ui->rbUpperArmHousingUpgrade_OK->setChecked( true);
+        break;
+      case Repair_Repair:
+        ui->rbUpperArmHousingUpgrade_Repair->setChecked( true);
+        break;
+      case Repair_NA:
+        ui->rbUpperArmHousingUpgrade_NA->setChecked( true);
+        break;
+    }
+    strInputName = "UpperArmHousing";
+    iType = settings.value(strInputName).toInt();
+    switch(iType)
+    {
+      case Repair_OK:
+        ui->rbUpperArmHousing_OK->setChecked( true);
+        break;
+      case Repair_Repair:
+        ui->rbUpperArmHousing_Repair->setChecked( true);
+        break;
+      case Repair_NA:
+        ui->rbUpperArmHousing_NA->setChecked( true);
+        break;
+    }
+    strInputName = "UpperArmLid";
+    iType = settings.value(strInputName).toInt();
+    switch(iType)
+    {
+      case Repair_OK:
+        ui->rbUpperArmLid_OK->setChecked( true);
+        break;
+      case Repair_Repair:
+        ui->rbUpperArmLid_Repair->setChecked( true);
+        break;
+      case Repair_NA:
+        ui->rbUpperArmLid_NA->setChecked( true);
+        break;
+    }
+    strInputName = "LowerArmHousingUpgrade";
+    iType = settings.value(strInputName).toInt();
+    switch(iType)
+    {
+      case Repair_OK:
+        ui->rbLowerArmHousingUpgrade_OK->setChecked( true);
+        break;
+      case Repair_Repair:
+        ui->rbLowerArmHousingUpgrade_Repair->setChecked( true);
+        break;
+      case Repair_NA:
+        ui->rbLowerArmHousingUpgrade_NA->setChecked( true);
+        break;
+    }
+    strInputName = "LowerArmHousing";
+    iType = settings.value(strInputName).toInt();
+    switch(iType)
+    {
+      case Repair_OK:
+        ui->rbLowerArmHousing_OK->setChecked( true);
+        break;
+      case Repair_Repair:
+        ui->rbLowerArmHousing_Repair->setChecked( true);
+        break;
+      case Repair_NA:
+        ui->rbLowerArmHousing_NA->setChecked( true);
+        break;
+    }
+    strInputName = "LowerArmLid";
+    iType = settings.value(strInputName).toInt();
+    switch(iType)
+    {
+      case Repair_OK:
+        ui->rbLowerArmLid_OK->setChecked( true);
+        break;
+      case Repair_Repair:
+        ui->rbLowerArmLid_Repair->setChecked( true);
+        break;
+      case Repair_NA:
+        ui->rbLowerArmLid_NA->setChecked( true);
+        break;
+    }
+    strInputName = "ArmDriveInterfac";
+    iType = settings.value(strInputName).toInt();
+    switch(iType)
+    {
+      case Repair_OK:
+        ui->rbArmDriveInterface_OK->setChecked( true);
+        break;
+      case Repair_Repair:
+        ui->rbArmDriveInterface_Repair->setChecked( true);
+        break;
+      case Repair_NA:
+        ui->rbArmDriveInterface_NA->setChecked( true);
+        break;
+    }
+    strInputName = "ArmGripperInterfaceScara";
+    iType = settings.value(strInputName).toInt();
+    switch(iType)
+    {
+      case Repair_OK:
+        ui->rbArmGripperInterfaceScara_OK->setChecked( true);
+        break;
+      case Repair_Repair:
+        ui->rbArmGripperInterfaceScara_Repair->setChecked( true);
+        break;
+      case Repair_NA:
+        ui->rbArmGripperInterfaceScara_NA->setChecked( true);
+        break;
+    }
+    strInputName = "ArmGripperInterfaceNT";
+    iType = settings.value(strInputName).toInt();
+    switch(iType)
+    {
+      case Repair_OK:
+        ui->rbArmGripperInterfaceNT_OK->setChecked( true);
+        break;
+      case Repair_Repair:
+        ui->rbArmGripperInterfaceNT_Repair->setChecked( true);
+        break;
+      case Repair_NA:
+        ui->rbArmGripperInterfaceNT_NA->setChecked( true);
+        break;
+    }
+    strInputName = "BeltReel";
+    iType = settings.value(strInputName).toInt();
+    switch(iType)
+    {
+      case Repair_OK:
+        ui->rbBeltReel_OK->setChecked( true);
+        break;
+      case Repair_Repair:
+        ui->rbBeltReel_Repair->setChecked( true);
+        break;
+      case Repair_NA:
+        ui->rbBeltReel_NA->setChecked( true);
+        break;
+    }
+    strInputName = "TorxScrew";
+    iType = settings.value(strInputName).toInt();
+    switch(iType)
+    {
+      case Repair_OK:
+        ui->rbTorxScrew_OK->setChecked( true);
+        break;
+      case Repair_Repair:
+        ui->rbTorxScrew_Repair->setChecked( true);
+        break;
+      case Repair_NA:
+        ui->rbTorxScrew_NA->setChecked( true);
+        break;
+    }
+    strInputName = "Bearings";
+    iType = settings.value(strInputName).toInt();
+    switch(iType)
+    {
+      case Repair_OK:
+        ui->rbBearings_OK->setChecked( true);
+        break;
+      case Repair_Repair:
+        ui->rbBearings_Repair->setChecked( true);
+        break;
+      case Repair_NA:
+        ui->rbBearings_NA->setChecked( true);
+        break;
+    }
+    strInputName = "RepairIn";
+    iType = settings.value(strInputName, -1).toInt();
+    qDebug() << "Repair in ARM"  << iType;
+    if(iType==-1){
+        ui->cbArmEU->setChecked( true);
+    }else{
+        switch(iType)
+        {
+          case RepairIn_TW:
+            ui->cbArmTW->setChecked(true);
+            break;
+          case RepairIn_EU:
+            ui->cbArmEU->setChecked( true);
+            break;
+        }
+    }
+}
+void CAnalyseData::getDataFromIni4DMRepair( void)
+{
+    QSettings settings(m_filePath,QSettings::IniFormat);
+    settings.beginGroup(BEGIN_DMREPAIR);
+
+    QString strInputName = "DMLikaMotor";
+    int iType = settings.value(strInputName).toInt();
+    switch(iType)
+    {
+      case Repair_OK:
+        ui->rbDMLikaMotor_OK->setChecked( true);
+        break;
+      case Repair_Repair:
+        ui->rbDMLikaMotor_Repair->setChecked( true);
+        break;
+      case Repair_NA:
+        ui->rbDMLikaMotor_NA->setChecked( true);
+        break;
+    }
+    strInputName = "CableHood";
+    iType = settings.value(strInputName).toInt();
+    switch(iType)
+    {
+      case Repair_OK:
+        ui->rbCableHood_OK->setChecked( true);
+        break;
+      case Repair_Repair:
+        ui->rbCableHood_Repair->setChecked( true);
+        break;
+      case Repair_NA:
+        ui->rbCableHood_NA->setChecked( true);
+        break;
+    }
+    strInputName = "DMHousing";
+    iType = settings.value(strInputName).toInt();
+    switch(iType)
+    {
+      case Repair_OK:
+        ui->rbDMHousing_OK->setChecked( true);
+        break;
+      case Repair_Repair:
+        ui->rbDMHousing_Repair->setChecked( true);
+        break;
+      case Repair_NA:
+        ui->rbDMHousing_NA->setChecked( true);
+        break;
+    }
+    strInputName = "DMLid";
+    iType = settings.value(strInputName).toInt();
+    switch(iType)
+    {
+      case Repair_OK:
+        ui->rbDMLid_OK->setChecked( true);
+        break;
+      case Repair_Repair:
+        ui->rbDMLid_Repair->setChecked( true);
+        break;
+      case Repair_NA:
+        ui->rbDMLid_NA->setChecked( true);
+        break;
+    }
+    strInputName = "SlipRing";
+    iType = settings.value(strInputName).toInt();
+    switch(iType)
+    {
+      case Repair_OK:
+        ui->rbSlipRing_OK->setChecked( true);
+        break;
+      case Repair_Repair:
+        ui->rbSlipRing_Repair->setChecked( true);
+        break;
+      case Repair_NA:
+        ui->rbSlipRing_NA->setChecked( true);
+        break;
+    }
+    strInputName = "HollowShaft";
+    iType = settings.value(strInputName).toInt();
+    switch(iType)
+    {
+      case Repair_OK:
+        ui->rbHollowShaft_OK->setChecked( true);
+        break;
+      case Repair_Repair:
+        ui->rbHollowShaft_Repair->setChecked( true);
+        break;
+      case Repair_NA:
+        ui->rbHollowShaft_NA->setChecked( true);
+        break;
+    }
+    strInputName = "RepairIn";
+    iType = settings.value(strInputName).toInt();
+    switch(iType)
+    {
+      case RepairIn_TW:
+        ui->cbDMTW->setChecked( true);
+        break;
+      case RepairIn_EU:
+        ui->cbDMEU->setChecked( true);
+        break;
+    }
+}
+void CAnalyseData::getDataFromIni4ZTRepair( void)
+{
+    QSettings settings(m_filePath,QSettings::IniFormat);
+    settings.beginGroup(BEGIN_ZTREPAIR);
+
+    QString strInputName = "ZStroke35";
+    int iType = settings.value(strInputName).toInt();
+    switch(iType)
+    {
+      case Repair_OK:
+        ui->rbZStroke35_OK->setChecked( true);
+        break;
+      case Repair_Repair:
+        ui->rbZStroke35_Repair->setChecked( true);
+        break;
+      case Repair_NA:
+        ui->rbZStroke35_NA->setChecked( true);
+        break;
+    }
+    strInputName = "ZStroke50";
+    iType = settings.value(strInputName).toInt();
+    switch(iType)
+    {
+      case Repair_OK:
+        ui->rbZStroke50_OK->setChecked( true);
+        break;
+      case Repair_Repair:
+        ui->rbZStroke50_Repair->setChecked( true);
+        break;
+      case Repair_NA:
+        ui->rbZStroke50_NA->setChecked( true);
+        break;
+    }
+    strInputName = "ZMHousingScara";
+    iType = settings.value(strInputName).toInt();
+    switch(iType)
+    {
+      case Repair_OK:
+        ui->rbZMHousingScara_OK->setChecked( true);
+        break;
+      case Repair_Repair:
+        ui->rbZMHousingScara_Repair->setChecked( true);
+        break;
+      case Repair_NA:
+        ui->rbZMHousingScara_NA->setChecked( true);
+        break;
+    }
+    strInputName = "ZMHousingNT";
+    iType = settings.value(strInputName).toInt();
+    switch(iType)
+    {
+      case Repair_OK:
+        ui->rbZMHousingNT_OK->setChecked( true);
+        break;
+      case Repair_Repair:
+        ui->rbZMHousingNT_Repair->setChecked( true);
+        break;
+      case Repair_NA:
+        ui->rbZMHousingNT_NA->setChecked( true);
+        break;
+    }
+    strInputName = "GuidingShaftsScara";
+    iType = settings.value(strInputName).toInt();
+    switch(iType)
+    {
+      case Repair_OK:
+        ui->rbGuidingShaftsScara_OK->setChecked( true);
+        break;
+      case Repair_Repair:
+        ui->rbGuidingShaftsScara_Repair->setChecked( true);
+        break;
+      case Repair_NA:
+        ui->rbGuidingShaftsScara_NA->setChecked( true);
+        break;
+    }
+    strInputName = "GuidingShaftsNT";
+    iType = settings.value(strInputName).toInt();
+    switch(iType)
+    {
+      case Repair_OK:
+        ui->rbGuidingShaftsNT_OK->setChecked( true);
+        break;
+      case Repair_Repair:
+        ui->rbGuidingShaftsNT_Repair->setChecked( true);
+        break;
+      case Repair_NA:
+        ui->rbGuidingShaftsNT_NA->setChecked( true);
+        break;
+    }
+    strInputName = "SmallGuidingShafts";
+    iType = settings.value(strInputName).toInt();
+    switch(iType)
+    {
+      case Repair_OK:
+        ui->rbSmallGuidingShafts_OK->setChecked( true);
+        break;
+      case Repair_Repair:
+        ui->rbSmallGuidingShafts_Repair->setChecked( true);
+        break;
+      case Repair_NA:
+        ui->rbSmallGuidingShafts_NA->setChecked( true);
+        break;
+    }
+    strInputName = "RepairIn";
+    iType = settings.value(strInputName).toInt();
+    switch(iType)
+    {
+      case RepairIn_TW:
+        ui->cbZTTW->setChecked(true);
+        break;
+      case RepairIn_EU:
+        ui->cbZTEU->setChecked( true);
+        break;
+    }
+
 }
 
-//----------------- Save remarks of ARM to ini file (text and image) ---------------//
+
+// **********.ini FILE SAVE ******************
+void CAnalyseData::on_pbSaveIni_clicked()
+{
+    ui->lbProcess->hide();
+    qDebug() << "mFilePath" << m_filePath;
+    progressSave(3);
+    ui->lbStatus->setText("Saving to Ini...");
+    progressSave(6);
+    // for Arm
+    getDataFromGUIArm();
+    progressSave(20);
+    // for DM
+    getDataFromGUIDM();
+    progressSave(40);
+    // for ZT
+    getDataFromGUIZT();
+    progressSave(60);
+
+    // others
+    getArmSNFromArm();//armSN
+    progressSave(80);
+    getDataFromRepair();//Repair Part
+    progressSave(100);
+    qDebug() << ".ini file created";
+    ui->lbStatus->setText("Saved to Ini");
+}
+
+// ------- Analyse Data ----
+void CAnalyseData::getDataFromGUIArm(void)
+{
+
+    getImagePathFromArm();
+    getRobotTypeNoSNNCNRFromArm();// get Robot type and no./robotSN/old12NC/new12NC/repairNR
+    getGrayBoxDataFromARM();// get grayboxSN/firstDeliveryDate/repairNo/lastRepairDate
+    getHDMotorTypeFromARM();// get hdMotorType
+    getAdviceCauserFromARM();// get analyseAdviceARM/analyseCauserARM
+    getArmOKUpgradeFromARM();// get isARMOk/isUpgradeARM
+    getVacFlowValFromARM();// get vacARM/flowARM
+    getGeoDataFromARM();// get geoRz/geoRx/geoRy/geoDeletaH/isGeoOk
+    getTestsResultsFromARM();// get isEletricityOkARM/isDataTransOkARM/isSurOkARM/isFunOkARM/isMagneticOkARM
+    getRepPosPADataFromARM();// get repPosPA_R/repPosPA_TH
+    getAnalyseDataFromARM();// get analyserARM/analyseDateARM/isAnalyseOkARM
+    getTextDocumentFromArm();// get Arm comments
+    //getEndDefectTiltDataFromARM();// get rMinus208H4Val/rMinus208RxVal/rMinus208RyVal/
+                                  //     rZeroH4Val/rZeroRxVal/rZeroRyVal/
+                                  //     r75H4Val/r75RxVal/r75RyVal/
+                                  //     r174H4Val/r174RxVal/r174RyVal/
+                                  //     r203H4Val/r203RxVal/r203RyVal/
+                                  //     r385H4Val/r385RxVal/r385RyVal
+    getULValFromARM();// get analyseUVal/analyseLVal
+}
+void CAnalyseData::getDataFromGUIDM(void)
+{
+    getDMSNFromDM();// get DMSN
+    getAdviceCauserFromDM();// get analyseAdviceDM/analyseCauserDM
+    getDMOKUpgradeFromDM();// get isDMOk/isUpgradeDM
+    getVacFlowValFromDM();// get vacDM/flowDM
+    getAngleDataFromDM();// get ang90Val/ang180Val/ang270Val
+    getTestsResultsFromDM();// get isMotorTHOk/isMotorROk/isGearTHOk/isGearROk/itTiltOk/isEncTHOk/isEncROk/isEletricityOkDM/isDataTransOkDM/isSurOkDM/isFunOkDM/isConductivityOkDM
+    getCommutationDataFromDM();// get commutationTH/commutationR
+    getZeroingPosDataFromDM();// get zeroingPosTH/zeroingPosR
+    //getAnalyseDataFromDM();// get analyserDM/analyseDateDM/isAnalyseOkDM >>> not need
+    getTextDocumentFromDM();// get analyseCommentsDM
+    getDMDeliveryRepairDate();
+}
+void CAnalyseData::getDataFromGUIZT(void)
+{
+    getZTSNFromZT();// get ZTSN/ZTSN2
+    getAdviceCauserFromZT();// get analyseAdviceZT/analyseCauserZT
+    getZTOKUpgradeFromZT();// get isZTOk/isUpgradeZT
+    getMeasureDataFromZT();// get zUpSCARAVal/zDNSCARAVal/zUpSCARANTVal/zDNSCARANTVal/zUpFAVal/zDNFAVal/zUpNXTVal/zDNNXTVal
+    getTestsResultsFromZT();// get isLVDTOk/isRefSnesorOk/isMotorZOk/isRunningNoiseOk/isCableOk/isSurOkZT/isConductivityOkZT
+    //getAnalyseDataFromZT();// get analyserZT/analyseDateZT/isAnalyseOkZT // not need
+    getTextDocumentFromZT();// get analyseCommentsZT
+    getZTDeliveryRepairDate();
+}
+// Arm
 void CAnalyseData::getTextDocumentFromArm( void)
 {
     // test to get the contents of text edit
@@ -2273,7 +3070,6 @@ void CAnalyseData::getTextDocumentFromArm( void)
     strInputName = "ARMRemarkImgFileName";
     settings.setValue(strInputName, m_RemarkImgFileNameARM);
 }
-
 void CAnalyseData::getTextDocumentFromDM( void)
 {
     // test to get the contents of text edit
@@ -2318,7 +3114,6 @@ void CAnalyseData::getTextDocumentFromDM( void)
     strInputName = "DMRemarkImgFileName";
     settings.setValue(strInputName, m_RemarkImgFileNameDM);
 }
-
 void CAnalyseData::getDMDeliveryRepairDate()
 {
     QSettings settings(m_filePath,QSettings::IniFormat);
@@ -2330,7 +3125,6 @@ void CAnalyseData::getDMDeliveryRepairDate()
     strLastRepairDate_DM = ui->leDMLastRepair->text();
     settings.setValue("lastRepairDateDM", strLastRepairDate_DM);
 }
-
 void CAnalyseData::getTextDocumentFromZT( void)
 {
     // test to get the contents of text edit
@@ -2375,7 +3169,6 @@ void CAnalyseData::getTextDocumentFromZT( void)
     strInputName = "ZTRemarkImgFileName";
     settings.setValue(strInputName, m_RemarkImgFileNameZT);
 }
-
 void CAnalyseData::getZTDeliveryRepairDate()
 {
     QSettings settings(m_filePath,QSettings::IniFormat);
@@ -2387,7 +3180,6 @@ void CAnalyseData::getZTDeliveryRepairDate()
     strLastRepairDate_ZT = ui->leZTLastRepair->text();
     settings.setValue("lastRepairDateZT", strLastRepairDate_ZT);
 }
-
 void CAnalyseData::getArmSNFromArm( void)
 {
     QSettings settings(m_filePath,QSettings::IniFormat);
@@ -2399,7 +3191,6 @@ void CAnalyseData::getArmSNFromArm( void)
     settings.setValue(strName, strArmSN);
 
 }
-
 void CAnalyseData::getImagePathFromArm( void)
 {
     QSettings settings(m_filePath,QSettings::IniFormat);
@@ -2423,7 +3214,6 @@ void CAnalyseData::getImagePathFromArm( void)
     strImgData = ui->leBIDCode->text();
     settings.setValue(strInputName, strImgData);
 }
-
 void CAnalyseData::getRobotTypeNoSNNCNRFromArm( void)
 {
     QSettings settings(m_filePath,QSettings::IniFormat);
@@ -2446,7 +3236,6 @@ void CAnalyseData::getRobotTypeNoSNNCNRFromArm( void)
     repairNR = ui->leRepairNRARM->text();
     settings.setValue("repairNR", repairNR);
 }
-
 void CAnalyseData::getGrayBoxDataFromARM( void)
 {
     QSettings settings(m_filePath,QSettings::IniFormat);
@@ -2468,7 +3257,6 @@ void CAnalyseData::getGrayBoxDataFromARM( void)
     strLastRepairDate_ARM = ui->leArmLastRepair->text();
     settings.setValue("lastRepairDateARM", strLastRepairDate_ARM);
 }
-
 void CAnalyseData::getHDMotorTypeFromARM( void)
 {
     QSettings settings(m_filePath,QSettings::IniFormat);
@@ -2487,7 +3275,6 @@ void CAnalyseData::getHDMotorTypeFromARM( void)
       break;
     }
 }
-
 void CAnalyseData::getAdviceCauserFromARM( void)
 {
     QSettings settings(m_filePath,QSettings::IniFormat);
@@ -2523,7 +3310,6 @@ void CAnalyseData::getAdviceCauserFromARM( void)
       break;
     }// switch()
 }
-
 void CAnalyseData::getArmOKUpgradeFromARM( void)
 {
     QSettings settings(m_filePath,QSettings::IniFormat);
@@ -2549,7 +3335,6 @@ void CAnalyseData::getArmOKUpgradeFromARM( void)
       break;
     }// switch()
 }
-
 void CAnalyseData::getVacFlowValFromARM( void)
 {
     QSettings settings(m_filePath,QSettings::IniFormat);
@@ -2561,7 +3346,6 @@ void CAnalyseData::getVacFlowValFromARM( void)
     strFlowARM = ui->leFlowARM->text();
     settings.setValue("19/val", strFlowARM);
 }
-
 void CAnalyseData::getULValFromARM( void)
 {
     QSettings settings(m_filePath,QSettings::IniFormat);
@@ -2573,7 +3357,6 @@ void CAnalyseData::getULValFromARM( void)
     strLVal = ui->leUAG->text();
     settings.setValue("44/val", strLVal);
 }
-
 void CAnalyseData::getGeoDataFromARM( void)
 {
     QSettings settings(m_filePath,QSettings::IniFormat);
@@ -2588,7 +3371,6 @@ void CAnalyseData::getGeoDataFromARM( void)
     strGeoDeletaH = ui->leGeoDelHeight->text();
     settings.setValue("geoDeletaH", strGeoDeletaH);
 }
-
 void CAnalyseData::getTestsResultsFromARM( void)        //Modify
 {
     QSettings settings(m_filePath,QSettings::IniFormat);
@@ -2683,7 +3465,6 @@ void CAnalyseData::getTestsResultsFromARM( void)        //Modify
         break;
     }// switch()
 }
-
 void CAnalyseData::getRepPosPADataFromARM( void)
 {
     QSettings settings(m_filePath,QSettings::IniFormat);
@@ -2711,7 +3492,6 @@ void CAnalyseData::getRepPosPADataFromARM( void)
     }
     settings.setValue("26/val", strRepPosPA_TH);
 }
-
 void CAnalyseData::getAnalyseDataFromARM( void)
 {
     QSettings settings(m_filePath,QSettings::IniFormat);
@@ -2726,7 +3506,6 @@ void CAnalyseData::getAnalyseDataFromARM( void)
     strAnalyseDateARM = ui->leAnalyseDateARM->text();
     settings.setValue(strName, strAnalyseDateARM);
 }
-
 void CAnalyseData::getEndDefectTiltDataFromARM( void)
 {
     QSettings settings(m_filePath,QSettings::IniFormat);
@@ -2780,7 +3559,7 @@ void CAnalyseData::getEndDefectTiltDataFromARM( void)
 //    str385RyVal = ui->leR385Ry->text();
 //    settings.setValue("r385RyVal", str385RyVal);
 }
-
+// DM
 void CAnalyseData::getDMSNFromDM( void)
 {
     QSettings settings(m_filePath,QSettings::IniFormat);
@@ -2796,7 +3575,6 @@ void CAnalyseData::getDMSNFromDM( void)
     }
     settings.setValue("4/val", strDMAll);
 }
-
 void CAnalyseData::getAdviceCauserFromDM( void)
 {
     QSettings settings(m_filePath,QSettings::IniFormat);
@@ -2833,7 +3611,6 @@ void CAnalyseData::getAdviceCauserFromDM( void)
       break;
     }// switch()
 }
-
 void CAnalyseData::getDMOKUpgradeFromDM( void)
 {
     QSettings settings(m_filePath,QSettings::IniFormat);
@@ -2859,7 +3636,6 @@ void CAnalyseData::getDMOKUpgradeFromDM( void)
       break;
     }// switch()
 }
-
 void CAnalyseData::getVacFlowValFromDM( void)
 {
     QSettings settings(m_filePath,QSettings::IniFormat);
@@ -2871,7 +3647,6 @@ void CAnalyseData::getVacFlowValFromDM( void)
     strFlowDM = ui->leFlowDM->text();
     settings.setValue("45/val", strFlowDM);
 }
-
 void CAnalyseData::getAngleDataUnitMradFromDM( void)
 {
     QSettings settings(m_filePath,QSettings::IniFormat);
@@ -2883,7 +3658,6 @@ void CAnalyseData::getAngleDataUnitMradFromDM( void)
     strAng270 = ui->le270DegVal->text();
     settings.setValue("ang270Val", strAng270);
 }
-
 void CAnalyseData::getAngleDataFromDM( void)
 {
     QSettings settings(m_filePath,QSettings::IniFormat);
@@ -2895,7 +3669,6 @@ void CAnalyseData::getAngleDataFromDM( void)
     strAng270 = ui->le270DegVal_2->text();
     settings.setValue("84/val", strAng270);
 }
-
 void CAnalyseData::getTestsResultsFromDM( void)             //Modify
 {
     QSettings settings(m_filePath,QSettings::IniFormat);
@@ -3095,7 +3868,6 @@ void CAnalyseData::getTestsResultsFromDM( void)             //Modify
         break;
     }// switch()
 }
-
 void CAnalyseData::getCommutationDataFromDM( void)
 {
     QSettings settings(m_filePath,QSettings::IniFormat);
@@ -3115,7 +3887,6 @@ void CAnalyseData::getCommutationDataFromDM( void)
     }
     settings.setValue("101/val", strComR);
 }
-
 void CAnalyseData::getZeroingPosDataFromDM( void)
 {
     QSettings settings(m_filePath,QSettings::IniFormat);
@@ -3127,7 +3898,6 @@ void CAnalyseData::getZeroingPosDataFromDM( void)
     strZeroPosR = ui->leZeroingPosR->text();
     settings.setValue("zeroingPosR", strZeroPosR);
 }
-
 void CAnalyseData::getAnalyseDataFromDM( void)
 {// don't need
     QSettings settings(m_filePath,QSettings::IniFormat);
@@ -3149,7 +3919,7 @@ void CAnalyseData::getAnalyseDataFromDM( void)
 //      break;
 //    }// switch()
 }
-
+// DM
 void CAnalyseData::getZTSNFromZT( void)
 {//cbZTSN
     QSettings settings(m_filePath,QSettings::IniFormat);
@@ -3166,7 +3936,6 @@ void CAnalyseData::getZTSNFromZT( void)
     }
     settings.setValue("5/val", strDMSNAll);
 }
-
 void CAnalyseData::getAdviceCauserFromZT( void)
 {
     QSettings settings(m_filePath,QSettings::IniFormat);
@@ -3204,7 +3973,6 @@ void CAnalyseData::getAdviceCauserFromZT( void)
       break;
     }// switch()
 }
-
 void CAnalyseData::getZTOKUpgradeFromZT( void)
 {
     QSettings settings(m_filePath,QSettings::IniFormat);
@@ -3230,7 +3998,6 @@ void CAnalyseData::getZTOKUpgradeFromZT( void)
       break;
     }// switch()
 }
-
 void CAnalyseData::getMeasureDataFromZT( void)
 {
     QSettings settings(m_filePath,QSettings::IniFormat);
@@ -3261,7 +4028,6 @@ void CAnalyseData::getMeasureDataFromZT( void)
     settings.setValue("133/val", strUpVal);
     settings.setValue("135/val", strDNVal);
 }
-
 void CAnalyseData::getTestsResultsFromZT( void)     //modify
 {
     QSettings settings(m_filePath,QSettings::IniFormat);
@@ -3371,7 +4137,6 @@ void CAnalyseData::getTestsResultsFromZT( void)     //modify
         break;
     }// switch()
 }
-
 void CAnalyseData::getAnalyseDataFromZT( void)
 {
     QSettings settings(m_filePath,QSettings::IniFormat);
@@ -3383,403 +4148,533 @@ void CAnalyseData::getAnalyseDataFromZT( void)
     settings.setValue("analyseDateZT", strAnalyseDateZT);
 }
 
-// -----.ini file save ----------
-
-void CAnalyseData::on_pbSaveIni_clicked()
+// ------- Repair Data ----
+void CAnalyseData::getDataFromRepair( void ){
+    getRepairFromARM();
+    getRepairFromDM();
+    getRepairFromZT();
+}
+void CAnalyseData::getRepairFromARM( void )
 {
-    ui->lbProcess->hide();
-    qDebug() << "mFilePath" << m_filePath;
-    progressSave(3);
-    ui->lbStatus->setText("Saving to Ini...");
-    progressSave(6);
-    // for Arm
-    getDataFromGUIArm();
-    progressSave(20);
-    // for DM
-    getDataFromGUIDM();
-    progressSave(40);
-    // for ZT
-    getDataFromGUIZT();
-    progressSave(60);
+    QSettings settings(m_filePath,QSettings::IniFormat);
+    settings.beginGroup(BEGIN_ARMREPAIR);
 
-    // others
-    getArmSNFromArm();//armSN
-    progressSave(80);
-    getDataFromRepair();//Repair Part
-    progressSave(100);
-    qDebug() << ".ini file created";
-    ui->lbStatus->setText("Saved to Ini");
+    QString strInputName = "ArmBelts";
+    switch( m_pgbRepairARM_ArmBelts->checkedId())
+    {
+      case Repair_OK:
+        settings.setValue(strInputName, Repair_OK);
+        break;
+      case Repair_Repair:
+        settings.setValue(strInputName, Repair_Repair);
+        break;
+      case Repair_NA:
+        settings.setValue(strInputName, Repair_NA);
+        break;
+    }
+    strInputName = "UpperArmHousingUpgrade";
+    switch( m_pgbRepairARM_UpperArmHousingUpgrade->checkedId())
+    {
+      case Repair_OK:
+        settings.setValue(strInputName, Repair_OK);
+        break;
+      case Repair_Repair:
+        settings.setValue(strInputName, Repair_Repair);
+        break;
+      case Repair_NA:
+        settings.setValue(strInputName, Repair_NA);
+        break;
+    }
+    strInputName = "UpperArmHousing";
+    switch( m_pgbRepairARM_UpperArmHousing->checkedId())
+    {
+      case Repair_OK:
+        settings.setValue(strInputName, Repair_OK);
+        break;
+      case Repair_Repair:
+        settings.setValue(strInputName, Repair_Repair);
+        break;
+      case Repair_NA:
+        settings.setValue(strInputName, Repair_NA);
+        break;
+    }
+    strInputName = "UpperArmLid";
+    switch( m_pgbRepairARM_UpperArmLid->checkedId())
+    {
+      case Repair_OK:
+        settings.setValue(strInputName, Repair_OK);
+        break;
+      case Repair_Repair:
+        settings.setValue(strInputName, Repair_Repair);
+        break;
+      case Repair_NA:
+        settings.setValue(strInputName, Repair_NA);
+        break;
+    }
+    strInputName = "LowerArmHousingUpgrade";
+    switch( m_pgbRepairARM_LowerArmHousingUpgrade->checkedId())
+    {
+      case Repair_OK:
+        settings.setValue(strInputName, Repair_OK);
+        break;
+      case Repair_Repair:
+        settings.setValue(strInputName, Repair_Repair);
+        break;
+      case Repair_NA:
+        settings.setValue(strInputName, Repair_NA);
+        break;
+    }
+    strInputName = "LowerArmHousing";
+    switch( m_pgbRepairARM_LowerArmHousing->checkedId())
+    {
+      case Repair_OK:
+        settings.setValue(strInputName, Repair_OK);
+        break;
+      case Repair_Repair:
+        settings.setValue(strInputName, Repair_Repair);
+        break;
+      case Repair_NA:
+        settings.setValue(strInputName, Repair_NA);
+        break;
+    }
+    strInputName = "LowerArmLid";
+    switch( m_pgbRepairARM_LowerArmLid->checkedId())
+    {
+      case Repair_OK:
+        settings.setValue(strInputName, Repair_OK);
+        break;
+      case Repair_Repair:
+        settings.setValue(strInputName, Repair_Repair);
+        break;
+      case Repair_NA:
+        settings.setValue(strInputName, Repair_NA);
+        break;
+    }
+    strInputName = "ArmDriveInterface";
+    switch( m_pgbRepairARM_ArmDriveInterface->checkedId())
+    {
+      case Repair_OK:
+        settings.setValue(strInputName, Repair_OK);
+        break;
+      case Repair_Repair:
+        settings.setValue(strInputName, Repair_Repair);
+        break;
+      case Repair_NA:
+        settings.setValue(strInputName, Repair_NA);
+        break;
+    }
+    strInputName = "ArmGripperInterfaceScara";
+    switch( m_pgbRepairARM_ArmGripperInterfaceScara->checkedId())
+    {
+      case Repair_OK:
+        settings.setValue(strInputName, Repair_OK);
+        break;
+      case Repair_Repair:
+        settings.setValue(strInputName, Repair_Repair);
+        break;
+      case Repair_NA:
+        settings.setValue(strInputName, Repair_NA);
+        break;
+    }
+    strInputName = "ArmGripperInterfaceNT";
+    switch( m_pgbRepairARM_ArmGripperInterfaceNT->checkedId())
+    {
+      case Repair_OK:
+        settings.setValue(strInputName, Repair_OK);
+        break;
+      case Repair_Repair:
+        settings.setValue(strInputName, Repair_Repair);
+        break;
+      case Repair_NA:
+        settings.setValue(strInputName, Repair_NA);
+        break;
+    }
+    strInputName = "BeltReel";
+    switch( m_pgbRepairARM_BeltReel->checkedId())
+    {
+      case Repair_OK:
+        settings.setValue(strInputName, Repair_OK);
+        break;
+      case Repair_Repair:
+        settings.setValue(strInputName, Repair_Repair);
+        break;
+      case Repair_NA:
+        settings.setValue(strInputName, Repair_NA);
+        break;
+    }
+    strInputName = "TorxScrew";
+    switch( m_pgbRepairARM_TorxScrew->checkedId())
+    {
+      case Repair_OK:
+        settings.setValue(strInputName, Repair_OK);
+        break;
+      case Repair_Repair:
+        settings.setValue(strInputName, Repair_Repair);
+        break;
+      case Repair_NA:
+        settings.setValue(strInputName, Repair_NA);
+        break;
+    }
+    strInputName = "Bearings";
+    switch( m_pgbRepairARM_Bearings->checkedId())
+    {
+      case Repair_OK:
+        settings.setValue(strInputName, Repair_OK);
+        break;
+      case Repair_Repair:
+        settings.setValue(strInputName, Repair_Repair);
+        break;
+      case Repair_NA:
+        settings.setValue(strInputName, Repair_NA);
+        break;
+    }
+    strInputName = "RepairIn";
+    switch( m_pgbRepairARM_RepairIn->checkedId())
+    {
+        case RepairIn_TW:
+        settings.setValue(strInputName, RepairIn_TW);
+        break;
+        case RepairIn_EU:
+        settings.setValue(strInputName, RepairIn_EU);
+        break;
+    }
+
+
+}
+void CAnalyseData::getRepairFromDM( void )
+{
+    QSettings settings(m_filePath,QSettings::IniFormat);
+    settings.beginGroup(BEGIN_DMREPAIR);
+
+    QString strInputName = "DMLikaMotor";
+    switch( m_pgbRepairDM_DMLikaMotor->checkedId())
+    {
+      case Repair_OK:
+        settings.setValue(strInputName, Repair_OK);
+        break;
+      case Repair_Repair:
+        settings.setValue(strInputName, Repair_Repair);
+        break;
+      case Repair_NA:
+        settings.setValue(strInputName, Repair_NA);
+        break;
+    }
+    strInputName = "CableHood";
+    switch( m_pgbRepairDM_CableHood->checkedId())
+    {
+        case Repair_OK:
+        settings.setValue(strInputName, Repair_OK);
+        break;
+        case Repair_Repair:
+        settings.setValue(strInputName, Repair_Repair);
+        break;
+        case Repair_NA:
+        settings.setValue(strInputName, Repair_NA);
+        break;
+    }
+    strInputName = "DMLid";
+    switch( m_pgbRepairDM_DMLid->checkedId())
+    {
+        case Repair_OK:
+        settings.setValue(strInputName, Repair_OK);
+        break;
+        case Repair_Repair:
+        settings.setValue(strInputName, Repair_Repair);
+        break;
+        case Repair_NA:
+        settings.setValue(strInputName, Repair_NA);
+        break;
+    }
+    strInputName = "SlipRing";
+    switch( m_pgbRepairDM_SlipRing->checkedId())
+    {
+        case Repair_OK:
+        settings.setValue(strInputName, Repair_OK);
+        break;
+        case Repair_Repair:
+        settings.setValue(strInputName, Repair_Repair);
+        break;
+        case Repair_NA:
+        settings.setValue(strInputName, Repair_NA);
+        break;
+    }
+    strInputName = "HollowShaft";
+    switch( m_pgbRepairDM_HollowShaft->checkedId())
+    {
+        case Repair_OK:
+        settings.setValue(strInputName, Repair_OK);
+        break;
+        case Repair_Repair:
+        settings.setValue(strInputName, Repair_Repair);
+        break;
+        case Repair_NA:
+        settings.setValue(strInputName, Repair_NA);
+        break;
+    }
+    strInputName = "RepairIn";
+    switch( m_pgbRepairDM_RepairIn->checkedId())
+    {
+        case RepairIn_TW:
+        settings.setValue(strInputName, RepairIn_TW);
+        break;
+        case RepairIn_EU:
+        settings.setValue(strInputName, RepairIn_EU);
+        break;
+    }
+}
+void CAnalyseData::getRepairFromZT( void )
+{
+    QSettings settings(m_filePath,QSettings::IniFormat);
+    settings.beginGroup(BEGIN_ZTREPAIR);
+
+    QString strInputName = "ZStroke35";
+    switch( m_pgbRepairZT_ZStroke35->checkedId())
+    {
+      case Repair_OK:
+        settings.setValue(strInputName, Repair_OK);
+        break;
+      case Repair_Repair:
+        settings.setValue(strInputName, Repair_Repair);
+        break;
+      case Repair_NA:
+        settings.setValue(strInputName, Repair_NA);
+        break;
+    }
+    strInputName = "ZStroke50";
+    switch( m_pgbRepairZT_ZStroke50->checkedId())
+    {
+      case Repair_OK:
+        settings.setValue(strInputName, Repair_OK);
+        break;
+      case Repair_Repair:
+        settings.setValue(strInputName, Repair_Repair);
+        break;
+      case Repair_NA:
+        settings.setValue(strInputName, Repair_NA);
+        break;
+    }
+    strInputName = "ZMHousingScara";
+    switch( m_pgbRepairZT_ZMHousingScara->checkedId())
+    {
+      case Repair_OK:
+        settings.setValue(strInputName, Repair_OK);
+        break;
+      case Repair_Repair:
+        settings.setValue(strInputName, Repair_Repair);
+        break;
+      case Repair_NA:
+        settings.setValue(strInputName, Repair_NA);
+        break;
+    }
+    strInputName = "ZMHousingNT";
+    switch( m_pgbRepairZT_ZMHousingNT->checkedId())
+    {
+      case Repair_OK:
+        settings.setValue(strInputName, Repair_OK);
+        break;
+      case Repair_Repair:
+        settings.setValue(strInputName, Repair_Repair);
+        break;
+      case Repair_NA:
+        settings.setValue(strInputName, Repair_NA);
+        break;
+    }
+    strInputName = "GuidingShaftsScara";
+    switch( m_pgbRepairZT_GuidingShaftsScara->checkedId())
+    {
+      case Repair_OK:
+        settings.setValue(strInputName, Repair_OK);
+        break;
+      case Repair_Repair:
+        settings.setValue(strInputName, Repair_Repair);
+        break;
+      case Repair_NA:
+        settings.setValue(strInputName, Repair_NA);
+        break;
+    }
+    strInputName = "GuidingShaftsNT";
+    switch( m_pgbRepairZT_GuidingShaftsNT->checkedId())
+    {
+      case Repair_OK:
+        settings.setValue(strInputName, Repair_OK);
+        break;
+      case Repair_Repair:
+        settings.setValue(strInputName, Repair_Repair);
+        break;
+      case Repair_NA:
+        settings.setValue(strInputName, Repair_NA);
+        break;
+    }
+    strInputName = "SmallGuidingShafts";
+    switch( m_pgbRepairZT_SmallGuidingShafts->checkedId())
+    {
+      case Repair_OK:
+        settings.setValue(strInputName, Repair_OK);
+        break;
+      case Repair_Repair:
+        settings.setValue(strInputName, Repair_Repair);
+        break;
+      case Repair_NA:
+        settings.setValue(strInputName, Repair_NA);
+        break;
+    }
+    strInputName = "ClampingFlange";
+    switch( m_pgbRepairZT_ClampingFlange->checkedId())
+    {
+      case Repair_OK:
+        settings.setValue(strInputName, Repair_OK);
+        break;
+      case Repair_Repair:
+        settings.setValue(strInputName, Repair_Repair);
+        break;
+      case Repair_NA:
+        settings.setValue(strInputName, Repair_NA);
+        break;
+    }
+    strInputName = "AdapterCable";
+    switch( m_pgbRepairZT_AdapterCable->checkedId())
+    {
+      case Repair_OK:
+        settings.setValue(strInputName, Repair_OK);
+        break;
+      case Repair_Repair:
+        settings.setValue(strInputName, Repair_Repair);
+        break;
+      case Repair_NA:
+        settings.setValue(strInputName, Repair_NA);
+        break;
+    }
+    strInputName = "RepairIn";
+    switch( m_pgbRepairZT_RepairIn->checkedId())
+    {
+        case RepairIn_TW:
+        settings.setValue(strInputName, RepairIn_TW);
+        break;
+        case RepairIn_EU:
+        settings.setValue(strInputName, RepairIn_EU);
+        break;
+    }
 }
 
 
-void CAnalyseData::getDataFromGUIArm(void)
+//************ EXPORT *************************
+void CAnalyseData::on_pbExport_clicked( void )
 {
+    // if fields for label are empty, give a warning!
+    if(ui->leRobotTypeSN->text().isEmpty() || ui->leARMSN->text().isEmpty() || ui->leDMSN->text().isEmpty() || ui->leZTSN2->text().isEmpty()){
+        QMessageBox::warning(this, "Information missing", "Please fill out Robot Type serial number, Arm serial number, DM serial number, and Z serial number before exporting.");
+        return;
+    }
 
-    getImagePathFromArm();
-    getRobotTypeNoSNNCNRFromArm();// get Robot type and no./robotSN/old12NC/new12NC/repairNR
-    getGrayBoxDataFromARM();// get grayboxSN/firstDeliveryDate/repairNo/lastRepairDate
-    getHDMotorTypeFromARM();// get hdMotorType
-    getAdviceCauserFromARM();// get analyseAdviceARM/analyseCauserARM
-    getArmOKUpgradeFromARM();// get isARMOk/isUpgradeARM
-    getVacFlowValFromARM();// get vacARM/flowARM
-    getGeoDataFromARM();// get geoRz/geoRx/geoRy/geoDeletaH/isGeoOk
-    getTestsResultsFromARM();// get isEletricityOkARM/isDataTransOkARM/isSurOkARM/isFunOkARM/isMagneticOkARM
-    getRepPosPADataFromARM();// get repPosPA_R/repPosPA_TH
-    getAnalyseDataFromARM();// get analyserARM/analyseDateARM/isAnalyseOkARM
-    getTextDocumentFromArm();// get Arm comments
-    //getEndDefectTiltDataFromARM();// get rMinus208H4Val/rMinus208RxVal/rMinus208RyVal/
-                                  //     rZeroH4Val/rZeroRxVal/rZeroRyVal/
-                                  //     r75H4Val/r75RxVal/r75RyVal/
-                                  //     r174H4Val/r174RxVal/r174RyVal/
-                                  //     r203H4Val/r203RxVal/r203RyVal/
-                                  //     r385H4Val/r385RxVal/r385RyVal
-    getULValFromARM();// get analyseUVal/analyseLVal
+
+    ui->lbStatus->setText("Starting export");
+
+    // track progress
+    int counterAll=0;
+    int counterItem=0;
+    if(ui->cbAnalyseSheet->isChecked())
+        counterAll++;
+    if(ui->cbRepairMatrix->isChecked())
+        counterAll++;
+    if(ui->cbPrintLabel->isChecked())
+        counterAll++;
+    if(ui->cbMOMSheet->isChecked())
+        counterAll++;
+
+    qDebug() << counterAll;
+
+    if(counterAll > 0){
+        ui->lbStatus->setText("Starting export. Save to Ini first.");
+        progressSave(3);
+        QThread::sleep(1);
+        on_pbSaveIni_clicked();
+        progressSave(6);
+    }else{
+        ui->lbStatus->setText("WARNING: No export selected! Still save to Ini.");
+        progressSave(3);
+        QThread::sleep(1);
+        on_pbSaveIni_clicked();
+        progressSave(100);
+        ui->lbStatus->setText("WARNING: No export selected! Still saved to Ini.");
+        ui->lbProcess->hide();
+        return;
+    }
+    ui->lbProcess->show();
+    ui->lbProcess->setFixedWidth(25);
+    ui->lbProcess->setText(QString::number(counterItem) +"/"+QString::number(counterAll));
+
+    if(ui->cbAnalyseSheet->isChecked()){
+        // export Analyse Excel
+        createAnalyseSheet();
+        ui->lbProcess->setText(QString::number(++counterItem) +"/"+QString::number(counterAll));
+    }
+    if(ui->cbRepairMatrix->isChecked()){
+        // create Repair Matrix
+        createRepairMatrix();
+        ui->lbProcess->setText(QString::number(++counterItem) +"/"+QString::number(counterAll));
+    }
+    if(ui->cbPrintLabel->isChecked()){
+        createPrintLabel();
+        ui->lbProcess->setText(QString::number(++counterItem) +"/"+QString::number(counterAll));
+    }
+    if(ui->cbMOMSheet->isChecked()){
+        createMOMSheet();
+        ui->lbProcess->setText(QString::number(++counterItem) +"/"+ QString::number(counterAll));
+    }
+    ui->lbStatus->setText("Export finished");
+
 }
 
-void CAnalyseData::getDataFromGUIDM(void)
+// general helper functions
+void CAnalyseData::getRowColumn(QString cell, int* row, int* column)
 {
-    getDMSNFromDM();// get DMSN
-    getAdviceCauserFromDM();// get analyseAdviceDM/analyseCauserDM
-    getDMOKUpgradeFromDM();// get isDMOk/isUpgradeDM
-    getVacFlowValFromDM();// get vacDM/flowDM
-    getAngleDataFromDM();// get ang90Val/ang180Val/ang270Val
-    getTestsResultsFromDM();// get isMotorTHOk/isMotorROk/isGearTHOk/isGearROk/itTiltOk/isEncTHOk/isEncROk/isEletricityOkDM/isDataTransOkDM/isSurOkDM/isFunOkDM/isConductivityOkDM
-    getCommutationDataFromDM();// get commutationTH/commutationR
-    getZeroingPosDataFromDM();// get zeroingPosTH/zeroingPosR
-    //getAnalyseDataFromDM();// get analyserDM/analyseDateDM/isAnalyseOkDM >>> not need
-    getTextDocumentFromDM();// get analyseCommentsDM
-    getDMDeliveryRepairDate();
-}
+    QRegExp rx("([A-Z]+)(\\d+)");
+    rx.indexIn(cell);
 
-void CAnalyseData::getDataFromGUIZT(void)
-{
-    getZTSNFromZT();// get ZTSN/ZTSN2
-    getAdviceCauserFromZT();// get analyseAdviceZT/analyseCauserZT
-    getZTOKUpgradeFromZT();// get isZTOk/isUpgradeZT
-    getMeasureDataFromZT();// get zUpSCARAVal/zDNSCARAVal/zUpSCARANTVal/zDNSCARANTVal/zUpFAVal/zDNFAVal/zUpNXTVal/zDNNXTVal
-    getTestsResultsFromZT();// get isLVDTOk/isRefSnesorOk/isMotorZOk/isRunningNoiseOk/isCableOk/isSurOkZT/isConductivityOkZT
-    //getAnalyseDataFromZT();// get analyserZT/analyseDateZT/isAnalyseOkZT // not need
-    getTextDocumentFromZT();// get analyseCommentsZT
-    getZTDeliveryRepairDate();
+    QByteArray bytes = rx.cap(1).toLocal8Bit();
+    for(int i = 0; i < bytes.size(); i++)
+    {
+        *column += bytes[i] - 'A' + 1;
+    }
+    *row = rx.cap(2).toInt();
 }
-
-void CAnalyseData::setRadioButtonsIDsInGB4ARM( void)
+void CAnalyseData::progressSave(int value)
 {
-    // set Robot type group
-//    m_pgbRobotTypeARM = new QButtonGroup( this);
-//    m_pgbRobotTypeARM->addButton( ui->rbAAR, 0);
-//    m_pgbRobotTypeARM->addButton( ui->rbAARNT, 1);
-//    m_pgbRobotTypeARM->addButton( ui->rbNXT, 2);
-//    ui->rbAAR->setChecked( true);
-//    if(m_pgbAnalyseAdvARM!=nullptr)
+    ui->pgbProcess->setValue(value);
+}
+void CAnalyseData::closeExcel( void)
+{
+    if(m_objWorkbook != nullptr)
+    {
+        m_objWorkbook->dynamicCall("Close (Boolean)", false);
+        m_objWorkbook = nullptr;
+    }// if()
+
+    if(m_objExcel != nullptr)
+    {
+        m_objExcel->dynamicCall("Quit (void)");
+        delete m_objExcel;
+        m_objExcel = nullptr;
+    }// if()
+    vecProtocolItems.clear();
+    vecRepairItems.clear();
+
+//    if(m_objLabelExcel != nullptr)
 //    {
-//        delete m_pgbAnalyseAdvARM;
-//        delete m_pgbCauserARM;
-//        delete m_pgbRepairARMUpgradeChk;
-//        delete m_pgbSurfaceDamegeChkARM;
-//        delete m_pgbMagAttChkARM;
-//        delete m_pgbEleChkARM;
-//        delete m_pgbGeoChkARM;
-//        delete m_pgbFunChkARM;
-//        delete m_pgbDataTransChkARM;
+//       m_objLabelExcel->dynamicCall("Quit (void)");
+//       delete m_objLabelExcel;
+//       m_objLabelExcel = nullptr;
 //    }
-    m_pgbHDMotorType = new QButtonGroup( this );
-    m_pgbHDMotorType->addButton(ui->rbHDMotorType_V0, V0);
-    m_pgbHDMotorType->addButton(ui->rbHDMotorType_V1, V1);
-    m_pgbHDMotorType->addButton(ui->rbHDMotorType_DFV1, DFV1);
 
-
-    // set Analyse Advice group
-    m_pgbAnalyseAdvARM = new QButtonGroup( this);
-    m_pgbAnalyseAdvARM->addButton(ui->rbNFFARM, 0);
-    m_pgbAnalyseAdvARM->addButton(ui->rbWarrentyARM, 1);
-    m_pgbAnalyseAdvARM->addButton(ui->rbGoodWillARM, 2);
-    m_pgbAnalyseAdvARM->addButton(ui->rbWithCostsARM, 3);
-    m_pgbAnalyseAdvARM->addButton(ui->rbScrapItemARM, 4);
-    //ui->rbNFFARM->setChecked(true);
-
-    // set Causer group
-    m_pgbCauserARM = new QButtonGroup( this);
-    m_pgbCauserARM->addButton( ui->rbCustomerARM, 0);
-    m_pgbCauserARM->addButton( ui->rbASYSARM, 1);
-    //ui->rbCustomerARM->setChecked( true);
-
-    // set ARM repair or not
-    m_pgbRepairARMUpgradeChk = new QButtonGroup( this);
-    m_pgbRepairARMUpgradeChk->addButton( ui->rbRepairARM, 1);
-    m_pgbRepairARMUpgradeChk->addButton( ui->rbARMIsOK, 0);
-    //ui->rbRepairARM->setChecked( true);
-
-    // set ARM Analyse result
-//    m_pgbAnalyseChk = new QButtonGroup( this);
-//    m_pgbAnalyseChk->addButton( ui->rbARMAnalyseOK, 0);
-//    m_pgbAnalyseChk->addButton( ui->rbARMAnalyseNOK, 1);
-//    ui->rbARMAnalyseNOK->setChecked( true);
-
-    // set ARM surface damage result
-    m_pgbSurfaceDamegeChkARM = new QButtonGroup( this);
-    m_pgbSurfaceDamegeChkARM->addButton( ui->rbSurfNotDamegeOKARM, 0);
-    m_pgbSurfaceDamegeChkARM->addButton( ui->rbSurfNotDamegeNOKARM, 1);
-    m_pgbSurfaceDamegeChkARM->addButton( ui->rbSurfNotDamegeNAARM, 2);  //new code*****************
-    //ui->rbSurfNotDamegeNOKARM->setChecked( true);
-
-    // set ARM Magnetic result
-    m_pgbMagAttChkARM = new QButtonGroup( this);
-    m_pgbMagAttChkARM->addButton( ui->rbMagAttOK, 0);
-    m_pgbMagAttChkARM->addButton( ui->rbMagAttNOK, 1);
-    m_pgbMagAttChkARM->addButton( ui->rbMagAttNA, 2);  //new code*****************
-    //ui->rbMagAttNOK->setChecked( true);
-
-    // set ARM Electricity result
-    m_pgbEleChkARM = new QButtonGroup( this);
-    m_pgbEleChkARM->addButton( ui->rbEletricityOKARM, 0);
-    m_pgbEleChkARM->addButton( ui->rbEletricityNOKARM, 1);
-    m_pgbEleChkARM->addButton( ui->rbEletricityNAARM, 2);  //new code*****************
-    //ui->rbEletricityNOKARM->setChecked( true);
-
-    // set ARM GEO result
-    m_pgbGeoChkARM = new QButtonGroup( this);
-    m_pgbGeoChkARM->addButton( ui->rbGeoOK, 0);
-    m_pgbGeoChkARM->addButton( ui->rbGeoNOK, 1);
-    m_pgbGeoChkARM->addButton( ui->rbGeoNA, 2);  //new code*****************
-   //ui->rbGeoNOK->setChecked( true);
-
-    // set ARM function result
-    m_pgbFunChkARM = new QButtonGroup( this);
-    m_pgbFunChkARM->addButton( ui->rbFunTestOKARM, 0);
-    m_pgbFunChkARM->addButton( ui->rbFunTestNOKARM, 1);
-    m_pgbFunChkARM->addButton( ui->rbFunTestNAARM, 2);  //new code*****************
-    //ui->rbFunTestNOKARM->setChecked( true);
-
-    // set ARM Data transfer result
-    m_pgbDataTransChkARM = new QButtonGroup( this);
-    m_pgbDataTransChkARM->addButton( ui->rbDataTransOKARM, 0);
-    m_pgbDataTransChkARM->addButton( ui->rbDataTransNOKARM, 1);
-    m_pgbDataTransChkARM->addButton( ui->rbDataTransNAARM, 2);  //new code*****************
-    //ui->rbDataTransNOKARM->setChecked( true);
-}
-
-// for DM
-void CAnalyseData::setRadioButtonsIDsInGB4DM( void)
-{
-//    if(m_pgbAnalyseAdvDM!=nullptr)
+//    if(m_objLabelWorkbook != nullptr)
 //    {
-//        delete m_pgbAnalyseAdvDM;
-//        delete m_pgbCauserDM;
-//        delete m_pgbRepairDMUpgradeChk;
-//        delete m_pgbSurfaceDamegeChkDM;
-//        delete m_pgbEleChkDM;
-//        delete m_pgbFunChkDM;
-//        delete m_pgbDataTransChkDM;
-//        delete m_pgbTHMotorChkDM;
-//        delete m_pgbRMotorChkDM;
-//        delete m_pgbTHGearChkDM;
-//        delete m_pgbRGearChkDM;
-//        delete m_pgbTiltChkDM;
-//        delete m_pgbEncJumpTHChkDM;
-//        delete m_pgbEncJumpRChkDM;
-//        delete m_pgbConductivityChkDM;
+//       m_objLabelWorkbook->dynamicCall("Quit (void)");
+//       delete m_objLabelWorkbook;
+//       m_objLabelWorkbook = nullptr;
 //    }
-    // set Analyse Advice group
-    m_pgbAnalyseAdvDM = new QButtonGroup( this);
-    m_pgbAnalyseAdvDM->addButton(ui->rbNFFDM, 0);
-    m_pgbAnalyseAdvDM->addButton(ui->rbWarrentyDM, 1);
-    m_pgbAnalyseAdvDM->addButton(ui->rbGoodWillDM, 2);
-    m_pgbAnalyseAdvDM->addButton(ui->rbWithCostsDM, 3);
-    m_pgbAnalyseAdvDM->addButton(ui->rbScrapItemDM, 4);
-    //ui->rbNFFDM->setChecked(true);
-
-    // set Causer group
-    m_pgbCauserDM = new QButtonGroup( this);
-    m_pgbCauserDM->addButton( ui->rbCustomerDM, 0);
-    m_pgbCauserDM->addButton( ui->rbASYSDM, 1);
-    //ui->rbCustomerDM->setChecked( true);
-
-    // set DM repair or not
-    m_pgbRepairDMUpgradeChk = new QButtonGroup( this);
-    m_pgbRepairDMUpgradeChk->addButton( ui->rbRepairDM, 1);
-    m_pgbRepairDMUpgradeChk->addButton( ui->rbDMIsOK, 0);
-    //ui->rbRepairDM->setChecked( true);
-
-    // set DM Analyse result
-//    m_pgbAnalyseChkDM = new QButtonGroup( this);
-//    m_pgbAnalyseChkDM->addButton( ui->rbDMAnalyseOK, 0);
-//    m_pgbAnalyseChkDM->addButton( ui->rbDMAnalyseNOK, 1);
-//    ui->rbDMAnalyseNOK->setChecked( true);
-
-    // set DM surface damage result
-    m_pgbSurfaceDamegeChkDM = new QButtonGroup( this);
-    m_pgbSurfaceDamegeChkDM->addButton( ui->rbSurfNotDamegeOKDM, 0);
-    m_pgbSurfaceDamegeChkDM->addButton( ui->rbSurfNotDamegeNOKDM, 1);
-    m_pgbSurfaceDamegeChkDM->addButton( ui->rbSurfNotDamegeNADM, 2);     //new code****************************
-    //ui->rbSurfNotDamegeNOKDM->setChecked( true);
-
-    // set DM cable holder
-    m_pgbCableHolderChkDM = new QButtonGroup( this);
-    m_pgbCableHolderChkDM->addButton( ui->rbCableHolderNEW, OldNew_NEW);
-    m_pgbCableHolderChkDM->addButton( ui->rbCableHolderOLD, OldNew_OLD);
-//    m_pgbCableHolderChkDM->addButton(nullptr, OldNew_NA);
-
-
-    // set DM Electricity result
-    m_pgbEleChkDM = new QButtonGroup( this);
-    m_pgbEleChkDM->addButton( ui->rbEletricityOKDM, 0);
-    m_pgbEleChkDM->addButton( ui->rbEletricityNOKDM, 1);
-    m_pgbEleChkDM->addButton( ui->rbEletricityNADM, 2);     //new code****************************
-    //ui->rbEletricityNOKDM->setChecked( true);
-
-    // set DM function result
-    m_pgbFunChkDM = new QButtonGroup( this);
-    m_pgbFunChkDM->addButton( ui->rbFunTestOKDM, 0);
-    m_pgbFunChkDM->addButton( ui->rbFunTestNOKDM, 1);
-    m_pgbFunChkDM->addButton( ui->rbFunTestNADM, 2);     //new code****************************
-    //ui->rbFunTestNOKDM->setChecked( true);
-
-    // set DM Data transfer result
-    m_pgbDataTransChkDM = new QButtonGroup( this);
-    m_pgbDataTransChkDM->addButton( ui->rbDataTransTestOKDM, 0);
-    m_pgbDataTransChkDM->addButton( ui->rbDataTransTestNOKDM, 1);
-    m_pgbDataTransChkDM->addButton( ui->rbDataTransTestNADM, 2);     //new code****************************
-    //ui->rbDataTransTestNOKDM->setChecked( true);
-
-    // set DM TH Motor
-    m_pgbTHMotorChkDM = new QButtonGroup( this);
-    m_pgbTHMotorChkDM->addButton( ui->rbTHMotorOK, 0);
-    m_pgbTHMotorChkDM->addButton( ui->rbTHMotorNOK, 1);
-    m_pgbTHMotorChkDM->addButton( ui->rbTHMotorNA, 2);     //new code****************************
-    //ui->rbTHMotorNOK->setChecked( true);
-
-    // set DM R Motor
-    m_pgbRMotorChkDM = new QButtonGroup( this);
-    m_pgbRMotorChkDM->addButton( ui->rbRMotorOK, 0);
-    m_pgbRMotorChkDM->addButton( ui->rbRMotorNOK, 1);
-    m_pgbRMotorChkDM->addButton( ui->rbRMotorNA, 2);     //new code****************************
-    //ui->rbRMotorNOK->setChecked( true);
-
-    // set DM TH Gear
-    m_pgbTHGearChkDM = new QButtonGroup( this);
-    m_pgbTHGearChkDM->addButton( ui->rbTHGearOK, 0);
-    m_pgbTHGearChkDM->addButton( ui->rbTHGearNOK, 1);
-    m_pgbTHGearChkDM->addButton( ui->rbTHGearNA, 2);     //new code****************************
-    //ui->rbTHGearNOK->setChecked( true);
-
-    // set DM R Gear
-    m_pgbRGearChkDM = new QButtonGroup( this);
-    m_pgbRGearChkDM->addButton( ui->rbRGearOK, 0);
-    m_pgbRGearChkDM->addButton( ui->rbRGearNOK, 1);
-    m_pgbRGearChkDM->addButton( ui->rbRGearNA, 2);     //new code****************************
-    //ui->rbRGearNOK->setChecked( true);
-
-    // set DM Tilt ok or not
-    m_pgbTiltChkDM = new QButtonGroup( this);
-    m_pgbTiltChkDM->addButton( ui->rbTiltOK, 0);
-    m_pgbTiltChkDM->addButton( ui->rbTiltNOK, 1);
-    m_pgbTiltChkDM->addButton( ui->rbTiltNA, 2);     //new code****************************
-    //ui->rbTiltNOK->setChecked( true);
-
-    // set DM Encoder Jump TH
-    m_pgbEncJumpTHChkDM = new QButtonGroup( this);
-    m_pgbEncJumpTHChkDM->addButton( ui->rbEncJumpTestTHOK, 0);
-    m_pgbEncJumpTHChkDM->addButton( ui->rbEncJumpTestTHNOK, 1);
-    m_pgbEncJumpTHChkDM->addButton( ui->rbEncJumpTestTHNA, 2);     //new code****************************
-    //ui->rbEncJumpTestTHNOK->setChecked( true);
-
-    // set DM Encoder Jump R
-    m_pgbEncJumpRChkDM = new QButtonGroup( this);
-    m_pgbEncJumpRChkDM->addButton( ui->rbEncJumpTestROK, 0);
-    m_pgbEncJumpRChkDM->addButton( ui->rbEncJumpTestRNOK, 1);
-    m_pgbEncJumpRChkDM->addButton( ui->rbEncJumpTestRNA, 2);     //new code****************************
-    //ui->rbEncJumpTestRNOK->setChecked( true);
-
-    // set DM conductivity
-    m_pgbConductivityChkDM = new QButtonGroup( this);
-    m_pgbConductivityChkDM->addButton( ui->rbConductivityChkOKDM, 0);
-    m_pgbConductivityChkDM->addButton( ui->rbConductivityChkNOKDM, 1);
-    m_pgbConductivityChkDM->addButton( ui->rbConductivityChkNADM, 2);     //new code****************************
-    //ui->rbConductivityChkNOKDM->setChecked( true);
 }
 
-// for ZT
-void CAnalyseData::setRadioButtonsIDsInGB4ZT( void)
-{
-    // set Analyse Advice group
-    m_pgbAnalyseAdvZT = new QButtonGroup( this);
-    m_pgbAnalyseAdvZT->addButton(ui->rbNFFZT, 0);
-    m_pgbAnalyseAdvZT->addButton(ui->rbWarrentyZT, 1);
-    m_pgbAnalyseAdvZT->addButton(ui->rbGoodWillZT, 2);
-    m_pgbAnalyseAdvZT->addButton(ui->rbWithCostsZT, 3);
-    m_pgbAnalyseAdvZT->addButton(ui->rbScrapItemZT, 4);
-    //ui->rbNFFZT->setChecked(true);
-
-    // set Causer group
-    m_pgbCauserZT = new QButtonGroup( this);
-    m_pgbCauserZT->addButton( ui->rbCustomerZT, 0);
-    m_pgbCauserZT->addButton( ui->rbASYSZT, 1);
-    //ui->rbCustomerZT->setChecked( true);
-
-    // set ZT repair or not
-    m_pgbRepairZTUpgradeChk = new QButtonGroup( this);
-    m_pgbRepairZTUpgradeChk->addButton( ui->rbRepairZT, 1);
-    m_pgbRepairZTUpgradeChk->addButton( ui->rbZTIsOK, 0);
-    //ui->rbRepairZT->setChecked( true);
-
-    // set ZT Analyse result
-//    m_pgbAnalyseChkZT = new QButtonGroup( this);
-//    m_pgbAnalyseChkZT->addButton( ui->rbZTAnalyseOK, 0);
-//    m_pgbAnalyseChkZT->addButton( ui->rbZTAnalyseNOK, 1);
-//    ui->rbZTAnalyseNOK->setChecked( true);
-
-    // set ZT surface damage result
-    m_pgbSurfaceDamegeChkZT = new QButtonGroup( this);
-    m_pgbSurfaceDamegeChkZT->addButton( ui->rbSurfNotDamegeOKZT, 0);
-    m_pgbSurfaceDamegeChkZT->addButton( ui->rbSurfNotDamegeNOKZT, 1);
-    m_pgbSurfaceDamegeChkZT->addButton( ui->rbSurfNotDamegeNAZT, 2);    //new code**************************
-    //ui->rbSurfNotDamegeNOKZT->setChecked( true);
-
-    // set ZT LVDT
-    m_pgbLVDTZT = new QButtonGroup( this);
-    m_pgbLVDTZT->addButton( ui->rbLVDTOK, 0);
-    m_pgbLVDTZT->addButton( ui->rbLVDTNOK, 1);
-    m_pgbLVDTZT->addButton( ui->rbLVDTNA, 2);       //new code**************************
-    //ui->rbLVDTNOK->setChecked( true);
-
-    // set ZT Ref Sensor
-    m_pgbRefSenZT = new QButtonGroup( this);
-    m_pgbRefSenZT->addButton( ui->rbRefSensorOK, 0);
-    m_pgbRefSenZT->addButton( ui->rbRefSensorNOK, 1);
-    m_pgbRefSenZT->addButton( ui->rbRefSensorNA, 2);       //new code**************************
-    //ui->rbRefSensorNOK->setChecked( true);
-
-    // set ZT Z Motor
-    m_pgbZMotorZT = new QButtonGroup( this);
-    m_pgbZMotorZT->addButton( ui->rbZMotorOK, 0);
-    m_pgbZMotorZT->addButton( ui->rbZMotorNOK, 1);
-    m_pgbZMotorZT->addButton( ui->rbZMotorNA, 2);       //new code**************************
-   // ui->rbZMotorNOK->setChecked( true);
-
-    // set ZT Running Noise
-    m_pgbRunningNoiseZT = new QButtonGroup( this);
-    m_pgbRunningNoiseZT->addButton( ui->rbRunNoiseOK, 0);
-    m_pgbRunningNoiseZT->addButton( ui->rbRunNoiseNOK, 1);
-    m_pgbRunningNoiseZT->addButton( ui->rbRunNoiseNA, 2);       //new code**************************
-    //ui->rbRunNoiseNOK->setChecked( true);
-
-    // set ZT Cable
-    m_pgbCableZT = new QButtonGroup( this);
-    m_pgbCableZT->addButton( ui->rbCableOK, 0);
-    m_pgbCableZT->addButton( ui->rbCableNOK, 1);
-    m_pgbCableZT->addButton( ui->rbCableNA, 2);       //new code**************************
-    //ui->rbCableNOK->setChecked( true);
-
-    // set ZT conductivity
-    m_pgbConductivityChkZT = new QButtonGroup( this);
-    m_pgbConductivityChkZT->addButton( ui->rbConductivityChkOKZT, 0);
-    m_pgbConductivityChkZT->addButton( ui->rbConductivityChkNOKZT, 1);
-    m_pgbConductivityChkZT->addButton( ui->rbConductivityChkNAZT, 2);   //new code**************************
-    //ui->rbConductivityChkNOKZT->setChecked( true);
-}
-
-// ------------ WRITE EXCEL ------------------
+// ------------ WRITE ANALYSE SHEET ------------------
 void CAnalyseData::createAnalyseSheet()
 {
 //    // save the protocol to excel file
@@ -3883,38 +4778,176 @@ void CAnalyseData::createAnalyseSheet()
     ui->lbStatus->setText("Analyse Sheet was created");
 }
 
-void CAnalyseData::closeExcel( void)
+void CAnalyseData::buildProtocolTable( void)
 {
-    if(m_objWorkbook != nullptr)
-    {
-        m_objWorkbook->dynamicCall("Close (Boolean)", false);
-        m_objWorkbook = nullptr;
-    }// if()
+                               // Sheet                  // Value                                                 // Cell             // Function
+    //---- ARM -----------------------------------------------------------------------------------------------------------------------------------------//
+    vecProtocolItems.append({eSHEET::AnalyseARM,     ui->lbRobotType->text(),                                       "B1",           nullptr});  //Changed ***
+    vecProtocolItems.append({eSHEET::AnalyseARM,     ui->leRobotTypeSN->text(),                                     "C1",           nullptr});  //Changed ***
+    vecProtocolItems.append({eSHEET::AnalyseARM,     ui->leArmFirstDelivery->text(),                                "E3",           nullptr});  //new ***
+    vecProtocolItems.append({eSHEET::AnalyseARM,     ui->leArmLastRepair->text(),                                   "E4",           nullptr});  //new ***
+    vecProtocolItems.append({eSHEET::AnalyseARM,     ui->leRobotSN->text(),                                         "D7",           nullptr});
+    vecProtocolItems.append({eSHEET::AnalyseARM,     ui->leARMSN->text(),                                           "D8",           nullptr});
+    vecProtocolItems.append({eSHEET::AnalyseARM,     ui->leOld12NC->text(),                                         "D10",          nullptr});
+    vecProtocolItems.append({eSHEET::AnalyseARM,     ui->leNew12NC->text(),                                         "D11",          nullptr});
+    vecProtocolItems.append({eSHEET::AnalyseARM,     ui->leRepairNRARM->text(),                                     "D13",          nullptr});
+    vecProtocolItems.append({eSHEET::AnalyseARM,     ui->leVacuumARM->text(),                                       "D14",          chkTextCokorItem});
+    vecProtocolItems.append({eSHEET::AnalyseARM,     ui->leFlowARM->text(),                                         "D15",          chkTextCokorItem});
+    vecProtocolItems.append({eSHEET::AnalyseARM,     ui->leOAG->text(),                                             "D16",          chkTextCokorItem});
+    vecProtocolItems.append({eSHEET::AnalyseARM,     ui->leUAG->text(),                                             "D17",          chkTextCokorItem});
+    vecProtocolItems.append({eSHEET::AnalyseARM,     ui->leGeoRz->text(),                                           "D18",          chkTextCokorItem});
+    vecProtocolItems.append({eSHEET::AnalyseARM,     ui->leGeoRx->text(),                                           "D19",          chkTextCokorItem});
+    vecProtocolItems.append({eSHEET::AnalyseARM,     ui->leGeoRy->text(),                                           "D20",          chkTextCokorItem});
+    vecProtocolItems.append({eSHEET::AnalyseARM,     ui->leGeoDelHeight->text(),                                    "D21",          chkTextCokorItem});
+//    vecProtocolItems.append({eSHEET::AnalyseARM,     m_pgbGeoChkARM->checkedId(),                                   "E22",          nullptr});
+    vecProtocolItems.append({eSHEET::AnalyseARM,     m_pgbGeoChkARM->checkedId(),                                   "D22",          nullptr});  //Changed ***
+//    vecProtocolItems.append({eSHEET::AnalyseARM,     m_pgbEleChkARM->checkedId(),                                   "E23",          nullptr});
+    vecProtocolItems.append({eSHEET::AnalyseARM,     m_pgbEleChkARM->checkedId(),                                   "D23",          nullptr});  //Changed ***
+//    vecProtocolItems.append({eSHEET::AnalyseARM,     m_pgbDataTransChkARM->checkedId(),                             "E24",          nullptr});
+//    vecProtocolItems.append({eSHEET::AnalyseARM,     m_pgbSurfaceDamegeChkARM->checkedId(),                         "E25",          nullptr});
+//    vecProtocolItems.append({eSHEET::AnalyseARM,     m_pgbFunChkARM->checkedId(),                                   "E26",          nullptr});
+    vecProtocolItems.append({eSHEET::AnalyseARM,     m_pgbDataTransChkARM->checkedId(),                             "D24",          nullptr});  //****
+    vecProtocolItems.append({eSHEET::AnalyseARM,     m_pgbSurfaceDamegeChkARM->checkedId(),                         "D25",          nullptr});  //****
+    vecProtocolItems.append({eSHEET::AnalyseARM,     m_pgbFunChkARM->checkedId(),                                   "D26",          nullptr});  //****
+    vecProtocolItems.append({eSHEET::AnalyseARM,     ui->leRepPosPAR->text(),                                       "D27",          chkTextCokorItem});
+    vecProtocolItems.append({eSHEET::AnalyseARM,     ui->leRepPosPATH->text(),                                      "D28",          chkTextCokorItem});
+//    vecProtocolItems.append({eSHEET::AnalyseARM,     m_pgbMagAttChkARM->checkedId(),                                "E29",          nullptr});
+    vecProtocolItems.append({eSHEET::AnalyseARM,     m_pgbMagAttChkARM->checkedId(),                                "D29",          nullptr});  //****
+    vecProtocolItems.append({eSHEET::AnalyseARM,     ui->leAnalysePerformerARM->text(),                             "D33",          nullptr});
+    vecProtocolItems.append({eSHEET::AnalyseARM,     ui->leAnalyseDateARM->text(),                                  "D34",          nullptr});
+    vecProtocolItems.append({eSHEET::AnalyseARM,     ui->leGrayboxSN->text(),                                       "I1",           nullptr});
+    vecProtocolItems.append({eSHEET::AnalyseARM,     ui->leFirstDeliveryDate->text(),                               "I2",           nullptr});
+    vecProtocolItems.append({eSHEET::AnalyseARM,     ui->leRepairNo->text(),                                        "I3",           nullptr});
+    vecProtocolItems.append({eSHEET::AnalyseARM,     ui->leLastRepairDate->text(),                                  "I4",           nullptr});
+    vecProtocolItems.append({eSHEET::AnalyseARM,     m_pgbAnalyseAdvARM->checkedId(),                               "F7",           writeAdviceItem});
+    vecProtocolItems.append({eSHEET::AnalyseARM,     m_pgbCauserARM->checkedId(),                                   "H7",           writeCauserItem});
+    vecProtocolItems.append({eSHEET::AnalyseARM,     m_pgbRepairARMUpgradeChk->checkedId(),                         "I10",          writeRepairOrNotItem});
+    vecProtocolItems.append({eSHEET::AnalyseARM,     ui->cbUpgradeARM->isChecked(),                                 "I11",          writeUpgradeItem});
+    vecProtocolItems.append({eSHEET::AnalyseARM,     m_comments4Arm,                                                "H14",          writeCommentsItem});
+    vecProtocolItems.append({eSHEET::AnalyseARM,     m_imgPath,                                                     "B36",          insertImgItem});//B45
+    vecProtocolItems.append({eSHEET::AnalyseARM,     m_RemarkImgPath_ARM,                                           "G36",          insertRemarkImg});//new code ******
 
-    if(m_objExcel != nullptr)
-    {
-        m_objExcel->dynamicCall("Quit (void)");
-        delete m_objExcel;
-        m_objExcel = nullptr;
-    }// if()
-    vecProtocolItems.clear();
-    vecRepairItems.clear();
+    //---- DM -----------------------------------------------------------------------------------------------------------------------------------------//
+    vecProtocolItems.append({eSHEET::AnalyseDM,      ui->lbRobotType->text(),                                       "B1",           nullptr});  //Changed****
+    vecProtocolItems.append({eSHEET::AnalyseDM,      ui->leRobotTypeSN->text(),                                     "C1",           nullptr});  //Changed***
+    vecProtocolItems.append({eSHEET::AnalyseDM,      ui->leDMFirstDelivery->text(),                                 "E3",           nullptr});  //new ***
+    vecProtocolItems.append({eSHEET::AnalyseDM,      ui->leDMLastRepair->text(),                                    "E4",           nullptr});  //new ***
+    vecProtocolItems.append({eSHEET::AnalyseDM,      ui->leRobotSN->text(),                                         "D7",           nullptr});
+    vecProtocolItems.append({eSHEET::AnalyseDM,      ui->leDMSN->text(),                                            "D9",           nullptr});
+    vecProtocolItems.append({eSHEET::AnalyseDM,      ui->leRepairNRARM->text(),                                     "D13",          nullptr});
+    vecProtocolItems.append({eSHEET::AnalyseDM,      ui->leVacuumDM->text(),                                        "D14",          chkTextCokorItem});
+    vecProtocolItems.append({eSHEET::AnalyseDM,      ui->leFlowDM->text(),                                          "D15",          chkTextCokorItem});
+    vecProtocolItems.append({eSHEET::AnalyseDM,      ui->le180DegVal->text(),                                       "D17",          chkTextCokorItem});
+    vecProtocolItems.append({eSHEET::AnalyseDM,      ui->le270DegVal->text(),                                       "D18",          chkTextCokorItem});
+    vecProtocolItems.append({eSHEET::AnalyseDM,      ui->le180DegVal_2->text(),                                     "F17",          chkTextCokorItem});
+    vecProtocolItems.append({eSHEET::AnalyseDM,      ui->le270DegVal_2->text(),                                     "F18",          chkTextCokorItem});
+//    vecProtocolItems.append({eSHEET::AnalyseDM,      m_pgbTHMotorChkDM->checkedId(),                                "E19",          nullptr});
+//    vecProtocolItems.append({eSHEET::AnalyseDM,      m_pgbRMotorChkDM->checkedId(),                                 "E20",          nullptr});
+//    vecProtocolItems.append({eSHEET::AnalyseDM,      m_pgbTHGearChkDM->checkedId(),                                 "E21",          nullptr});
+//    vecProtocolItems.append({eSHEET::AnalyseDM,      m_pgbRGearChkDM->checkedId(),                                  "E22",          nullptr});
+//    vecProtocolItems.append({eSHEET::AnalyseDM,      m_pgbTiltChkDM->checkedId(),                                   "E23",          nullptr});
+    vecProtocolItems.append({eSHEET::AnalyseDM,      m_pgbTHMotorChkDM->checkedId(),                                "D19",          nullptr});
+    vecProtocolItems.append({eSHEET::AnalyseDM,      m_pgbRMotorChkDM->checkedId(),                                 "D20",          nullptr});
+    vecProtocolItems.append({eSHEET::AnalyseDM,      m_pgbTHGearChkDM->checkedId(),                                 "D21",          nullptr});
+    vecProtocolItems.append({eSHEET::AnalyseDM,      m_pgbRGearChkDM->checkedId(),                                  "D22",          nullptr});
+    vecProtocolItems.append({eSHEET::AnalyseDM,      m_pgbTiltChkDM->checkedId(),                                   "D23",          nullptr});
+    vecProtocolItems.append({eSHEET::AnalyseDM,      ui->leCommutationTH->text(),                                   "D24",          chkTextCokorItem});
+    vecProtocolItems.append({eSHEET::AnalyseDM,      ui->leCommutationR->text(),                                    "D25",          chkTextCokorItem});
+//    vecProtocolItems.append({eSHEET::AnalyseDM,      m_pgbEncJumpTHChkDM->checkedId(),                              "E26",          nullptr});
+//    vecProtocolItems.append({eSHEET::AnalyseDM,      m_pgbEncJumpRChkDM->checkedId(),                               "E27",          nullptr});
+//    vecProtocolItems.append({eSHEET::AnalyseDM,      m_pgbEleChkDM->checkedId(),                                    "E28",          nullptr});
+//    vecProtocolItems.append({eSHEET::AnalyseDM,      m_pgbDataTransChkDM->checkedId(),                              "E29",          nullptr});
+//    vecProtocolItems.append({eSHEET::AnalyseDM,      m_pgbSurfaceDamegeChkDM->checkedId(),                          "E30",          nullptr});
+//    vecProtocolItems.append({eSHEET::AnalyseDM,      m_pgbFunChkDM->checkedId(),                                    "E31",          nullptr});
+    vecProtocolItems.append({eSHEET::AnalyseDM,      m_pgbEncJumpTHChkDM->checkedId(),                              "D26",          nullptr});
+    vecProtocolItems.append({eSHEET::AnalyseDM,      m_pgbEncJumpRChkDM->checkedId(),                               "D27",          nullptr});
+    vecProtocolItems.append({eSHEET::AnalyseDM,      m_pgbEleChkDM->checkedId(),                                    "D28",          nullptr});
+    vecProtocolItems.append({eSHEET::AnalyseDM,      m_pgbDataTransChkDM->checkedId(),                              "D29",          nullptr});
+    vecProtocolItems.append({eSHEET::AnalyseDM,      m_pgbSurfaceDamegeChkDM->checkedId(),                          "D30",          nullptr});
+    vecProtocolItems.append({eSHEET::AnalyseDM,      m_pgbCableHolderChkDM->checkedId(),                            "D31",          writeOldNew});  //new code *******
+    vecProtocolItems.append({eSHEET::AnalyseDM,      m_pgbFunChkDM->checkedId(),                                    "D32",          nullptr});  //Cell changed ***
+    vecProtocolItems.append({eSHEET::AnalyseDM,      ui->leZeroingPosTH->text(),                                    "D33",          chkTextCokorItem});//Cell changed ***
+    vecProtocolItems.append({eSHEET::AnalyseDM,      ui->leZeroingPosR->text(),                                     "D34",          chkTextCokorItem});//Cell changed ***
+//    vecProtocolItems.append({eSHEET::AnalyseDM,      m_pgbConductivityChkDM->checkedId(),                           "E34",          nullptr});
+    vecProtocolItems.append({eSHEET::AnalyseDM,      m_pgbConductivityChkDM->checkedId(),                           "D35",          nullptr});//Cell changed ***
+    vecProtocolItems.append({eSHEET::AnalyseDM,      ui->leAnalysePerformerDM->text(),                              "D39",          nullptr});//Cell changed ***
+    vecProtocolItems.append({eSHEET::AnalyseDM,      ui->leAnalyseDateDM->text(),                                   "D40",          nullptr});//Cell changed ***
+    vecProtocolItems.append({eSHEET::AnalyseDM,      m_pgbAnalyseAdvDM->checkedId(),                                "F7",           writeAdviceItem});
+    vecProtocolItems.append({eSHEET::AnalyseDM,      m_pgbCauserDM->checkedId(),                                    "H7",           writeCauserItem});
+    vecProtocolItems.append({eSHEET::AnalyseDM,      m_pgbRepairDMUpgradeChk->checkedId(),                          "I10",          writeRepairOrNotItem});
+    vecProtocolItems.append({eSHEET::AnalyseDM,      ui->cbUpgradeDM->isChecked(),                                  "I11",          writeUpgradeItem});
+    vecProtocolItems.append({eSHEET::AnalyseDM,      m_comments4DM,                                                 "H14",          writeCommentsItem});
+    vecProtocolItems.append({eSHEET::AnalyseDM,      m_RemarkImgPath_DM,                                            "G37",          insertRemarkImg});//Cell changed ***
 
-//    if(m_objLabelExcel != nullptr)
-//    {
-//       m_objLabelExcel->dynamicCall("Quit (void)");
-//       delete m_objLabelExcel;
-//       m_objLabelExcel = nullptr;
-//    }
+    //---- ZT -----------------------------------------------------------------------------------------------------------------------------------------//
+    vecProtocolItems.append({eSHEET::AnalyseZT,      ui->lbRobotType->text(),                                       "B1",           nullptr});  //Changed ***
+    vecProtocolItems.append({eSHEET::AnalyseZT,      ui->leRobotTypeSN->text(),                                     "C1",           nullptr});  //Chenged ***
+    vecProtocolItems.append({eSHEET::AnalyseZT,      ui->leZTFirstDelivery->text(),                                 "E3",           nullptr});  //new ***
+    vecProtocolItems.append({eSHEET::AnalyseZT,      ui->leZTLastRepair->text(),                                    "E4",           nullptr});  //new ***
+    vecProtocolItems.append({eSHEET::AnalyseZT,      ui->leRobotSN->text(),                                         "D7",           nullptr});
+    vecProtocolItems.append({eSHEET::AnalyseZT,      ui->leZTLen->text()+"-XX-XX-",                                 "C9",           nullptr});
+    vecProtocolItems.append({eSHEET::AnalyseZT,      ui->leZTSN2->text(),                                           "D9",           nullptr});
+    vecProtocolItems.append({eSHEET::AnalyseZT,      ui->leRepairNRARM->text(),                                     "D13",          nullptr});
+    vecProtocolItems.append({eSHEET::AnalyseZT,      ui->leZUpSCARA->text(),                                        "F14",          chkTextCokorItem});
+    vecProtocolItems.append({eSHEET::AnalyseZT,      ui->leZDownSCARA->text(),                                      "F15",          chkTextCokorItem});
+    vecProtocolItems.append({eSHEET::AnalyseZT,      ui->leZUpSCARANT->text(),                                      "F16",          chkTextCokorItem});
+    vecProtocolItems.append({eSHEET::AnalyseZT,      ui->leZDownSCARANT->text(),                                    "F17",          chkTextCokorItem});
+    vecProtocolItems.append({eSHEET::AnalyseZT,      ui->leZUpNXT->text(),                                          "F18",          chkTextCokorItem});
+    vecProtocolItems.append({eSHEET::AnalyseZT,      ui->leZDownNXT->text(),                                        "F19",          chkTextCokorItem});
+    vecProtocolItems.append({eSHEET::AnalyseZT,      ui->leZUpFA->text(),                                           "F20",          chkTextCokorItem});
+    vecProtocolItems.append({eSHEET::AnalyseZT,      ui->leZDownFA->text(),                                         "F21",          chkTextCokorItem});
+//    vecProtocolItems.append({eSHEET::AnalyseZT,      m_pgbLVDTZT->checkedId(),                                      "E22",          nullptr});
+//    vecProtocolItems.append({eSHEET::AnalyseZT,      m_pgbRefSenZT->checkedId(),                                    "E23",          nullptr});
+//    vecProtocolItems.append({eSHEET::AnalyseZT,      m_pgbZMotorZT->checkedId(),                                    "E24",          nullptr});
+//    vecProtocolItems.append({eSHEET::AnalyseZT,      m_pgbRunningNoiseZT->checkedId(),                              "E25",          nullptr});
+//    vecProtocolItems.append({eSHEET::AnalyseZT,      m_pgbCableZT->checkedId(),                                     "E26",          nullptr});
+//    vecProtocolItems.append({eSHEET::AnalyseZT,      m_pgbSurfaceDamegeChkZT->checkedId(),                          "E27",          nullptr});
+//    vecProtocolItems.append({eSHEET::AnalyseZT,      m_pgbConductivityChkZT->checkedId(),                           "E28",          nullptr});
+    vecProtocolItems.append({eSHEET::AnalyseZT,      m_pgbLVDTZT->checkedId(),                                      "D22",          nullptr});
+    vecProtocolItems.append({eSHEET::AnalyseZT,      m_pgbRefSenZT->checkedId(),                                    "D23",          nullptr});
+    vecProtocolItems.append({eSHEET::AnalyseZT,      m_pgbZMotorZT->checkedId(),                                    "D24",          nullptr});
+    vecProtocolItems.append({eSHEET::AnalyseZT,      m_pgbRunningNoiseZT->checkedId(),                              "D25",          nullptr});
+    vecProtocolItems.append({eSHEET::AnalyseZT,      m_pgbCableZT->checkedId(),                                     "D26",          nullptr});
+    vecProtocolItems.append({eSHEET::AnalyseZT,      m_pgbSurfaceDamegeChkZT->checkedId(),                          "D27",          nullptr});
+    vecProtocolItems.append({eSHEET::AnalyseZT,      m_pgbConductivityChkZT->checkedId(),                           "D28",          nullptr});
+    vecProtocolItems.append({eSHEET::AnalyseZT,      ui->leAnalysePerformerZT->text(),                              "E32",          nullptr});
+    vecProtocolItems.append({eSHEET::AnalyseZT,      ui->leAnalyseDateZT->text(),                                   "E33",          nullptr});
+    vecProtocolItems.append({eSHEET::AnalyseZT,      m_pgbAnalyseAdvZT->checkedId(),                                "F7",           writeAdviceItem});
+//    vecProtocolItems.append({eSHEET::AnalyseZT,      m_pgbCauserZT->checkedId(),                                    "H7",           writeCauserItem}); *******
+    vecProtocolItems.append({eSHEET::AnalyseZT,      m_pgbCauserZT->checkedId(),                                    "I7",           writeCauserItem});
+//    vecProtocolItems.append({eSHEET::AnalyseZT,      m_pgbRepairZTUpgradeChk->checkedId(),                          "I10",          writeRepairOrNotItem});
+    vecProtocolItems.append({eSHEET::AnalyseZT,      m_pgbRepairZTUpgradeChk->checkedId(),                          "J10",          writeRepairOrNotItem}); //****
+//    vecProtocolItems.append({eSHEET::AnalyseZT,      ui->cbUpgradeZT->isChecked(),                                  "I11",          writeUpgradeItem});
+    vecProtocolItems.append({eSHEET::AnalyseZT,      ui->cbUpgradeZT->isChecked(),                                  "J11",          writeUpgradeItem}); //*****
+    vecProtocolItems.append({eSHEET::AnalyseZT,      m_comments4ZT,                                                 "I14",          writeCommentsItem});
+//    vecProtocolItems.append({eSHEET::AnalyseZT,      m_RemarkImgPath_ZT,                                            "H36",          insertRemarkImg});
+    vecProtocolItems.append({eSHEET::AnalyseZT,      m_RemarkImgPath_ZT,                                            "I36",          insertRemarkImg});  //new code ******
 
-//    if(m_objLabelWorkbook != nullptr)
-//    {
-//       m_objLabelWorkbook->dynamicCall("Quit (void)");
-//       delete m_objLabelWorkbook;
-//       m_objLabelWorkbook = nullptr;
-//    }
+    //---- Data -----------------------------------------------------------------------------------------------------------------------------------------//
+    //m_robotType
+    vecProtocolItems.append({eSHEET::Data,           ui->lbRobotType->text(),                                        "F1",          writeRobotType});  //***********
+    vecProtocolItems.append({eSHEET::Data,           ui->lbRobotType->text()+ui->leRobotTypeSN->text(),              "A4",          nullptr});
+    vecProtocolItems.append({eSHEET::Data,           ui->leRMinus208H4->text(),                                      "B4",          nullptr});
+    vecProtocolItems.append({eSHEET::Data,           ui->leRMinus208Rx->text(),                                      "C4",          nullptr});
+    vecProtocolItems.append({eSHEET::Data,           ui->leRMinus208Ry->text(),                                      "D4",          nullptr});
+    vecProtocolItems.append({eSHEET::Data,           ui->leR0H4->text(),                                             "E4",          nullptr});
+    vecProtocolItems.append({eSHEET::Data,           ui->leR0Rx->text(),                                             "F4",          nullptr});
+    vecProtocolItems.append({eSHEET::Data,           ui->leR0Ry->text(),                                             "G4",          nullptr});
+    vecProtocolItems.append({eSHEET::Data,           ui->leR75H4->text(),                                            "H4",          nullptr});
+    vecProtocolItems.append({eSHEET::Data,           ui->leR75Rx->text(),                                            "I4",          nullptr});
+    vecProtocolItems.append({eSHEET::Data,           ui->leR75Ry->text(),                                            "J4",          nullptr});
+    vecProtocolItems.append({eSHEET::Data,           ui->leR174H4->text(),                                           "K4",          nullptr});
+    vecProtocolItems.append({eSHEET::Data,           ui->leR174Rx->text(),                                           "L4",          nullptr});
+    vecProtocolItems.append({eSHEET::Data,           ui->leR174Ry->text(),                                           "M4",          nullptr});
+    vecProtocolItems.append({eSHEET::Data,           ui->leR203H4->text(),                                           "N4",          nullptr});
+    vecProtocolItems.append({eSHEET::Data,           ui->leR203Rx->text(),                                           "O4",          nullptr});
+    vecProtocolItems.append({eSHEET::Data,           ui->leR203Ry->text(),                                           "P4",          nullptr});
+    vecProtocolItems.append({eSHEET::Data,           ui->leR385H4->text(),                                           "Q4",          nullptr});
+    vecProtocolItems.append({eSHEET::Data,           ui->leR385Rx->text(),                                           "R4",          nullptr});
+    vecProtocolItems.append({eSHEET::Data,           ui->leR385Ry->text(),                                           "S4",          nullptr});
 }
 
+// helper functions for writing the analyse sheet in Excel
 void CAnalyseData::writeRobotTypeItem(QAxObject* workbook, sPROTOCOLITEM item)
 {
     QAxObject* worksheet = workbook->querySubObject("WorkSheets(int)", item.Sheet);   // Get the worksheet.
@@ -3949,7 +4982,6 @@ void CAnalyseData::writeRobotTypeItem(QAxObject* workbook, sPROTOCOLITEM item)
 //    font1->setProperty("Size", 72);
     font1->setProperty("Name", QStringLiteral("Wingdings 2"));
 }
-
 void CAnalyseData::writeAdviceItem(QAxObject* workbook, sPROTOCOLITEM item)
 {
     QAxObject* worksheet = workbook->querySubObject("WorkSheets(int)", item.Sheet);   // Get the worksheet.
@@ -3990,7 +5022,6 @@ void CAnalyseData::writeAdviceItem(QAxObject* workbook, sPROTOCOLITEM item)
     font1->setProperty("Size", 12);
     font1->setProperty("Name", QStringLiteral("Wingdings 2"));
 }
-
 void CAnalyseData::writeCauserItem(QAxObject* workbook, sPROTOCOLITEM item)
 {
     QAxObject* worksheet = workbook->querySubObject("WorkSheets(int)", item.Sheet);   // Get the worksheet.
@@ -4022,9 +5053,7 @@ void CAnalyseData::writeCauserItem(QAxObject* workbook, sPROTOCOLITEM item)
     font1->setProperty("Size", 12);
     font1->setProperty("Name", QStringLiteral("Wingdings 2"));//Wingdings 2
 }
-
-// ** new function
-void CAnalyseData::writeOldNew( QAxObject* workbook, sPROTOCOLITEM item )
+void CAnalyseData::writeOldNew( QAxObject* workbook, sPROTOCOLITEM item )  // ** new function
 {
     QAxObject* worksheet = workbook->querySubObject("WorkSheets(int)", item.Sheet);   // Get the worksheet.
     int row = 0, column = 0;
@@ -4060,7 +5089,6 @@ void CAnalyseData::writeOldNew( QAxObject* workbook, sPROTOCOLITEM item )
     font1->setProperty("Size", 12);
     font1->setProperty("Name", QStringLiteral("Wingdings 2"));//Wingdings2
 }
-
 void CAnalyseData::writeGeneralItem(QAxObject* workbook, sPROTOCOLITEM item)
 {
     QAxObject* worksheet = workbook->querySubObject("WorkSheets(int)", item.Sheet);   // Get the worksheet.
@@ -4123,7 +5151,6 @@ void CAnalyseData::writeGeneralItem(QAxObject* workbook, sPROTOCOLITEM item)
         break;
     }// switch()
 }
-
 void CAnalyseData::writeRobotType(QAxObject *workbook, CAnalyseData::sPROTOCOLITEM item)    //new*******************
 {
     QAxObject* worksheet = workbook->querySubObject("WorkSheets(int)", item.Sheet);   // Get the worksheet.
@@ -4149,7 +5176,6 @@ void CAnalyseData::writeRobotType(QAxObject *workbook, CAnalyseData::sPROTOCOLIT
 
     cell->setProperty("Value", strValue);  // Set the value in the cell.
 }
-
 void CAnalyseData::writeCurrentItem(QAxObject *workbook, CAnalyseData::sPROTOCOLITEM item)
 {
     QAxObject* worksheet = workbook->querySubObject("WorkSheets(int)", item.Sheet);   // Get the worksheet.
@@ -4160,7 +5186,6 @@ void CAnalyseData::writeCurrentItem(QAxObject *workbook, CAnalyseData::sPROTOCOL
     QString strValue = strNumValue + " A";
     cell->setProperty("Value", strValue);  // Set the value in the cell.
 }
-
 void CAnalyseData::writeZTSNFormerItem(QAxObject* workbook, sPROTOCOLITEM item)
 {
     QAxObject* worksheet = workbook->querySubObject("WorkSheets(int)", item.Sheet);   // Get the worksheet.
@@ -4191,7 +5216,6 @@ void CAnalyseData::writeZTSNFormerItem(QAxObject* workbook, sPROTOCOLITEM item)
 //    font->setProperty("Name", QStringLiteral("Czcionka tekstu podstawowego"));
 //    font->setProperty("Color", 0); // WdColorBlack = 0
 }
-
 void CAnalyseData::writeRepairOrNotItem(QAxObject* workbook, sPROTOCOLITEM item)
 {
     QAxObject* worksheet = workbook->querySubObject("WorkSheets(int)", item.Sheet);   // Get the worksheet.
@@ -4224,7 +5248,6 @@ void CAnalyseData::writeRepairOrNotItem(QAxObject* workbook, sPROTOCOLITEM item)
 //    font1->setProperty("Size", 72);
     font1->setProperty("Name", QStringLiteral("Wingdings 2"));
 }
-
 void CAnalyseData::writeUpgradeItem(QAxObject* workbook, sPROTOCOLITEM item)
 {
     QAxObject* worksheet = workbook->querySubObject("WorkSheets(int)", item.Sheet);   // Get the worksheet.
@@ -4251,7 +5274,6 @@ void CAnalyseData::writeUpgradeItem(QAxObject* workbook, sPROTOCOLITEM item)
     }// if()
 
 }
-
 void CAnalyseData::writeCommentsItem(QAxObject* workbook, sPROTOCOLITEM item)
 {
     QAxObject* worksheet = workbook->querySubObject("WorkSheets(int)", item.Sheet);   // Get the worksheet.
@@ -4278,7 +5300,6 @@ void CAnalyseData::writeCommentsItem(QAxObject* workbook, sPROTOCOLITEM item)
        }// if()
     }// for()
 }
-
 void CAnalyseData::insertImgItem(QAxObject* workbook, sPROTOCOLITEM item)
 {// B45>>>B36
     //qDebug()<<"imgPaht = "<<m_imgPath<<endl;
@@ -4342,7 +5363,6 @@ void CAnalyseData::insertImgItem(QAxObject* workbook, sPROTOCOLITEM item)
 
     }
 }
-
 void CAnalyseData::insertRemarkImg(QAxObject* workbook, sPROTOCOLITEM item)
 {
     QString strImgPath = item.Value.toString();
@@ -4380,7 +5400,6 @@ void CAnalyseData::insertRemarkImg(QAxObject* workbook, sPROTOCOLITEM item)
         }
     }
 }
-
 void CAnalyseData::chkTextCokorItem(QAxObject* workbook, sPROTOCOLITEM item)
 {
     QString strArmCells[10] = {"D14", "D15", "D16", "D17", "D18", "D19", "D20", "D21", "D27", "D28"};
@@ -4436,25 +5455,802 @@ void CAnalyseData::chkTextCokorItem(QAxObject* workbook, sPROTOCOLITEM item)
     }
 }
 
-void CAnalyseData::getRowColumn(QString cell, int* row, int* column)
-{
-    QRegExp rx("([A-Z]+)(\\d+)");
-    rx.indexIn(cell);
 
-    QByteArray bytes = rx.cap(1).toLocal8Bit();
-    for(int i = 0; i < bytes.size(); i++)
+// ------------ PRINT LABEL ------------------
+void CAnalyseData::createPrintLabel()
+{
+    ui->lbStatus->setText("Creating Print Label...");
+    progressSave(30);
+    createLabelFile();
+    progressSave(60);
+
+    //---- Print out label ----//
+    QString filePath = mFilePathLabel;
+//    qDebug() << "Print File: " << mFilePathLabel;
+    QFile printFile(mFilePathLabel);
+    if (!filePath.isEmpty() && printFile.exists())
     {
-        *column += bytes[i] - 'A' + 1;
+        progressSave(70);
+        QAxObject* excel = new QAxObject("Excel.Application");
+        excel->setProperty("Visible", false);
+        QAxObject* workbooks = excel->querySubObject("Workbooks");
+        QAxObject* workbook = workbooks->querySubObject("Open(const QString&)", filePath);  // Open the file；
+        QAxObject* worksheets = workbook->querySubObject("Worksheets");
+        QAxObject* worksheet = worksheets->querySubObject("Item(int)", 1); //1th worksheet
+        worksheet->setProperty("Visible", false);
+        qDebug() << "Got print Workbook";
+        progressSave(80);
+
+        QAxObject* range = worksheet->querySubObject("UsedRange");
+        QAxObject* font = range->querySubObject("Font");
+        font->setProperty("Name", "Calibri"); // Font name
+        font->setProperty("Size", 16.5);     // Font size in points
+        font->setProperty("Bold", true);    // Bold
+        progressSave(85);
+        qDebug() << "Font Set";
+        // Print the worksheet
+        worksheet->dynamicCall("PrintOut()");
+
+        workbook->setProperty("DisplayAlerts", false);
+        workbook->setProperty("CheckCompatibility", false);
+        workbook->setProperty("DoNotPromptForConvert", true);
+        excel->setProperty("DisplayAlerts", false);
+        excel->setProperty("CheckCompatibility", false);
+        excel->setProperty("DoNotPromptForConvert", true);
+        qDebug() << "Print Out";
+        progressSave(90);
+        workbook->dynamicCall("Close()");
+        excel->dynamicCall("Quit()");
+        qDebug() << "excel closed";
+//        delete worksheet;   delete worksheets;  delete workbook;    delete workbooks;
+//        delete excel;
+        progressSave(100);
     }
-    *row = rx.cap(2).toInt();
+    else
+    {
+       progressSave(0);
+       QMessageBox::critical(NULL, "Error", "Print Error", QMessageBox::Yes, QMessageBox::Yes);
+       return;
+    }
+    qDebug() << "Print Label created.";
+    ui->lbStatus->setText("Print Label was created");
+
 }
 
-void CAnalyseData::progressSave(int value)
+void CAnalyseData::on_pBtn_ImgRemark_ARM_clicked()
 {
-    ui->pgbProcess->setValue(value);
+    QFileDialog dialog(this);
+    dialog.setFileMode(QFileDialog::ExistingFile);
+    dialog.setOption(QFileDialog::DontUseNativeDialog);
+    m_fileFrom= QFileDialog::getOpenFileName(this);// get file full path
+    m_fileInfoFrom = QFileInfo(m_fileFrom);
+
+    m_RemarkImgPath_ARM = m_fileInfoFrom.absoluteFilePath();//m_fileFrom;//
+    m_RemarkImgFileNameARM = m_fileInfoFrom.fileName();  // get file name
+    ui->lbl_ImgRemarkFileName_ARM->setText(m_RemarkImgFileNameARM);
+}
+void CAnalyseData::on_pBtn_ImgRemark_DM_clicked()
+{
+    QFileDialog dialog(this);
+    dialog.setFileMode(QFileDialog::ExistingFile);
+    dialog.setOption(QFileDialog::DontUseNativeDialog);
+    m_fileFrom= QFileDialog::getOpenFileName(this);// get file full path
+    m_fileInfoFrom = QFileInfo(m_fileFrom);
+
+    m_RemarkImgPath_DM = m_fileInfoFrom.absoluteFilePath();//m_fileFrom;//
+    m_RemarkImgFileNameDM = m_fileInfoFrom.fileName();  // get file name
+    ui->lbl_ImgRemarkFileName_DM->setText(m_RemarkImgFileNameDM);
+}
+void CAnalyseData::on_pBtn_ImgRemark_ZT_clicked()
+{
+    QFileDialog dialog(this);
+    dialog.setFileMode(QFileDialog::ExistingFile);
+    dialog.setOption(QFileDialog::DontUseNativeDialog);
+    m_fileFrom= QFileDialog::getOpenFileName(this);// get file full path
+    m_fileInfoFrom = QFileInfo(m_fileFrom);
+
+    m_RemarkImgPath_ZT = m_fileInfoFrom.absoluteFilePath();//m_fileFrom;//
+    m_RemarkImgFileNameZT = m_fileInfoFrom.fileName();  // get file name
+    ui->lbl_ImgRemarkFileName_ZT->setText(m_RemarkImgFileNameZT);
 }
 
-// ------------ BUTTONS/TEXT -------------------
+void CAnalyseData::insertDataMatrix(QAxObject *workbook, int iWorkSheet, QString strCell, QString strImgFileName, double dImgSize)
+{
+    QAxObject* worksheet = workbook->querySubObject("WorkSheets(int)", iWorkSheet);   // Get the worksheet.
+    QAxObject* range = worksheet->querySubObject("Range(const QString&)", strCell);
+    QAxObject* pictures = worksheet->querySubObject("Pictures()");
+    QAxObject* picture = pictures->querySubObject("Insert(const QString&, bool)", strImgFileName, true);
+
+    double dPic_XPosition = range->property("Left").toDouble() + range->property("Width").toDouble() - dImgSize - 1;
+    double dPic_YPosition = range->property("Top").toDouble() + range->property("Height").toDouble() - dImgSize - 1;
+    picture->setProperty("Width", dImgSize);
+    picture->setProperty("Height", dImgSize);
+    picture->setProperty("Left", dPic_XPosition);
+    picture->setProperty("Top", dPic_YPosition);
+}
+bool CAnalyseData::isDigitStr(QString strSrc)
+{
+    QDoubleValidator validator;
+    int pos = 0;
+    QValidator::State result = validator.validate(strSrc, pos);
+
+    if (result == QValidator::Acceptable || result == QValidator::Intermediate) // The userInput represents a valid double number
+    {
+
+        return true;
+    }else //The userInput is not a valid double number
+    {
+
+        return false;
+    }
+}
+void CAnalyseData::getLabelData()
+{
+    vecLabelData.resize(4);
+
+    QString strRobSerial = m_robotType + ui->leRobotTypeSN->text();
+    qDebug() << "Robot Serial: " << strRobSerial;
+
+    vecLabelData[0] = strRobSerial;
+    vecLabelData[1] = ui->leARMSN->text();
+
+    QString strDMID = "";
+    if(ui->leDMSN->text().contains("-"))
+    {
+        QStringList strLstDMSN = ui->leDMSN->text().split("-");
+        if(strLstDMSN.size() >= 4)
+            strDMID = strLstDMSN[3];
+    }else
+        strDMID = "R";
+
+    QString strZID = "";
+    if(ui->leZTSN2->text().contains("-"))
+    {
+        QStringList strLstZSN = ui->leZTSN2->text().split("-");
+        if(strLstZSN.size() >= 4)
+            strZID = strLstZSN[3];
+    }else
+        strZID = "R";
+
+    vecLabelData[2] = strDMID;
+    vecLabelData[3] = strZID;
+}
+void CAnalyseData::createLabelFile()
+{
+//    on_pbSaveIni_clicked();
+    getLabelData();
+    //--- Get file paths --//
+    QSettings settings(m_settingFilePath,QSettings::IniFormat);
+    settings.beginGroup("PathSetting");
+    QString strLabelTemp = settings.value("TemplateVersion").toString() + "_Label";  //ANALYSETILT_v1.3_Label
+    QString strLabelFolder = QDir::toNativeSeparators(settings.value("LabelFilePath").toString());
+    QString strDMFolder = QDir::toNativeSeparators(settings.value("DataMatrixFilePath").toString());
+    settings.endGroup();
+
+    mFilePathLabel = strLabelFolder + "\\" + m_fileName + "_Label.xls";
+    mFilePathLabelTemplate = QDir::toNativeSeparators(QApplication::applicationDirPath()) + "\\" + strLabelTemp + ".xls";
+
+//    qDebug() << "Label Directory: " << mFilePathLabel;
+//    qDebug() << "Label Template: " << mFilePathLabelTemplate;
+//    qDebug() << "DM Folder: " << strDMFolder;
+
+    //---- Create Label Excel File ----//
+    closeExcel();
+    if(QFile::exists(mFilePathLabel))
+    {
+        QFile::remove(mFilePathLabel);
+    }
+
+    m_objLabelExcel = new QAxObject("Excel.Application");
+    if(m_objLabelExcel == nullptr)
+    {
+        progressSave(0);
+        QMessageBox::critical(NULL, "Error", "Excel is not installed", QMessageBox::Yes, QMessageBox::Yes);
+        return;
+    }
+
+    m_objLabelExcel->setProperty("Visible",false);
+    QAxObject* workbooks = m_objLabelExcel->querySubObject("WorkBooks");// get the workbook.
+    if(workbooks == nullptr)
+    {
+        progressSave(0);
+        QMessageBox::critical(NULL, "Error", "Office is not installed", QMessageBox::Yes, QMessageBox::Yes);
+        return;
+    }
+    workbooks->setProperty("Visible",false);    //new code*********************
+    workbooks->dynamicCall("Open (const QString&)", mFilePathLabelTemplate);   // Open the file；
+    m_objLabelWorkbook = m_objLabelExcel->querySubObject("ActiveWorkBook"); // Get the active workbook.
+
+    //---- For inserting Label data ----//
+    QAxObject *worksheetData = m_objLabelWorkbook->querySubObject("Sheets(int)", 2); // get 2th sheet ("Data" sheet)
+
+    QAxObject* cellB1 = worksheetData->querySubObject("Cells(int,int)", 1, 2);
+    cellB1->setProperty("Value", vecLabelData[0]);
+
+    QAxObject* cellB2 = worksheetData->querySubObject("Cells(int,int)", 2, 2);
+    cellB2->setProperty("Value", vecLabelData[1]);
+
+    QAxObject* cellB3 = worksheetData->querySubObject("Cells(int,int)", 3, 2);
+    cellB3->setProperty("Value", vecLabelData[2]);
+
+    QAxObject* cellB4 = worksheetData->querySubObject("Cells(int,int)", 4, 2);
+    cellB4->setProperty("Value", vecLabelData[3]);
+//    qDebug() << "Label Data Written";
+
+    //-------------------------- For creating DataMatrix -----------------------------------//
+    QAxObject *worksheetLabel = m_objLabelWorkbook->querySubObject("Sheets(int)", 1); // get 1th sheet ("Label" sheet)
+
+    QAxObject* rangeA1 = worksheetLabel->querySubObject("Range())", "A1");       //ex: The cell A1
+    QString strValueA1 = rangeA1->dynamicCall("Value()").toString();        //strRange: the raw value of cell A1
+    qDebug() << strValueA1;
+    QAxObject* rangeA2 = worksheetLabel->querySubObject("Range())", "A2");       //ex: The cell A2
+    QString strValueA2 = rangeA2->dynamicCall("Value()").toString();        //strRange: the raw value of cell A2
+    qDebug() << strValueA2;
+    QAxObject* rangeA3 = worksheetLabel->querySubObject("Range())", "A3");       //ex: The cell A3
+    QString strValueA3 = rangeA3->dynamicCall("Value()").toString();        //strRange: the raw value of cell A3
+    qDebug() << strValueA3;
+    //                               strText,    strSavePath,   strFileName,                   iFileType, iSize //1: jpg, 2: jpeg, 3. png
+    libDataMatrix.GenerateDataMatrix(strValueA1, strDMFolder, (m_fileName + "_DataMatrix_ARM"),   1,        200);    //(m_fileName + "_QrCode_ARM")
+    libDataMatrix.GenerateDataMatrix(strValueA2, strDMFolder, (m_fileName + "_DataMatrix_DM"),    1,        200);
+    libDataMatrix.GenerateDataMatrix(strValueA3, strDMFolder, (m_fileName + "_DataMatrix_Z"),     1,        200);
+
+    //18, 17, 17 -> 0.25 inch
+    insertDataMatrix(m_objLabelWorkbook, 1, "A1", (strDMFolder + "\\" + m_fileName + "_DataMatrix_ARM.jpg"), 21.6);
+    insertDataMatrix(m_objLabelWorkbook, 1, "A2", (strDMFolder + "\\" + m_fileName + "_DataMatrix_DM.jpg"), 22);
+    insertDataMatrix(m_objLabelWorkbook, 1, "A3", (strDMFolder + "\\" + m_fileName + "_DataMatrix_Z.jpg"), 22);
+    qDebug() << "DataMatrix Inserted";
+    //-----------------------------------------------------------------------------------------------------------------//
+
+    // add to disable checking compatibility
+    m_objLabelWorkbook->setProperty("DisplayAlerts", false);
+    m_objLabelWorkbook->setProperty("CheckCompatibility", false);
+    m_objLabelWorkbook->setProperty("DoNotPromptForConvert", true);
+
+    m_objLabelWorkbook->dynamicCall("SaveAs(const QString&)",
+                                     QDir::toNativeSeparators(mFilePathLabel));
+
+//    qDebug() << "Label file Created";
+
+    m_objLabelWorkbook->dynamicCall("Close()");
+    m_objLabelExcel->dynamicCall("Quit()");
+}
+
+
+// ------------ REPAIR MATRIX ------------------
+void CAnalyseData::createRepairMatrix( void )
+{
+    ui->lbStatus->setText("Creating Repair Matrix...");
+    progressSave(3);
+    closeExcel();
+    progressSave(6);
+    progressSave(10);
+    buildRepairTable();
+    qDebug() << "Table crated";
+    if(QFile::exists(m_filePathExcelRepair))
+    {
+        QFile::remove(m_filePathExcelRepair);
+    }
+
+    m_objExcel = new QAxObject("Excel.Application");
+    if( m_objExcel==nullptr)
+    {
+        progressSave(0);
+        QMessageBox::critical(NULL, "Error", "Excel is not installed", QMessageBox::Yes, QMessageBox::Yes);
+        return;
+    }
+
+    m_objExcel->setProperty("Visible",false);
+    QAxObject* workbooks = m_objExcel->querySubObject("WorkBooks");// get the workbook.
+    if( workbooks==nullptr)
+    {
+        progressSave(0);
+        QMessageBox::critical(NULL, "Error", "Office is not installed", QMessageBox::Yes, QMessageBox::Yes);
+        return;
+    }
+    workbooks->setProperty("Visible",false);
+    workbooks->dynamicCall("Open (const QString&)", m_filePathExcelRepairTmp);   // Open the file；
+    m_objWorkbook = m_objExcel->querySubObject("ActiveWorkBook"); // Get the active workbook.
+    progressSave(20);
+    int item_count = 1;// for progress
+    foreach(sREPAIRITEM item, vecRepairItems)
+    {
+        if(item.p_func)
+        {
+            (this->*(item.p_func))(m_objWorkbook, item);
+        }
+        progressSave(20 + (item_count++)*80/vecRepairItems.size());
+    }
+    // add to disable checking compatibility
+    m_objWorkbook->setProperty("DisplayAlerts", false);
+    m_objWorkbook->setProperty("CheckCompatibility", false);
+    m_objWorkbook->setProperty("DoNotPromptForConvert", true);
+
+    m_objWorkbook->dynamicCall("SaveAs(const QString&)",
+                                     QDir::toNativeSeparators(m_filePathExcelRepair));
+
+    progressSave(98);
+
+    closeExcel();
+    progressSave(100);
+    qDebug() << "Repair Matrix created.";
+    ui->lbStatus->setText("Repair Matrix was created");
+
+}
+
+void CAnalyseData::buildRepairTable( void )
+{
+    QString strDMSN = "";
+    if(!(ui->leDMSN->text()).isEmpty())
+        strDMSN=((ui->leDMSN->text()).split("-"))[3];
+    QString strZTSN2 = "";
+    if(!(ui->leZTSN2->text()).isEmpty())
+        strZTSN2=((ui->leZTSN2->text()).split("-"))[3];
+    // Value                                                                                // Cell     // Function
+    // ----- General Information --------------------------------------------------------------------------
+    vecRepairItems.append({"'"+ui->leNew12NC->text(),                                       "C4",       writeInformation});
+    vecRepairItems.append({"'"+ui->leRobotSN->text(),                                       "C5",       writeInformation});
+    vecRepairItems.append({"'"+ui->leARMSN->text(),                                         "D7",       writeInformation});
+    vecRepairItems.append({ui->leArmFirstDelivery->text()+ " ; "+ui->leArmLastRepair->text(),"B7",      extendInformation});
+    vecRepairItems.append({strDMSN,                                                         "D8",       writeInformation});
+    vecRepairItems.append({ui->leDMFirstDelivery->text()+" ; "+ui->leDMLastRepair->text(),  "B8",      extendInformation});
+    vecRepairItems.append({strZTSN2,                                                        "D9",       writeInformation});
+    vecRepairItems.append({ui->leZTFirstDelivery->text()+" ; "+ui->leZTLastRepair->text(),  "B9",      extendInformation});
+    vecRepairItems.append({ui->leRepairNo->text()+ " ; " +ui->leLastRepairDate->text(),     "F5",      extendInformation});
+    vecRepairItems.append({ui->leFirstDeliveryDate->text(),                                 "F6",       extendInformation});
+
+    // ------ Arm parts ------------------------------------------------------------------------------------
+    vecRepairItems.append({m_pgbRepairARM_ArmBelts->checkedId(),                            "E13",      writeAmount});
+    vecRepairItems.append({m_pgbRepairARM_UpperArmHousingUpgrade->checkedId(),              "E35",      writeAmount});
+    vecRepairItems.append({m_pgbRepairARM_UpperArmHousing->checkedId(),                     "E36",      writeAmount});
+    vecRepairItems.append({m_pgbRepairARM_UpperArmLid->checkedId(),                         "E37",      writeAmount});
+    vecRepairItems.append({m_pgbRepairARM_LowerArmHousingUpgrade->checkedId(),              "E38",      writeAmount});
+    vecRepairItems.append({m_pgbRepairARM_LowerArmHousing->checkedId(),                     "E39",      writeAmount});
+    vecRepairItems.append({m_pgbRepairARM_LowerArmLid->checkedId(),                         "E40",      writeAmount});
+    vecRepairItems.append({m_pgbRepairARM_ArmDriveInterface->checkedId(),                   "E41",      writeAmount});
+    vecRepairItems.append({m_pgbRepairARM_ArmGripperInterfaceScara->checkedId(),            "E42",      writeAmount});
+    vecRepairItems.append({m_pgbRepairARM_ArmGripperInterfaceNT->checkedId(),               "E43",      writeAmount});
+    vecRepairItems.append({m_pgbRepairARM_BeltReel->checkedId(),                            "E44",      writeAmount});
+    vecRepairItems.append({m_pgbRepairARM_TorxScrew->checkedId(),                           "E45",      writeAmount});
+    vecRepairItems.append({m_pgbRepairARM_Bearings->checkedId(),                            "E46",      writeAmount});
+    vecRepairItems.append({m_pgbRepairARM_RepairIn->checkedId(),                            "E47",     writeRepairIn});
+
+    // ------ DM parts ------------------------------------------------------------------------------------
+    vecRepairItems.append({m_pgbRepairDM_DMLikaMotor->checkedId(),                          "E15",      writeAmount});
+    vecRepairItems.append({m_pgbRepairDM_CableHood->checkedId(),                            "E49",      writeAmount});
+    vecRepairItems.append({m_pgbRepairDM_DMHousing->checkedId(),                            "E50",      writeAmount});
+    vecRepairItems.append({m_pgbRepairDM_DMLid->checkedId(),                                "E51",      writeAmount});
+    vecRepairItems.append({m_pgbRepairDM_SlipRing->checkedId(),                             "E52",      writeAmount});
+    vecRepairItems.append({m_pgbRepairDM_HollowShaft->checkedId(),                          "E53",      writeAmount});
+    vecRepairItems.append({m_pgbRepairDM_RepairIn->checkedId(),                              "E54",     writeRepairIn});
+
+    // ------ Z-module parts ------------------------------------------------------------------------------
+    vecRepairItems.append({m_pgbRepairZT_ZStroke35->checkedId(),                            "E17",      writeAmount});
+    vecRepairItems.append({m_pgbRepairZT_ZStroke50->checkedId(),                            "E18",      writeAmount});
+    vecRepairItems.append({m_pgbRepairZT_ZMHousingScara->checkedId(),                       "E56",      writeAmount});
+    vecRepairItems.append({m_pgbRepairZT_ZMHousingNT->checkedId(),                          "E57",      writeAmount});
+    vecRepairItems.append({m_pgbRepairZT_GuidingShaftsScara->checkedId(),                   "E58",      writeAmount});
+    vecRepairItems.append({m_pgbRepairZT_GuidingShaftsNT->checkedId(),                      "E59",      writeAmount});
+    vecRepairItems.append({m_pgbRepairZT_SmallGuidingShafts->checkedId(),                   "E60",      writeAmount});
+    vecRepairItems.append({m_pgbRepairZT_ClampingFlange->checkedId(),                       "E61",      writeAmount});
+    vecRepairItems.append({m_pgbRepairZT_AdapterCable->checkedId(),                         "E62",      writeAmount});
+    vecRepairItems.append({m_pgbRepairZT_RepairIn->checkedId(),                              "E63",     writeRepairIn});
+
+    // ------ Upgrade part --------------------------------------------------------------------------------
+
+    // ------ Labour & Packaging --------------------------------------------------------------------------
+}
+
+// helper functions for writing the repair matrix in Excel
+void CAnalyseData::writeAmount( QAxObject* workbook, sREPAIRITEM item )
+{
+    QAxObject *worksheet = workbook->querySubObject("WorkSheets(int)", 1);
+    int row = 0, column = 0;
+    CAnalyseData::getRowColumn(item.Cell, &row, &column);
+    QAxObject* cell = worksheet->querySubObject("Cells(int,int)", row, column);
+    // if checkbox "repair" is checked -> write "1"
+    if(item.Value.toInt() == Repair_Repair){
+        QString value = "1";
+        cell->setProperty("Value", value);
+    }
+}
+void CAnalyseData::writeRepairIn( QAxObject* workbook, sREPAIRITEM item ){
+    QAxObject *worksheet = workbook->querySubObject("WorkSheets(int)", 1);
+    int row = 0, column = 0;
+    CAnalyseData::getRowColumn(item.Cell, &row, &column);
+    QAxObject* cell = worksheet->querySubObject("Cells(int,int)", row, column);
+    // if checkbox "repair" is checked -> write "1"
+    if(item.Value.toInt() == RepairIn_EU){
+        QString value = "1";
+        cell->setProperty("Value", value);
+    }
+}
+void CAnalyseData::writeInformation( QAxObject* workbook, sREPAIRITEM item )
+{
+    QAxObject *worksheet = workbook->querySubObject("WorkSheets(int)", 1);
+    int row = 0, column = 0;
+    CAnalyseData::getRowColumn(item.Cell, &row, &column);
+    QAxObject* cell = worksheet->querySubObject("Cells(int,int)", row, column);
+    // write information
+    QString value = item.Value.toString();
+    cell->setProperty("Value", value);
+}
+void CAnalyseData::extendInformation( QAxObject* workbook, sREPAIRITEM item )
+{
+    QAxObject *worksheet = workbook->querySubObject("WorkSheets(int)", 1);
+    int row = 0, column = 0;
+    CAnalyseData::getRowColumn(item.Cell, &row, &column);
+    QAxObject* cell = worksheet->querySubObject("Cells(int,int)", row, column);
+    // write information
+    QString value = cell->property("Value").toString() + " " + item.Value.toString();
+    cell->setProperty("Value", value);
+}
+
+
+// ------------ MOM SHEET ------------------
+void CAnalyseData::createMOMSheet( void ){
+
+    ui->lbStatus->setText("Creating MOM Sheet...");
+    closeExcel();
+    progressSave(3);
+    buildProtocolTable();
+    if(QFile::exists(m_filePathExcelMOM))
+    {
+        QFile::remove(m_filePathExcelMOM);
+    }
+
+    m_objExcel = new QAxObject("Excel.Application");
+    if( m_objExcel==nullptr)
+    {
+        progressSave(0);
+        QMessageBox::critical(NULL, "Error", "Excel is not installed", QMessageBox::Yes, QMessageBox::Yes);
+        return;
+    }
+
+    m_objExcel->setProperty("Visible",false);
+    QAxObject* workbooks = m_objExcel->querySubObject("WorkBooks");// get the workbook.
+    if( workbooks==nullptr)
+    {
+        progressSave(0);
+        QMessageBox::critical(NULL, "Error", "Office is not installed", QMessageBox::Yes, QMessageBox::Yes);
+        return;
+    }
+    workbooks->setProperty("Visible",false);
+    workbooks->dynamicCall("Open (const QString&)", m_filePathExcelMOMTmp);   // Open the file；
+    m_objWorkbook = m_objExcel->querySubObject("ActiveWorkBook"); // Get the active workbook.
+    progressSave(20);
+    QAxObject *worksheet = m_objWorkbook->querySubObject("WorkSheets(int)", 1);
+
+    int row = 0, column = 0;
+
+    // Write Robot Number
+    CAnalyseData::getRowColumn("A2", &row, &column);
+    QAxObject* cell = worksheet->querySubObject("Cells(int,int)", row, column);
+    QString value = m_robotType + m_robotSN;
+    cell->setProperty("Value", value);
+
+    // Write MN (repair number)
+    column++;
+    cell = worksheet->querySubObject("Cells(int,int)", row, column);
+    value = ui->leRepairNRARM->text();
+    cell->setProperty("Value", value);
+
+    // Write WK
+    QStringList parts = m_fileName.split("_");
+    if(parts.size() > 2) {
+      value = parts[2];
+      qDebug() << value;
+      value.remove(0, 2);
+      qDebug() << value;
+
+    }
+    column++;
+    cell = worksheet->querySubObject("Cells(int,int)", row, column);
+    cell->setProperty("Value", "WK"+value);
+
+    // Write Result Analysis
+    column++;
+    cell = worksheet->querySubObject("Cells(int,int)", row, column);
+    strResAnalysis = cell->property("Value").toString();
+    startPos = 0;
+
+    // All one cell. Therefore hard programming of the QString using a lot of counting chars
+    progressSave(30);
+    writeGeneralInfoMOM();
+    progressSave(40);
+    writeArmInfoMOM();
+    progressSave(60);
+    writeDMInfoMOM();
+    progressSave(80);
+    writeZInfoMOM();
+    progressSave(95);
+
+    cell->setProperty("Value", strResAnalysis);
+
+    // make headers bold:
+    int idx = strResAnalysis.indexOf("SA:");
+    QAxObject* chars = cell->querySubObject("Characters(int, int)", idx, 3);
+    QAxObject *font = chars->querySubObject("Font");
+    font->setProperty("Bold", true);
+    idx = strResAnalysis.indexOf("DM:");
+    chars = cell->querySubObject("Characters(int, int)", idx, 3);
+    font = chars->querySubObject("Font");
+    font->setProperty("Bold", true);
+    idx = strResAnalysis.indexOf("Z:");
+    chars = cell->querySubObject("Characters(int, int)", idx, 3);
+    font = chars->querySubObject("Font");
+    font->setProperty("Bold", true);
+
+    m_objWorkbook->setProperty("DisplayAlerts", false);
+    m_objWorkbook->setProperty("CheckCompatibility", false);
+    m_objWorkbook->setProperty("DoNotPromptForConvert", true);
+
+    m_objWorkbook->dynamicCall("SaveAs(const QString&)",
+                                     QDir::toNativeSeparators(m_filePathExcelMOM));
+    progressSave(98);
+    closeExcel();
+    progressSave(100);
+    qDebug() << "MOM Sheet created.";
+    ui->lbStatus->setText("MOM Sheet was created");
+}
+
+// write the information in "Result Analysis" cell
+void CAnalyseData::writeGeneralInfoMOM(){
+
+    getNextLineIdx();
+    // Version
+    switch(m_pgbHDMotorType->checkedId())
+    {
+      case V0:
+        insertAndReturnLastIdx(": V0");
+        break;
+      case V1:
+        insertAndReturnLastIdx(": V1");
+        break;
+      case DFV1:
+        insertAndReturnLastIdx(": DFV1");
+        break;
+    }
+    getNextLineIdx();
+    // First Delivery
+    insertAndReturnLastIdx(ui->leFirstDeliveryDate->text());
+    getNextLineIdx();
+    //Repair No
+    insertAndReturnLastIdx(ui->leRepairNo->text());
+    getNextLineIdx();
+    // Last repair date
+    if(!(ui->leLastRepairDate->text()).isEmpty()){
+        removeAndReturnLastIdx(2);
+        insertAndReturnLastIdx(ui->leLastRepairDate->text());
+    }
+    getNextLineIdx(); // "Delivered in white box\n"
+    getNextLineIdx(); // "packed regarding spec: No, ARM down holder placed incorrectly\n"
+    getNextLineIdx(); // "Delivered in white box\n"
+    getNextLineIdx(); // "Unit starts on testing: OK\n"
+    getNextLineIdx(); // "/n"
+
+
+}
+void CAnalyseData::writeArmInfoMOM(){
+    getNextLineIdx(); // "SA:/n"
+    // "- Geometry: \n"
+    switch(m_pgbGeoChkARM->checkedId())
+    {
+      case Test_OK:
+        insertAndReturnLastIdx("OK");
+        break;
+      case Test_NG:
+        insertAndReturnLastIdx("NOK");
+        break;
+      case Test_NA:
+        insertAndReturnLastIdx("N/A");
+        break;
+    }
+    getNextLineIdx();
+    // Rz
+    double dRz = ui->leGeoRz->text().toDouble();
+    if(qAbs(dRz)> Rz_UP){
+        startPos-=21;
+        insertAndReturnLastIdx(ui->leGeoRz->text()+" mRad ");
+        getNextLineIdx();
+    }else{
+        removeAndReturnLastIdx(26);
+//        getNextLineIdx();
+    }
+    getNextLineIdx();
+    // Rx
+    double dRx = ui->leGeoRx->text().toDouble();
+    if(qAbs(dRx)> Rx_UP){
+        startPos-=21;
+        insertAndReturnLastIdx(ui->leGeoRx->text()+" mRad ");
+        getNextLineIdx();
+    }else{
+        removeAndReturnLastIdx(26);
+//        getNextLineIdx();
+    }
+    getNextLineIdx();
+    // Ry
+    double dRy = ui->leGeoRy->text().toDouble();
+    if(qAbs(dRy)> Ry_UP){
+        startPos-=21;
+        insertAndReturnLastIdx(ui->leGeoRy->text()+" mRad ");
+        getNextLineIdx();
+    }else{
+        removeAndReturnLastIdx(26);
+//        getNextLineIdx();
+    }
+    getNextLineIdx();
+
+    // delta H4
+    double dH4 = ui->leGeoRy->text().toDouble();
+    if(dH4 < DeltaHeight_DN && dH4 > DeltaHeight_UP){
+        startPos-=29;
+        insertAndReturnLastIdx(ui->leGeoDelHeight->text()+" mm ");
+        getNextLineIdx();
+    }else{
+        removeAndReturnLastIdx(35);
+//        getNextLineIdx();
+    }
+
+    getNextLineIdx();
+    // Position TH
+
+    double posR = ui->leRepPosPAR->text().toDouble();
+    double posTH = ui->leRepPosPATH->text().toDouble();
+    if(qAbs(posR) > REPPOSPA_UP && qAbs(posTH) > REPPOSPA_UP){
+        startPos-=22;
+        insertAndReturnLastIdx(QString::number(posTH) +" µm (spec.= +/- 600 µm), Pos_R="+QString::number(posR)+" ");
+        getNextLineIdx();
+    }else if(qAbs(posTH) > REPPOSPA_UP && qAbs(posR) <= REPPOSPA_UP){
+        startPos-=22;
+        insertAndReturnLastIdx(QString::number(posTH)+" ");
+        getNextLineIdx();
+    }else if(qAbs(posTH) <= REPPOSPA_UP && qAbs(posR) > REPPOSPA_UP){
+        startPos-=22;
+        removeAndReturnLastIdx(4);
+        insertAndReturnLastIdx("R="+QString::number(posR)+" ");
+        getNextLineIdx();
+    }else{
+        removeAndReturnLastIdx(30);
+        insertAndReturnLastIdx("OK");
+    }
+    getNextLineIdx();
+    // "- Electrics ARM: \n"
+    switch(m_pgbEleChkARM->checkedId())
+    {
+      case Test_OK:
+        insertAndReturnLastIdx(" OK");
+        break;
+      case Test_NG:
+        insertAndReturnLastIdx(" NOK");
+        break;
+      case Test_NA:
+        insertAndReturnLastIdx(" N/A");
+        break;
+    }
+    getNextLineIdx();
+    getNextLineIdx(); //"Visual:\n"
+    getNextLineIdx(); // "\n"
+}
+void CAnalyseData::writeDMInfoMOM(){
+    getNextLineIdx(); // "DM:\n"
+    // Geometry 180
+    double geo180 = ui->le180DegVal_2->text().toDouble();
+    double geo270 = ui->le270DegVal_2->text().toDouble();
+    if(qAbs(geo180) > MicroHite_UP){
+        startPos-=44;
+        insertAndReturnLastIdx(" "+ui->le180DegVal->text()+" ");
+        getNextLineIdx();
+    }else{
+        startPos-=38;
+        removeAndReturnLastIdx(16);
+        getNextLineIdx();
+    }
+    // Geometry 270
+    if(qAbs(geo270) > MicroHite_UP){
+        startPos-=26;
+        insertAndReturnLastIdx(ui->le270DegVal->text()+" ");
+        getNextLineIdx();
+    }else{
+        startPos-=22;
+        removeAndReturnLastIdx(16);
+        getNextLineIdx();
+    }
+    if(qAbs(geo180) <= MicroHite_UP && qAbs(geo270) <= MicroHite_UP){
+        removeAndReturnLastIdx(21);
+        insertAndReturnLastIdx("OK");
+    }
+    getNextLineIdx();
+    // 0-Positioning
+    if(ui->leZeroingPosTH->text().isEmpty() && ui->leZeroingPosTH->text().isEmpty()){
+        //don't write or elete anything
+        getNextLineIdx();
+    }else{
+        double posTH = ui->leZeroingPosTH->text().toDouble();
+        double posR = ui->leZeroingPosR->text().toDouble();
+        if(qAbs(posTH)>0.1 && qAbs(posR)>0.1){
+            startPos-=19;
+            insertAndReturnLastIdx("Pos_TH="+ui->leZeroingPosTH->text()+" mm, Pos_R="+ui->leZeroingPosR->text()+" mm ");
+            getNextLineIdx();
+        }else if(qAbs(posTH)<= 0.1 && qAbs(posR)>0.1){
+            startPos-=19;
+            insertAndReturnLastIdx("Pos_R="+ui->leZeroingPosR->text()+" mm ");
+            getNextLineIdx();
+        }else if(qAbs(posTH)>0.1 && qAbs(posR)<=0.1){
+            startPos-=19;
+            insertAndReturnLastIdx("Pos_TH="+ui->leZeroingPosTH->text()+" mm ");
+            getNextLineIdx();
+        }else {
+            removeAndReturnLastIdx(19);
+            insertAndReturnLastIdx("OK");
+        }
+    }
+
+    getNextLineIdx();
+    // Electrics DM:
+    switch(m_pgbEleChkDM->checkedId())
+    {
+      case Test_OK:
+        insertAndReturnLastIdx(" OK");
+        break;
+      case Test_NG:
+        insertAndReturnLastIdx(" NOK");
+        break;
+      case Test_NA:
+        insertAndReturnLastIdx(" N/A");
+        break;
+    }
+    getNextLineIdx(); // "Visual:\n"
+    getNextLineIdx(); // "- Motor / Encoder: \n"
+    int motor1=m_pgbTHMotorChkDM->checkedId();
+    int motor2=m_pgbRMotorChkDM->checkedId();
+    if(motor1==Test_OK && motor2 ==Test_OK){
+        insertAndReturnLastIdx(" OK");
+    }else if(motor1==Test_NG || motor2 ==Test_NG){
+        insertAndReturnLastIdx(" NOK");
+    }else if(motor1==Test_NA || motor2 ==Test_NA){
+        insertAndReturnLastIdx(" N/A");
+    }
+    getNextLineIdx();
+    getNextLineIdx(); // "\n"
+}
+void CAnalyseData::writeZInfoMOM(){
+    getNextLineIdx(); // "Z: \n"
+    getNextLineIdx(); // "Positioning: \n"
+    getNextLineIdx(); // "Electrics: \n"
+    getNextLineIdx(); // "Visual: \n"
+    getNextLineIdx(); // "Spindle/Motor:"
+    // Electrics ZT:
+    startPos=strResAnalysis.length();
+    switch(m_pgbZMotorZT->checkedId())
+    {
+      case Test_OK:
+        insertAndReturnLastIdx(" OK");
+        break;
+      case Test_NG:
+        insertAndReturnLastIdx(" NOK");
+        break;
+      case Test_NA:
+        insertAndReturnLastIdx(" N/A");
+        break;
+    }
+}
+
+// helper functions
+void CAnalyseData::getNextLineIdx (){
+    startPos++;
+    startPos = strResAnalysis.indexOf("\n", startPos);
+}
+void CAnalyseData::insertAndReturnLastIdx(QString insertText){
+    strResAnalysis.insert(startPos, insertText);
+    startPos += insertText.length();
+}
+void CAnalyseData::removeAndReturnLastIdx(int numberRemove){
+    strResAnalysis.remove(startPos-numberRemove, numberRemove);
+    startPos-=numberRemove;
+}
+
+
+// *********** BUTTONS/TEXT *******************
 void CAnalyseData::on_pbImageName_clicked()
 {
     QFileDialog dialog(this);
@@ -4993,1900 +6789,4 @@ void CAnalyseData::on_leZDownFA_textChanged(const QString &arg1)
         ui->leZDownFA->setStyleSheet("color:black;");
         m_bChkColor[ZFACurrentDown] = false;
     }
-}
-
-//-------------------------------------------------------- Print Function --------------------------------------------------------//
-void CAnalyseData::createPrintLabel()
-{
-    ui->lbStatus->setText("Creating Print Label...");
-    progressSave(30);
-    createLabelFile();
-    progressSave(60);
-
-    //---- Print out label ----//
-    QString filePath = mFilePathLabel;
-//    qDebug() << "Print File: " << mFilePathLabel;
-    QFile printFile(mFilePathLabel);
-    if (!filePath.isEmpty() && printFile.exists())
-    {
-        progressSave(70);
-        QAxObject* excel = new QAxObject("Excel.Application");
-        excel->setProperty("Visible", false);
-        QAxObject* workbooks = excel->querySubObject("Workbooks");
-        QAxObject* workbook = workbooks->querySubObject("Open(const QString&)", filePath);  // Open the file；
-        QAxObject* worksheets = workbook->querySubObject("Worksheets");
-        QAxObject* worksheet = worksheets->querySubObject("Item(int)", 1); //1th worksheet
-        worksheet->setProperty("Visible", false);
-        qDebug() << "Got print Workbook";
-        progressSave(80);
-
-        QAxObject* range = worksheet->querySubObject("UsedRange");
-        QAxObject* font = range->querySubObject("Font");
-        font->setProperty("Name", "Calibri"); // Font name
-        font->setProperty("Size", 16.5);     // Font size in points
-        font->setProperty("Bold", true);    // Bold
-        progressSave(85);
-        qDebug() << "Font Set";
-        // Print the worksheet
-        worksheet->dynamicCall("PrintOut()");
-
-        workbook->setProperty("DisplayAlerts", false);
-        workbook->setProperty("CheckCompatibility", false);
-        workbook->setProperty("DoNotPromptForConvert", true);
-        excel->setProperty("DisplayAlerts", false);
-        excel->setProperty("CheckCompatibility", false);
-        excel->setProperty("DoNotPromptForConvert", true);
-        qDebug() << "Print Out";
-        progressSave(90);
-        workbook->dynamicCall("Close()");
-        excel->dynamicCall("Quit()");
-        qDebug() << "excel closed";
-//        delete worksheet;   delete worksheets;  delete workbook;    delete workbooks;
-//        delete excel;
-        progressSave(100);
-    }
-    else
-    {
-       progressSave(0);
-       QMessageBox::critical(NULL, "Error", "Print Error", QMessageBox::Yes, QMessageBox::Yes);
-       return;
-    }
-    qDebug() << "Print Label created.";
-    ui->lbStatus->setText("Print Label was created");
-
-}
-
-void CAnalyseData::on_pBtn_ImgRemark_ARM_clicked()
-{
-    QFileDialog dialog(this);
-    dialog.setFileMode(QFileDialog::ExistingFile);
-    dialog.setOption(QFileDialog::DontUseNativeDialog);
-    m_fileFrom= QFileDialog::getOpenFileName(this);// get file full path
-    m_fileInfoFrom = QFileInfo(m_fileFrom);
-
-    m_RemarkImgPath_ARM = m_fileInfoFrom.absoluteFilePath();//m_fileFrom;//
-    m_RemarkImgFileNameARM = m_fileInfoFrom.fileName();  // get file name
-    ui->lbl_ImgRemarkFileName_ARM->setText(m_RemarkImgFileNameARM);
-}
-
-void CAnalyseData::on_pBtn_ImgRemark_DM_clicked()
-{
-    QFileDialog dialog(this);
-    dialog.setFileMode(QFileDialog::ExistingFile);
-    dialog.setOption(QFileDialog::DontUseNativeDialog);
-    m_fileFrom= QFileDialog::getOpenFileName(this);// get file full path
-    m_fileInfoFrom = QFileInfo(m_fileFrom);
-
-    m_RemarkImgPath_DM = m_fileInfoFrom.absoluteFilePath();//m_fileFrom;//
-    m_RemarkImgFileNameDM = m_fileInfoFrom.fileName();  // get file name
-    ui->lbl_ImgRemarkFileName_DM->setText(m_RemarkImgFileNameDM);
-}
-
-void CAnalyseData::on_pBtn_ImgRemark_ZT_clicked()
-{
-    QFileDialog dialog(this);
-    dialog.setFileMode(QFileDialog::ExistingFile);
-    dialog.setOption(QFileDialog::DontUseNativeDialog);
-    m_fileFrom= QFileDialog::getOpenFileName(this);// get file full path
-    m_fileInfoFrom = QFileInfo(m_fileFrom);
-
-    m_RemarkImgPath_ZT = m_fileInfoFrom.absoluteFilePath();//m_fileFrom;//
-    m_RemarkImgFileNameZT = m_fileInfoFrom.fileName();  // get file name
-    ui->lbl_ImgRemarkFileName_ZT->setText(m_RemarkImgFileNameZT);
-}
-
-void CAnalyseData::insertDataMatrix(QAxObject *workbook, int iWorkSheet, QString strCell, QString strImgFileName, double dImgSize)
-{
-    QAxObject* worksheet = workbook->querySubObject("WorkSheets(int)", iWorkSheet);   // Get the worksheet.
-    QAxObject* range = worksheet->querySubObject("Range(const QString&)", strCell);
-    QAxObject* pictures = worksheet->querySubObject("Pictures()");
-    QAxObject* picture = pictures->querySubObject("Insert(const QString&, bool)", strImgFileName, true);
-
-    double dPic_XPosition = range->property("Left").toDouble() + range->property("Width").toDouble() - dImgSize - 1;
-    double dPic_YPosition = range->property("Top").toDouble() + range->property("Height").toDouble() - dImgSize - 1;
-    picture->setProperty("Width", dImgSize);
-    picture->setProperty("Height", dImgSize);
-    picture->setProperty("Left", dPic_XPosition);
-    picture->setProperty("Top", dPic_YPosition);
-}
-
-bool CAnalyseData::isDigitStr(QString strSrc)
-{
-    QDoubleValidator validator;
-    int pos = 0;
-    QValidator::State result = validator.validate(strSrc, pos);
-
-    if (result == QValidator::Acceptable || result == QValidator::Intermediate) // The userInput represents a valid double number
-    {
-
-        return true;
-    }else //The userInput is not a valid double number
-    {
-
-        return false;
-    }
-}
-
-void CAnalyseData::getLabelData()
-{
-    vecLabelData.resize(4);
-
-    QString strRobSerial = m_robotType + ui->leRobotTypeSN->text();
-    qDebug() << "Robot Serial: " << strRobSerial;
-
-    vecLabelData[0] = strRobSerial;
-    vecLabelData[1] = ui->leARMSN->text();
-
-    QString strDMID = "";
-    if(ui->leDMSN->text().contains("-"))
-    {
-        QStringList strLstDMSN = ui->leDMSN->text().split("-");
-        if(strLstDMSN.size() >= 4)
-            strDMID = strLstDMSN[3];
-    }else
-        strDMID = "R";
-
-    QString strZID = "";
-    if(ui->leZTSN2->text().contains("-"))
-    {
-        QStringList strLstZSN = ui->leZTSN2->text().split("-");
-        if(strLstZSN.size() >= 4)
-            strZID = strLstZSN[3];
-    }else
-        strZID = "R";
-
-    vecLabelData[2] = strDMID;
-    vecLabelData[3] = strZID;
-}
-
-void CAnalyseData::createLabelFile()
-{
-//    on_pbSaveIni_clicked();
-    getLabelData();
-    //--- Get file paths --//
-    QSettings settings(m_settingFilePath,QSettings::IniFormat);
-    settings.beginGroup("PathSetting");
-    QString strLabelTemp = settings.value("TemplateVersion").toString() + "_Label";  //ANALYSETILT_v1.3_Label
-    QString strLabelFolder = QDir::toNativeSeparators(settings.value("LabelFilePath").toString());
-    QString strDMFolder = QDir::toNativeSeparators(settings.value("DataMatrixFilePath").toString());
-    settings.endGroup();
-
-    mFilePathLabel = strLabelFolder + "\\" + m_fileName + "_Label.xls";
-    mFilePathLabelTemplate = QDir::toNativeSeparators(QApplication::applicationDirPath()) + "\\" + strLabelTemp + ".xls";
-
-//    qDebug() << "Label Directory: " << mFilePathLabel;
-//    qDebug() << "Label Template: " << mFilePathLabelTemplate;
-//    qDebug() << "DM Folder: " << strDMFolder;
-
-    //---- Create Label Excel File ----//
-    closeExcel();
-    if(QFile::exists(mFilePathLabel))
-    {
-        QFile::remove(mFilePathLabel);
-    }
-
-    m_objLabelExcel = new QAxObject("Excel.Application");
-    if(m_objLabelExcel == nullptr)
-    {
-        progressSave(0);
-        QMessageBox::critical(NULL, "Error", "Excel is not installed", QMessageBox::Yes, QMessageBox::Yes);
-        return;
-    }
-
-    m_objLabelExcel->setProperty("Visible",false);
-    QAxObject* workbooks = m_objLabelExcel->querySubObject("WorkBooks");// get the workbook.
-    if(workbooks == nullptr)
-    {
-        progressSave(0);
-        QMessageBox::critical(NULL, "Error", "Office is not installed", QMessageBox::Yes, QMessageBox::Yes);
-        return;
-    }
-    workbooks->setProperty("Visible",false);    //new code*********************
-    workbooks->dynamicCall("Open (const QString&)", mFilePathLabelTemplate);   // Open the file；
-    m_objLabelWorkbook = m_objLabelExcel->querySubObject("ActiveWorkBook"); // Get the active workbook.
-
-    //---- For inserting Label data ----//
-    QAxObject *worksheetData = m_objLabelWorkbook->querySubObject("Sheets(int)", 2); // get 2th sheet ("Data" sheet)
-
-    QAxObject* cellB1 = worksheetData->querySubObject("Cells(int,int)", 1, 2);
-    cellB1->setProperty("Value", vecLabelData[0]);
-
-    QAxObject* cellB2 = worksheetData->querySubObject("Cells(int,int)", 2, 2);
-    cellB2->setProperty("Value", vecLabelData[1]);
-
-    QAxObject* cellB3 = worksheetData->querySubObject("Cells(int,int)", 3, 2);
-    cellB3->setProperty("Value", vecLabelData[2]);
-
-    QAxObject* cellB4 = worksheetData->querySubObject("Cells(int,int)", 4, 2);
-    cellB4->setProperty("Value", vecLabelData[3]);
-//    qDebug() << "Label Data Written";
-
-    //-------------------------- For creating DataMatrix -----------------------------------//
-    QAxObject *worksheetLabel = m_objLabelWorkbook->querySubObject("Sheets(int)", 1); // get 1th sheet ("Label" sheet)
-
-    QAxObject* rangeA1 = worksheetLabel->querySubObject("Range())", "A1");       //ex: The cell A1
-    QString strValueA1 = rangeA1->dynamicCall("Value()").toString();        //strRange: the raw value of cell A1
-    qDebug() << strValueA1;
-    QAxObject* rangeA2 = worksheetLabel->querySubObject("Range())", "A2");       //ex: The cell A2
-    QString strValueA2 = rangeA2->dynamicCall("Value()").toString();        //strRange: the raw value of cell A2
-    qDebug() << strValueA2;
-    QAxObject* rangeA3 = worksheetLabel->querySubObject("Range())", "A3");       //ex: The cell A3
-    QString strValueA3 = rangeA3->dynamicCall("Value()").toString();        //strRange: the raw value of cell A3
-    qDebug() << strValueA3;
-    //                               strText,    strSavePath,   strFileName,                   iFileType, iSize //1: jpg, 2: jpeg, 3. png
-    libDataMatrix.GenerateDataMatrix(strValueA1, strDMFolder, (m_fileName + "_DataMatrix_ARM"),   1,        200);    //(m_fileName + "_QrCode_ARM")
-    libDataMatrix.GenerateDataMatrix(strValueA2, strDMFolder, (m_fileName + "_DataMatrix_DM"),    1,        200);
-    libDataMatrix.GenerateDataMatrix(strValueA3, strDMFolder, (m_fileName + "_DataMatrix_Z"),     1,        200);
-
-    //18, 17, 17 -> 0.25 inch
-    insertDataMatrix(m_objLabelWorkbook, 1, "A1", (strDMFolder + "\\" + m_fileName + "_DataMatrix_ARM.jpg"), 21.6);
-    insertDataMatrix(m_objLabelWorkbook, 1, "A2", (strDMFolder + "\\" + m_fileName + "_DataMatrix_DM.jpg"), 22);
-    insertDataMatrix(m_objLabelWorkbook, 1, "A3", (strDMFolder + "\\" + m_fileName + "_DataMatrix_Z.jpg"), 22);
-    qDebug() << "DataMatrix Inserted";
-    //-----------------------------------------------------------------------------------------------------------------//
-
-    // add to disable checking compatibility
-    m_objLabelWorkbook->setProperty("DisplayAlerts", false);
-    m_objLabelWorkbook->setProperty("CheckCompatibility", false);
-    m_objLabelWorkbook->setProperty("DoNotPromptForConvert", true);
-
-    m_objLabelWorkbook->dynamicCall("SaveAs(const QString&)",
-                                     QDir::toNativeSeparators(mFilePathLabel));
-
-//    qDebug() << "Label file Created";
-
-    m_objLabelWorkbook->dynamicCall("Close()");
-    m_objLabelExcel->dynamicCall("Quit()");
-}
-
-
-
-// ************** Create Repair Table ---------------------------------------------------------------------------- //
-
-
-void CAnalyseData::setRadioButtonsIDsInGB4RepairARM( void){
-    // set ArmBelts
-    m_pgbRepairARM_ArmBelts = new QButtonGroup( this);
-    m_pgbRepairARM_ArmBelts->addButton(ui->rbArmBeltsAvrPrice_OK, Repair_OK);
-    m_pgbRepairARM_ArmBelts->addButton(ui->rbArmBeltsAvrPrice_Repair, Repair_Repair);
-    m_pgbRepairARM_ArmBelts->addButton(ui->rbArmBeltsAvrPrice_NA, Repair_NA);
-
-    // set UpperArmHousingUpgrade
-    m_pgbRepairARM_UpperArmHousingUpgrade = new QButtonGroup( this);
-    m_pgbRepairARM_UpperArmHousingUpgrade->addButton(ui->rbUpperArmHousingUpgrade_OK, Repair_OK);
-    m_pgbRepairARM_UpperArmHousingUpgrade->addButton(ui->rbUpperArmHousingUpgrade_Repair, Repair_Repair);
-    m_pgbRepairARM_UpperArmHousingUpgrade->addButton(ui->rbUpperArmHousingUpgrade_NA, Repair_NA);
-
-    // set UpperArmHousing
-    m_pgbRepairARM_UpperArmHousing = new QButtonGroup( this);
-    m_pgbRepairARM_UpperArmHousing->addButton(ui->rbUpperArmHousing_OK, Repair_OK);
-    m_pgbRepairARM_UpperArmHousing->addButton(ui->rbUpperArmHousing_Repair, Repair_Repair);
-    m_pgbRepairARM_UpperArmHousing->addButton(ui->rbUpperArmHousing_NA, Repair_NA);
-
-    // set UpperArmLid
-    m_pgbRepairARM_UpperArmLid = new QButtonGroup( this);
-    m_pgbRepairARM_UpperArmLid->addButton(ui->rbUpperArmLid_OK, Repair_OK);
-    m_pgbRepairARM_UpperArmLid->addButton(ui->rbUpperArmLid_Repair, Repair_Repair);
-    m_pgbRepairARM_UpperArmLid->addButton(ui->rbUpperArmLid_NA, Repair_NA);
-
-    // set LowerArmHousingUpgrade
-    m_pgbRepairARM_LowerArmHousingUpgrade = new QButtonGroup( this);
-    m_pgbRepairARM_LowerArmHousingUpgrade->addButton(ui->rbLowerArmHousingUpgrade_OK, Repair_OK);
-    m_pgbRepairARM_LowerArmHousingUpgrade->addButton(ui->rbLowerArmHousingUpgrade_Repair, Repair_Repair);
-    m_pgbRepairARM_LowerArmHousingUpgrade->addButton(ui->rbLowerArmHousingUpgrade_NA, Repair_NA);
-
-    // set LowerArmHousing
-    m_pgbRepairARM_LowerArmHousing = new QButtonGroup( this);
-    m_pgbRepairARM_LowerArmHousing->addButton(ui->rbLowerArmHousing_OK, Repair_OK);
-    m_pgbRepairARM_LowerArmHousing->addButton(ui->rbLowerArmHousing_Repair, Repair_Repair);
-    m_pgbRepairARM_LowerArmHousing->addButton(ui->rbLowerArmHousing_NA, Repair_NA);
-
-    // set LowerArmLid
-    m_pgbRepairARM_LowerArmLid = new QButtonGroup( this);
-    m_pgbRepairARM_LowerArmLid->addButton(ui->rbLowerArmLid_OK, Repair_OK);
-    m_pgbRepairARM_LowerArmLid->addButton(ui->rbLowerArmLid_Repair, Repair_Repair);
-    m_pgbRepairARM_LowerArmLid->addButton(ui->rbLowerArmLid_NA, Repair_NA);
-
-    // set ArmDriveInterface
-    m_pgbRepairARM_ArmDriveInterface = new QButtonGroup( this);
-    m_pgbRepairARM_ArmDriveInterface->addButton(ui->rbArmDriveInterface_OK, Repair_OK);
-    m_pgbRepairARM_ArmDriveInterface->addButton(ui->rbArmDriveInterface_Repair, Repair_Repair);
-    m_pgbRepairARM_ArmDriveInterface->addButton(ui->rbArmDriveInterface_NA, Repair_NA);
-
-    // set ArmGripperInterfaceScara
-    m_pgbRepairARM_ArmGripperInterfaceScara = new QButtonGroup( this);
-    m_pgbRepairARM_ArmGripperInterfaceScara->addButton(ui->rbArmGripperInterfaceScara_OK, Repair_OK);
-    m_pgbRepairARM_ArmGripperInterfaceScara->addButton(ui->rbArmGripperInterfaceScara_Repair, Repair_Repair);
-    m_pgbRepairARM_ArmGripperInterfaceScara->addButton(ui->rbArmGripperInterfaceScara_NA, Repair_NA);
-
-    // set ArmGripperInterfaceNT
-    m_pgbRepairARM_ArmGripperInterfaceNT = new QButtonGroup( this);
-    m_pgbRepairARM_ArmGripperInterfaceNT->addButton(ui->rbArmGripperInterfaceNT_OK, Repair_OK);
-    m_pgbRepairARM_ArmGripperInterfaceNT->addButton(ui->rbArmGripperInterfaceNT_Repair, Repair_Repair);
-    m_pgbRepairARM_ArmGripperInterfaceNT->addButton(ui->rbArmGripperInterfaceNT_NA, Repair_NA);
-
-    // set BeltReel
-    m_pgbRepairARM_BeltReel = new QButtonGroup( this);
-    m_pgbRepairARM_BeltReel->addButton(ui->rbBeltReel_OK, Repair_OK);
-    m_pgbRepairARM_BeltReel->addButton(ui->rbBeltReel_Repair, Repair_Repair);
-    m_pgbRepairARM_BeltReel->addButton(ui->rbBeltReel_NA, Repair_NA);
-
-    // set TorxScrew
-    m_pgbRepairARM_TorxScrew = new QButtonGroup( this);
-    m_pgbRepairARM_TorxScrew->addButton(ui->rbTorxScrew_OK, Repair_OK);
-    m_pgbRepairARM_TorxScrew->addButton(ui->rbTorxScrew_Repair, Repair_Repair);
-    m_pgbRepairARM_TorxScrew->addButton(ui->rbTorxScrew_NA, Repair_NA);
-
-    // set Bearings
-    m_pgbRepairARM_Bearings = new QButtonGroup( this);
-    m_pgbRepairARM_Bearings->addButton(ui->rbBearings_OK, Repair_OK);
-    m_pgbRepairARM_Bearings->addButton(ui->rbBearings_Repair, Repair_Repair);
-    m_pgbRepairARM_Bearings->addButton(ui->rbBearings_NA, Repair_NA);
-
-    // set DeliverTo
-    m_pgbRepairARM_RepairIn = new QButtonGroup( this);
-    m_pgbRepairARM_RepairIn->addButton(ui->cbArmTW, RepairIn_TW);
-    m_pgbRepairARM_RepairIn->addButton(ui->cbArmEU, RepairIn_EU);
-
-}
-
-void CAnalyseData::setRadioButtonsIDsInGB4RepairDM( void){
-    // set DMLikaMotor
-    m_pgbRepairDM_DMLikaMotor = new QButtonGroup( this);
-    m_pgbRepairDM_DMLikaMotor->addButton(ui->rbDMLikaMotor_OK, Repair_OK);
-    m_pgbRepairDM_DMLikaMotor->addButton(ui->rbDMLikaMotor_Repair, Repair_Repair);
-    m_pgbRepairDM_DMLikaMotor->addButton(ui->rbDMLikaMotor_NA, Repair_NA);
-
-    // set CableHood
-    m_pgbRepairDM_CableHood = new QButtonGroup( this);
-    m_pgbRepairDM_CableHood->addButton(ui->rbCableHood_OK, Repair_OK);
-    m_pgbRepairDM_CableHood->addButton(ui->rbCableHood_Repair, Repair_Repair);
-    m_pgbRepairDM_CableHood->addButton(ui->rbCableHood_NA, Repair_NA);
-
-    // set DMHousing
-    m_pgbRepairDM_DMHousing = new QButtonGroup( this);
-    m_pgbRepairDM_DMHousing->addButton(ui->rbDMHousing_OK, Repair_OK);
-    m_pgbRepairDM_DMHousing->addButton(ui->rbDMHousing_Repair, Repair_Repair);
-    m_pgbRepairDM_DMHousing->addButton(ui->rbDMHousing_NA, Repair_NA);
-
-    // set DMLid
-    m_pgbRepairDM_DMLid = new QButtonGroup( this);
-    m_pgbRepairDM_DMLid->addButton(ui->rbDMLid_OK, Repair_OK);
-    m_pgbRepairDM_DMLid->addButton(ui->rbDMLid_Repair, Repair_Repair);
-    m_pgbRepairDM_DMLid->addButton(ui->rbDMLid_NA, Repair_NA);
-
-    // set SlipRing
-    m_pgbRepairDM_SlipRing = new QButtonGroup( this);
-    m_pgbRepairDM_SlipRing->addButton(ui->rbSlipRing_OK, Repair_OK);
-    m_pgbRepairDM_SlipRing->addButton(ui->rbSlipRing_Repair, Repair_Repair);
-    m_pgbRepairDM_SlipRing->addButton(ui->rbSlipRing_NA, Repair_NA);
-
-    // set HollowShaft
-    m_pgbRepairDM_HollowShaft = new QButtonGroup( this);
-    m_pgbRepairDM_HollowShaft->addButton(ui->rbHollowShaft_OK, Repair_OK);
-    m_pgbRepairDM_HollowShaft->addButton(ui->rbHollowShaft_Repair, Repair_Repair);
-    m_pgbRepairDM_HollowShaft->addButton(ui->rbHollowShaft_NA, Repair_NA);
-
-    // set RepairIn
-    m_pgbRepairDM_RepairIn = new QButtonGroup( this);
-    m_pgbRepairDM_RepairIn->addButton(ui->cbDMTW, RepairIn_TW);
-    m_pgbRepairDM_RepairIn->addButton(ui->cbDMEU, RepairIn_EU);
-}
-
-void CAnalyseData::setRadioButtonsIDsInGB4RepairZT( void){
-    // set ZStroke35
-    m_pgbRepairZT_ZStroke35 = new QButtonGroup( this);
-    m_pgbRepairZT_ZStroke35->addButton(ui->rbZStroke35_OK, Repair_OK);
-    m_pgbRepairZT_ZStroke35->addButton(ui->rbZStroke35_Repair, Repair_Repair);
-    m_pgbRepairZT_ZStroke35->addButton(ui->rbZStroke35_NA, Repair_NA);
-
-    // set ZStroke50
-    m_pgbRepairZT_ZStroke50 = new QButtonGroup( this);
-    m_pgbRepairZT_ZStroke50->addButton(ui->rbZStroke50_OK, Repair_OK);
-    m_pgbRepairZT_ZStroke50->addButton(ui->rbZStroke50_Repair, Repair_Repair);
-    m_pgbRepairZT_ZStroke50->addButton(ui->rbZStroke50_NA, Repair_NA);
-
-    // set ZMHousingScara
-    m_pgbRepairZT_ZMHousingScara = new QButtonGroup( this);
-    m_pgbRepairZT_ZMHousingScara->addButton(ui->rbZMHousingScara_OK, Repair_OK);
-    m_pgbRepairZT_ZMHousingScara->addButton(ui->rbZMHousingScara_Repair, Repair_Repair);
-    m_pgbRepairZT_ZMHousingScara->addButton(ui->rbZMHousingScara_NA, Repair_NA);
-
-    // set ZMHousingNT
-    m_pgbRepairZT_ZMHousingNT = new QButtonGroup( this);
-    m_pgbRepairZT_ZMHousingNT->addButton(ui->rbZMHousingNT_OK, Repair_OK);
-    m_pgbRepairZT_ZMHousingNT->addButton(ui->rbZMHousingNT_Repair, Repair_Repair);
-    m_pgbRepairZT_ZMHousingNT->addButton(ui->rbZMHousingNT_NA, Repair_NA);
-
-    // set GuidingShaftsScara
-    m_pgbRepairZT_GuidingShaftsScara = new QButtonGroup( this);
-    m_pgbRepairZT_GuidingShaftsScara->addButton(ui->rbGuidingShaftsScara_OK, Repair_OK);
-    m_pgbRepairZT_GuidingShaftsScara->addButton(ui->rbGuidingShaftsScara_Repair, Repair_Repair);
-    m_pgbRepairZT_GuidingShaftsScara->addButton(ui->rbGuidingShaftsScara_NA, Repair_NA);
-
-    // set GuidingShaftsNT
-    m_pgbRepairZT_GuidingShaftsNT = new QButtonGroup( this);
-    m_pgbRepairZT_GuidingShaftsNT->addButton(ui->rbGuidingShaftsNT_OK, Repair_OK);
-    m_pgbRepairZT_GuidingShaftsNT->addButton(ui->rbGuidingShaftsNT_Repair, Repair_Repair);
-    m_pgbRepairZT_GuidingShaftsNT->addButton(ui->rbGuidingShaftsNT_NA, Repair_NA);
-
-    // set SmallGuidingShafts
-    m_pgbRepairZT_SmallGuidingShafts = new QButtonGroup( this);
-    m_pgbRepairZT_SmallGuidingShafts->addButton(ui->rbSmallGuidingShafts_OK, Repair_OK);
-    m_pgbRepairZT_SmallGuidingShafts->addButton(ui->rbSmallGuidingShafts_Repair, Repair_Repair);
-    m_pgbRepairZT_SmallGuidingShafts->addButton(ui->rbSmallGuidingShafts_NA, Repair_NA);
-
-    // set ClampingFlange
-    m_pgbRepairZT_ClampingFlange = new QButtonGroup( this);
-    m_pgbRepairZT_ClampingFlange->addButton(ui->rbClampingFlange_OK, Repair_OK);
-    m_pgbRepairZT_ClampingFlange->addButton(ui->rbClampingFlange_Repair, Repair_Repair);
-    m_pgbRepairZT_ClampingFlange->addButton(ui->rbClampingFlange_NA, Repair_NA);
-
-    // set AdapterCable
-    m_pgbRepairZT_AdapterCable = new QButtonGroup( this);
-    m_pgbRepairZT_AdapterCable->addButton(ui->rbAdapterCable_OK, Repair_OK);
-    m_pgbRepairZT_AdapterCable->addButton(ui->rbAdapterCable_Repair, Repair_Repair);
-    m_pgbRepairZT_AdapterCable->addButton(ui->rbAdapterCable_NA, Repair_NA);
-
-    // set RepairIn
-    m_pgbRepairZT_RepairIn = new QButtonGroup( this);
-    m_pgbRepairZT_RepairIn->addButton(ui->cbZTTW, RepairIn_TW);
-    m_pgbRepairZT_RepairIn->addButton(ui->cbZTEU, RepairIn_EU);
-}
-
-void CAnalyseData::writeAmount( QAxObject* workbook, sREPAIRITEM item )
-{
-    QAxObject *worksheet = workbook->querySubObject("WorkSheets(int)", 1);
-    int row = 0, column = 0;
-    CAnalyseData::getRowColumn(item.Cell, &row, &column);
-    QAxObject* cell = worksheet->querySubObject("Cells(int,int)", row, column);
-    // if checkbox "repair" is checked -> write "1"
-    if(item.Value.toInt() == Repair_Repair){
-        QString value = "1";
-        cell->setProperty("Value", value);
-    }
-}
-
-void CAnalyseData::writeRepairIn( QAxObject* workbook, sREPAIRITEM item ){
-    QAxObject *worksheet = workbook->querySubObject("WorkSheets(int)", 1);
-    int row = 0, column = 0;
-    CAnalyseData::getRowColumn(item.Cell, &row, &column);
-    QAxObject* cell = worksheet->querySubObject("Cells(int,int)", row, column);
-    // if checkbox "repair" is checked -> write "1"
-    if(item.Value.toInt() == RepairIn_EU){
-        QString value = "1";
-        cell->setProperty("Value", value);
-    }
-}
-
-void CAnalyseData::writeInformation( QAxObject* workbook, sREPAIRITEM item )
-{
-    QAxObject *worksheet = workbook->querySubObject("WorkSheets(int)", 1);
-    int row = 0, column = 0;
-    CAnalyseData::getRowColumn(item.Cell, &row, &column);
-    QAxObject* cell = worksheet->querySubObject("Cells(int,int)", row, column);
-    // write information
-    QString value = item.Value.toString();
-    cell->setProperty("Value", value);
-}
-
-void CAnalyseData::extendInformation( QAxObject* workbook, sREPAIRITEM item )
-{
-    QAxObject *worksheet = workbook->querySubObject("WorkSheets(int)", 1);
-    int row = 0, column = 0;
-    CAnalyseData::getRowColumn(item.Cell, &row, &column);
-    QAxObject* cell = worksheet->querySubObject("Cells(int,int)", row, column);
-    // write information
-
-    QString value = cell->property("Value").toString() + " " + item.Value.toString();
-    cell->setProperty("Value", value);
-}
-
-void CAnalyseData::buildRepairTable( void )
-{
-    QString strDMSN = "";
-    if(!(ui->leDMSN->text()).isEmpty())
-        strDMSN=((ui->leDMSN->text()).split("-"))[3];
-    QString strZTSN2 = "";
-    if(!(ui->leZTSN2->text()).isEmpty())
-        strZTSN2=((ui->leZTSN2->text()).split("-"))[3];
-    // Value                                                                                // Cell     // Function
-    // ----- General Information --------------------------------------------------------------------------
-    vecRepairItems.append({"'"+ui->leNew12NC->text(),                                       "C4",       writeInformation});
-    vecRepairItems.append({"'"+ui->leRobotSN->text(),                                       "C5",       writeInformation});
-    vecRepairItems.append({"'"+ui->leARMSN->text(),                                         "D7",       writeInformation});
-    vecRepairItems.append({ui->leArmFirstDelivery->text()+ " ; "+ui->leArmLastRepair->text(),"B7",      extendInformation});
-    vecRepairItems.append({strDMSN,                                                         "D8",       writeInformation});
-    vecRepairItems.append({ui->leDMFirstDelivery->text()+" ; "+ui->leDMLastRepair->text(),  "B8",      extendInformation});
-    vecRepairItems.append({strZTSN2,                                                        "D9",       writeInformation});
-    vecRepairItems.append({ui->leZTFirstDelivery->text()+" ; "+ui->leZTLastRepair->text(),  "B9",      extendInformation});
-    vecRepairItems.append({ui->leRepairNo->text()+ " ; " +ui->leLastRepairDate->text(),     "F5",      extendInformation});
-    vecRepairItems.append({ui->leFirstDeliveryDate->text(),                                 "F6",       extendInformation});
-
-    // ------ Arm parts ------------------------------------------------------------------------------------
-    vecRepairItems.append({m_pgbRepairARM_ArmBelts->checkedId(),                            "E13",      writeAmount});
-    vecRepairItems.append({m_pgbRepairARM_UpperArmHousingUpgrade->checkedId(),              "E35",      writeAmount});
-    vecRepairItems.append({m_pgbRepairARM_UpperArmHousing->checkedId(),                     "E36",      writeAmount});
-    vecRepairItems.append({m_pgbRepairARM_UpperArmLid->checkedId(),                         "E37",      writeAmount});
-    vecRepairItems.append({m_pgbRepairARM_LowerArmHousingUpgrade->checkedId(),              "E38",      writeAmount});
-    vecRepairItems.append({m_pgbRepairARM_LowerArmHousing->checkedId(),                     "E39",      writeAmount});
-    vecRepairItems.append({m_pgbRepairARM_LowerArmLid->checkedId(),                         "E40",      writeAmount});
-    vecRepairItems.append({m_pgbRepairARM_ArmDriveInterface->checkedId(),                   "E41",      writeAmount});
-    vecRepairItems.append({m_pgbRepairARM_ArmGripperInterfaceScara->checkedId(),            "E42",      writeAmount});
-    vecRepairItems.append({m_pgbRepairARM_ArmGripperInterfaceNT->checkedId(),               "E43",      writeAmount});
-    vecRepairItems.append({m_pgbRepairARM_BeltReel->checkedId(),                            "E44",      writeAmount});
-    vecRepairItems.append({m_pgbRepairARM_TorxScrew->checkedId(),                           "E45",      writeAmount});
-    vecRepairItems.append({m_pgbRepairARM_Bearings->checkedId(),                            "E46",      writeAmount});
-    vecRepairItems.append({m_pgbRepairARM_RepairIn->checkedId(),                            "E47",     writeRepairIn});
-
-    // ------ DM parts ------------------------------------------------------------------------------------
-    vecRepairItems.append({m_pgbRepairDM_DMLikaMotor->checkedId(),                          "E15",      writeAmount});
-    vecRepairItems.append({m_pgbRepairDM_CableHood->checkedId(),                            "E49",      writeAmount});
-    vecRepairItems.append({m_pgbRepairDM_DMHousing->checkedId(),                            "E50",      writeAmount});
-    vecRepairItems.append({m_pgbRepairDM_DMLid->checkedId(),                                "E51",      writeAmount});
-    vecRepairItems.append({m_pgbRepairDM_SlipRing->checkedId(),                             "E52",      writeAmount});
-    vecRepairItems.append({m_pgbRepairDM_HollowShaft->checkedId(),                          "E53",      writeAmount});
-    vecRepairItems.append({m_pgbRepairDM_RepairIn->checkedId(),                              "E54",     writeRepairIn});
-
-    // ------ Z-module parts ------------------------------------------------------------------------------
-    vecRepairItems.append({m_pgbRepairZT_ZStroke35->checkedId(),                            "E17",      writeAmount});
-    vecRepairItems.append({m_pgbRepairZT_ZStroke50->checkedId(),                            "E18",      writeAmount});
-    vecRepairItems.append({m_pgbRepairZT_ZMHousingScara->checkedId(),                       "E56",      writeAmount});
-    vecRepairItems.append({m_pgbRepairZT_ZMHousingNT->checkedId(),                          "E57",      writeAmount});
-    vecRepairItems.append({m_pgbRepairZT_GuidingShaftsScara->checkedId(),                   "E58",      writeAmount});
-    vecRepairItems.append({m_pgbRepairZT_GuidingShaftsNT->checkedId(),                      "E59",      writeAmount});
-    vecRepairItems.append({m_pgbRepairZT_SmallGuidingShafts->checkedId(),                   "E60",      writeAmount});
-    vecRepairItems.append({m_pgbRepairZT_ClampingFlange->checkedId(),                       "E61",      writeAmount});
-    vecRepairItems.append({m_pgbRepairZT_AdapterCable->checkedId(),                         "E62",      writeAmount});
-    vecRepairItems.append({m_pgbRepairZT_RepairIn->checkedId(),                              "E63",     writeRepairIn});
-
-    // ------ Upgrade part --------------------------------------------------------------------------------
-
-    // ------ Labour & Packaging --------------------------------------------------------------------------
-}
-
-void CAnalyseData::getDataFromRepair( void ){
-    getRepairFromARM();
-    getRepairFromDM();
-    getRepairFromZT();
-}
-void CAnalyseData::getRepairFromARM( void )
-{
-    QSettings settings(m_filePath,QSettings::IniFormat);
-    settings.beginGroup(BEGIN_ARMREPAIR);
-
-    QString strInputName = "ArmBelts";
-    switch( m_pgbRepairARM_ArmBelts->checkedId())
-    {
-      case Repair_OK:
-        settings.setValue(strInputName, Repair_OK);
-        break;
-      case Repair_Repair:
-        settings.setValue(strInputName, Repair_Repair);
-        break;
-      case Repair_NA:
-        settings.setValue(strInputName, Repair_NA);
-        break;
-    }
-    strInputName = "UpperArmHousingUpgrade";
-    switch( m_pgbRepairARM_UpperArmHousingUpgrade->checkedId())
-    {
-      case Repair_OK:
-        settings.setValue(strInputName, Repair_OK);
-        break;
-      case Repair_Repair:
-        settings.setValue(strInputName, Repair_Repair);
-        break;
-      case Repair_NA:
-        settings.setValue(strInputName, Repair_NA);
-        break;
-    }
-    strInputName = "UpperArmHousing";
-    switch( m_pgbRepairARM_UpperArmHousing->checkedId())
-    {
-      case Repair_OK:
-        settings.setValue(strInputName, Repair_OK);
-        break;
-      case Repair_Repair:
-        settings.setValue(strInputName, Repair_Repair);
-        break;
-      case Repair_NA:
-        settings.setValue(strInputName, Repair_NA);
-        break;
-    }
-    strInputName = "UpperArmLid";
-    switch( m_pgbRepairARM_UpperArmLid->checkedId())
-    {
-      case Repair_OK:
-        settings.setValue(strInputName, Repair_OK);
-        break;
-      case Repair_Repair:
-        settings.setValue(strInputName, Repair_Repair);
-        break;
-      case Repair_NA:
-        settings.setValue(strInputName, Repair_NA);
-        break;
-    }
-    strInputName = "LowerArmHousingUpgrade";
-    switch( m_pgbRepairARM_LowerArmHousingUpgrade->checkedId())
-    {
-      case Repair_OK:
-        settings.setValue(strInputName, Repair_OK);
-        break;
-      case Repair_Repair:
-        settings.setValue(strInputName, Repair_Repair);
-        break;
-      case Repair_NA:
-        settings.setValue(strInputName, Repair_NA);
-        break;
-    }
-    strInputName = "LowerArmHousing";
-    switch( m_pgbRepairARM_LowerArmHousing->checkedId())
-    {
-      case Repair_OK:
-        settings.setValue(strInputName, Repair_OK);
-        break;
-      case Repair_Repair:
-        settings.setValue(strInputName, Repair_Repair);
-        break;
-      case Repair_NA:
-        settings.setValue(strInputName, Repair_NA);
-        break;
-    }
-    strInputName = "LowerArmLid";
-    switch( m_pgbRepairARM_LowerArmLid->checkedId())
-    {
-      case Repair_OK:
-        settings.setValue(strInputName, Repair_OK);
-        break;
-      case Repair_Repair:
-        settings.setValue(strInputName, Repair_Repair);
-        break;
-      case Repair_NA:
-        settings.setValue(strInputName, Repair_NA);
-        break;
-    }
-    strInputName = "ArmDriveInterface";
-    switch( m_pgbRepairARM_ArmDriveInterface->checkedId())
-    {
-      case Repair_OK:
-        settings.setValue(strInputName, Repair_OK);
-        break;
-      case Repair_Repair:
-        settings.setValue(strInputName, Repair_Repair);
-        break;
-      case Repair_NA:
-        settings.setValue(strInputName, Repair_NA);
-        break;
-    }
-    strInputName = "ArmGripperInterfaceScara";
-    switch( m_pgbRepairARM_ArmGripperInterfaceScara->checkedId())
-    {
-      case Repair_OK:
-        settings.setValue(strInputName, Repair_OK);
-        break;
-      case Repair_Repair:
-        settings.setValue(strInputName, Repair_Repair);
-        break;
-      case Repair_NA:
-        settings.setValue(strInputName, Repair_NA);
-        break;
-    }
-    strInputName = "ArmGripperInterfaceNT";
-    switch( m_pgbRepairARM_ArmGripperInterfaceNT->checkedId())
-    {
-      case Repair_OK:
-        settings.setValue(strInputName, Repair_OK);
-        break;
-      case Repair_Repair:
-        settings.setValue(strInputName, Repair_Repair);
-        break;
-      case Repair_NA:
-        settings.setValue(strInputName, Repair_NA);
-        break;
-    }
-    strInputName = "BeltReel";
-    switch( m_pgbRepairARM_BeltReel->checkedId())
-    {
-      case Repair_OK:
-        settings.setValue(strInputName, Repair_OK);
-        break;
-      case Repair_Repair:
-        settings.setValue(strInputName, Repair_Repair);
-        break;
-      case Repair_NA:
-        settings.setValue(strInputName, Repair_NA);
-        break;
-    }
-    strInputName = "TorxScrew";
-    switch( m_pgbRepairARM_TorxScrew->checkedId())
-    {
-      case Repair_OK:
-        settings.setValue(strInputName, Repair_OK);
-        break;
-      case Repair_Repair:
-        settings.setValue(strInputName, Repair_Repair);
-        break;
-      case Repair_NA:
-        settings.setValue(strInputName, Repair_NA);
-        break;
-    }
-    strInputName = "Bearings";
-    switch( m_pgbRepairARM_Bearings->checkedId())
-    {
-      case Repair_OK:
-        settings.setValue(strInputName, Repair_OK);
-        break;
-      case Repair_Repair:
-        settings.setValue(strInputName, Repair_Repair);
-        break;
-      case Repair_NA:
-        settings.setValue(strInputName, Repair_NA);
-        break;
-    }
-    strInputName = "RepairIn";
-    switch( m_pgbRepairARM_RepairIn->checkedId())
-    {
-        case RepairIn_TW:
-        settings.setValue(strInputName, RepairIn_TW);
-        break;
-        case RepairIn_EU:
-        settings.setValue(strInputName, RepairIn_EU);
-        break;
-    }
-
-
-}
-void CAnalyseData::getRepairFromDM( void )
-{
-    QSettings settings(m_filePath,QSettings::IniFormat);
-    settings.beginGroup(BEGIN_DMREPAIR);
-
-    QString strInputName = "DMLikaMotor";
-    switch( m_pgbRepairDM_DMLikaMotor->checkedId())
-    {
-      case Repair_OK:
-        settings.setValue(strInputName, Repair_OK);
-        break;
-      case Repair_Repair:
-        settings.setValue(strInputName, Repair_Repair);
-        break;
-      case Repair_NA:
-        settings.setValue(strInputName, Repair_NA);
-        break;
-    }
-    strInputName = "CableHood";
-    switch( m_pgbRepairDM_CableHood->checkedId())
-    {
-        case Repair_OK:
-        settings.setValue(strInputName, Repair_OK);
-        break;
-        case Repair_Repair:
-        settings.setValue(strInputName, Repair_Repair);
-        break;
-        case Repair_NA:
-        settings.setValue(strInputName, Repair_NA);
-        break;
-    }
-    strInputName = "DMLid";
-    switch( m_pgbRepairDM_DMLid->checkedId())
-    {
-        case Repair_OK:
-        settings.setValue(strInputName, Repair_OK);
-        break;
-        case Repair_Repair:
-        settings.setValue(strInputName, Repair_Repair);
-        break;
-        case Repair_NA:
-        settings.setValue(strInputName, Repair_NA);
-        break;
-    }
-    strInputName = "SlipRing";
-    switch( m_pgbRepairDM_SlipRing->checkedId())
-    {
-        case Repair_OK:
-        settings.setValue(strInputName, Repair_OK);
-        break;
-        case Repair_Repair:
-        settings.setValue(strInputName, Repair_Repair);
-        break;
-        case Repair_NA:
-        settings.setValue(strInputName, Repair_NA);
-        break;
-    }
-    strInputName = "HollowShaft";
-    switch( m_pgbRepairDM_HollowShaft->checkedId())
-    {
-        case Repair_OK:
-        settings.setValue(strInputName, Repair_OK);
-        break;
-        case Repair_Repair:
-        settings.setValue(strInputName, Repair_Repair);
-        break;
-        case Repair_NA:
-        settings.setValue(strInputName, Repair_NA);
-        break;
-    }
-    strInputName = "RepairIn";
-    switch( m_pgbRepairDM_RepairIn->checkedId())
-    {
-        case RepairIn_TW:
-        settings.setValue(strInputName, RepairIn_TW);
-        break;
-        case RepairIn_EU:
-        settings.setValue(strInputName, RepairIn_EU);
-        break;
-    }
-}
-void CAnalyseData::getRepairFromZT( void )
-{
-    QSettings settings(m_filePath,QSettings::IniFormat);
-    settings.beginGroup(BEGIN_ZTREPAIR);
-
-    QString strInputName = "ZStroke35";
-    switch( m_pgbRepairZT_ZStroke35->checkedId())
-    {
-      case Repair_OK:
-        settings.setValue(strInputName, Repair_OK);
-        break;
-      case Repair_Repair:
-        settings.setValue(strInputName, Repair_Repair);
-        break;
-      case Repair_NA:
-        settings.setValue(strInputName, Repair_NA);
-        break;
-    }
-    strInputName = "ZStroke50";
-    switch( m_pgbRepairZT_ZStroke50->checkedId())
-    {
-      case Repair_OK:
-        settings.setValue(strInputName, Repair_OK);
-        break;
-      case Repair_Repair:
-        settings.setValue(strInputName, Repair_Repair);
-        break;
-      case Repair_NA:
-        settings.setValue(strInputName, Repair_NA);
-        break;
-    }
-    strInputName = "ZMHousingScara";
-    switch( m_pgbRepairZT_ZMHousingScara->checkedId())
-    {
-      case Repair_OK:
-        settings.setValue(strInputName, Repair_OK);
-        break;
-      case Repair_Repair:
-        settings.setValue(strInputName, Repair_Repair);
-        break;
-      case Repair_NA:
-        settings.setValue(strInputName, Repair_NA);
-        break;
-    }
-    strInputName = "ZMHousingNT";
-    switch( m_pgbRepairZT_ZMHousingNT->checkedId())
-    {
-      case Repair_OK:
-        settings.setValue(strInputName, Repair_OK);
-        break;
-      case Repair_Repair:
-        settings.setValue(strInputName, Repair_Repair);
-        break;
-      case Repair_NA:
-        settings.setValue(strInputName, Repair_NA);
-        break;
-    }
-    strInputName = "GuidingShaftsScara";
-    switch( m_pgbRepairZT_GuidingShaftsScara->checkedId())
-    {
-      case Repair_OK:
-        settings.setValue(strInputName, Repair_OK);
-        break;
-      case Repair_Repair:
-        settings.setValue(strInputName, Repair_Repair);
-        break;
-      case Repair_NA:
-        settings.setValue(strInputName, Repair_NA);
-        break;
-    }
-    strInputName = "GuidingShaftsNT";
-    switch( m_pgbRepairZT_GuidingShaftsNT->checkedId())
-    {
-      case Repair_OK:
-        settings.setValue(strInputName, Repair_OK);
-        break;
-      case Repair_Repair:
-        settings.setValue(strInputName, Repair_Repair);
-        break;
-      case Repair_NA:
-        settings.setValue(strInputName, Repair_NA);
-        break;
-    }
-    strInputName = "SmallGuidingShafts";
-    switch( m_pgbRepairZT_SmallGuidingShafts->checkedId())
-    {
-      case Repair_OK:
-        settings.setValue(strInputName, Repair_OK);
-        break;
-      case Repair_Repair:
-        settings.setValue(strInputName, Repair_Repair);
-        break;
-      case Repair_NA:
-        settings.setValue(strInputName, Repair_NA);
-        break;
-    }
-    strInputName = "ClampingFlange";
-    switch( m_pgbRepairZT_ClampingFlange->checkedId())
-    {
-      case Repair_OK:
-        settings.setValue(strInputName, Repair_OK);
-        break;
-      case Repair_Repair:
-        settings.setValue(strInputName, Repair_Repair);
-        break;
-      case Repair_NA:
-        settings.setValue(strInputName, Repair_NA);
-        break;
-    }
-    strInputName = "AdapterCable";
-    switch( m_pgbRepairZT_AdapterCable->checkedId())
-    {
-      case Repair_OK:
-        settings.setValue(strInputName, Repair_OK);
-        break;
-      case Repair_Repair:
-        settings.setValue(strInputName, Repair_Repair);
-        break;
-      case Repair_NA:
-        settings.setValue(strInputName, Repair_NA);
-        break;
-    }
-    strInputName = "RepairIn";
-    switch( m_pgbRepairZT_RepairIn->checkedId())
-    {
-        case RepairIn_TW:
-        settings.setValue(strInputName, RepairIn_TW);
-        break;
-        case RepairIn_EU:
-        settings.setValue(strInputName, RepairIn_EU);
-        break;
-    }
-}
-
-void CAnalyseData::getDataFromIni4Repair( void ){
-    getDataFromIni4ARMRepair();
-    getDataFromIni4DMRepair();
-    getDataFromIni4ZTRepair();
-}
-void CAnalyseData::getDataFromIni4ARMRepair( void)
-{
-    QSettings settings(m_filePath,QSettings::IniFormat);
-    settings.beginGroup(BEGIN_ARMREPAIR);
-
-    QString strInputName = "ArmBelts";
-    int iType = settings.value(strInputName).toInt();
-    switch(iType)
-    {
-      case Repair_OK:
-        ui->rbArmBeltsAvrPrice_OK->setChecked( true);
-        break;
-      case Repair_Repair:
-        ui->rbArmBeltsAvrPrice_Repair->setChecked( true);
-        break;
-      case Repair_NA:
-        ui->rbArmBeltsAvrPrice_NA->setChecked( true);
-        break;
-    }
-    strInputName = "UpperArmHousingUpgrade";
-    iType = settings.value(strInputName).toInt();
-    switch(iType)
-    {
-      case Repair_OK:
-        ui->rbUpperArmHousingUpgrade_OK->setChecked( true);
-        break;
-      case Repair_Repair:
-        ui->rbUpperArmHousingUpgrade_Repair->setChecked( true);
-        break;
-      case Repair_NA:
-        ui->rbUpperArmHousingUpgrade_NA->setChecked( true);
-        break;
-    }
-    strInputName = "UpperArmHousing";
-    iType = settings.value(strInputName).toInt();
-    switch(iType)
-    {
-      case Repair_OK:
-        ui->rbUpperArmHousing_OK->setChecked( true);
-        break;
-      case Repair_Repair:
-        ui->rbUpperArmHousing_Repair->setChecked( true);
-        break;
-      case Repair_NA:
-        ui->rbUpperArmHousing_NA->setChecked( true);
-        break;
-    }
-    strInputName = "UpperArmLid";
-    iType = settings.value(strInputName).toInt();
-    switch(iType)
-    {
-      case Repair_OK:
-        ui->rbUpperArmLid_OK->setChecked( true);
-        break;
-      case Repair_Repair:
-        ui->rbUpperArmLid_Repair->setChecked( true);
-        break;
-      case Repair_NA:
-        ui->rbUpperArmLid_NA->setChecked( true);
-        break;
-    }
-    strInputName = "LowerArmHousingUpgrade";
-    iType = settings.value(strInputName).toInt();
-    switch(iType)
-    {
-      case Repair_OK:
-        ui->rbLowerArmHousingUpgrade_OK->setChecked( true);
-        break;
-      case Repair_Repair:
-        ui->rbLowerArmHousingUpgrade_Repair->setChecked( true);
-        break;
-      case Repair_NA:
-        ui->rbLowerArmHousingUpgrade_NA->setChecked( true);
-        break;
-    }
-    strInputName = "LowerArmHousing";
-    iType = settings.value(strInputName).toInt();
-    switch(iType)
-    {
-      case Repair_OK:
-        ui->rbLowerArmHousing_OK->setChecked( true);
-        break;
-      case Repair_Repair:
-        ui->rbLowerArmHousing_Repair->setChecked( true);
-        break;
-      case Repair_NA:
-        ui->rbLowerArmHousing_NA->setChecked( true);
-        break;
-    }
-    strInputName = "LowerArmLid";
-    iType = settings.value(strInputName).toInt();
-    switch(iType)
-    {
-      case Repair_OK:
-        ui->rbLowerArmLid_OK->setChecked( true);
-        break;
-      case Repair_Repair:
-        ui->rbLowerArmLid_Repair->setChecked( true);
-        break;
-      case Repair_NA:
-        ui->rbLowerArmLid_NA->setChecked( true);
-        break;
-    }
-    strInputName = "ArmDriveInterfac";
-    iType = settings.value(strInputName).toInt();
-    switch(iType)
-    {
-      case Repair_OK:
-        ui->rbArmDriveInterface_OK->setChecked( true);
-        break;
-      case Repair_Repair:
-        ui->rbArmDriveInterface_Repair->setChecked( true);
-        break;
-      case Repair_NA:
-        ui->rbArmDriveInterface_NA->setChecked( true);
-        break;
-    }
-    strInputName = "ArmGripperInterfaceScara";
-    iType = settings.value(strInputName).toInt();
-    switch(iType)
-    {
-      case Repair_OK:
-        ui->rbArmGripperInterfaceScara_OK->setChecked( true);
-        break;
-      case Repair_Repair:
-        ui->rbArmGripperInterfaceScara_Repair->setChecked( true);
-        break;
-      case Repair_NA:
-        ui->rbArmGripperInterfaceScara_NA->setChecked( true);
-        break;
-    }
-    strInputName = "ArmGripperInterfaceNT";
-    iType = settings.value(strInputName).toInt();
-    switch(iType)
-    {
-      case Repair_OK:
-        ui->rbArmGripperInterfaceNT_OK->setChecked( true);
-        break;
-      case Repair_Repair:
-        ui->rbArmGripperInterfaceNT_Repair->setChecked( true);
-        break;
-      case Repair_NA:
-        ui->rbArmGripperInterfaceNT_NA->setChecked( true);
-        break;
-    }
-    strInputName = "BeltReel";
-    iType = settings.value(strInputName).toInt();
-    switch(iType)
-    {
-      case Repair_OK:
-        ui->rbBeltReel_OK->setChecked( true);
-        break;
-      case Repair_Repair:
-        ui->rbBeltReel_Repair->setChecked( true);
-        break;
-      case Repair_NA:
-        ui->rbBeltReel_NA->setChecked( true);
-        break;
-    }
-    strInputName = "TorxScrew";
-    iType = settings.value(strInputName).toInt();
-    switch(iType)
-    {
-      case Repair_OK:
-        ui->rbTorxScrew_OK->setChecked( true);
-        break;
-      case Repair_Repair:
-        ui->rbTorxScrew_Repair->setChecked( true);
-        break;
-      case Repair_NA:
-        ui->rbTorxScrew_NA->setChecked( true);
-        break;
-    }
-    strInputName = "Bearings";
-    iType = settings.value(strInputName).toInt();
-    switch(iType)
-    {
-      case Repair_OK:
-        ui->rbBearings_OK->setChecked( true);
-        break;
-      case Repair_Repair:
-        ui->rbBearings_Repair->setChecked( true);
-        break;
-      case Repair_NA:
-        ui->rbBearings_NA->setChecked( true);
-        break;
-    }
-    strInputName = "RepairIn";
-    iType = settings.value(strInputName, -1).toInt();
-    qDebug() << "Repair in ARM"  << iType;
-    if(iType==-1){
-        ui->cbArmEU->setChecked( true);
-    }else{
-        switch(iType)
-        {
-          case RepairIn_TW:
-            ui->cbArmTW->setChecked(true);
-            break;
-          case RepairIn_EU:
-            ui->cbArmEU->setChecked( true);
-            break;
-        }
-    }
-}
-void CAnalyseData::getDataFromIni4DMRepair( void)
-{
-    QSettings settings(m_filePath,QSettings::IniFormat);
-    settings.beginGroup(BEGIN_DMREPAIR);
-
-    QString strInputName = "DMLikaMotor";
-    int iType = settings.value(strInputName).toInt();
-    switch(iType)
-    {
-      case Repair_OK:
-        ui->rbDMLikaMotor_OK->setChecked( true);
-        break;
-      case Repair_Repair:
-        ui->rbDMLikaMotor_Repair->setChecked( true);
-        break;
-      case Repair_NA:
-        ui->rbDMLikaMotor_NA->setChecked( true);
-        break;
-    }
-    strInputName = "CableHood";
-    iType = settings.value(strInputName).toInt();
-    switch(iType)
-    {
-      case Repair_OK:
-        ui->rbCableHood_OK->setChecked( true);
-        break;
-      case Repair_Repair:
-        ui->rbCableHood_Repair->setChecked( true);
-        break;
-      case Repair_NA:
-        ui->rbCableHood_NA->setChecked( true);
-        break;
-    }
-    strInputName = "DMHousing";
-    iType = settings.value(strInputName).toInt();
-    switch(iType)
-    {
-      case Repair_OK:
-        ui->rbDMHousing_OK->setChecked( true);
-        break;
-      case Repair_Repair:
-        ui->rbDMHousing_Repair->setChecked( true);
-        break;
-      case Repair_NA:
-        ui->rbDMHousing_NA->setChecked( true);
-        break;
-    }
-    strInputName = "DMLid";
-    iType = settings.value(strInputName).toInt();
-    switch(iType)
-    {
-      case Repair_OK:
-        ui->rbDMLid_OK->setChecked( true);
-        break;
-      case Repair_Repair:
-        ui->rbDMLid_Repair->setChecked( true);
-        break;
-      case Repair_NA:
-        ui->rbDMLid_NA->setChecked( true);
-        break;
-    }
-    strInputName = "SlipRing";
-    iType = settings.value(strInputName).toInt();
-    switch(iType)
-    {
-      case Repair_OK:
-        ui->rbSlipRing_OK->setChecked( true);
-        break;
-      case Repair_Repair:
-        ui->rbSlipRing_Repair->setChecked( true);
-        break;
-      case Repair_NA:
-        ui->rbSlipRing_NA->setChecked( true);
-        break;
-    }
-    strInputName = "HollowShaft";
-    iType = settings.value(strInputName).toInt();
-    switch(iType)
-    {
-      case Repair_OK:
-        ui->rbHollowShaft_OK->setChecked( true);
-        break;
-      case Repair_Repair:
-        ui->rbHollowShaft_Repair->setChecked( true);
-        break;
-      case Repair_NA:
-        ui->rbHollowShaft_NA->setChecked( true);
-        break;
-    }
-    strInputName = "RepairIn";
-    iType = settings.value(strInputName).toInt();
-    switch(iType)
-    {
-      case RepairIn_TW:
-        ui->cbDMTW->setChecked( true);
-        break;
-      case RepairIn_EU:
-        ui->cbDMEU->setChecked( true);
-        break;
-    }
-}
-void CAnalyseData::getDataFromIni4ZTRepair( void)
-{
-    QSettings settings(m_filePath,QSettings::IniFormat);
-    settings.beginGroup(BEGIN_ZTREPAIR);
-
-    QString strInputName = "ZStroke35";
-    int iType = settings.value(strInputName).toInt();
-    switch(iType)
-    {
-      case Repair_OK:
-        ui->rbZStroke35_OK->setChecked( true);
-        break;
-      case Repair_Repair:
-        ui->rbZStroke35_Repair->setChecked( true);
-        break;
-      case Repair_NA:
-        ui->rbZStroke35_NA->setChecked( true);
-        break;
-    }
-    strInputName = "ZStroke50";
-    iType = settings.value(strInputName).toInt();
-    switch(iType)
-    {
-      case Repair_OK:
-        ui->rbZStroke50_OK->setChecked( true);
-        break;
-      case Repair_Repair:
-        ui->rbZStroke50_Repair->setChecked( true);
-        break;
-      case Repair_NA:
-        ui->rbZStroke50_NA->setChecked( true);
-        break;
-    }
-    strInputName = "ZMHousingScara";
-    iType = settings.value(strInputName).toInt();
-    switch(iType)
-    {
-      case Repair_OK:
-        ui->rbZMHousingScara_OK->setChecked( true);
-        break;
-      case Repair_Repair:
-        ui->rbZMHousingScara_Repair->setChecked( true);
-        break;
-      case Repair_NA:
-        ui->rbZMHousingScara_NA->setChecked( true);
-        break;
-    }
-    strInputName = "ZMHousingNT";
-    iType = settings.value(strInputName).toInt();
-    switch(iType)
-    {
-      case Repair_OK:
-        ui->rbZMHousingNT_OK->setChecked( true);
-        break;
-      case Repair_Repair:
-        ui->rbZMHousingNT_Repair->setChecked( true);
-        break;
-      case Repair_NA:
-        ui->rbZMHousingNT_NA->setChecked( true);
-        break;
-    }
-    strInputName = "GuidingShaftsScara";
-    iType = settings.value(strInputName).toInt();
-    switch(iType)
-    {
-      case Repair_OK:
-        ui->rbGuidingShaftsScara_OK->setChecked( true);
-        break;
-      case Repair_Repair:
-        ui->rbGuidingShaftsScara_Repair->setChecked( true);
-        break;
-      case Repair_NA:
-        ui->rbGuidingShaftsScara_NA->setChecked( true);
-        break;
-    }
-    strInputName = "GuidingShaftsNT";
-    iType = settings.value(strInputName).toInt();
-    switch(iType)
-    {
-      case Repair_OK:
-        ui->rbGuidingShaftsNT_OK->setChecked( true);
-        break;
-      case Repair_Repair:
-        ui->rbGuidingShaftsNT_Repair->setChecked( true);
-        break;
-      case Repair_NA:
-        ui->rbGuidingShaftsNT_NA->setChecked( true);
-        break;
-    }
-    strInputName = "SmallGuidingShafts";
-    iType = settings.value(strInputName).toInt();
-    switch(iType)
-    {
-      case Repair_OK:
-        ui->rbSmallGuidingShafts_OK->setChecked( true);
-        break;
-      case Repair_Repair:
-        ui->rbSmallGuidingShafts_Repair->setChecked( true);
-        break;
-      case Repair_NA:
-        ui->rbSmallGuidingShafts_NA->setChecked( true);
-        break;
-    }
-    strInputName = "RepairIn";
-    iType = settings.value(strInputName).toInt();
-    switch(iType)
-    {
-      case RepairIn_TW:
-        ui->cbZTTW->setChecked(true);
-        break;
-      case RepairIn_EU:
-        ui->cbZTEU->setChecked( true);
-        break;
-    }
-
-}
-
-void CAnalyseData::createRepairMatrix( void )
-{
-    ui->lbStatus->setText("Creating Repair Matrix...");
-    progressSave(3);
-    closeExcel();
-    progressSave(6);
-    progressSave(10);
-    buildRepairTable();
-    qDebug() << "Table crated";
-    if(QFile::exists(m_filePathExcelRepair))
-    {
-        QFile::remove(m_filePathExcelRepair);
-    }
-
-    m_objExcel = new QAxObject("Excel.Application");
-    if( m_objExcel==nullptr)
-    {
-        progressSave(0);
-        QMessageBox::critical(NULL, "Error", "Excel is not installed", QMessageBox::Yes, QMessageBox::Yes);
-        return;
-    }
-
-    m_objExcel->setProperty("Visible",false);
-    QAxObject* workbooks = m_objExcel->querySubObject("WorkBooks");// get the workbook.
-    if( workbooks==nullptr)
-    {
-        progressSave(0);
-        QMessageBox::critical(NULL, "Error", "Office is not installed", QMessageBox::Yes, QMessageBox::Yes);
-        return;
-    }
-    workbooks->setProperty("Visible",false);
-    workbooks->dynamicCall("Open (const QString&)", m_filePathExcelRepairTmp);   // Open the file；
-    m_objWorkbook = m_objExcel->querySubObject("ActiveWorkBook"); // Get the active workbook.
-    progressSave(20);
-    int item_count = 1;// for progress
-    foreach(sREPAIRITEM item, vecRepairItems)
-    {
-        if(item.p_func)
-        {
-            (this->*(item.p_func))(m_objWorkbook, item);
-        }
-        progressSave(20 + (item_count++)*80/vecRepairItems.size());
-    }
-    // add to disable checking compatibility
-    m_objWorkbook->setProperty("DisplayAlerts", false);
-    m_objWorkbook->setProperty("CheckCompatibility", false);
-    m_objWorkbook->setProperty("DoNotPromptForConvert", true);
-
-    m_objWorkbook->dynamicCall("SaveAs(const QString&)",
-                                     QDir::toNativeSeparators(m_filePathExcelRepair));
-
-    progressSave(98);
-
-    closeExcel();
-    progressSave(100);
-    qDebug() << "Repair Matrix created.";
-    ui->lbStatus->setText("Repair Matrix was created");
-
-}
-
-void CAnalyseData::on_pbExport_clicked( void )
-{
-    // if fields for label are empty, give a warning!
-    if(ui->leRobotTypeSN->text().isEmpty() || ui->leARMSN->text().isEmpty() || ui->leDMSN->text().isEmpty() || ui->leZTSN2->text().isEmpty()){
-        QMessageBox::warning(this, "Information missing", "Please fill out Robot Type serial number, Arm serial number, DM serial number, and Z serial number before exporting.");
-        return;
-    }
-
-
-    ui->lbStatus->setText("Starting export");
-
-    // track progress
-    int counterAll=0;
-    int counterItem=0;
-    if(ui->cbAnalyseSheet->isChecked())
-        counterAll++;
-    if(ui->cbRepairMatrix->isChecked())
-        counterAll++;
-    if(ui->cbPrintLabel->isChecked())
-        counterAll++;
-    if(ui->cbMOMSheet->isChecked())
-        counterAll++;
-
-    qDebug() << counterAll;
-
-    if(counterAll > 0){
-        ui->lbStatus->setText("Starting export. Save to Ini first.");
-        progressSave(3);
-        QThread::sleep(1);
-        on_pbSaveIni_clicked();
-        progressSave(6);
-    }else{
-        ui->lbStatus->setText("WARNING: No export selected! Still save to Ini.");
-        progressSave(3);
-        QThread::sleep(1);
-        on_pbSaveIni_clicked();
-        progressSave(100);
-        ui->lbStatus->setText("WARNING: No export selected! Still saved to Ini.");
-        ui->lbProcess->hide();
-        return;
-    }
-    ui->lbProcess->show();
-    ui->lbProcess->setFixedWidth(25);
-    ui->lbProcess->setText(QString::number(counterItem) +"/"+QString::number(counterAll));
-
-    if(ui->cbAnalyseSheet->isChecked()){
-        // export Analyse Excel
-        createAnalyseSheet();
-        ui->lbProcess->setText(QString::number(++counterItem) +"/"+QString::number(counterAll));
-    }
-    if(ui->cbRepairMatrix->isChecked()){
-        // create Repair Matrix
-        createRepairMatrix();
-        ui->lbProcess->setText(QString::number(++counterItem) +"/"+QString::number(counterAll));
-    }
-    if(ui->cbPrintLabel->isChecked()){
-        createPrintLabel();
-        ui->lbProcess->setText(QString::number(++counterItem) +"/"+QString::number(counterAll));
-    }
-    if(ui->cbMOMSheet->isChecked()){
-        createMOMSheet();
-        ui->lbProcess->setText(QString::number(++counterItem) +"/"+ QString::number(counterAll));
-    }
-    ui->lbStatus->setText("Export finished");
-
-}
-
-
-// ************** Create MOM Sheet -----------------------------
-
-void CAnalyseData::createMOMSheet( void ){
-
-    ui->lbStatus->setText("Creating MOM Sheet...");
-    closeExcel();
-    progressSave(3);
-    buildProtocolTable();
-    if(QFile::exists(m_filePathExcelMOM))
-    {
-        QFile::remove(m_filePathExcelMOM);
-    }
-
-    m_objExcel = new QAxObject("Excel.Application");
-    if( m_objExcel==nullptr)
-    {
-        progressSave(0);
-        QMessageBox::critical(NULL, "Error", "Excel is not installed", QMessageBox::Yes, QMessageBox::Yes);
-        return;
-    }
-
-    m_objExcel->setProperty("Visible",false);
-    QAxObject* workbooks = m_objExcel->querySubObject("WorkBooks");// get the workbook.
-    if( workbooks==nullptr)
-    {
-        progressSave(0);
-        QMessageBox::critical(NULL, "Error", "Office is not installed", QMessageBox::Yes, QMessageBox::Yes);
-        return;
-    }
-    workbooks->setProperty("Visible",false);
-    workbooks->dynamicCall("Open (const QString&)", m_filePathExcelMOMTmp);   // Open the file；
-    m_objWorkbook = m_objExcel->querySubObject("ActiveWorkBook"); // Get the active workbook.
-    progressSave(20);
-    QAxObject *worksheet = m_objWorkbook->querySubObject("WorkSheets(int)", 1);
-
-    int row = 0, column = 0;
-
-    // Write Robot Number
-    CAnalyseData::getRowColumn("A2", &row, &column);
-    QAxObject* cell = worksheet->querySubObject("Cells(int,int)", row, column);
-    QString value = m_robotType + m_robotSN;
-    cell->setProperty("Value", value);
-
-    // Write MN (repair number)
-    column++;
-    cell = worksheet->querySubObject("Cells(int,int)", row, column);
-    value = ui->leRepairNRARM->text();
-    cell->setProperty("Value", value);
-
-    // Write WK
-    QStringList parts = m_fileName.split("_");
-    if(parts.size() > 2) {
-      value = parts[2];
-      qDebug() << value;
-      value.remove(0, 2);
-      qDebug() << value;
-
-    }
-    column++;
-    cell = worksheet->querySubObject("Cells(int,int)", row, column);
-    cell->setProperty("Value", "WK"+value);
-
-    // Write Result Analysis
-    column++;
-    cell = worksheet->querySubObject("Cells(int,int)", row, column);
-    strResAnalysis = cell->property("Value").toString();
-    startPos = 0;
-
-    // All one cell. Therefore hard programming of the QString using a lot of counting chars
-    progressSave(30);
-    writeGeneralInfoMOM();
-    progressSave(40);
-    writeArmInfoMOM();
-    progressSave(60);
-    writeDMInfoMOM();
-    progressSave(80);
-    writeZInfoMOM();
-    progressSave(95);
-
-    cell->setProperty("Value", strResAnalysis);
-
-    // make headers bold:
-    int idx = strResAnalysis.indexOf("SA:");
-    QAxObject* chars = cell->querySubObject("Characters(int, int)", idx, 3);
-    QAxObject *font = chars->querySubObject("Font");
-    font->setProperty("Bold", true);
-    idx = strResAnalysis.indexOf("DM:");
-    chars = cell->querySubObject("Characters(int, int)", idx, 3);
-    font = chars->querySubObject("Font");
-    font->setProperty("Bold", true);
-    idx = strResAnalysis.indexOf("Z:");
-    chars = cell->querySubObject("Characters(int, int)", idx, 3);
-    font = chars->querySubObject("Font");
-    font->setProperty("Bold", true);
-
-    m_objWorkbook->setProperty("DisplayAlerts", false);
-    m_objWorkbook->setProperty("CheckCompatibility", false);
-    m_objWorkbook->setProperty("DoNotPromptForConvert", true);
-
-    m_objWorkbook->dynamicCall("SaveAs(const QString&)",
-                                     QDir::toNativeSeparators(m_filePathExcelMOM));
-    progressSave(98);
-    closeExcel();
-    progressSave(100);
-    qDebug() << "MOM Sheet created.";
-    ui->lbStatus->setText("MOM Sheet was created");
-}
-
-// write the information in "Result Analysis" cell
-void CAnalyseData::writeGeneralInfoMOM(){
-
-    getNextLineIdx();
-    // Version
-    switch(m_pgbHDMotorType->checkedId())
-    {
-      case V0:
-        insertAndReturnLastIdx(": V0");
-        break;
-      case V1:
-        insertAndReturnLastIdx(": V1");
-        break;
-      case DFV1:
-        insertAndReturnLastIdx(": DFV1");
-        break;
-    }
-    getNextLineIdx();
-    // First Delivery
-    insertAndReturnLastIdx(ui->leFirstDeliveryDate->text());
-    getNextLineIdx();
-    //Repair No
-    insertAndReturnLastIdx(ui->leRepairNo->text());
-    getNextLineIdx();
-    // Last repair date
-    if(!(ui->leLastRepairDate->text()).isEmpty()){
-        removeAndReturnLastIdx(2);
-        insertAndReturnLastIdx(ui->leLastRepairDate->text());
-    }
-    getNextLineIdx(); // "Delivered in white box\n"
-    getNextLineIdx(); // "packed regarding spec: No, ARM down holder placed incorrectly\n"
-    getNextLineIdx(); // "Delivered in white box\n"
-    getNextLineIdx(); // "Unit starts on testing: OK\n"
-    getNextLineIdx(); // "/n"
-
-
-}
-void CAnalyseData::writeArmInfoMOM(){
-    getNextLineIdx(); // "SA:/n"
-    // "- Geometry: \n"
-    switch(m_pgbGeoChkARM->checkedId())
-    {
-      case Test_OK:
-        insertAndReturnLastIdx("OK");
-        break;
-      case Test_NG:
-        insertAndReturnLastIdx("NOK");
-        break;
-      case Test_NA:
-        insertAndReturnLastIdx("N/A");
-        break;
-    }
-    getNextLineIdx();
-    // Rz
-    double dRz = ui->leGeoRz->text().toDouble();
-    if(qAbs(dRz)> Rz_UP){
-        startPos-=21;
-        insertAndReturnLastIdx(ui->leGeoRz->text()+" mRad ");
-        getNextLineIdx();
-    }else{
-        removeAndReturnLastIdx(26);
-//        getNextLineIdx();
-    }
-    getNextLineIdx();
-    // Rx
-    double dRx = ui->leGeoRx->text().toDouble();
-    if(qAbs(dRx)> Rx_UP){
-        startPos-=21;
-        insertAndReturnLastIdx(ui->leGeoRx->text()+" mRad ");
-        getNextLineIdx();
-    }else{
-        removeAndReturnLastIdx(26);
-//        getNextLineIdx();
-    }
-    getNextLineIdx();
-    // Ry
-    double dRy = ui->leGeoRy->text().toDouble();
-    if(qAbs(dRy)> Ry_UP){
-        startPos-=21;
-        insertAndReturnLastIdx(ui->leGeoRy->text()+" mRad ");
-        getNextLineIdx();
-    }else{
-        removeAndReturnLastIdx(26);
-//        getNextLineIdx();
-    }
-    getNextLineIdx();
-
-    // delta H4
-    double dH4 = ui->leGeoRy->text().toDouble();
-    if(dH4 < DeltaHeight_DN && dH4 > DeltaHeight_UP){
-        startPos-=29;
-        insertAndReturnLastIdx(ui->leGeoDelHeight->text()+" mm ");
-        getNextLineIdx();
-    }else{
-        removeAndReturnLastIdx(35);
-//        getNextLineIdx();
-    }
-
-    getNextLineIdx();
-    // Position TH
-
-    double posR = ui->leRepPosPAR->text().toDouble();
-    double posTH = ui->leRepPosPATH->text().toDouble();
-    if(qAbs(posR) > REPPOSPA_UP && qAbs(posTH) > REPPOSPA_UP){
-        startPos-=22;
-        insertAndReturnLastIdx(QString::number(posTH) +" µm (spec.= +/- 600 µm), Pos_R="+QString::number(posR)+" ");
-        getNextLineIdx();
-    }else if(qAbs(posTH) > REPPOSPA_UP && qAbs(posR) <= REPPOSPA_UP){
-        startPos-=22;
-        insertAndReturnLastIdx(QString::number(posTH)+" ");
-        getNextLineIdx();
-    }else if(qAbs(posTH) <= REPPOSPA_UP && qAbs(posR) > REPPOSPA_UP){
-        startPos-=22;
-        removeAndReturnLastIdx(4);
-        insertAndReturnLastIdx("R="+QString::number(posR)+" ");
-        getNextLineIdx();
-    }else{
-        removeAndReturnLastIdx(30);
-        insertAndReturnLastIdx("OK");
-    }
-    getNextLineIdx();
-    // "- Electrics ARM: \n"
-    switch(m_pgbEleChkARM->checkedId())
-    {
-      case Test_OK:
-        insertAndReturnLastIdx(" OK");
-        break;
-      case Test_NG:
-        insertAndReturnLastIdx(" NOK");
-        break;
-      case Test_NA:
-        insertAndReturnLastIdx(" N/A");
-        break;
-    }
-    getNextLineIdx();
-    getNextLineIdx(); //"Visual:\n"
-    getNextLineIdx(); // "\n"
-}
-void CAnalyseData::writeDMInfoMOM(){
-    getNextLineIdx(); // "DM:\n"
-    // Geometry 180
-    double geo180 = ui->le180DegVal_2->text().toDouble();
-    double geo270 = ui->le270DegVal_2->text().toDouble();
-    if(qAbs(geo180) > MicroHite_UP){
-        startPos-=44;
-        insertAndReturnLastIdx(" "+ui->le180DegVal->text()+" ");
-        getNextLineIdx();
-    }else{
-        startPos-=38;
-        removeAndReturnLastIdx(16);
-        getNextLineIdx();
-    }
-    // Geometry 270
-    if(qAbs(geo270) > MicroHite_UP){
-        startPos-=26;
-        insertAndReturnLastIdx(ui->le270DegVal->text()+" ");
-        getNextLineIdx();
-    }else{
-        startPos-=22;
-        removeAndReturnLastIdx(16);
-        getNextLineIdx();
-    }
-    if(qAbs(geo180) <= MicroHite_UP && qAbs(geo270) <= MicroHite_UP){
-        removeAndReturnLastIdx(21);
-        insertAndReturnLastIdx("OK");
-    }
-    getNextLineIdx();
-    // 0-Positioning
-    if(ui->leZeroingPosTH->text().isEmpty() && ui->leZeroingPosTH->text().isEmpty()){
-        //don't write or elete anything
-        getNextLineIdx();
-    }else{
-        double posTH = ui->leZeroingPosTH->text().toDouble();
-        double posR = ui->leZeroingPosR->text().toDouble();
-        if(qAbs(posTH)>0.1 && qAbs(posR)>0.1){
-            startPos-=19;
-            insertAndReturnLastIdx("Pos_TH="+ui->leZeroingPosTH->text()+" mm, Pos_R="+ui->leZeroingPosR->text()+" mm ");
-            getNextLineIdx();
-        }else if(qAbs(posTH)<= 0.1 && qAbs(posR)>0.1){
-            startPos-=19;
-            insertAndReturnLastIdx("Pos_R="+ui->leZeroingPosR->text()+" mm ");
-            getNextLineIdx();
-        }else if(qAbs(posTH)>0.1 && qAbs(posR)<=0.1){
-            startPos-=19;
-            insertAndReturnLastIdx("Pos_TH="+ui->leZeroingPosTH->text()+" mm ");
-            getNextLineIdx();
-        }else {
-            removeAndReturnLastIdx(19);
-            insertAndReturnLastIdx("OK");
-        }
-    }
-
-    getNextLineIdx();
-    // Electrics DM:
-    switch(m_pgbEleChkDM->checkedId())
-    {
-      case Test_OK:
-        insertAndReturnLastIdx(" OK");
-        break;
-      case Test_NG:
-        insertAndReturnLastIdx(" NOK");
-        break;
-      case Test_NA:
-        insertAndReturnLastIdx(" N/A");
-        break;
-    }
-    getNextLineIdx(); // "Visual:\n"
-    getNextLineIdx(); // "- Motor / Encoder: \n"
-    int motor1=m_pgbTHMotorChkDM->checkedId();
-    int motor2=m_pgbRMotorChkDM->checkedId();
-    if(motor1==Test_OK && motor2 ==Test_OK){
-        insertAndReturnLastIdx(" OK");
-    }else if(motor1==Test_NG || motor2 ==Test_NG){
-        insertAndReturnLastIdx(" NOK");
-    }else if(motor1==Test_NA || motor2 ==Test_NA){
-        insertAndReturnLastIdx(" N/A");
-    }
-    getNextLineIdx();
-    getNextLineIdx(); // "\n"
-}
-void CAnalyseData::writeZInfoMOM(){
-    getNextLineIdx(); // "Z: \n"
-    getNextLineIdx(); // "Positioning: \n"
-    getNextLineIdx(); // "Electrics: \n"
-    getNextLineIdx(); // "Visual: \n"
-    getNextLineIdx(); // "Spindle/Motor:"
-    // Electrics ZT:
-    startPos=strResAnalysis.length();
-    switch(m_pgbZMotorZT->checkedId())
-    {
-      case Test_OK:
-        insertAndReturnLastIdx(" OK");
-        break;
-      case Test_NG:
-        insertAndReturnLastIdx(" NOK");
-        break;
-      case Test_NA:
-        insertAndReturnLastIdx(" N/A");
-        break;
-    }
-}
-
-// helper functions
-void CAnalyseData::getNextLineIdx (){
-    startPos++;
-    startPos = strResAnalysis.indexOf("\n", startPos);
-}
-void CAnalyseData::insertAndReturnLastIdx(QString insertText){
-    strResAnalysis.insert(startPos, insertText);
-    startPos += insertText.length();
-}
-void CAnalyseData::removeAndReturnLastIdx(int numberRemove){
-    strResAnalysis.remove(startPos-numberRemove, numberRemove);
-    startPos-=numberRemove;
 }
